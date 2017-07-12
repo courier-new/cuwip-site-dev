@@ -1,0 +1,60 @@
+.main.menu {
+	background: $grey-medium;
+	display: flex;
+	align-items: center;
+	height: 10vh;
+	justify-content: center;
+	list-style: none;
+	margin: none;
+	opacity: 0.9;
+	text-align: center;
+	transition: background 0.5s linear;
+	width: 100%;
+	a {
+		color: $beige-lightest;
+		font-family: $special-main-stack;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 0.8em;
+		opacity: 0.8;
+		text-decoration: none;
+		transition: opacity 0.1s linear;
+	}
+	a:hover {
+		opacity: 1;
+	}
+	&.main.menu.sticky {
+		height: 5vh;
+		top: 0;
+		z-index: 100;
+		position: fixed;
+		width: 100%;
+		background: $grey-dark;
+		a {
+			color: white;
+			&:hover,
+			&:focus {
+				outline: 0;
+				color: lighten(black, 40%);
+			}
+		}
+		li {
+			padding: 0.3vh 0;
+			&.current {
+				border-color: $turquoise;
+			}
+		}
+	}
+	ul {
+		padding: 0;
+		margin: 5px 0;
+		li {
+			display: inline-block;
+			padding: 2vh 0;
+			margin: 0 2em;
+			&.current {
+				border-bottom: 2px solid $turquoise-dark;
+			}
+		}
+	}
+}
