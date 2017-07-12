@@ -236,11 +236,11 @@ body {
       .page.parallax .logos.array li img {
         opacity: 0.8; }
         .page.parallax .logos.array li img.aps {
-          height: 3.5em; }
+          height: 4em; }
         .page.parallax .logos.array li img.energy {
-          height: 2.5em; }
-        .page.parallax .logos.array li img.nsf {
           height: 3em; }
+        .page.parallax .logos.array li img.nsf {
+          height: 3.5em; }
   .page.parallax .jump {
     position: absolute;
     bottom: 0;
