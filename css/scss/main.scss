@@ -3,6 +3,7 @@
 @charset 'UTF-8';
 
 @import 'nav';
+@import 'countdown';
 
 *::selection,
 *::-moz-selection {
@@ -60,8 +61,8 @@ body {
 			padding: 22em;
 			font-size: 0.75em; /* will scale the whole box and text uniformly */
 			&::after {
-				content: "";
-				background: url("../img/hexagon-bg.png") no-repeat center center;
+				content: '';
+				background: url('../img/hexagon-bg.png') no-repeat center center;
 				background-size: contain;
 				opacity: 0.9;
 				top: 0;
@@ -141,6 +142,7 @@ body {
 			padding-right: 3em;
 			img {
 				opacity: 0.8;
+				/* adjust each logo size to fit the row better */
 				&.aps {
 					height: 4em;
 				}
@@ -178,4 +180,8 @@ body {
 			}
 		}
 	}
+}
+
+.page.welcome {
+	width: 100%;
 }
