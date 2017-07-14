@@ -1,35 +1,28 @@
-// Remember height of parallax title page
-let $parallaxPageHeight = $('.page.parallax').outerHeight();
+/**
+ * scroll-effect.js
+ *
+ * Handles events and effects related to scrolling on the page
+ *
+ * @author    Kelli Rockwell <kellirockwell@mail.com>
+ * @since     File available since July 11, 2018
+ * @version   1.0.1
+ */
+
+// Identify parallax page
+let $parallax = $('.page.parallax');
 // Identify main navigation menu
 let $nav = $('nav.main.menu');
-
-// On click of single page quick-jump navigational arrow, delimited by attribute data-page=.page.(PAGE NAME)
-$('*[data-page]').on('click', function() {
-	// Identify target point to quick-jump to
-	let target = $(this).attr('data-page');
-	// Animate smooth scroll to that point in half a second
-	$('html, body').animate({
-		scrollTop: $(target).offset().top
-	}, 500);
-});
 
 // Main scrolling actions
 let scrollListener = function() {
 	// Remember each of the page sections
 	let $pages = $('.page');
 	let $scrollY = window.scrollY + 30
-	// let timeout = null
-	$pages.each(function(){
-		let page_top = $(this).offset().top
-		if ($scrollY >= page_top &&
-			$scrollY < (page_top + $(this).height())) {
-				if (!$(this).hasClass('seen')) $(this).addClass('seen')
-				if (!$(this).hasClass('focused')) $(this).addClass('focused')
-			} else if ($(this).hasClass('focused')) {
-				$(this).removeClass('focused')
-			}
-		});
 
+	// If parallax page and nav menu are present on page
+	if ($parallax && $nav) {
+		// Remember height of parallax title page
+		let $parallaxPageHeight = ($parallax).outerHeight();
 		// If current scroll position is past the parallax title page height
 		if ($(window).scrollTop() > $parallaxPageHeight) {
 			// Force sticky menu
@@ -42,6 +35,41 @@ let scrollListener = function() {
 		}
 	}
 
-	$(document).on('scroll', scrollListener)
+	// If quick-jump navigational arrow is present on page
+	if ($('.jump')) {
+		// On click of single page quick-jump navigational arrow, delimited by attribute data-page=.page.(PAGE NAME)
+		$('*[data-page]').on('click', function() {
+			// Identify target point to quick-jump to
+			let target = $(this).attr('data-page');
+			// Animate smooth scroll to that point in half a second
+			$('html, body').animate({
+				scrollTop: $(target).offset().top
+			}, 500);
+		});
+	}
 
-	scrollListener();
+	// For each page section
+	$pages.each(function() {
+		// Remember the top of that page
+		let pageTop = $(this).offset().top
+		// If the current scroll position rests within this page section
+		if ($scrollY >= pageTop && $scrollY < (pageTop + $(this).height())) {
+			// Make sure page is marked as seen and focused
+			if (!$(this).hasClass('seen')) {
+				$(this).addClass('seen')
+			}
+			if (!$(this).hasClass('focused')) {
+				$(this).addClass('focused')
+			}
+		} else if ($(this).hasClass('focused')) { // Otherwise if page is marked as focused but current scroll position does not rest within it
+			// Remove focused mark from page
+			$(this).removeClass('focused')
+		}
+	});
+};
+
+// Call scrollListener function on user scroll and once immediately on page load
+$(document).on('scroll', scrollListener);
+scrollListener();
+
+/* End of scroll-effect.js */

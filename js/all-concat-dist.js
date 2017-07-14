@@ -79,20 +79,32 @@
 			});
 		}
 
+		// For each page section
 		$pages.each(function () {
+			// Remember the top of that page
 			var pageTop = $(this).offset().top;
+			// If the current scroll position rests within this page section
 			if ($scrollY >= pageTop && $scrollY < pageTop + $(this).height()) {
-				if (!$(this).hasClass('seen')) $(this).addClass('seen');
-				if (!$(this).hasClass('focused')) $(this).addClass('focused');
+				// Make sure page is marked as seen and focused
+				if (!$(this).hasClass('seen')) {
+					$(this).addClass('seen');
+				}
+				if (!$(this).hasClass('focused')) {
+					$(this).addClass('focused');
+				}
 			} else if ($(this).hasClass('focused')) {
+				// Otherwise if page is marked as focused but current scroll position does not rest within it
+				// Remove focused mark from page
 				$(this).removeClass('focused');
 			}
 		});
 	};
 
+	// Call scrollListener function on user scroll and once immediately on page load
 	$(document).on('scroll', scrollListener);
-
 	scrollListener();
+
+	/* End of scroll-effect.js */
 
 	/**
   * countdown.js
