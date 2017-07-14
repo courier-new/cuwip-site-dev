@@ -1,0 +1,37 @@
+.countdown {
+	align-items: center;
+	color: $grey-dark;
+	display: flex;
+	justify-content: center;
+	margin: 1em auto;
+	width: 50%;
+	max-width: 900px;
+	min-width: 500px;
+	.individual.block {
+		align-items: center;
+		box-shadow: 2px 4px 10px 2px rgba($grey-dark, 0.3);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 10em;
+		padding: 1em 0 0 0;
+		margin: 0 1.5%;
+		width: 22%;
+	}
+	p {
+		margin: auto;
+		width: 100%;
+		text-align: center;
+		&.number.of {
+			font-size: 3.8em;
+			margin: 0.35em 0 0.35em -0.02em;
+			width: 100%;
+		}
+		&.string {
+			padding: 1em 0;
+			width: 100%;
+			background: $turquoise;
+			color: $beige-lightest;
+		}
+	}
+}
