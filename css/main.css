@@ -130,6 +130,7 @@
   -ms-flex-pack: center;
   justify-content: center;
   margin: 1em auto;
+  padding-bottom: 1em;
   width: 100%;
   max-width: 600px;
   min-width: 450px; }
@@ -171,7 +172,7 @@
       margin-top: -0.2em;
       width: 100%;
       background: #3dbfbd;
-      color: #f5e7e0; }
+      color: white; }
 
 * {
   -webkit-box-sizing: border-box;
