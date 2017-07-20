@@ -1,0 +1,16 @@
+.columns {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	&.three .column {
+		width: 33%;
+		padding: 2em 2em 0 2em;
+		img {
+			width: 50%;
+			margin: 0 auto 1em auto;
+		}
+	}
+	&.two .column {
+		width: 50%;
+	}
+}

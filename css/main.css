@@ -3,6 +3,28 @@
   src: url("../../font/ailerons-typeface.otf");
   font-weight: 400;
   font-style: normal; }
+.columns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .columns.three .column {
+    width: 33%;
+    padding: 2em 2em 0 2em; }
+    .columns.three .column img {
+      width: 50%;
+      margin: 0 auto 1em auto; }
+  .columns.two .column {
+    width: 50%; }
+
 .page.footer {
   background: #40393b;
   color: #91878d;
@@ -109,8 +131,8 @@
   justify-content: center;
   margin: 1em auto;
   width: 100%;
-  max-width: 900px;
-  min-width: 500px; }
+  max-width: 600px;
+  min-width: 450px; }
   .countdown .individual.block {
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -132,9 +154,9 @@
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    height: 10em;
-    padding: 1em 0 0 0;
-    margin: 0 1.5%;
+    height: 11em;
+    padding: 1em 0 1em 0;
+    margin: 0 2%;
     width: 22%; }
   .countdown p {
     margin: auto;
@@ -146,6 +168,7 @@
       width: 100%; }
     .countdown p.string {
       padding: 1em 0;
+      margin-top: -0.2em;
       width: 100%;
       background: #3dbfbd;
       color: #f5e7e0; }
@@ -163,6 +186,15 @@
 *::-moz-selection {
   background: #adadad; }
 
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
 a {
   color: #3dbfbd;
   font-weight: 700;
@@ -175,14 +207,10 @@ a:hover,
 a:active {
   color: #32858c; }
 
-html {
-  height: 100%; }
-
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; }
+p,
+.message {
+  line-height: 1.5em;
+  margin: 2em 0; }
 
 .page {
   width: 100vw;
@@ -210,7 +238,6 @@ body {
     width: 86%;
     color: #706c76;
     font-size: 0.8em;
-    line-height: 1.5em;
     padding: 0 3em 3em 3em;
     position: relative;
     margin: 1em auto 3em auto;
@@ -239,16 +266,20 @@ body {
   .page .text.block {
     color: #706c76;
     font-size: 0.8em;
-    line-height: 1.5em;
-    padding: 0 3em 2em 3em;
+    padding: 0 3em 0.5em 3em;
     text-align: center; }
-    .page .text.block h1 {
+    .page .text.block h1,
+    .page .text.block h2 {
       color: #4d4547;
       font-family: "ABeeZee", sans-serif;
       font-size: 2em;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       margin: 1em auto 1.5em auto;
       text-transform: uppercase; }
+    .page .text.block h2 {
+      color: #ca776c;
+      font-size: 1.5em;
+      letter-spacing: 0.12em; }
   .page img.hexagons {
     height: 50px;
     margin: 1em auto; }
