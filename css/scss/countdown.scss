@@ -4,7 +4,7 @@
 	display: flex;
 	justify-content: center;
 	margin: 1em auto;
-	width: 50%;
+	width: 100%;
 	max-width: 900px;
 	min-width: 500px;
 	.individual.block {
@@ -30,7 +30,7 @@
 		&.string {
 			padding: 1em 0;
 			width: 100%;
-			background: $turquoise;
+			background: $turquoise-light;
 			color: $beige-lightest;
 		}
 	}
