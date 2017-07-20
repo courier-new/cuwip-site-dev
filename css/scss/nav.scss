@@ -5,7 +5,7 @@
 	height: 10vh;
 	justify-content: center;
 	list-style: none;
-	margin: none;
+	margin: 0;
 	opacity: 0.9;
 	text-align: center;
 	transition: background 0.5s linear;
@@ -39,21 +39,37 @@
 			}
 		}
 		li {
-			padding: 0.3vh 0;
-			&.current {
-				border-color: $turquoise;
+			padding: 1.5vh 2.4em;
+			&.current .border {
+				bottom: 0.75vh;
+				border-bottom: 3px solid $turquoise;
 			}
 		}
 	}
 	ul {
+		height: 100%;
 		padding: 0;
-		margin: 5px 0;
+		margin: 0;
 		li {
 			display: inline-block;
-			padding: 2vh 0;
-			margin: 0 2em;
+			height: 100%;
+			padding: 4vh 2.4em;
+			position: relative;
+			margin: 0 0 0 -0.35em;
+			transition: background 0.2s;
 			&.current {
-				border-bottom: 2px solid $turquoise-dark;
+				position: relative;
+				.border {
+					width: 50%;
+					height: 10px;
+					position: absolute;
+					bottom: 1.5vh;
+					right: 25%;
+					border-bottom: 8px solid $turquoise-dark;
+				}
+			}
+			&:hover {
+				background-color: rgba($beige-lightest, 0.1);
 			}
 		}
 	}
