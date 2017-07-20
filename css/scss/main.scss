@@ -15,6 +15,18 @@
 	background: #adadad;
 }
 
+a {
+	color: $turquoise-light;
+	font-weight: 700;
+	transition: color 0.3s;
+	text-decoration: none;
+}
+
+a:hover,
+a:active {
+	color: $turquoise;
+}
+
 html {
 	height: 100%;
 }
@@ -38,24 +50,38 @@ body {
 		max-height: 100vh;
 		min-height: 100vh;
 	}
-	&.welcome,
-	&.about {
+	&.alerts {
 		background: white;
+		padding: 2em 10em;
+	}
+	&.welcome {
+		background: $grey-lightest;
 		padding: 2em 10em;
 	}
 	.inner {
 		margin: 0 auto;
 		max-width: 900px;
+		padding-top: 1em;
+		text-align: center;
 	}
 	.message {
-		width: 84%;
-		border-bottom: 0.3em solid #000;
+		width: 86%;
 		color: $grey-medium-dark;
 		font-size: 0.8em;
 		line-height: 1.5em;
 		padding: 0 3em 3em 3em;
+		position: relative;
 		margin: 1em auto 3em auto;
 		text-align: center;
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 30%;
+			margin: 0 35%;
+			border-bottom: 0.3em solid #000;
+		}
 		strong {
 			color: $grey-dark;
 			display: block;
@@ -66,22 +92,31 @@ body {
 			padding-bottom: 1em;
 			text-transform: uppercase;
 		}
-		a {
-			color: $turquoise-light;
-			font-weight: 700;
-			transition: color 0.3s;
-			text-decoration: none;
-		}
-		a:hover,
-		a:active {
-			color: $turquoise;
-		}
-		&.alert {
+		&.alert::after {
 			border-color: lighten($pink-berry, 10%);
 		}
-		&.general {
-			border-color: $pink-salmon;
+		&.general::after {
+			border-color: $pink-salmon-light;
 		}
+	}
+	.text.block {
+		color: $grey-medium-dark;
+		font-size: 0.8em;
+		line-height: 1.5em;
+		padding: 0 3em 2em 3em;
+		text-align: center;
+		h1 {
+			color: lighten($grey-dark, 15%);
+			font-family: $special-main-stack;
+			font-size: 2em;
+			letter-spacing: 0.2em;
+			margin: 1em auto 1.5em auto;
+			text-transform: uppercase;
+		}
+	}
+	img.hexagons {
+		height: 50px;
+		margin: 1em auto;
 	}
 }
 
