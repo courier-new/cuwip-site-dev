@@ -19,7 +19,7 @@
   -ms-flex-pack: center;
   justify-content: center;
   list-style: none;
-  margin: none;
+  margin: 0;
   opacity: 0.9;
   text-align: center;
   -webkit-transition: background 0.5s linear;
@@ -52,18 +52,34 @@
         outline: 0;
         color: #666666; }
     .main.menu.main.menu.sticky li {
-      padding: 0.3vh 0; }
-      .main.menu.main.menu.sticky li.current {
-        border-color: #32858c; }
+      padding: 1.5vh 2.4em; }
+      .main.menu.main.menu.sticky li.current .border {
+        bottom: 0.75vh;
+        border-bottom: 3px solid #32858c; }
   .main.menu ul {
+    height: 100%;
     padding: 0;
-    margin: 5px 0; }
+    margin: 0; }
     .main.menu ul li {
       display: inline-block;
-      padding: 2vh 0;
-      margin: 0 2em; }
+      height: 100%;
+      padding: 4vh 2.4em;
+      position: relative;
+      margin: 0 0 0 -0.35em;
+      -webkit-transition: background 0.2s;
+      -o-transition: background 0.2s;
+      transition: background 0.2s; }
       .main.menu ul li.current {
-        border-bottom: 2px solid #0f646d; }
+        position: relative; }
+        .main.menu ul li.current .border {
+          width: 50%;
+          height: 10px;
+          position: absolute;
+          bottom: 1.5vh;
+          right: 25%;
+          border-bottom: 8px solid #0f646d; }
+      .main.menu ul li:hover {
+        background-color: rgba(245, 231, 224, 0.1); }
 
 .countdown {
   -webkit-box-align: center;
@@ -121,6 +137,10 @@
       background: #32858c;
       color: #f5e7e0; }
 
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
 *::-moz-selection,
 *::-moz-selection {
   background: #adadad; }
@@ -129,33 +149,46 @@
 *::-moz-selection {
   background: #adadad; }
 
-html,
-body {
+html {
   height: 100%; }
 
-.page {
-  width: 100%;
-  min-height: 100%;
+body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; }
+
+.page {
+  min-height: 100vh;
+  width: 100vw;
   position: relative;
-  display: table; }
+  display: block; }
   .page.no.sticky {
     padding-top: 10vh;
     /* match the nav menu bar height */ }
 
 .page.parallax {
-  background: rgba(0, 0, 0, 0.3);
   /* image overlay, controlled by opacity of .parallax background */ }
-  .page.parallax::after {
-    content: "";
+  .page.parallax .parallax.background {
     background: url("../img/millikan-patio.jpg") no-repeat center center;
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1; }
+  .page.parallax::before {
+    content: '';
+    background: rgba(0, 0, 0, 0.3);
+    display: block;
     opacity: 1;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     position: absolute;
-    z-index: -1; }
+    z-index: 1; }
   .page.parallax .title.container {
     display: -webkit-box;
     display: -webkit-flex;
@@ -298,32 +331,12 @@ body {
           height: 3em; }
         .page.parallax .logos.array li img.nsf {
           height: 3.5em; }
-  .page.parallax .jump {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40%;
-    z-index: 3; }
-    .page.parallax .jump .arrow {
-      -webkit-transition: all 0.4s ease;
-      -o-transition: all 0.4s ease;
-      transition: all 0.4s ease;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 10%;
-      margin: auto;
-      width: 0;
-      height: 0;
-      border: 3em solid transparent;
-      border-top-color: rgba(37, 33, 34, 0.8); }
-      .page.parallax .jump .arrow:hover {
-        cursor: pointer;
-        border-top-color: rgba(37, 33, 34, 0.95); }
 
-.page.welcome {
-  width: 100%; }
+.page.welcome,
+.page.about {
+  width: 100%;
+  background: white;
+  padding: 2em 0; }
 
 
 

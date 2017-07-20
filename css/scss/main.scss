@@ -5,40 +5,59 @@
 @import 'nav';
 @import 'countdown';
 
+* {
+	box-sizing: border-box;
+}
+
 *::selection,
 *::-moz-selection {
 	background: #adadad;
 }
 
-html,
-body {
+html {
 	height: 100%;
 }
 
-.page {
-	width: 100%;
-	min-height: 100%;
+body {
 	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+.page {
+	min-height: 100vh;
+	width: 100vw;
 	position: relative;
-	display: table;
+	display: block;
 	&.no.sticky {
 		padding-top: 10vh; /* match the nav menu bar height */
 	}
 }
 
 .page.parallax {
-	background: rgba(0, 0, 0, 0.3);
-	/* image overlay, controlled by opacity of .parallax background */
-	&::after {
-		content: "";
+	.parallax.background {
 		background: url("../img/millikan-patio.jpg") no-repeat center center;
+		display:block;
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+	/* image overlay, controlled by opacity of .parallax background */
+	&::before {
+		content: '';
+		background: rgba(0, 0, 0, 0.3);
+		display: block;
 		opacity: 1;
 		top: 0;
 		left: 0;
 		bottom: 0;
 		right: 0;
 		position: absolute;
-		z-index: -1;
+		z-index: 1;
 	}
 	.title.container {
 		display: flex;
@@ -155,33 +174,11 @@ body {
 			}
 		}
 	}
-	.jump {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 40%;
-		z-index: 3;
-		.arrow {
-			transition: all 0.4s ease;
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 10%;
-			margin: auto;
-			width: 0;
-			height: 0;
-			border: 3em solid transparent;
-			border-top-color: rgba($grey-dark, 0.8);
-			&:hover {
-				cursor: pointer;
-				border-top-color: rgba($grey-dark
-				, 0.95);
-			}
-		}
-	}
 }
 
-.page.welcome {
+.page.welcome,
+.page.about {
 	width: 100%;
+	background: white;
+	padding: 2em 0;
 }

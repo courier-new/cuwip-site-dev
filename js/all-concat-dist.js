@@ -43,6 +43,8 @@
 	var $parallax = $('.page.parallax');
 	// Identify main navigation menu
 	var $nav = $('nav.main.menu');
+	// Remember y-location of non-sticky menu down the page
+	var $menuLocation = $nav.offset().top;
 
 	// Main scrolling actions
 	var scrollListener = function scrollListener() {
@@ -52,10 +54,12 @@
 
 		// If parallax page and nav menu are present on page
 		if ($parallax && $nav) {
-			// Remember height of parallax title page
-			var $parallaxPageHeight = $parallax.outerHeight();
+
+			var scrolled = $(window).scrollTop();
+			$('.page.parallax::after ').css('top', -(scrolled * 0.1) + 'px');
+
 			// If current scroll position is past the parallax title page height
-			if ($(window).scrollTop() > $parallaxPageHeight) {
+			if ($(window).scrollTop() > $menuLocation) {
 				// Force sticky menu
 				$nav.addClass('sticky');
 				$nav.next().addClass('no sticky');
@@ -64,19 +68,6 @@
 				$nav.removeClass('sticky');
 				$nav.next().removeClass('no sticky');
 			}
-		}
-
-		// If quick-jump navigational arrow is present on page
-		if ($('.jump')) {
-			// On click of single page quick-jump navigational arrow, delimited by attribute data-page=.page.(PAGE NAME)
-			$('*[data-page]').on('click', function () {
-				// Identify target point to quick-jump to
-				var target = $(this).attr('data-page');
-				// Animate smooth scroll to that point in half a second
-				$('html, body').animate({
-					scrollTop: $(target).offset().top
-				}, 500);
-			});
 		}
 
 		// For each page section
