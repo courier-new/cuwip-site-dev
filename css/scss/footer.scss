@@ -1,0 +1,14 @@
+.page.footer {
+	background: lighten($grey-dark, 10%);
+	color: $grey-medium;
+	font-size: 0.7em;
+	padding: 3em 15%;
+	text-align: center;
+	a {
+		color: $turquoise;
+	}
+	a:hover,
+	a:active {
+		color: $turquoise-light;
+	}
+}
