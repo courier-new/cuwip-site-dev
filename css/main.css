@@ -96,7 +96,7 @@
   -ms-flex-pack: center;
   justify-content: center;
   margin: 1em auto;
-  width: 50%;
+  width: 100%;
   max-width: 900px;
   min-width: 500px; }
   .countdown .individual.block {
@@ -134,12 +134,13 @@
     .countdown p.string {
       padding: 1em 0;
       width: 100%;
-      background: #32858c;
+      background: #3dbfbd;
       color: #f5e7e0; }
 
 * {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif; }
 
 *::-moz-selection,
 *::-moz-selection {
@@ -159,13 +160,54 @@ body {
   overflow-x: hidden; }
 
 .page {
-  min-height: 100vh;
   width: 100vw;
   position: relative;
   display: block; }
   .page.no.sticky {
     padding-top: 10vh;
     /* match the nav menu bar height */ }
+  .page.parallax {
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh; }
+  .page.welcome, .page.about {
+    background: white;
+    padding: 2em 10em; }
+  .page .inner {
+    margin: 0 auto;
+    max-width: 900px; }
+  .page .message {
+    width: 84%;
+    border-bottom: 0.3em solid #000;
+    color: #706c76;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    padding: 0 3em 3em 3em;
+    margin: 1em auto 3em auto;
+    text-align: center; }
+    .page .message strong {
+      color: #252122;
+      display: block;
+      font-family: "ABeeZee", sans-serif;
+      font-size: 1.5em;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding-bottom: 1em;
+      text-transform: uppercase; }
+    .page .message a {
+      color: #3dbfbd;
+      font-weight: 700;
+      -webkit-transition: color 0.3s;
+      -o-transition: color 0.3s;
+      transition: color 0.3s;
+      text-decoration: none; }
+    .page .message a:hover,
+    .page .message a:active {
+      color: #32858c; }
+    .page .message.alert {
+      border-color: #af275c; }
+    .page .message.general {
+      border-color: #ca776c; }
 
 .page.parallax {
   /* image overlay, controlled by opacity of .parallax background */ }
@@ -331,12 +373,6 @@ body {
           height: 3em; }
         .page.parallax .logos.array li img.nsf {
           height: 3.5em; }
-
-.page.welcome,
-.page.about {
-  width: 100%;
-  background: white;
-  padding: 2em 0; }
 
 
 

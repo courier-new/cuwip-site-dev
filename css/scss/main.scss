@@ -7,6 +7,7 @@
 
 * {
 	box-sizing: border-box;
+	font-family: $main-stack;
 }
 
 *::selection,
@@ -26,12 +27,61 @@ body {
 }
 
 .page {
-	min-height: 100vh;
 	width: 100vw;
 	position: relative;
 	display: block;
 	&.no.sticky {
 		padding-top: 10vh; /* match the nav menu bar height */
+	}
+	&.parallax {
+		height: 100vh;
+		max-height: 100vh;
+		min-height: 100vh;
+	}
+	&.welcome,
+	&.about {
+		background: white;
+		padding: 2em 10em;
+	}
+	.inner {
+		margin: 0 auto;
+		max-width: 900px;
+	}
+	.message {
+		width: 84%;
+		border-bottom: 0.3em solid #000;
+		color: $grey-medium-dark;
+		font-size: 0.8em;
+		line-height: 1.5em;
+		padding: 0 3em 3em 3em;
+		margin: 1em auto 3em auto;
+		text-align: center;
+		strong {
+			color: $grey-dark;
+			display: block;
+			font-family: $special-main-stack;
+			font-size: 1.5em;
+			font-weight: 800;
+			letter-spacing: 2px;
+			padding-bottom: 1em;
+			text-transform: uppercase;
+		}
+		a {
+			color: $turquoise-light;
+			font-weight: 700;
+			transition: color 0.3s;
+			text-decoration: none;
+		}
+		a:hover,
+		a:active {
+			color: $turquoise;
+		}
+		&.alert {
+			border-color: lighten($pink-berry, 10%);
+		}
+		&.general {
+			border-color: $pink-salmon;
+		}
 	}
 }
 
@@ -106,12 +156,12 @@ body {
 			margin-right: -0.15em;
 		}
 		&.spells.women.in {
-			color: $pink-salmon;
+			color: $pink-salmon-light;
 			font-size: 7em;
 			word-spacing: -0.25em;
 		}
 		&.spells.physics {
-			color: $pink-salmon;
+			color: $pink-salmon-light;
 			font-size: 7em;
 			letter-spacing: 0.08em;
 			margin-right: -0.055em;
@@ -174,11 +224,4 @@ body {
 			}
 		}
 	}
-}
-
-.page.welcome,
-.page.about {
-	width: 100%;
-	background: white;
-	padding: 2em 0;
 }
