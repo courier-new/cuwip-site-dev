@@ -1,10 +1,18 @@
 .columns {
+	@include respond-to('at1000') {
+		flex-direction: column;
+	}
 	display: flex;
 	justify-content: center;
 	&.three {
 		align-items: flex-start;
 		.column {
-			width: 33%;
+			@include respond-to('xlarge') {
+				width: 33%;
+			}
+			@include respond-to('at1000') {
+				width: 100%;
+			}
 			padding: 2em;
 			padding-bottom: 1em;
 			img {

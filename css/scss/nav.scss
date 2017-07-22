@@ -1,4 +1,7 @@
 .main.menu {
+	@include respond-to('at1000') {
+		display: none;
+	}
 	background: $grey-medium-dark;
 	display: flex;
 	align-items: center;

@@ -1,4 +1,7 @@
 .countdown {
+	@include respond-to('at1000') {
+		display: none;
+	}
 	align-items: center;
 	color: $grey-dark;
 	display: flex;
