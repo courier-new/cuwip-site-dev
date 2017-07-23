@@ -88,15 +88,18 @@ p,
 		text-align: center;
 	}
 	.message {
+		@include respond-to('xlarge') {
+			padding: 0 3em 3em 3em;
+			width: 86%;
+		}
 		@include respond-to('at1000') {
 			width: 100%;
 		}
-		@include respond-to('xlarge') {
-			width: 86%;
+		@include respond-to('at700') {
+			padding: 0 1em 3em 1em;
 		}
 		color: $grey-medium-dark;
 		font-size: 0.8em;
-		padding: 0 3em 3em 3em;
 		position: relative;
 		margin: 1em auto 3em auto;
 		text-align: center;
@@ -126,7 +129,13 @@ p,
 			border-color: $pink-salmon-light;
 		}
 	}
-	.text.block {
+	.inner > .text.block {
+		@include respond-to('xlarge') {
+			padding: 0 3em 0.5em 3em;
+		}
+		@include respond-to('at700') {
+			padding: 0 1em 0.5em 1em;
+		}
 		color: $grey-medium-dark;
 		font-size: 0.8em;
 		padding: 0 3em 0.5em 3em;
@@ -147,7 +156,12 @@ p,
 		}
 	}
 	img.hexagons {
-		height: 50px;
+		@include respond-to('xlarge') {
+			height: 50px;
+		}
+		@include respond-to('at1000') {
+			height: 80px;
+		}
 		margin: 1em auto;
 	}
 }

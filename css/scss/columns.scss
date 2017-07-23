@@ -11,13 +11,47 @@
 				width: 33%;
 			}
 			@include respond-to('at1000') {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				width: 100%;
+			}
+			@include respond-to('at500') {
+				display: block;
 			}
 			padding: 2em;
 			padding-bottom: 1em;
+			.text.block {
+				@include respond-to('at1000') {
+					text-align: left;
+					h2,
+					p {
+						margin: 0.2em;
+					}
+				}
+				@include respond-to('at500') {
+					text-align: center;
+					h2 {
+						font-size: 2em;
+						margin: 1.2em 0 1em 0;
+					}
+				}
+			}
 			img {
-				width: 50%;
-				margin: 0 auto 1em auto;
+				@include respond-to('xlarge') {
+					margin: 0 auto 1em auto;
+					width: 50%;
+				}
+				@include respond-to('at1000') {
+					height: 100px;
+					margin: 0 2em 0 0.5em;
+					width: 100px;
+				}
+				@include respond-to('at500') {
+					height: auto;
+					margin: 0;
+					width: 40%;
+				}
 			}
 		}
 	}

@@ -1,6 +1,13 @@
 .countdown {
+	@include respond-to('xlarge') {
+		width: 100%;
+		max-width: 600px;
+		min-width: 450px;
+	}
 	@include respond-to('at1000') {
-		display: none;
+		padding-right: 1.5%;
+		max-width: 500px;
+		min-width: 200px;
 	}
 	align-items: center;
 	color: $grey-dark;
@@ -8,10 +15,18 @@
 	justify-content: center;
 	margin: 0 auto;
 	padding-bottom: 1em;
-	width: 100%;
-	max-width: 600px;
-	min-width: 450px;
+
 	.individual.block {
+		@include respond-to('xlarge') {
+			margin: 0 2%;
+		}
+		@include respond-to('at1000') {
+			margin: 0 1%;
+			height: 9em;
+		}
+		@include respond-to('at500') {
+			height: 8em;
+		}
 		align-items: center;
 		background: white;
 		box-shadow: 2px 4px 10px 2px rgba($grey-dark, 0.3);
@@ -28,6 +43,15 @@
 		width: 100%;
 		text-align: center;
 		&.number.of {
+			@include respond-to('xlarge') {
+				font-size: 3.8em;
+			}
+			@include respond-to('at1000') {
+				font-size: 3em;
+			}
+			@include respond-to('at500') {
+				font-size: 2.4em;
+			}
 			font-size: 3.8em;
 			margin: 0.35em 0 0.35em -0.02em;
 			width: 100%;
