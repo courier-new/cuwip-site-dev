@@ -58,8 +58,8 @@
 			var scrolled = $(window).scrollTop();
 			$('.parallax.background').css('top', -(scrolled * 0.3) + 'px');
 
-			// If current scroll position is past the parallax title page height
-			if ($(window).scrollTop() > $menuLocation) {
+			// If current scroll position is past the parallax title page height or window is small enough
+			if ($(window).scrollTop() > $menuLocation || screen.width <= 1000) {
 				// Force sticky menu
 				$nav.addClass('sticky');
 				$nav.next().addClass('no sticky');
@@ -91,8 +91,11 @@
 		});
 	};
 
-	// Call scrollListener function on user scroll and once immediately on page load
+	// Call scrollListener function on user scroll or resize of window and once immediately on page load
 	$(document).on('scroll', scrollListener);
+	$(window).resize(function () {
+		scrollListener();
+	});
 	scrollListener();
 
 	/* End of scroll-effect.js */
