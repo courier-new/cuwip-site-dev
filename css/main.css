@@ -504,6 +504,19 @@ p,
     vertical-align: middle;
     text-align: center;
     z-index: 2; }
+    .page.parallax .title.container .hexagon.container {
+      -webkit-transition: font 0.5s;
+      -o-transition: font 0.5s;
+      transition: font 0.5s; }
+      @media (max-width: 700px) {
+        .page.parallax .title.container .hexagon.container {
+          font-size: 0.94em; } }
+      @media (max-width: 500px) {
+        .page.parallax .title.container .hexagon.container {
+          font-size: 0.73em; } }
+      @media (max-width: 700px) {
+        .page.parallax .title.container .hexagon.container::after {
+          background: none; } }
     .page.parallax .title.container .hexagon {
       position: absolute;
       top: 50%;
@@ -511,26 +524,37 @@ p,
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
-      -webkit-transition: padding 0.5s;
-      -o-transition: padding 0.5s;
-      transition: padding 0.5s;
       padding: 22em;
       font-size: 0.75em;
       /* will scale the whole box and text uniformly */ }
+      @media (max-width: 10000px) {
+        .page.parallax .title.container .hexagon {
+          padding: 22em;
+          max-width: 700px; } }
       @media (max-width: 700px) {
         .page.parallax .title.container .hexagon {
-          padding: 13em; } }
+          padding: 6em;
+          width: 100%; } }
+      @media (max-width: 500px) {
+        .page.parallax .title.container .hexagon {
+          padding: 6em 1em; } }
       .page.parallax .title.container .hexagon::after {
         content: '';
-        background: url("../img/hexagon-bg.png") no-repeat center center;
-        background-size: contain;
-        opacity: 0.9;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         position: absolute;
         z-index: -1; }
+        @media (max-width: 10000px) {
+          .page.parallax .title.container .hexagon::after {
+            background: url("../img/hexagon-bg.png") no-repeat center center;
+            background-size: contain;
+            opacity: 0.85; } }
+        @media (max-width: 700px) {
+          .page.parallax .title.container .hexagon::after {
+            background: #252122;
+            opacity: 0.8; } }
   .page.parallax h1 {
     text-transform: uppercase;
     font-family: "Ailerons", sans-serif;

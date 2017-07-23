@@ -203,22 +203,49 @@ p,
 		vertical-align: middle;
 		text-align: center;
 		z-index: 2;
-		.hexagon {
+		.hexagon.container {
 			@include respond-to('at700') {
-				padding: 13em;
+				font-size: 0.94em;
+			}
+			@include respond-to('at500') {
+				font-size: 0.73em;
+			}
+			transition: font 0.5s;
+			&::after {
+				@include respond-to('at700') {
+					background: none;
+				}
+			}
+		}
+		.hexagon {
+			@include respond-to('xlarge') {
+				padding: 22em;
+				max-width: 700px;
+			}
+			@include respond-to('at700') {
+				padding: 6em;
+				width: 100%;
+			}
+			@include respond-to('at500') {
+				padding: 6em 1em;
 			}
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			transition: padding 0.5s;
 			padding: 22em;
 			font-size: 0.75em; /* will scale the whole box and text uniformly */
 			&::after {
+				@include respond-to('xlarge') {
+					background: url('../img/hexagon-bg.png') no-repeat center center;
+					background-size: contain;
+					opacity: 0.85;
+				}
+				@include respond-to('at700') {
+					background: $grey-dark;
+					opacity: 0.8;
+				}
 				content: '';
-				background: url('../img/hexagon-bg.png') no-repeat center center;
-				background-size: contain;
-				opacity: 0.9;
 				top: 0;
 				left: 0;
 				bottom: 0;
