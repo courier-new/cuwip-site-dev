@@ -1,5 +1,6 @@
 .page.footer {
 	@include respond-to('xlarge') {
+		font-size: 0.7em;
 		padding: 3em 15%;
 	}
 	@include respond-to('at1400') {
@@ -8,9 +9,11 @@
 	@include respond-to('at1000') {
 		padding: 3em 2em;
 	}
+	@include respond-to('at500') {
+		font-size: 0.6em;
+	}
 	background: lighten($grey-dark, 10%);
 	color: $grey-medium;
-	font-size: 0.7em;
 	text-align: center;
 	transition: padding 0.5s;
 	a {

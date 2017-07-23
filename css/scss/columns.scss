@@ -8,6 +8,7 @@
 		align-items: flex-start;
 		.column {
 			@include respond-to('xlarge') {
+				padding: 2em 2em 1em 2em;
 				width: 33%;
 			}
 			@include respond-to('at1000') {
@@ -19,8 +20,9 @@
 			@include respond-to('at500') {
 				display: block;
 			}
-			padding: 2em;
-			padding-bottom: 1em;
+			@include respond-to('at400') {
+				padding: 2em 0 1em 0;
+			}
 			.text.block {
 				@include respond-to('at1000') {
 					text-align: left;
