@@ -25,7 +25,7 @@ let scrollListener = function() {
 	if ($parallax && $nav) {
 
 		let scrolled = $(window).scrollTop();
-  		$('.parallax.background').css('top', -(scrolled * 0.3) + 'px');
+  		$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
 
 		// If current scroll position is past the parallax title page height or window is small enough
 		if ($(window).scrollTop() > $menuLocation || screen.width <= 1000) {
