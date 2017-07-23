@@ -1,10 +1,10 @@
 .columns {
-	@include respond-to('at1000') {
-		flex-direction: column;
-	}
 	display: flex;
 	justify-content: center;
 	&.three {
+		@include respond-to('at1000') {
+			flex-direction: column;
+		}
 		align-items: flex-start;
 		.column {
 			@include respond-to('xlarge') {
@@ -56,21 +56,57 @@
 		}
 	}
 	&.two {
+		@include respond-to('at500') {
+			flex-direction: column;
+		}
 		align-items: center;
 		.column {
-			padding: 0 3em;
+			@include respond-to('xlarge') {
+				padding: 0 3em;
+			}
+			@include respond-to('at1000') {
+				padding: 0 2em;
+			}
 			&:first-child {
-				text-align: right;
-				border-right: 1px solid $grey-medium;
-				width: 30%;
+				@include respond-to('xlarge') {
+					text-align: right;
+					border-right: 1px solid $grey-medium;
+					width: 30%;
+				}
+				@include respond-to('at1000') {
+					padding-left: 0.5em;
+				}
+				@include respond-to('at700') {
+					width: 36%;
+				}
+				@include respond-to('at500') {
+					padding: 0;
+					text-align: center;
+					border: none;
+					width: 95%;
+				}
 			}
 			&:last-child {
-				text-align: left;
-				width: 70%;
+				@include respond-to('xlarge') {
+					text-align: left;
+					width: 70%;
+				}
+				@include respond-to('at700') {
+					padding-right: 1em;
+				}
+				@include respond-to('at500') {
+					padding: 0;
+					text-align: center;
+					width: 95%;
+				}
 			}
 			ul {
 				list-style: none;
+				padding-left: 0;
 				li {
+					@include respond-to('at500') {
+						font-size: 1.2em;
+					}
 					margin-bottom: 1em;
 				}
 			}

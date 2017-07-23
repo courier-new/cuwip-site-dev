@@ -204,13 +204,14 @@ p,
 		text-align: center;
 		z-index: 2;
 		.hexagon {
-			@include respond-to('at1000') {
-				display: none;
+			@include respond-to('at700') {
+				padding: 13em;
 			}
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			transition: padding 0.5s;
 			padding: 22em;
 			font-size: 0.75em; /* will scale the whole box and text uniformly */
 			&::after {
