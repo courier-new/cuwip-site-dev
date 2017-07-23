@@ -232,13 +232,13 @@ p,
 		z-index: 2;
 		.hexagon.container {
 			@include respond-to('at700') {
-				font-size: 0.64em;
+				font-size: 0.65em;
 			}
 			@include respond-to('at500') {
-				font-size: 0.6em;
+				font-size: 0.63em;
 			}
 			@include respond-to('at400') {
-				font-size: 0.5em;
+				font-size: 0.54em;
 			}
 			@include respond-to('at330') {
 				font-size: 0.6em;
@@ -350,11 +350,15 @@ p,
 	.logos.array {
 		display: flex;
 		justify-content: center;
-		margin: 3em 0;
 		align-items: center;
+		margin: 2em 0 1.5em 0;
+		padding: 0;
 		li {
 			display: inline-block;
 			padding-right: 3em;
+			&:first-child {
+				padding-left: 3em;
+			}
 			img {
 				opacity: 0.8;
 				/* adjust each logo size to fit the row better */

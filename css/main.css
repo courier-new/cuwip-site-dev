@@ -544,13 +544,13 @@ p,
       transition: font 0.5s; }
       @media (max-width: 700px) {
         .page.parallax .title.container .hexagon.container {
-          font-size: 0.64em; } }
+          font-size: 0.65em; } }
       @media (max-width: 500px) {
         .page.parallax .title.container .hexagon.container {
-          font-size: 0.6em; } }
+          font-size: 0.63em; } }
       @media (max-width: 400px) {
         .page.parallax .title.container .hexagon.container {
-          font-size: 0.5em; } }
+          font-size: 0.54em; } }
       @media (max-width: 330px) {
         .page.parallax .title.container .hexagon.container {
           font-size: 0.6em; } }
@@ -678,14 +678,17 @@ p,
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    margin: 3em 0;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
-    align-items: center; }
+    align-items: center;
+    margin: 2em 0 1.5em 0;
+    padding: 0; }
     .page.parallax .logos.array li {
       display: inline-block;
       padding-right: 3em; }
+      .page.parallax .logos.array li:first-child {
+        padding-left: 3em; }
       .page.parallax .logos.array li img {
         opacity: 0.8;
         /* adjust each logo size to fit the row better */ }
