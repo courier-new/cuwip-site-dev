@@ -21,8 +21,10 @@
 			margin: 0 2%;
 		}
 		@include respond-to('at1000') {
-			margin: 0 1%;
 			height: 9em;
+		}
+		@include respond-to('at700') {
+			margin: 0 1%;
 		}
 		@include respond-to('at500') {
 			height: 8em;
