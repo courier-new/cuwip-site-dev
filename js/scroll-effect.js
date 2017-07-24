@@ -16,7 +16,6 @@ let $nav = $('nav.main.menu');
 let $footer = $('.page.footer');
 // Remember y-location of non-sticky menu down the page, i.e. bottom of parallax page element
 let $menuLocation = ($parallax).offset().top + ($parallax).outerHeight();
-console.log($menuLocation);
 
 // Main window scrolling and resizing actions
 let windowListener = function() {
