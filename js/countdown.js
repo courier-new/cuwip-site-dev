@@ -12,7 +12,7 @@
 let $countdown = $('.countdown');
 
 // If countdown object exists
-if ($countdown) {
+if ($countdown.length) {
 	// Set date/time of event in this format
 	let startOfCUWiP = '12 January 2018 18:00:00';
 	// Turn off to remove zero-leading for single digit values
