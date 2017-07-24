@@ -16,6 +16,9 @@
 	color: $grey-medium;
 	text-align: center;
 	transition: padding 0.5s;
+	&.mobile {
+		padding-bottom: $mobile-nav + 2vh;
+	}
 	a {
 		color: $gold;
 	}
