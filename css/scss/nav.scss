@@ -1,18 +1,16 @@
 .main.menu {
-	@include respond-to('at700') {
-		/* NEED TO ADJUST MENU AT THIS SIZE */
-	}
 	background: $grey-medium-dark;
 	display: flex;
 	align-items: center;
-	height: 10vh;
 	justify-content: center;
-	list-style: none;
 	margin: 0;
-	opacity: 0.85;
 	text-align: center;
 	transition: background 0.5s linear;
 	width: 100%;
+	ul {
+		list-style: none !important;
+		margin: 0;
+	}
 	a {
 		color: $beige-lightest;
 		font-family: $special-main-stack;
@@ -26,13 +24,65 @@
 	a:hover {
 		opacity: 1;
 	}
-	&.main.menu.sticky {
-		height: 5vh;
-		top: 0;
+	.hamburger,
+	.nav.icon {
+		display: none;
+	}
+	&.mobile,
+	&.sticky {
 		z-index: 100;
 		position: fixed;
 		width: 100%;
+	}
+	&.mobile {
+		bottom: 0;
+		height: $mobile-nav;
+		background: white;
+		box-shadow: 2px 2px 10px 0 rgba($grey-dark, 0.3);
+		opacity: 1;
+		.nav.icon {
+			display: block;
+			height: $mobile-nav / 2 - 1vh;
+			margin-bottom: 0.4em;
+		}
+		.desktop.only {
+			display: none;
+		}
+		ul {
+			align-items: center;
+			display: flex;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			a,
+			a.hamburger {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				font-weight: 400;
+				justify-content: center;
+				width: 25%;
+				&.current {
+					position: relative;
+					.border {
+						display: none;
+					}
+				}
+			}
+			li {
+				color: $grey-light;
+				height: 100%;
+				position: relative;
+				margin: 0;
+			}
+		}
+	}
+	&.sticky {
+		top: 0;
+		height: $sticky-nav;
 		background: $grey-dark;
+		opacity: 0.85;
 		a {
 			color: white;
 			&:hover,
@@ -40,27 +90,44 @@
 				outline: 0;
 				color: lighten(black, 40%);
 			}
+			&.current {
+				position: relative;
+				.border {
+					bottom: 0.75vh;
+					border-bottom: 3px solid $turquoise;
+					width: 50%;
+					height: 10px;
+					position: absolute;
+					right: 25%;
+				}
+			}
 		}
-		li {
-			padding: 1.5vh 2.4em;
-			&.current .border {
-				bottom: 0.75vh;
-				border-bottom: 3px solid $turquoise;
+		ul {
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			li {
+				display: inline-block;
+				height: 100%;
+				padding: 1.5vh 2em;
+				position: relative;
+				margin: 0 0 0 -0.35em;
+				transition: all 0.25s;
+				&:hover {
+					background-color: rgba($beige-lightest, 0.1);
+					color: $gold-light;
+				}
 			}
 		}
 	}
-	ul {
-		height: 100%;
-		padding: 0;
-		margin: 0;
-		li {
-			display: inline-block;
+	&.docked {
+		height: $non-sticky-nav;
+		opacity: 0.85;
+		ul {
 			height: 100%;
-			padding: 4vh 2.4em;
-			position: relative;
-			margin: 0 0 0 -0.35em;
-			transition: background 0.2s;
-			&.current {
+			padding: 0;
+			margin: 0;
+			.current {
 				position: relative;
 				.border {
 					width: 50%;
@@ -71,8 +138,16 @@
 					border-bottom: 8px solid $turquoise-dark;
 				}
 			}
-			&:hover {
-				background-color: rgba($beige-lightest, 0.1);
+			li {
+				display: inline-block;
+				height: 100%;
+				padding: ($non-sticky-nav / 2 - 0.8vh) 2em;
+				position: relative;
+				margin: 0 0 0 -0.35em;
+				transition: background 0.2s;
+				&:hover {
+					background-color: rgba($beige-lightest, 0.1);
+				}
 			}
 		}
 	}
