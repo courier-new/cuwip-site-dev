@@ -14,8 +14,11 @@ let $parallax = $('.page.parallax');
 let $nav = $('nav.main.menu');
 // Identify footer
 let $footer = $('.page.footer');
-// Remember y-location of non-sticky menu down the page, i.e. bottom of parallax page element
-let $menuLocation = ($parallax).offset().top + ($parallax).outerHeight();
+// Remember y-location of non-sticky menu down the page, i.e. bottom of parallax page element (if such element exists)
+let $menuLocation = 0;
+if ($parallax.length) {
+	$menuLocation = ($parallax).offset().top + ($parallax).outerHeight();
+}
 
 // Main window scrolling and resizing actions
 let windowListener = function() {
@@ -23,27 +26,39 @@ let windowListener = function() {
 	let $pages = $('.page');
 	let $scrollY = window.scrollY + 30
 
-	// If parallax page and nav menu are present on page
-	if ($parallax && $nav) {
+	// If nav menu is present on page
+	if ($nav.length) {
 
-		let scrolled = $(window).scrollTop();
-  		$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
-
-		// If current scroll position is past the parallax title page height or window is small enough
-		if (screen.width <= 700) {
+		// If window is mobile size
+		if ($(window).width() <= 700) {
 			// Force mobile menu
 			$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
 			$nav.next().removeClass('sticky');
 			$footer.addClass('mobile');
-		} else if ($(window).scrollTop() > $menuLocation || screen.width <= 1000) {
+		}
+		// Otherwise, if parallax element is present on page
+		else if ($parallax.length) {
+			let scrolled = $(window).scrollTop();
+			// Scroll parallax element at 40% normal scroll speed
+  			$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
+			// If current scroll position is past the parallax title page and screen width is between mobile and large
+			if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
+				// Force sticky menu
+				$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
+				$nav.next().addClass('sticky');
+				$footer.removeClass('mobile');
+			} else {
+				// Otherwise replace sticky menu at normal position
+				$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
+				$nav.next().removeClass('sticky');
+				$footer.removeClass('mobile');
+			}
+		}
+		// Otherwise, just use sticky menu
+		else {
 			// Force sticky menu
 			$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
 			$nav.next().addClass('sticky');
-			$footer.removeClass('mobile');
-		} else {
-			// Otherwise replace sticky menu at normal position
-			$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
-			$nav.next().removeClass('sticky');
 			$footer.removeClass('mobile');
 		}
 	}
@@ -70,9 +85,7 @@ let windowListener = function() {
 
 // Call windowListener function on user scroll or resize of window and once immediately on page load
 $(document).on('scroll', windowListener);
-$(window).resize(function() {
-	windowListener();
-});
+$(window).on('resize', windowListener);
 windowListener();
 
 /* End of scroll-effect.js */
