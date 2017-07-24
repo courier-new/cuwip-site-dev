@@ -52,18 +52,25 @@ p,
 	width: 100vw;
 	position: relative;
 	display: block;
-	&.no.sticky {
+	&.alerts.sticky {
 		@include respond-to('xlarge') {
-			padding-top: 10vh; /* match the nav menu bar height */
+			padding-top: $non-sticky-nav + ($non-sticky-nav - $sticky-nav) - 1vh;
 		}
 		@include respond-to('at1000') {
 			padding-top: 1.7em;
 		}
 	}
 	&.parallax {
-		height: 100vh;
-		max-height: 100vh;
-		min-height: 100vh;
+		@include respond-to('xlarge') {
+			height: 100vh;
+			max-height: 100vh;
+			min-height: 100vh;
+		}
+		@include respond-to('at700') {
+			height: 100vh - $mobile-nav - 8vh;
+			max-height: 85vh;
+			min-height: 85vh;
+		}
 	}
 	&.alerts,
 	&.welcome {
