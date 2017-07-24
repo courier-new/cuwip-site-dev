@@ -58,9 +58,16 @@
 		var $pages = $('.page');
 		var $scrollY = window.scrollY + 30;
 
+		// If parallax element is present on page
+		if ($parallax.length) {
+			var scrolled = $(window).scrollTop();
+			// Scroll parallax element at 40% normal scroll speed
+			$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
+			// If current scroll position is past the parallax title page and screen width is between mobile and large
+		}
+
 		// If nav menu is present on page
 		if ($nav.length) {
-
 			// If window is mobile size
 			if ($(window).width() <= 700) {
 				// Force mobile menu
@@ -70,10 +77,6 @@
 			}
 			// Otherwise, if parallax element is present on page
 			else if ($parallax.length) {
-					var scrolled = $(window).scrollTop();
-					// Scroll parallax element at 40% normal scroll speed
-					$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
-					// If current scroll position is past the parallax title page and screen width is between mobile and large
 					if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
 						// Force sticky menu
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
