@@ -1,0 +1,46 @@
+{
+	"pages": [
+		{
+			"name":   "Home",
+			"link":   "/index.html",
+			"icon":   "home-256",
+			"mobile": true
+		},
+		{
+			"name":   "Apply",
+			"link":   "/apply",
+			"icon":   "apply-256",
+			"mobile": true
+		},
+		{
+			"name":   "Agenda",
+			"link":   "/agenda",
+			"icon":   "agenda-256",
+			"mobile": true
+		},
+		{
+			"name":   "Travel",
+			"link":   "/travel",
+			"icon":   "",
+			"mobile": false
+		},
+		{
+			"name":   "Sponsors",
+			"link":   "/sponsors",
+			"icon":   "",
+			"mobile": false
+		},
+		{
+			"name":   "FAQ",
+			"link":   "/faq",
+			"icon":   "",
+			"mobile": false
+		},
+		{
+			"name":   "Contact",
+			"link":   "/contact",
+			"icon":   "",
+			"mobile": false
+		}
+	]
+}
