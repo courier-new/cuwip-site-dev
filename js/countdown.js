@@ -4,7 +4,7 @@
  * Performs computation for and visually updates the CUWiP countdown timer
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
- * @since     File available since July 13, 2018
+ * @since     File available since July 13, 2017
  * @version   1.0.1
  */
 

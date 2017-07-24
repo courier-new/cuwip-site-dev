@@ -1,9 +1,17 @@
+/**
+ * nav.js
+ *
+ * Auto-configures and adds main navigation menu content per page according to data read from nav.json, which is pre-ordered and split into mobile items first, desktop-only items last. Relies on retrieval of nav.main.menu item from scroll-effect.js.
+ *
+ * @author    Kelli Rockwell <kellirockwell@mail.com>
+ * @since     File available since July 23, 2017
+ * @version   1.0.0
+ */
+
 // Variable for storing all of the navigation items retrieved from json
 let navData;
 // Identify the name of the current page, given by the first class assigned to the nav menu (nav.main.menu)
 let $currPage = $nav.attr('class').split(' ')[0];
-
-
 
 $.when(getNavs()).then(function() {
    setTimeout(function() {
@@ -63,7 +71,6 @@ function addNavs() {
    });
 	// Complete nav menu
 	navContent += "</ul>\n";
-	// add completed navigation menu
-	console.log(navContent);
+	// Add completed navigation menu
    $('nav.main.menu').html(navContent);
 }

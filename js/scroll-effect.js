@@ -4,8 +4,8 @@
  * Handles events and effects related to scrolling on the page
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
- * @since     File available since July 11, 2018
- * @version   1.0.1
+ * @since     File available since July 11, 2017
+ * @version   1.1.0
  */
 
 // Identify parallax page
