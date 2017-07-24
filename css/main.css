@@ -213,7 +213,7 @@
     .main.menu.mobile .nav.icon {
       display: block;
       height: 4vh;
-      margin-bottom: 0.4em; }
+      margin: 0.2em 0 0.4em 0; }
     .main.menu.mobile .desktop.only {
       display: none; }
     .main.menu.mobile ul {
@@ -253,6 +253,9 @@
         .main.menu.mobile ul a.current,
         .main.menu.mobile ul a.hamburger.current {
           position: relative; }
+          .main.menu.mobile ul a.current li,
+          .main.menu.mobile ul a.hamburger.current li {
+            color: #3dbfbd; }
           .main.menu.mobile ul a.current .border,
           .main.menu.mobile ul a.hamburger.current .border {
             display: none; }
@@ -261,6 +264,9 @@
         height: 100%;
         position: relative;
         margin: 0; }
+        @media (max-width: 400px) {
+          .main.menu.mobile ul li {
+            font-size: 0.8em; } }
   .main.menu.sticky {
     top: 0;
     height: 5vh;
