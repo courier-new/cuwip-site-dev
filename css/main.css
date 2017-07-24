@@ -358,8 +358,6 @@
     -ms-flex-align: center;
     align-items: center;
     background: white;
-    -webkit-box-shadow: 2px 4px 10px 2px rgba(37, 33, 34, 0.3);
-    box-shadow: 2px 4px 10px 2px rgba(37, 33, 34, 0.3);
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -506,6 +504,56 @@ p,
     max-width: 900px;
     padding-top: 1em;
     text-align: center; }
+  .page .social.media.icons {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .page .social.media.icons a {
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 4em;
+      height: 4em;
+      border-radius: 50%;
+      background: white;
+      margin: 0 0.5em;
+      -webkit-transition: background 0.4s;
+      -o-transition: background 0.4s;
+      transition: background 0.4s; }
+      .page .social.media.icons a:hover, .page .social.media.icons a:active {
+        background: #851e46; }
+        .page .social.media.icons a:hover i, .page .social.media.icons a:active i {
+          color: white; }
+      .page .social.media.icons a i {
+        color: #c9bcba;
+        font-size: 1.5em;
+        margin: 0 -0.02em -0.05em 0;
+        -webkit-transition: color 0.4s;
+        -o-transition: color 0.4s;
+        transition: color 0.4s; }
   .page .message {
     color: #706c76;
     font-size: 0.8em;

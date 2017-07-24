@@ -105,6 +105,36 @@ p,
 		padding-top: 1em;
 		text-align: center;
 	}
+	.social.media.icons {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		a {
+			align-items: center;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			width: 4em;
+			height: 4em;
+			border-radius: 50%;
+			background: white;
+			margin: 0 0.5em;
+			transition: background 0.4s;
+			&:hover,
+			&:active {
+				background: $pink-berry;
+				i {
+					color: white;
+				}
+			}
+			i {
+				color: $grey-light;
+				font-size: 1.5em;
+				margin: 0 -0.02em -0.05em 0;
+				transition: color 0.4s;
+			}
+		}
+	}
 	.message {
 		@include respond-to('xlarge') {
 			padding: 0 3em 3em 3em;
