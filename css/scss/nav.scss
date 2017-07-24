@@ -65,12 +65,18 @@
 				width: 25%;
 				&.current {
 					position: relative;
+					li {
+						color: $turquoise-light;
+					}
 					.border {
 						display: none;
 					}
 				}
 			}
 			li {
+				@include respond-to('at400') {
+					font-size: 0.8em;
+				}
 				color: $grey-light;
 				height: 100%;
 				position: relative;
