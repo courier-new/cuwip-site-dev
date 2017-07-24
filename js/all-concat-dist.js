@@ -43,11 +43,14 @@
 	var $parallax = $('.page.parallax');
 	// Identify main navigation menu
 	var $nav = $('nav.main.menu');
-	// Remember y-location of non-sticky menu down the page
-	var $menuLocation = $nav.offset().top;
+	// Identify footer
+	var $footer = $('.page.footer');
+	// Remember y-location of non-sticky menu down the page, i.e. bottom of parallax page element
+	var $menuLocation = $parallax.offset().top + $parallax.outerHeight();
+	console.log($menuLocation);
 
-	// Main scrolling actions
-	var scrollListener = function scrollListener() {
+	// Main window scrolling and resizing actions
+	var windowListener = function windowListener() {
 		// Remember each of the page sections
 		var $pages = $('.page');
 		var $scrollY = window.scrollY + 30;
@@ -59,14 +62,21 @@
 			$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
 
 			// If current scroll position is past the parallax title page height or window is small enough
-			if ($(window).scrollTop() > $menuLocation || screen.width <= 1000) {
+			if (screen.width <= 700) {
+				// Force mobile menu
+				$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
+				$nav.next().removeClass('sticky');
+				$footer.addClass('mobile');
+			} else if ($(window).scrollTop() > $menuLocation || screen.width <= 1000) {
 				// Force sticky menu
-				$nav.addClass('sticky');
-				$nav.next().addClass('no sticky');
+				$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
+				$nav.next().addClass('sticky');
+				$footer.removeClass('mobile');
 			} else {
 				// Otherwise replace sticky menu at normal position
-				$nav.removeClass('sticky');
-				$nav.next().removeClass('no sticky');
+				$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
+				$nav.next().removeClass('sticky');
+				$footer.removeClass('mobile');
 			}
 		}
 
@@ -91,12 +101,12 @@
 		});
 	};
 
-	// Call scrollListener function on user scroll or resize of window and once immediately on page load
-	$(document).on('scroll', scrollListener);
+	// Call windowListener function on user scroll or resize of window and once immediately on page load
+	$(document).on('scroll', windowListener);
 	$(window).resize(function () {
-		scrollListener();
+		windowListener();
 	});
-	scrollListener();
+	windowListener();
 
 	/* End of scroll-effect.js */
 
