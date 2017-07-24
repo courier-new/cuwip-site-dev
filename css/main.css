@@ -176,9 +176,6 @@
   justify-content: center;
   margin: 0;
   text-align: center;
-  -webkit-transition: background 0.5s linear;
-  -o-transition: background 0.5s linear;
-  transition: background 0.5s linear;
   width: 100%; }
   .main.menu ul {
     list-style: none !important;
@@ -190,11 +187,9 @@
     font-weight: 600;
     font-size: 0.8em;
     opacity: 0.8;
-    text-decoration: none;
-    -webkit-transition: opacity 0.1s linear;
-    -o-transition: opacity 0.1s linear;
-    transition: opacity 0.1s linear; }
+    text-decoration: none; }
   .main.menu a:hover {
+    cursor: pointer;
     opacity: 1; }
   .main.menu .hamburger,
   .main.menu .nav.icon {
@@ -273,10 +268,12 @@
     background: #252122;
     opacity: 0.85; }
     .main.menu.sticky a {
-      color: white; }
+      color: white;
+      -webkit-transition: opacity 0.25s;
+      -o-transition: opacity 0.25s;
+      transition: opacity 0.25s; }
       .main.menu.sticky a:hover, .main.menu.sticky a:focus {
-        outline: 0;
-        color: #666666; }
+        outline: 0; }
       .main.menu.sticky a.current {
         position: relative; }
         .main.menu.sticky a.current .border {
@@ -296,12 +293,11 @@
         padding: 1.5vh 2em;
         position: relative;
         margin: 0 0 0 -0.35em;
-        -webkit-transition: all 0.25s;
-        -o-transition: all 0.25s;
-        transition: all 0.25s; }
+        -webkit-transition: background 0.25s;
+        -o-transition: background 0.25s;
+        transition: background 0.25s; }
         .main.menu.sticky ul li:hover {
-          background-color: rgba(245, 231, 224, 0.1);
-          color: #b19a50; }
+          background-color: rgba(245, 231, 224, 0.1); }
   .main.menu.docked {
     height: 10vh;
     opacity: 0.85; }

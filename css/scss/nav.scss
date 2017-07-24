@@ -5,7 +5,6 @@
 	justify-content: center;
 	margin: 0;
 	text-align: center;
-	transition: background 0.5s linear;
 	width: 100%;
 	ul {
 		list-style: none !important;
@@ -19,9 +18,9 @@
 		font-size: 0.8em;
 		opacity: 0.8;
 		text-decoration: none;
-		transition: opacity 0.1s linear;
 	}
 	a:hover {
+		cursor: pointer;
 		opacity: 1;
 	}
 	.hamburger,
@@ -91,10 +90,10 @@
 		opacity: 0.85;
 		a {
 			color: white;
+			transition: opacity 0.25s;
 			&:hover,
 			&:focus {
 				outline: 0;
-				color: lighten(black, 40%);
 			}
 			&.current {
 				position: relative;
@@ -118,10 +117,9 @@
 				padding: 1.5vh 2em;
 				position: relative;
 				margin: 0 0 0 -0.35em;
-				transition: all 0.25s;
+				transition: background 0.25s;
 				&:hover {
 					background-color: rgba($beige-lightest, 0.1);
-					color: $gold-light;
 				}
 			}
 		}
