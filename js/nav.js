@@ -26,6 +26,8 @@ function getNavs() {
 function addNavs() {
 	// Variable to hold string of content to fill nav menu
    let navContent = "<ul>\n";
+	// Variable to hold mobile drawer of certain nav items
+	let navDrawer = "<div class='drawer'><ul>\n";
 	// Boolean to track where the break between mobile and desktop-only items is
 	let stillOnMobile = true;
    $(navData.pages).each(function() {
@@ -66,11 +68,26 @@ function addNavs() {
 		output += "</li></a>\n";
 		// Add nav item content string to full nav menu string
 		navContent += output;
+		// Add relevant items to nav drawer string
+		navDrawer += stillOnMobile ? "" : output;
    });
 	// Complete nav menu
 	navContent += "</ul>\n";
 	// Add completed navigation menu
    $('nav.main.menu').html(navContent);
+	// Complete nav drawer
+	navDrawer += "</ul></div>\n"
+	$('nav.menu.drawer').html(navDrawer);
 }
+
+// On click of hamburger, toggle display of menu drawer
+$('nav.main.menu').on('click', 'a.hamburger', function() {	$('nav.menu.drawer').slideToggle();
+});
+// On click anywhere outside nav menus, close menu drawer if it is open
+$('html').click(function(e) {
+   if (!$(e.target).parents('.menu').length) {
+		$('nav.menu.drawer').slideUp();
+   }
+});
 
 /* End of nav.js */
