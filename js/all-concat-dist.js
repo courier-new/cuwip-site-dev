@@ -98,13 +98,13 @@
 					if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
 						// Force sticky menu
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-						$nav.next().addClass('sticky');
+						$('.page.alerts').addClass('sticky');
 						$footer.removeClass('mobile');
 						$('nav.menu.drawer').slideUp();
 					} else {
 						// Otherwise replace sticky menu at normal position
 						$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
-						$nav.next().removeClass('sticky');
+						$('.page.alerts').removeClass('sticky');
 						$footer.removeClass('mobile');
 						$('nav.menu.drawer').slideUp();
 					}
@@ -113,7 +113,7 @@
 				else {
 						// Force sticky menu
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-						$nav.next().addClass('sticky');
+						$('.page.alerts').addClass('sticky');
 						$footer.removeClass('mobile');
 						$('nav.menu.drawer').slideUp();
 					}
