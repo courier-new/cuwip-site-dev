@@ -150,6 +150,9 @@ nav.main.menu {
 			}
 			&.current {
 				position: relative;
+				li {
+					background-color: rgba($beige-lightest, 0.1);
+				}
 				.border {
 					bottom: 0.75vh;
 					border-bottom: 3px solid $turquoise;
@@ -203,7 +206,7 @@ nav.main.menu {
 				margin: 0 0 0 -0.35em;
 				transition: background 0.2s;
 				&:hover {
-					background-color: rgba($beige-lightest, 0.1);
+					background-color: rgba($beige-lightest, 0.15);
 				}
 			}
 		}

@@ -334,6 +334,8 @@ nav.main.menu {
         outline: 0; }
       nav.main.menu.sticky a.current {
         position: relative; }
+        nav.main.menu.sticky a.current li {
+          background-color: rgba(245, 231, 224, 0.1); }
         nav.main.menu.sticky a.current .border {
           bottom: 0.75vh;
           border-bottom: 3px solid #32858c;
@@ -382,7 +384,7 @@ nav.main.menu {
         -o-transition: background 0.2s;
         transition: background 0.2s; }
         nav.main.menu.docked ul li:hover {
-          background-color: rgba(245, 231, 224, 0.1); }
+          background-color: rgba(245, 231, 224, 0.15); }
 
 .countdown {
   -webkit-box-align: center;
