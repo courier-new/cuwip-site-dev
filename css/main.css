@@ -386,6 +386,81 @@ nav.main.menu {
         nav.main.menu.docked ul li:hover {
           background-color: rgba(245, 231, 224, 0.15); }
 
+nav.sub.menu {
+  font-size: 0.8em;
+  padding: 3.75em 1em; }
+  @media (max-width: 10000px) {
+    nav.sub.menu {
+      text-align: left;
+      position: absolute;
+      z-index: 90; } }
+  @media (max-width: 1000px) {
+    nav.sub.menu {
+      text-align: center;
+      margin-top: -2em;
+      /* same as bottom margin of alerts page */
+      position: relative; } }
+  nav.sub.menu strong {
+    color: #252122;
+    display: block;
+    font-family: "ABeeZee", sans-serif;
+    font-size: 1.5em;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1.6em;
+    margin: 0.6em 0 0 0;
+    padding-bottom: 1em;
+    text-transform: uppercase; }
+  nav.sub.menu ul {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    @media (max-width: 10000px) {
+      nav.sub.menu ul {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: left;
+        -webkit-align-items: left;
+        -ms-flex-align: left;
+        align-items: left; } }
+    @media (max-width: 1000px) {
+      nav.sub.menu ul {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center; } }
+    nav.sub.menu ul a {
+      background: #f5f2f1; }
+      @media (max-width: 1000px) {
+        nav.sub.menu ul a {
+          padding: 0.7em;
+          margin: 0.6em; } }
+      nav.sub.menu ul a:hover {
+        cursor: pointer; }
+
 .countdown {
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -539,29 +614,41 @@ p,
       height: 82vh;
       max-height: 85vh;
       min-height: 85vh; } }
-  .page.alerts, .page.welcome, .page.about.application {
+  .page.alerts, .page.welcome, .page.about {
     padding-top: 2.8em;
     padding-bottom: 2em; }
     @media (max-width: 10000px) {
-      .page.alerts, .page.welcome, .page.about.application {
+      .page.alerts, .page.welcome, .page.about {
         padding-left: 10em;
         padding-right: 10em; } }
     @media (max-width: 1400px) {
-      .page.alerts, .page.welcome, .page.about.application {
+      .page.alerts, .page.welcome, .page.about {
         padding-left: 5em;
         padding-right: 5em; } }
     @media (max-width: 1000px) {
-      .page.alerts, .page.welcome, .page.about.application {
+      .page.alerts, .page.welcome, .page.about {
         padding-left: 2em;
         padding-right: 2em; } }
     @media (max-width: 700px) {
-      .page.alerts, .page.welcome, .page.about.application {
+      .page.alerts, .page.welcome, .page.about {
         padding-left: 0.5em;
         padding-right: 0.5em; } }
   .page.alerts {
     background: white; }
-  .page.welcome, .page.about.application {
+  .page.welcome {
     background: #f5f2f1; }
+  .page.about:nth-of-type(2n - 1) {
+    background: #f5f2f1; }
+    .page.about:nth-of-type(2n - 1).travel {
+      padding-left: 15em; }
+    .page.about:nth-of-type(2n - 1) .inner > .text.block {
+      text-align: left; }
+  .page.about:nth-of-type(2n) {
+    background: white; }
+    .page.about:nth-of-type(2n).travel {
+      padding-left: 15em; }
+    .page.about:nth-of-type(2n) .inner > .text.block {
+      text-align: right; }
   .page.header {
     background-color: #f5f2f1; }
     .page.header .header.image {
@@ -700,8 +787,6 @@ p,
     @media (max-width: 700px) {
       .page .inner > .text.block {
         padding: 0 1em 0.5em 1em; } }
-    .page .inner > .text.block.about.application {
-      text-align: left; }
     .page .inner > .text.block > ul {
       line-height: 1.5em;
       margin: 2em 0; }

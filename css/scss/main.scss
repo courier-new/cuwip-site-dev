@@ -78,7 +78,7 @@ p,
 	}
 	&.alerts,
 	&.welcome,
-	&.about.application {
+	&.about {
 		@include respond-to('xlarge') {
 			padding-left: 10em;
 			padding-right: 10em;
@@ -101,9 +101,26 @@ p,
 	&.alerts {
 		background: white;
 	}
-	&.welcome,
-	&.about.application {
+	&.welcome {
 		background: $grey-lightest;
+	}
+	&.about:nth-of-type(2n - 1) {
+		background: $grey-lightest;
+		&.travel {
+			padding-left: 15em;
+		}
+		.inner > .text.block {
+			text-align: left;
+		}
+	}
+	&.about:nth-of-type(2n) {
+		background: white;
+		&.travel {
+			padding-left: 15em;
+		}
+		.inner > .text.block {
+			text-align: right;
+		}
 	}
 	&.header {
 		background-color: $grey-lightest;
@@ -232,9 +249,6 @@ p,
 		font-size: 0.8em;
 		padding: 0 3em 0.5em 3em;
 		text-align: center;
-		&.about.application {
-			text-align: left;
-		}
 		& > ul {
 			line-height: 1.5em;
 			margin: 2em 0;
