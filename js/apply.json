@@ -4,15 +4,15 @@
 			"dataPlace": "alert",
 			"before": {
 				"header": "Application goes live September 1st",
-				"text":   "Check back here or visit the APS <a href='http://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='/reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from September 1st until October 14th."
+				"text":   "Check back here or visit the APS <a href='http://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='/reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from September 1st until October 13th."
 			},
 			"applyPeriod": {
 				"header": "Application is now live",
-				"text":   "Interested in attending CUWiP 2018? <a href='../apply'>Begin your application today</a> or visit our <a href='../faq#eligibility'>FAQ</a> to learn if you are eligible to attend. The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 14th."
+				"text":   "Interested in attending CUWiP 2018? <a href='../apply'>Begin your application today</a> or visit our <a href='../faq#eligibility'>FAQ</a> to learn if you are eligible to attend. The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 13th."
 			},
 			"reviewPeriod": {
 				"header": "Application period is closed",
-				"text":   "The application for CUWiP 2018 is now closed. To those who applied, thank you for your interest! We will review applications and inform you of your status on November 9th. If you missed out this time around, keep an eye out for CUWiP 2019!"
+				"text":   "The application for CUWiP 2018 is now closed. To those who applied, thank you for your interest! We will review applications and inform you of your status on November 6th. If you missed out this time around, keep an eye out for CUWiP 2019!"
 			},
 			"registerPeriod": {
 				"header": "Application period is closed",
@@ -32,7 +32,7 @@
 				"text": "We hope you'll join us then! Don't forget to complete the <a href='../appl'>application</a> if you have not already done so!"
 			},
 			"reviewPeriod": {
-				"text": "We hope you'll join us then! Keep an eye out for information regarding your application status, which will be released around November 9th."
+				"text": "We hope you'll join us then! Keep an eye out for information regarding your application status, which will be released around November 6th."
 			},
 			"registerPeriod": {
 				"text": "We hope to see you there! If you plan on coming, don't forget to confirm your attendance and fill out your registration if you have not already done so!"

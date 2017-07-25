@@ -36,9 +36,9 @@
 
 	// Set date/time of application-related dates in this format
 	var applyOpen = '1 September 2017 00:00:00 EDT';
-	var applyClose = '14 October 2017 23:59:00 EDT';
-	var registerOpen = '9 November 2017 00:00:00 PST';
-	var registerClose = '18 November 2017 00:00:00 PST';
+	var applyClose = '13 October 2017 23:59:00 EDT';
+	var registerOpen = '6 November 2017 00:00:00 PST';
+	var registerClose = '17 November 2017 23:59:00 PST';
 	// Set date/time of event in this format
 	var startOfCUWiP = '12 January 2018 18:00:00 PDT';
 
