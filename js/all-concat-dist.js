@@ -100,11 +100,13 @@
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
 						$nav.next().addClass('sticky');
 						$footer.removeClass('mobile');
+						$('nav.menu.drawer').slideUp();
 					} else {
 						// Otherwise replace sticky menu at normal position
 						$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
 						$nav.next().removeClass('sticky');
 						$footer.removeClass('mobile');
+						$('nav.menu.drawer').slideUp();
 					}
 				}
 				// Otherwise, just use sticky menu
@@ -113,6 +115,7 @@
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
 						$nav.next().addClass('sticky');
 						$footer.removeClass('mobile');
+						$('nav.menu.drawer').slideUp();
 					}
 		}
 
@@ -172,6 +175,8 @@
 	function addNavs() {
 		// Variable to hold string of content to fill nav menu
 		var navContent = "<ul>\n";
+		// Variable to hold mobile drawer of certain nav items
+		var navDrawer = "<div class='drawer'><ul>\n";
 		// Boolean to track where the break between mobile and desktop-only items is
 		var stillOnMobile = true;
 		$(navData.pages).each(function () {
@@ -212,12 +217,28 @@
 			output += "</li></a>\n";
 			// Add nav item content string to full nav menu string
 			navContent += output;
+			// Add relevant items to nav drawer string
+			navDrawer += stillOnMobile ? "" : output;
 		});
 		// Complete nav menu
 		navContent += "</ul>\n";
 		// Add completed navigation menu
 		$('nav.main.menu').html(navContent);
+		// Complete nav drawer
+		navDrawer += "</ul></div>\n";
+		$('nav.menu.drawer').html(navDrawer);
 	}
+
+	// On click of hamburger, toggle display of menu drawer
+	$('nav.main.menu').on('click', 'a.hamburger', function () {
+		$('nav.menu.drawer').slideToggle();
+	});
+	// On click anywhere outside nav menus, close menu drawer if it is open
+	$('html').click(function (e) {
+		if (!$(e.target).parents('.menu').length) {
+			$('nav.menu.drawer').slideUp();
+		}
+	});
 
 	/* End of nav.js */
 

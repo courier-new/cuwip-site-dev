@@ -46,11 +46,13 @@ let windowListener = function() {
 				$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
 				$nav.next().addClass('sticky');
 				$footer.removeClass('mobile');
+				$('nav.menu.drawer').slideUp();
 			} else {
 				// Otherwise replace sticky menu at normal position
 				$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
 				$nav.next().removeClass('sticky');
 				$footer.removeClass('mobile');
+				$('nav.menu.drawer').slideUp();
 			}
 		}
 		// Otherwise, just use sticky menu
@@ -59,6 +61,7 @@ let windowListener = function() {
 			$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
 			$nav.next().addClass('sticky');
 			$footer.removeClass('mobile');
+			$('nav.menu.drawer').slideUp();
 		}
 	}
 
