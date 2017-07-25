@@ -10,10 +10,6 @@
 
 // Identify parallax page
 let $parallax = $('.page.parallax');
-// Identify main navigation menu
-let $nav = $('nav.main.menu');
-// Identify footer
-let $footer = $('.page.footer');
 // Remember y-location of non-sticky menu down the page, i.e. bottom of parallax page element (if such element exists)
 let $menuLocation = 0;
 if ($parallax.length) {

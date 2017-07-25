@@ -10,8 +10,6 @@
 
 // Variable for storing all of the navigation items retrieved from json
 let navData;
-// Identify the name of the current page, given by the first class assigned to the nav menu (nav.main.menu)
-let $currPage = $nav.attr('class').split(' ')[0];
 
 $.when(getNavs()).then(function() {
    setTimeout(function() {
@@ -74,3 +72,5 @@ function addNavs() {
 	// Add completed navigation menu
    $('nav.main.menu').html(navContent);
 }
+
+/* End of nav.js */
