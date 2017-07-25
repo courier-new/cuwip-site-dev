@@ -1,4 +1,56 @@
-.main.menu {
+nav.menu.drawer {
+	@include respond-to('xlarge') {
+		display: none;
+	}
+	@include respond-to('at700') {
+		align-items: center;
+		bottom: 10vh;
+		box-shadow: 2px 2px 10px 0 rgba($grey-dark, 0.3);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: fixed;
+		width: 100%;
+		z-index: 90;
+		&.closed {
+			display: none;
+		}
+		a {
+			color: $grey-light;
+			&.current {
+				color: $turquoise-light;
+				.border {
+					display: inline-block;
+					width: 0;
+					height: 0.5em;
+					&::after {
+						content: '';
+						border: 0.2em solid $turquoise-light;
+						border-radius: 50%;
+						display: block;
+						left: 0.6em;
+						position: relative;
+					}
+				}
+			}
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				background: white;
+				border-top: 2px solid lighten($grey-light, 20%);
+				font-size: 1.2em;
+				font-weight: 400;
+				padding: 3vh 2vh;
+				text-align: center;
+			}
+		}
+	}
+}
+
+nav.main.menu {
 	background: $grey-medium-dark;
 	display: flex;
 	align-items: center;
@@ -79,6 +131,7 @@
 				color: $grey-light;
 				height: 100%;
 				position: relative;
+				text-transform: none;
 				margin: 0;
 			}
 		}
