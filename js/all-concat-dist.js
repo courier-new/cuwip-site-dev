@@ -12,9 +12,11 @@
  */
 
 // @prepros-append begin.js
+// @prepros-append global.js
 // @prepros-append scroll-effect.js
 // @prepros-append nav.js
 // @prepros-append countdown.js
+// @prepros-append apply.js
 // @prepros-append end.js
 
 // Outer wrapper
@@ -30,6 +32,24 @@
 		});
 	});
 
+	/* Global variables */
+
+	// Set date/time of application-related dates in this format
+	var applyOpen = '1 September 2017 00:00:00 EDT';
+	var applyClose = '14 October 2017 23:59:00 EDT';
+	var registerOpen = '9 November 2017 00:00:00 PST';
+	var registerClose = '18 November 2017 00:00:00 PST';
+
+	// Identify main navigation menu
+	var $nav = $('nav.main.menu');
+	// Identify footer
+	var $footer = $('.page.footer');
+
+	// Identify the name of the current page, given by the first class assigned to the nav menu (nav.main.menu)
+	var $currPage = $nav.attr('class').split(' ')[0];
+
+	/* End of global variables*/
+
 	/**
   * scroll-effect.js
   *
@@ -42,10 +62,6 @@
 
 	// Identify parallax page
 	var $parallax = $('.page.parallax');
-	// Identify main navigation menu
-	var $nav = $('nav.main.menu');
-	// Identify footer
-	var $footer = $('.page.footer');
 	// Remember y-location of non-sticky menu down the page, i.e. bottom of parallax page element (if such element exists)
 	var $menuLocation = 0;
 	if ($parallax.length) {
@@ -138,8 +154,6 @@
 
 	// Variable for storing all of the navigation items retrieved from json
 	var navData = void 0;
-	// Identify the name of the current page, given by the first class assigned to the nav menu (nav.main.menu)
-	var $currPage = $nav.attr('class').split(' ')[0];
 
 	$.when(getNavs()).then(function () {
 		setTimeout(function () {
@@ -203,6 +217,8 @@
 		$('nav.main.menu').html(navContent);
 	}
 
+	/* End of nav.js */
+
 	/**
   * countdown.js
   *
@@ -219,7 +235,7 @@
 	// If countdown object exists
 	if ($countdown.length) {
 		// Set date/time of event in this format
-		var startOfCUWiP = '12 January 2018 18:00:00';
+		var startOfCUWiP = '12 January 2018 18:00:00 PDT';
 		// Turn off to remove zero-leading for single digit values
 		var formatSwitch = 'on';
 
@@ -276,4 +292,100 @@
 	}
 
 	/* End of countdown.js */
+
+	/**
+  * apply.js
+  *
+  * Automatically updates relevant sections with information specified in apply.json about the application process according to current time and date.
+  *
+  * @author    Kelli Rockwell <kellirockwell@mail.com>
+  * @since     File available since July 23, 2017
+  * @version   1.0.0
+  */
+
+	// Variable for storing all of the application information pieces retrieved from json
+	var appData = void 0;
+
+	$.when(getAppInfo()).then(function () {
+		setTimeout(function () {
+			addAppInfo();
+		}, 400);
+	});
+
+	function getAppInfo() {
+		$.getJSON('/js/apply.json', function (data) {
+			appData = data;
+		});
+	}
+
+	function getTimeUntil(t) {
+		// Compute seconds from since midnight January 1st 1970 to input time
+		var endTime = Date.parse(t) / 1e3;
+		// Compute seconds from since midnight January 1st 1970 to current time
+		var currentTime = Math.floor(new Date().getTime() / 1e3);
+		currentTime = Date.parse("10-9-2017 12:00:00") / 1e3;
+		// Compute seconds between now and event time
+		var seconds = endTime - currentTime;
+		var days = Math.floor(seconds / 86400);
+		seconds -= days * 60 * 60 * 24;
+		var hours = Math.floor(seconds / 3600);
+		seconds -= hours * 60 * 60;
+		var minutes = Math.floor(seconds / 60);
+		return endTime - currentTime;
+	}
+
+	function addAppInfo() {
+
+		$(appData.infoblocks).each(function () {
+			var curr = $(this)[0];
+			// For closing message
+			if (curr.dataPlace === 'closing') {
+				// Identify closing message location
+				var $mesLoc = $('.closing');
+				// If message box configured for application info exists
+				if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
+					// Variable to hold alert message content
+					var output = "";
+					// If current time is before application opens
+					output = getTimeUntil(applyOpen) > 0 ? curr.before.text : output;
+					// If current time is after application opens and before application closes
+					output = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod.text : output;
+					// If current time is after application closes and before registration opens
+					output = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod.text : output;
+					// If current time is after registration opens and before registration closes
+					output = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod.text : output;
+					// If current time is after registration closes
+					output = getTimeUntil(registerClose) < 0 ? curr.after.text : output;
+					$mesLoc.html(output);
+				}
+			}
+			// For alert message
+			if (curr.dataPlace === 'alert') {
+				// Identify alert box
+				var $alertBox = $('.alert.message');
+				// If alert box configured for application info exists
+				if ($alertBox.length && $alertBox.data("place") === 'app-info') {
+					// Variable to hold alert message content
+					var _output = "<strong>";
+					// Variable to remember appropriate section of time data
+					var mes = "";
+					// If current time is before application opens
+					mes = getTimeUntil(applyOpen) > 0 ? curr.before : mes;
+					// If current time is after application opens and before application closes
+					mes = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod : mes;
+					// If current time is after application closes and before registration opens
+					mes = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod : mes;
+					// If current time is after registration opens and before registration closes
+					mes = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod : mes;
+					// If current time is after registration closes
+					mes = getTimeUntil(registerClose) < 0 ? curr.after : mes;
+					_output += mes.header + "</strong>\n";
+					_output += "<p>\n" + mes.text + "\n</p>\n";
+					$alertBox.html(_output);
+				}
+			}
+		});
+	}
+
+	/* End of apply.js */
 })();
