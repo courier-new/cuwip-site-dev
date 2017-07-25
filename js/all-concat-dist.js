@@ -422,6 +422,27 @@
 					$mesLoc.html(_output);
 				}
 			}
+			// For about application message
+			if (curr.dataPlace === 'about') {
+				// Identify about application message location
+				var _$mesLoc = $('.about.app');
+				// If message box configured for application info exists
+				if (_$mesLoc.length && _$mesLoc.data("place") === 'app-info') {
+					// Variable to hold alert message content
+					var _output2 = "";
+					// If current time is before application opens
+					_output2 = getTimeUntil(applyOpen) > 0 ? curr.before.text : _output2;
+					// If current time is after application opens and before application closes
+					_output2 = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod.text : _output2;
+					// If current time is after application closes and before registration opens
+					_output2 = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod.text : _output2;
+					// If current time is after registration opens and before registration closes
+					_output2 = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod.text : _output2;
+					// If current time is after registration closes
+					_output2 = getTimeUntil(registerClose) < 0 ? curr.after.text : _output2;
+					_$mesLoc.html(_output2);
+				}
+			}
 		});
 	}
 

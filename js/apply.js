@@ -105,6 +105,27 @@ function addAppInfo() {
 				$mesLoc.html(output);
 			}
 		}
+		// For about application message
+		if (curr.dataPlace === 'about') {
+			// Identify about application message location
+			let $mesLoc = $('.about.app');
+			// If message box configured for application info exists
+			if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
+				// Variable to hold alert message content
+				let output = "";
+				// If current time is before application opens
+				output = getTimeUntil(applyOpen) > 0 ? curr.before.text : output;
+				// If current time is after application opens and before application closes
+				output = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? curr.applyPeriod.text : output;
+				// If current time is after application closes and before registration opens
+				output = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? curr.reviewPeriod.text : output;
+				// If current time is after registration opens and before registration closes
+			 	output = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? curr.registerPeriod.text : output;
+				// If current time is after registration closes
+				output = getTimeUntil(registerClose) < 0 ? curr.after.text : output;
+				$mesLoc.html(output);
+			}
+		}
    });
 }
 
