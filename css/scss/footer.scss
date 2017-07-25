@@ -12,7 +12,7 @@
 	@include respond-to('at500') {
 		font-size: 0.6em;
 	}
-	background: lighten($grey-dark, 10%);
+	background: lighten($grey-dark, 5%);
 	color: $grey-medium;
 	text-align: center;
 	transition: padding 0.5s;
