@@ -16,7 +16,7 @@ nav.menu.drawer {
 			display: none;
 		}
 		a {
-			color: $grey-light;
+			color: lighten($grey-light, 10%);
 			&.current {
 				color: $turquoise-light;
 				.border {
