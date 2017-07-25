@@ -537,28 +537,28 @@ p,
       height: 82vh;
       max-height: 85vh;
       min-height: 85vh; } }
-  .page.alerts, .page.welcome {
+  .page.alerts, .page.welcome, .page.about.application {
     padding-top: 2.8em;
     padding-bottom: 2em; }
     @media (max-width: 10000px) {
-      .page.alerts, .page.welcome {
+      .page.alerts, .page.welcome, .page.about.application {
         padding-left: 10em;
         padding-right: 10em; } }
     @media (max-width: 1400px) {
-      .page.alerts, .page.welcome {
+      .page.alerts, .page.welcome, .page.about.application {
         padding-left: 5em;
         padding-right: 5em; } }
     @media (max-width: 1000px) {
-      .page.alerts, .page.welcome {
+      .page.alerts, .page.welcome, .page.about.application {
         padding-left: 2em;
         padding-right: 2em; } }
     @media (max-width: 700px) {
-      .page.alerts, .page.welcome {
+      .page.alerts, .page.welcome, .page.about.application {
         padding-left: 0.5em;
         padding-right: 0.5em; } }
   .page.alerts {
     background: white; }
-  .page.welcome {
+  .page.welcome, .page.about.application {
     background: #f5f2f1; }
   .page.header {
     background-color: #f5f2f1; }
@@ -688,6 +688,12 @@ p,
     @media (max-width: 700px) {
       .page .inner > .text.block {
         padding: 0 1em 0.5em 1em; } }
+    .page .inner > .text.block.about.application {
+      text-align: left; }
+    .page .inner > .text.block > ul {
+      line-height: 1.5em; }
+      .page .inner > .text.block > ul li {
+        margin-bottom: 0.2em; }
     @media (max-width: 500px) {
       .page .inner > .text.block > p {
         text-align: left; } }

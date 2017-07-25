@@ -77,7 +77,8 @@ p,
 		}
 	}
 	&.alerts,
-	&.welcome {
+	&.welcome,
+	&.about.application {
 		@include respond-to('xlarge') {
 			padding-left: 10em;
 			padding-right: 10em;
@@ -100,7 +101,8 @@ p,
 	&.alerts {
 		background: white;
 	}
-	&.welcome {
+	&.welcome,
+	&.about.application {
 		background: $grey-lightest;
 	}
 	&.header {
@@ -220,6 +222,15 @@ p,
 		font-size: 0.8em;
 		padding: 0 3em 0.5em 3em;
 		text-align: center;
+		&.about.application {
+			text-align: left;
+		}
+		& > ul {
+			line-height: 1.5em;
+			li {
+				margin-bottom: 0.2em;
+			}
+		}
 		& > p {
 			@include respond-to('at500') {
 				text-align: left;
