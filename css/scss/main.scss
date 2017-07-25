@@ -53,12 +53,15 @@ p,
 	width: 100vw;
 	position: relative;
 	display: block;
-	&.alerts.sticky {
-		@include respond-to('xlarge') {
-			padding-top: $non-sticky-nav + ($non-sticky-nav - $sticky-nav) - 1vh;
-		}
-		@include respond-to('at1000') {
-			padding-top: 1.7em;
+	&.sticky {
+		padding-top: $sticky-nav;
+		&.alerts {
+			@include respond-to('xlarge') {
+				padding-top: $non-sticky-nav + ($non-sticky-nav - $sticky-nav) - 1vh;
+			}
+			@include respond-to('at1000') {
+				padding-top: 1.7em;
+			}
 		}
 	}
 	&.parallax {
@@ -91,7 +94,7 @@ p,
 			padding-left: 0.5em;
 			padding-right: 0.5em;
 		}
-		padding-top: 2em;
+		padding-top: 2.8em;
 		padding-bottom: 2em;
 	}
 	&.alerts {
@@ -100,10 +103,31 @@ p,
 	&.welcome {
 		background: $grey-lightest;
 	}
+	&.header {
+		background-color: $grey-lightest;
+		.header.image {
+			height: 40vh;
+			position: relative;
+			overflow: hidden;
+			img {
+				max-height: 50vh;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		p {
+			display: block;
+			font-size: 0.8em;
+			margin: 0;
+			padding: 1em 0;
+			width: 100%;
+		}
+	}
 	.inner {
 		margin: 0 auto;
 		max-width: 900px;
-		padding-top: 1em;
 		text-align: center;
 	}
 	.social.media.icons {

@@ -133,7 +133,7 @@
             font-size: 1.2em; } }
 
 .page.footer {
-  background: #40393b;
+  background: #322d2e;
   color: #91878d;
   text-align: center;
   -webkit-transition: padding 0.5s;
@@ -155,10 +155,10 @@
   .page.footer.mobile {
     padding-bottom: 12vh; }
   .page.footer a {
-    color: #af792b; }
+    color: #457a25; }
   .page.footer a:hover,
   .page.footer a:active {
-    color: #b19a50; }
+    color: #5c9e33; }
 
 @media (max-width: 10000px) {
   nav.menu.drawer {
@@ -324,7 +324,7 @@ nav.main.menu {
     top: 0;
     height: 5vh;
     background: #252122;
-    opacity: 0.85; }
+    opacity: 0.9; }
     nav.main.menu.sticky a {
       color: white;
       -webkit-transition: opacity 0.25s;
@@ -519,12 +519,14 @@ p,
   width: 100vw;
   position: relative;
   display: block; }
-  @media (max-width: 10000px) {
-    .page.alerts.sticky {
-      padding-top: 14vh; } }
-  @media (max-width: 1000px) {
-    .page.alerts.sticky {
-      padding-top: 1.7em; } }
+  .page.sticky {
+    padding-top: 5vh; }
+    @media (max-width: 10000px) {
+      .page.sticky.alerts {
+        padding-top: 14vh; } }
+    @media (max-width: 1000px) {
+      .page.sticky.alerts {
+        padding-top: 1.7em; } }
   @media (max-width: 10000px) {
     .page.parallax {
       height: 100vh;
@@ -536,7 +538,7 @@ p,
       max-height: 85vh;
       min-height: 85vh; } }
   .page.alerts, .page.welcome {
-    padding-top: 2em;
+    padding-top: 2.8em;
     padding-bottom: 2em; }
     @media (max-width: 10000px) {
       .page.alerts, .page.welcome {
@@ -558,10 +560,29 @@ p,
     background: white; }
   .page.welcome {
     background: #f5f2f1; }
+  .page.header {
+    background-color: #f5f2f1; }
+    .page.header .header.image {
+      height: 40vh;
+      position: relative;
+      overflow: hidden; }
+      .page.header .header.image img {
+        max-height: 50vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+    .page.header p {
+      display: block;
+      font-size: 0.8em;
+      margin: 0;
+      padding: 1em 0;
+      width: 100%; }
   .page .inner {
     margin: 0 auto;
     max-width: 900px;
-    padding-top: 1em;
     text-align: center; }
   .page .social.media.icons {
     -webkit-box-align: center;

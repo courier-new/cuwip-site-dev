@@ -90,7 +90,7 @@
 			if ($(window).width() <= 700) {
 				// Force mobile menu
 				$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
-				$nav.next().removeClass('sticky');
+				$nav.next().next().removeClass('sticky');
 				$footer.addClass('mobile');
 			}
 			// Otherwise, if parallax element is present on page
@@ -98,13 +98,13 @@
 					if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
 						// Force sticky menu
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-						$('.page.alerts').addClass('sticky');
+						$nav.next().next().addClass('sticky');
 						$footer.removeClass('mobile');
 						$('nav.menu.drawer').slideUp();
 					} else {
 						// Otherwise replace sticky menu at normal position
 						$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
-						$('.page.alerts').removeClass('sticky');
+						$nav.next().next().removeClass('sticky');
 						$footer.removeClass('mobile');
 						$('nav.menu.drawer').slideUp();
 					}
@@ -113,7 +113,7 @@
 				else {
 						// Force sticky menu
 						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-						$('.page.alerts').addClass('sticky');
+						$nav.next().next().addClass('sticky');
 						$footer.removeClass('mobile');
 						$('nav.menu.drawer').slideUp();
 					}
