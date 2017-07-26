@@ -14,6 +14,7 @@ let appData;
 $.when(getAppInfo()).then(function() {
    setTimeout(function() {
 		addAppInfo();
+		windowListener();
 	}, 400);
 });
 
