@@ -101,25 +101,28 @@ p,
 	&.alerts {
 		background: white;
 	}
-	&.welcome {
+	&.welcome,
+	&.about {
 		background: $grey-lightest;
 	}
-	&.about:nth-of-type(2n - 1) {
-		background: $grey-lightest;
-		&.travel {
-			padding-left: 15em;
-		}
+	&.about {
 		.inner > .text.block {
 			text-align: left;
 		}
 	}
-	&.about:nth-of-type(2n) {
-		background: white;
-		&.travel {
+	&.about.travel {
+		@include respond-to('min1000') {
 			padding-left: 15em;
 		}
-		.inner > .text.block {
-			text-align: right;
+		.forward.backward.buttons {
+			@include respond-to('xlarge') {
+				display: none;
+			}
+			@include respond-to('at1000') {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 		}
 	}
 	&.header {
@@ -158,6 +161,13 @@ p,
 		margin: 0 auto;
 		max-width: 900px;
 		text-align: center;
+		&.hiding.container {
+			overflow: hidden;
+			height: 100vh; /* height set dynamically by scroll-effect.js */
+			& > .text.block {
+				margin-bottom: 40px;
+			}
+		}
 	}
 	.social.media.icons {
 		align-items: center;

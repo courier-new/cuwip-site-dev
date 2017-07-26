@@ -216,25 +216,38 @@ nav.main.menu {
 nav.sub.menu {
 	@include respond-to('xlarge') {
 		text-align: left;
+		padding: (3em * 1 / 0.8) 1em (3em * 1 / 0.8) 7%;
 		position: absolute;
 		z-index: 90;
+	}
+	@include respond-to('at1400') {
+		padding: (3em * 1 / 0.8) 1em (3em * 1 / 0.8) 5%;
+	}
+	@include respond-to('at1200') {
+		padding: (3em * 1 / 0.8);
 	}
 	@include respond-to('at1000') {
 		text-align: center;
 		margin-top: -2em; /* same as bottom margin of alerts page */
+		padding: 0 0 4em 0;
 		position: relative;
 	}
 	font-size: 0.8em;
-	padding: (3em * 1 / 0.8) 1em;
+	transition: padding 0.3s;
 	strong {
+		@include respond-to('xlarge') {
+			margin: 1em 0 0 0;
+		}
+		@include respond-to('at1000') {
+			margin: 0;
+		}
 		color: $grey-dark;
 		display: block;
 		font-family: $special-main-stack;
-		font-size: 1.5em;
+		font-size: 1.3em;
 		font-weight: 800;
 		letter-spacing: 2px;
 		line-height: 1.6em;
-    	margin: 0.6em 0 0 0;
 		padding-bottom: 1em;
 		text-transform: uppercase;
 	}
@@ -255,11 +268,19 @@ nav.sub.menu {
 		margin: 0;
 		padding: 0;
 		a {
+			@include respond-to('xlarge') {
+				font-size: 1.1em;
+				padding: 0.2em 0.4em 0.2em 0.2em;
+			}
 			@include respond-to('at1000') {
+				font-size: 1em;
 				padding: 0.7em;
 				margin: 0.6em;
 			}
 			background: $grey-lightest;
+			&.current {
+				color: $turquoise-dark;
+			}
 			&:hover {
 				cursor: pointer;
 			}
