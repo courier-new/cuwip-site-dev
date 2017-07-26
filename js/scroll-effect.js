@@ -18,8 +18,6 @@ if ($parallax.length) {
 
 // Main window scrolling and resizing actions
 let windowListener = function() {
-	// Remember each of the page sections
-	let $pages = $('.page');
 	let $scrollY = window.scrollY + 30
 
 	// If parallax element is present on page
@@ -83,11 +81,47 @@ let windowListener = function() {
 			$(this).removeClass('focused')
 		}
 	});
+
+	// If applicable, for each page subsection
+	if ($subsections.length) {
+		let tallest = 0;
+		let shortest = 3000;
+		$subsections.each(function() {
+			// Determine the tallest and shortest elements
+			tallest = $(this).outerHeight() > tallest ? $(this).outerHeight() : tallest;
+			shortest = $(this).outerHeight() < shortest ? $(this).outerHeight() : shortest;
+		});
+		$('.inner.hiding.container').css('height', tallest);
+		$('.inner.hiding.container > .text.block').css('margin-bottom', tallest - shortest + 30);
+	}
 };
 
-// Call windowListener function on user scroll or resize of window and once immediately on page load
+// Interpret and scroll to a designated section of an .inner.hiding.container
+let scrollToSubsection = function(section) {
+	section = section.toLowerCase().replace(/\s/g, '');
+	let $container = $('.inner.hiding.container');
+	// Scroll to container height + subsection height - subsection padding - h1 padding
+	let $scrollAmount = $('.' + section + '.text.block').position().top + $container.scrollTop() - parseFloat($container.parent().css('padding-top')) - parseFloat($('.page .inner > .text.block h1').css('margin-top'));
+	$container.animate({scrollTop: $scrollAmount});
+	// Mark new current subsection on navigation menu
+	$('nav.sub.menu a').each(function() {
+		if ($(this).hasClass('current')) {
+			$(this).removeClass('current');
+		}
+		if ($(this).hasClass(section)) {
+			$(this).addClass('current');
+		}
+	});
+};
+
+// Call windowListener function on user scroll or resize of window
 $(document).on('scroll', windowListener);
 $(window).on('resize', windowListener);
-windowListener();
+
+// Call scrollToSubsection function on click of sub navigation menu
+$('nav.sub.menu').on('click', 'a', function() {
+	// Call on name of subsection clicked
+	scrollToSubsection($(this).find('li')[0].innerHTML);
+});
 
 /* End of scroll-effect.js */
