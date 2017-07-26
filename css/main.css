@@ -664,6 +664,16 @@ p,
   @media (min-width: 1000px) {
     .page.about.travel {
       padding-left: 15em; } }
+  .page.about.travel span.address {
+    background: white;
+    display: block;
+    padding: 1em 1.5em;
+    line-height: 1.5em;
+    margin: 2em;
+    max-width: 300px; }
+  .page.about.travel img {
+    width: 90%;
+    margin: 1em 5%; }
   @media (max-width: 10000px) {
     .page.about.travel .forward.back.buttons {
       display: none; } }
