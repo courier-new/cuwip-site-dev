@@ -615,6 +615,7 @@ a {
 a:hover,
 a:active {
   color: #32858c;
+  cursor: pointer;
   outline: none; }
 
 p,
