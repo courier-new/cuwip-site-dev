@@ -320,7 +320,8 @@ p,
 		font-size: 0.8em;
 		padding: 0 3em 0.5em 3em;
 		text-align: center;
-		& > ul {
+		& > ul,
+		& > ol {
 			line-height: 1.5em;
 			margin: 2em 0;
 			li {
@@ -343,6 +344,9 @@ p,
 		h1 {
 			line-height: 1.5em;
 			margin: 0.5em auto 1em auto;
+			&.faq {
+				letter-spacing: 0.1em;
+			}
 		}
 		h2 {
 			color: $pink-salmon;

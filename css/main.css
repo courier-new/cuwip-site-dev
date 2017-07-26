@@ -883,10 +883,10 @@ p,
     @media (max-width: 700px) {
       .page .inner > .text.block {
         padding: 0 1em 0.5em 1em; } }
-    .page .inner > .text.block > ul {
+    .page .inner > .text.block > ul, .page .inner > .text.block > ol {
       line-height: 1.5em;
       margin: 2em 0; }
-      .page .inner > .text.block > ul li {
+      .page .inner > .text.block > ul li, .page .inner > .text.block > ol li {
         margin-bottom: 0.2em; }
     @media (max-width: 500px) {
       .page .inner > .text.block > p {
@@ -901,6 +901,8 @@ p,
     .page .inner > .text.block h1 {
       line-height: 1.5em;
       margin: 0.5em auto 1em auto; }
+      .page .inner > .text.block h1.faq {
+        letter-spacing: 0.1em; }
     .page .inner > .text.block h2 {
       color: #ca776c;
       font-size: 1.5em;
