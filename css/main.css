@@ -665,10 +665,10 @@ p,
     .page.about.travel {
       padding-left: 15em; } }
   @media (max-width: 10000px) {
-    .page.about.travel .forward.backward.buttons {
+    .page.about.travel .forward.back.buttons {
       display: none; } }
   @media (max-width: 1000px) {
-    .page.about.travel .forward.backward.buttons {
+    .page.about.travel .forward.back.buttons {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -680,7 +680,37 @@ p,
       -webkit-box-align: center;
       -webkit-align-items: center;
       -ms-flex-align: center;
-      align-items: center; } }
+      align-items: center;
+      padding: 2em 0 3em 0; } }
+  .page.about.travel .forward.back.buttons a:hover,
+  .page.about.travel .forward.back.buttons a:active {
+    cursor: pointer; }
+    .page.about.travel .forward.back.buttons a:hover .button,
+    .page.about.travel .forward.back.buttons a:active .button {
+      background: #851e46;
+      color: white; }
+  .page.about.travel .forward.back.buttons .button {
+    background: white;
+    min-width: 120px;
+    padding: 0.3em 1em 0.5em 1em;
+    text-align: left;
+    -webkit-transition: background 0.4s;
+    -o-transition: background 0.4s;
+    transition: background 0.4s; }
+    .page.about.travel .forward.back.buttons .button.none {
+      opacity: 0; }
+    .page.about.travel .forward.back.buttons .button.next {
+      text-align: right; }
+    .page.about.travel .forward.back.buttons .button.back {
+      text-align: left; }
+    .page.about.travel .forward.back.buttons .button span {
+      display: block;
+      font-weight: 400;
+      line-height: 1.5em; }
+      .page.about.travel .forward.back.buttons .button span.next.label, .page.about.travel .forward.back.buttons .button span.back.label {
+        font-size: 1.2em;
+        font-weight: 600;
+        text-transform: uppercase; }
   .page.header {
     background-color: #f5f2f1; }
     .page.header .header.image {
@@ -720,7 +750,8 @@ p,
       height: 100vh;
       /* height set dynamically by scroll-effect.js */ }
       .page .inner.hiding.container > .text.block {
-        margin-bottom: 40px; }
+        margin-bottom: 40px;
+        /* margin set dynamically by scroll-effect.js */ }
   .page .social.media.icons {
     -webkit-box-align: center;
     -webkit-align-items: center;
