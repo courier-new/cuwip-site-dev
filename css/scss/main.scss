@@ -123,8 +123,21 @@ p,
 			max-width: 300px;
 		}
 		img {
-			width: 90%;
-			margin: 1em 5%;
+			@include respond-to('min700') {
+				width: 60%;
+				margin: 1em 20%;
+			}
+			width: 80%;
+			margin: 1em 10%;
+		}
+		h3 {
+			margin: 0;
+		}
+		p,
+		ul {
+			@include respond-to('at700') {
+				margin: 1em 0 !important;
+			}
 		}
 		.forward.back.buttons {
 			@include respond-to('xlarge') {
@@ -149,7 +162,7 @@ p,
 				min-width: 120px;
 				padding: 0.3em 1em 0.5em 1em;
 				text-align: left;
-				transition: background 0.4s;
+				transition: background 0.3s, color 0.3s;
 				&.none {
 					opacity: 0;
 				}
@@ -213,7 +226,7 @@ p,
 			overflow: hidden;
 			height: 100vh; /* height set dynamically by scroll-effect.js */
 			& > .text.block {
-				margin-bottom: 40px; /* margin set dynamically by scroll-effect.js */
+				margin-bottom: 100px;
 			}
 		}
 	}

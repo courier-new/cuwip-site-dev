@@ -468,7 +468,10 @@ nav.sub.menu {
         -ms-flex-align: center;
         align-items: center; } }
     nav.sub.menu ul a {
-      background: #f5f2f1; }
+      background: #f5f2f1;
+      -webkit-transition: background 0.3s, color 0.3s;
+      -o-transition: background 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s; }
       @media (max-width: 10000px) {
         nav.sub.menu ul a {
           font-size: 1.1em;
@@ -477,9 +480,14 @@ nav.sub.menu {
         nav.sub.menu ul a {
           font-size: 1em;
           padding: 0.7em;
-          margin: 0.6em; } }
-      nav.sub.menu ul a.current {
-        color: #0f646d; }
+          margin: 0.4em; } }
+      @media (max-width: 10000px) {
+        nav.sub.menu ul a.current {
+          color: #0f646d; } }
+      @media (max-width: 1000px) {
+        nav.sub.menu ul a.current {
+          background-color: #3dbfbd;
+          color: white; } }
       nav.sub.menu ul a:hover {
         cursor: pointer; }
 
@@ -672,8 +680,18 @@ p,
     margin: 2em;
     max-width: 300px; }
   .page.about.travel img {
-    width: 90%;
-    margin: 1em 5%; }
+    width: 80%;
+    margin: 1em 10%; }
+    @media (min-width: 700px) {
+      .page.about.travel img {
+        width: 60%;
+        margin: 1em 20%; } }
+  .page.about.travel h3 {
+    margin: 0; }
+  @media (max-width: 700px) {
+    .page.about.travel p,
+    .page.about.travel ul {
+      margin: 1em 0 !important; } }
   @media (max-width: 10000px) {
     .page.about.travel .forward.back.buttons {
       display: none; } }
@@ -704,9 +722,9 @@ p,
     min-width: 120px;
     padding: 0.3em 1em 0.5em 1em;
     text-align: left;
-    -webkit-transition: background 0.4s;
-    -o-transition: background 0.4s;
-    transition: background 0.4s; }
+    -webkit-transition: background 0.3s, color 0.3s;
+    -o-transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s; }
     .page.about.travel .forward.back.buttons .button.none {
       opacity: 0; }
     .page.about.travel .forward.back.buttons .button.next {
@@ -760,8 +778,7 @@ p,
       height: 100vh;
       /* height set dynamically by scroll-effect.js */ }
       .page .inner.hiding.container > .text.block {
-        margin-bottom: 40px;
-        /* margin set dynamically by scroll-effect.js */ }
+        margin-bottom: 100px; }
   .page .social.media.icons {
     -webkit-box-align: center;
     -webkit-align-items: center;

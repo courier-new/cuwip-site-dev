@@ -275,11 +275,19 @@ nav.sub.menu {
 			@include respond-to('at1000') {
 				font-size: 1em;
 				padding: 0.7em;
-				margin: 0.6em;
+				margin: 0.4em;
 			}
 			background: $grey-lightest;
+			transition: background 0.3s, color 0.3s;
 			&.current {
-				color: $turquoise-dark;
+				@include respond-to('xlarge') {
+					color: $turquoise-dark;
+				}
+				@include respond-to('at1000') {
+					background-color: $turquoise-light;
+					color: white;
+				}
+
 			}
 			&:hover {
 				cursor: pointer;
