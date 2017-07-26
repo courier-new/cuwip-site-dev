@@ -5,7 +5,7 @@
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
  * @since     File available since July 11, 2017
- * @version   1.1.0
+ * @version   1.2.0
  */
 
 // Identify parallax page
@@ -81,32 +81,46 @@ let windowListener = function() {
 			$(this).removeClass('focused')
 		}
 	});
-
-	// If applicable, for each page subsection
-	if ($subsections.length) {
-		let tallest = 0;
-		let shortest = 3000;
-		$subsections.each(function() {
-			// Determine the tallest and shortest elements
-			tallest = $(this).outerHeight() > tallest ? $(this).outerHeight() : tallest;
-			shortest = $(this).outerHeight() < shortest ? $(this).outerHeight() : shortest;
-		});
-		$('.inner.hiding.container').css('height', tallest);
-		$('.inner.hiding.container > .text.block').css('margin-bottom', tallest - shortest + 30);
-	}
 };
+
+// Set initial height of .inner.hiding.container
+if ($subsections.length) {
+	// Get current/active subsection
+	let $curr = $('nav.sub.menu').find('a.current').attr('class').split(' ')[0];
+	// Animate growing/shrinking of container to current subsection height or sub nav height (whichever is larger)
+	let $newHeight = 0;
+	if ($(window).width() > 700) {
+		$newHeight = $('.' + $curr + '.text.block').height();
+		let $subnavHeight = $('nav.sub.menu').height();
+		$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
+	} else {
+		$newHeight = $('.' + $curr + '.text.block').outerHeight();
+	}
+	$newHeight += 20;
+	// Only if new height =/= old height
+	if ($('.inner.hiding.container').height() !== $newHeight) {
+		// Animate height change
+		$('.inner.hiding.container').animate({height: $newHeight}, {queue: false});
+	}
+}
 
 // Interpret and scroll to a designated section of an .inner.hiding.container
 let scrollToSubsection = function(section, goToTop) {
 	section = section.toLowerCase().replace(/\s/g, '');
 	let $container = $('.inner.hiding.container');
+	// Animate growing/shrinking of container to new subsection height or sub nav height (whichever is larger)
+	let $newHeight = $('.' + section + '.text.block').height();
+	let $subnavHeight = $('nav.sub.menu').height();
+	$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
+	$newHeight += 20;
+	$container.animate({height: $newHeight}, {queue: false});
 	// Scroll to container height + subsection height - subsection padding
 	let $scrollAmount = $('.' + section + '.text.block').position().top + $container.scrollTop() - parseFloat($container.parent().css('padding-top'));
 	// To also subtract h1 padding, replace this in calculation:
 	// - parseFloat($('.page .inner > .text.block h1').css('margin-top'));
-	$container.animate({scrollTop: $scrollAmount});
+	$container.animate({scrollTop: $scrollAmount}, {queue: false});
 	if (goToTop) {
-		$('html, body').animate({scrollTop: $('.inner.hiding.container').parent().offset().top});
+		$('html, body').animate({scrollTop: $container.parent().offset().top}, {queue: false});
 	}
 	// Mark new current subsection on navigation menu
 	$('nav.sub.menu a').each(function() {
@@ -128,9 +142,13 @@ $('nav.sub.menu').on('click', 'a', function() {
 	// Call on name of subsection clicked
 	scrollToSubsection($(this).find('li')[0].innerHTML, false);
 });
-$('.forward.back.buttons').on('click', 'a', function() {
+$('.forward.back.buttons, .inner.link').on('click', 'a', function() {
 	// Call on name of subsection clicked
-	scrollToSubsection($(this).attr('class'), true);
+	if ($(window).width() <= 700) {
+		scrollToSubsection($(this).attr('class'), true);
+	} else {
+		scrollToSubsection($(this).attr('class'), false);
+	}
 });
 
 /* End of scroll-effect.js */
