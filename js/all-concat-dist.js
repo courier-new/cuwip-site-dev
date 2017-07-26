@@ -50,6 +50,10 @@
 	// Identify the name of the current page, given by the first class assigned to the nav menu (nav.main.menu)
 	var $currPage = $nav.attr('class').split(' ')[0];
 
+	// Remember each of the page sections and subsections
+	var $pages = $('.page');
+	var $subsections = $('.page > .inner.hiding.container > .text.block');
+
 	/* End of global variables*/
 
 	/**
@@ -72,8 +76,6 @@
 
 	// Main window scrolling and resizing actions
 	var windowListener = function windowListener() {
-		// Remember each of the page sections
-		var $pages = $('.page');
 		var $scrollY = window.scrollY + 30;
 
 		// If parallax element is present on page
@@ -138,12 +140,48 @@
 				$(this).removeClass('focused');
 			}
 		});
+
+		// If applicable, for each page subsection
+		if ($subsections.length) {
+			var tallest = 0;
+			var shortest = 3000;
+			$subsections.each(function () {
+				// Determine the tallest and shortest elements
+				tallest = $(this).outerHeight() > tallest ? $(this).outerHeight() : tallest;
+				shortest = $(this).outerHeight() < shortest ? $(this).outerHeight() : shortest;
+			});
+			$('.inner.hiding.container').css('height', tallest);
+			$('.inner.hiding.container > .text.block').css('margin-bottom', tallest - shortest + 30);
+		}
 	};
 
-	// Call windowListener function on user scroll or resize of window and once immediately on page load
+	// Interpret and scroll to a designated section of an .inner.hiding.container
+	var scrollToSubsection = function scrollToSubsection(section) {
+		section = section.toLowerCase().replace(/\s/g, '');
+		var $container = $('.inner.hiding.container');
+		// Scroll to container height + subsection height - subsection padding - h1 padding
+		var $scrollAmount = $('.' + section + '.text.block').position().top + $container.scrollTop() - parseFloat($container.parent().css('padding-top')) - parseFloat($('.page .inner > .text.block h1').css('margin-top'));
+		$container.animate({ scrollTop: $scrollAmount });
+		// Mark new current subsection on navigation menu
+		$('nav.sub.menu a').each(function () {
+			if ($(this).hasClass('current')) {
+				$(this).removeClass('current');
+			}
+			if ($(this).hasClass(section)) {
+				$(this).addClass('current');
+			}
+		});
+	};
+
+	// Call windowListener function on user scroll or resize of window
 	$(document).on('scroll', windowListener);
 	$(window).on('resize', windowListener);
-	windowListener();
+
+	// Call scrollToSubsection function on click of sub navigation menu
+	$('nav.sub.menu').on('click', 'a', function () {
+		// Call on name of subsection clicked
+		scrollToSubsection($(this).find('li')[0].innerHTML);
+	});
 
 	/* End of scroll-effect.js */
 
@@ -330,6 +368,7 @@
 	$.when(getAppInfo()).then(function () {
 		setTimeout(function () {
 			addAppInfo();
+			windowListener();
 		}, 400);
 	});
 

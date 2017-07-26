@@ -16,4 +16,8 @@ let $footer = $('.page.footer');
 // Identify the name of the current page, given by the first class assigned to the nav menu (nav.main.menu)
 let $currPage = $nav.attr('class').split(' ')[0];
 
+// Remember each of the page sections and subsections
+let $pages = $('.page');
+let $subsections = $('.page > .inner.hiding.container > .text.block');
+
 /* End of global variables*/
