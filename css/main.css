@@ -193,14 +193,14 @@
     nav.menu.drawer a {
       color: #a9a2a6; }
       nav.menu.drawer a.current {
-        color: #32858c; }
+        color: #31a2ab; }
         nav.menu.drawer a.current .border {
           display: inline-block;
           width: 0;
           height: 0.5em; }
           nav.menu.drawer a.current .border::after {
             content: '';
-            border: 0.2em solid #32858c;
+            border: 0.2em solid #31a2ab;
             border-radius: 50%;
             display: block;
             left: 0.6em;
@@ -211,7 +211,7 @@
       padding: 0; }
       nav.menu.drawer ul li {
         background: white;
-        border-top: 2px solid #dfd8d7;
+        border-top: 2px solid #f1eeed;
         font-size: 1.2em;
         font-weight: 400;
         padding: 3vh 2vh;
@@ -307,7 +307,7 @@ nav.main.menu {
           position: relative; }
           nav.main.menu.mobile ul a.current li,
           nav.main.menu.mobile ul a.hamburger.current li {
-            color: #32858c; }
+            color: #31a2ab; }
           nav.main.menu.mobile ul a.current .border,
           nav.main.menu.mobile ul a.hamburger.current .border {
             display: none; }
