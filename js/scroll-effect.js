@@ -97,12 +97,15 @@ let windowListener = function() {
 };
 
 // Interpret and scroll to a designated section of an .inner.hiding.container
-let scrollToSubsection = function(section) {
+let scrollToSubsection = function(section, goToTop) {
 	section = section.toLowerCase().replace(/\s/g, '');
 	let $container = $('.inner.hiding.container');
 	// Scroll to container height + subsection height - subsection padding - h1 padding
 	let $scrollAmount = $('.' + section + '.text.block').position().top + $container.scrollTop() - parseFloat($container.parent().css('padding-top')) - parseFloat($('.page .inner > .text.block h1').css('margin-top'));
 	$container.animate({scrollTop: $scrollAmount});
+	if (goToTop) {
+		$('html, body').animate({scrollTop: $('.inner.hiding.container').parent().offset().top});
+	}
 	// Mark new current subsection on navigation menu
 	$('nav.sub.menu a').each(function() {
 		if ($(this).hasClass('current')) {
@@ -118,10 +121,14 @@ let scrollToSubsection = function(section) {
 $(document).on('scroll', windowListener);
 $(window).on('resize', windowListener);
 
-// Call scrollToSubsection function on click of sub navigation menu
+// Call scrollToSubsection function on click of sub navigation menu or next/prev button
 $('nav.sub.menu').on('click', 'a', function() {
 	// Call on name of subsection clicked
-	scrollToSubsection($(this).find('li')[0].innerHTML);
+	scrollToSubsection($(this).find('li')[0].innerHTML, false);
+});
+$('.forward.back.buttons').on('click', 'a', function() {
+	// Call on name of subsection clicked
+	scrollToSubsection($(this).attr('class'), true);
 });
 
 /* End of scroll-effect.js */
