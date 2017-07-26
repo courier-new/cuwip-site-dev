@@ -16,16 +16,16 @@ nav.menu.drawer {
 			display: none;
 		}
 		a {
-			color: lighten($grey-light, 10%);
+			color: lighten($grey-medium, 10%);
 			&.current {
-				color: $turquoise-light;
+				color: $turquoise;
 				.border {
 					display: inline-block;
 					width: 0;
 					height: 0.5em;
 					&::after {
 						content: '';
-						border: 0.2em solid $turquoise-light;
+						border: 0.2em solid $turquoise;
 						border-radius: 50%;
 						display: block;
 						left: 0.6em;
@@ -40,7 +40,7 @@ nav.menu.drawer {
 			padding: 0;
 			li {
 				background: white;
-				border-top: 2px solid lighten($grey-light, 20%);
+				border-top: 2px solid lighten($grey-light, 10%);
 				font-size: 1.2em;
 				font-weight: 400;
 				padding: 3vh 2vh;
@@ -117,7 +117,7 @@ nav.main.menu {
 				&.current {
 					position: relative;
 					li {
-						color: $turquoise-light;
+						color: $turquoise;
 					}
 					.border {
 						display: none;
@@ -128,7 +128,7 @@ nav.main.menu {
 				@include respond-to('at400') {
 					font-size: 0.8em;
 				}
-				color: $grey-light;
+				color: $grey-medium;
 				height: 100%;
 				position: relative;
 				text-transform: none;
