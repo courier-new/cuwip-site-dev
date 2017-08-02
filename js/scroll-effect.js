@@ -84,25 +84,27 @@ let windowListener = function() {
 };
 
 // Set initial height of .inner.hiding.container
-if ($subsections.length) {
-	// Get current/active subsection
-	let $curr = $('nav.sub.menu').find('a.current').attr('class').split(' ')[0];
-	// Animate growing/shrinking of container to current subsection height or sub nav height (whichever is larger)
-	let $newHeight = 0;
-	if ($(window).width() > 700) {
-		$newHeight = $('.' + $curr + '.text.block').height();
-		let $subnavHeight = $('nav.sub.menu').height();
-		$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
-	} else {
-		$newHeight = $('.' + $curr + '.text.block').outerHeight();
+let setSubsectionsHeight = function() {
+	if ($subsections.length) {
+		// Get current/active subsection
+		let $curr = $('nav.sub.menu').find('a.current').attr('class').split(' ')[0];
+		// Animate growing/shrinking of container to current subsection height or sub nav height (whichever is larger)
+		let $newHeight = 0;
+		if ($(window).width() > 700) {
+			$newHeight = $('.' + $curr + '.text.block').height();
+			let $subnavHeight = $('nav.sub.menu').height();
+			$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
+		} else {
+			$newHeight = $('.' + $curr + '.text.block').outerHeight();
+		}
+		$newHeight += 20;
+		// Only if new height =/= old height
+		if ($('.inner.hiding.container').height() !== $newHeight) {
+			// Animate height change
+			$('.inner.hiding.container').animate({height: $newHeight}, {queue: false});
+		}
 	}
-	$newHeight += 20;
-	// Only if new height =/= old height
-	if ($('.inner.hiding.container').height() !== $newHeight) {
-		// Animate height change
-		$('.inner.hiding.container').animate({height: $newHeight}, {queue: false});
-	}
-}
+};
 
 // Interpret and scroll to a designated section of an .inner.hiding.container
 let scrollToSubsection = function(section, goToTop) {
