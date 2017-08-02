@@ -14,7 +14,7 @@ let navData;
 $.when(getNavs()).then(function() {
    setTimeout(function() {
 		addNavs();
-	}, 400);
+	}, 100);
 });
 
 function getNavs() {
@@ -90,40 +90,69 @@ $('html').click(function(e) {
    }
 });
 
-$subsections.each(function() {
-	let $output = "";
-	// Get previous text block
-	let $prev = $(this).prev();
-	// If previous text block exists
-	if ($prev.length) {
-		// Derive subsection short name from text block
-		$prev = $prev.attr('class').split(' ')[0];
-		$output += "<a class='" + $prev + "'><div class='back button " + $prev + "'>";
-		// Get readable name from corresponding subsection navigation menu label
-		$prev = $('nav.sub.menu').find('a.' + $prev + ' li')[0].innerHTML;
-		$output += "<span class='back label'>Back</span><span class='section label'>" + $prev + "</span>";
-	} else {
-		$output += "<a><div class='back button none'>"
-	}
-	$output += "</div></a>\n";
-	// Get next text block
-	let $next = $(this).next();
-	// If next text block exists
-	if ($next.length) {
-		// Derive subsection short name from text block
-		$next = $next.attr('class').split(' ')[0];
-		$output += "<a class='" + $next + "'><div class='next button " + $next + "'>";
-		// Get readable name from corresponding subsection navigation menu label
-		$next = $('nav.sub.menu').find('a.' + $next + ' li')[0].innerHTML;
-		$output += "<span class='next label'>Next</span><span class='section label'>" + $next + "</span>";
-	} else {
-		$output += "<a><div class='next button none'>"
-	}
-	$output += "</div></a>\n";
-	let $buttons = $(this).find('.forward.back.buttons');
-	$buttons.html($output);
-});
+// If page contains subsections
+if ($subsections.length) {
+	// Fill subsection nav menu
+	let $menuOutput = "<div class='inner'>\n<strong>Quick Navigation</strong>\n<ul>\n";
+	let $isFirst = true;
+	$subsections.each(function() {
+		// Get name of subsection
+		let $name = $(this).find('h1')[0].innerHTML;
+		// Condense to short name of subsection
+		let $sname = $name.replace(" ", "").toLowerCase();
+		$menuOutput += "<a class='" + $sname;
+		$menuOutput += $isFirst ? " current" : "";
+		if ($isFirst) {
+			$isFirst = false;
+		}
+		$menuOutput += "'><li>" + $name + "</li></a>\n";
+	});
+	$menuOutput += "</ul>\n</div>\n";
+	$('nav.sub.menu').html($menuOutput);
 
+	// Add previous and next buttons to each subsection
+	let addDirectionButtons = function() {
+		$subsections.each(function() {
+			let $output = "";
+			// Get previous text block
+			let $prev = $(this).prev();
+			// If previous text block exists
+			if ($prev.length) {
+				// Derive subsection short name from text block
+				$prev = $prev.attr('class').split(' ')[0];
+				$output += "<a class='" + $prev + "'><div class='back button " + $prev + "'>";
+				// Get readable name from corresponding subsection navigation menu label
+				$prev = $('nav.sub.menu').find('a.' + $prev + ' li')[0].innerHTML;
+				$output += "<span class='back label'>Back</span><span class='section label'>" + $prev + "</span>";
+			} else {
+				$output += "<a><div class='back button none'>"
+			}
+			$output += "</div></a>\n";
+			// Get next text block
+			let $next = $(this).next();
+			// If next text block exists
+			if ($next.length) {
+				// Derive subsection short name from text block
+				$next = $next.attr('class').split(' ')[0];
+				$output += "<a class='" + $next + "'><div class='next button " + $next + "'>";
+				// Get readable name from corresponding subsection navigation menu label
+				$next = $('nav.sub.menu').find('a.' + $next + ' li')[0].innerHTML;
+				$output += "<span class='next label'>Next</span><span class='section label'>" + $next + "</span>";
+			} else {
+				$output += "<a><div class='next button none'>"
+			}
+			$output += "</div></a>\n";
+			let $buttons = $(this).find('.forward.back.buttons');
+			$buttons.html($output);
+		});
+	}
 
+	$.when(addDirectionButtons()).then(function() {
+	   setTimeout(function() {
+			// Set initial height of subsections panel once prev/next buttons are in
+			setSubsectionsHeight();
+		}, 100);
+	});
+}
 
 /* End of nav.js */
