@@ -153,6 +153,7 @@
 			if ($(window).width() > 700) {
 				$newHeight = $('.' + $curr + '.text.block').height();
 				var $subnavHeight = $('nav.sub.menu').height();
+				$('.hiding.container > .text.block').css('min-height', $subnavHeight);
 				$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
 			} else {
 				$newHeight = $('.' + $curr + '.text.block').outerHeight();
