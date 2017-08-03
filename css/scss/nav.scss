@@ -218,7 +218,7 @@ nav.sub.menu {
 		text-align: left;
 		padding: (3em * 1 / 0.8) 1em (3em * 1 / 0.8) 7%;
 		position: absolute;
-		z-index: 90;
+		z-index: 80;
 	}
 	@include respond-to('at1400') {
 		padding: (3em * 1 / 0.8) 1em (3em * 1 / 0.8) 5%;
