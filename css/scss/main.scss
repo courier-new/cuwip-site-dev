@@ -79,7 +79,8 @@ p,
 	}
 	&.alerts,
 	&.welcome,
-	&.about {
+	&.about,
+	&.sponsors {
 		@include respond-to('xlarge') {
 			padding-left: 10em;
 			padding-right: 10em;
@@ -204,9 +205,11 @@ p,
 		p {
 			@include respond-to('xlarge') {
 				font-size: 0.8em;
+				padding: 1em 0;
 			}
 			@include respond-to('at700') {
 				font-size: 0.7em;
+				padding: 1em 2em;
 			}
 			@include respond-to('at400') {
 				font-size: 0.55em;
@@ -215,7 +218,6 @@ p,
 			display: block;
 			font-size: 0.65em;
 			margin: 0;
-			padding: 1em 0;
 			width: 100%;
 		}
 	}
@@ -334,6 +336,9 @@ p,
 				text-align: left;
 			}
 		}
+		&.intro > p {
+			text-align: center;
+		}
 		h1,
 		h2 {
 			color: lighten($grey-dark, 15%);
@@ -359,6 +364,95 @@ p,
 			color: lighten($pink-berry, 10%);
 			font-size: 1.1em;
 			font-weight: 600;
+		}
+		ul.sponsors.list {
+			@include respond-to('xlarge') {
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			@include respond-to('at1000') {
+				flex-direction: column;
+				margin-top: 2.8em;
+			}
+			align-items: center;
+			list-style: none;
+			display: flex;
+			justify-content: center;
+			padding: 0;
+			margin: 0;
+			a {
+				@include respond-to('xlarge') {
+					width: 33%;
+					&:hover {
+						background: $grey-lightest;
+					}
+				}
+				@include respond-to('at1000') {
+					border-top: 3px solid $grey-lightest;
+					padding: 5vh 1vh;
+					width: 100%;
+				}
+				@include respond-to('at500') {
+					.logo.container {
+						height: 15vh;
+						width: 70%;
+					}
+				}
+				padding: 3%;
+				transition: background 0.3s;
+				li {
+					@include respond-to('xlarge') {
+						flex-direction: column;
+						.logo.container {
+							height: 15vh;
+							width: 100%;
+						}
+					}
+					@include respond-to('at1000') {
+						align-items: center;
+						flex-direction: row;
+						.logo.container {
+							height: 100%;
+							width: 30%;
+						}
+					}
+					@include respond-to('at500') {
+						flex-direction: column;
+						.logo.container {
+							height: 15vh;
+							width: 70%;
+						}
+					}
+					display: flex;
+					width: 100%;
+				}
+				.logo.container {
+					@include respond-to('at500') {
+						margin-bottom: 1.5vh;
+					}
+					position: relative;
+					img {
+						position: absolute;
+						top: 50%;
+			    		left: 50%;
+			    		transform: translate(-50%, -50%);
+						width: 100%;
+					}
+				}
+				h3 {
+					@include respond-to('at1000') {
+						text-align: left;
+						padding-left: 10%;
+						width: 70%;
+					}
+					@include respond-to('at500') {
+						text-align: center;
+						padding-left: 0;
+						width: 90%;
+					}
+					color: $grey-medium-dark;
+				}
+			}
 		}
 	}
 	img.hexagons {
