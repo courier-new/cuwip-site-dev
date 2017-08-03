@@ -427,7 +427,11 @@ p,
 					width: 100%;
 				}
 				.logo.container {
+					@include respond-to('at1000') {
+						margin-left: 1em;
+					}
 					@include respond-to('at500') {
+						margin-left: 0;
 						margin-bottom: 1.5vh;
 					}
 					position: relative;

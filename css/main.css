@@ -1011,8 +1011,12 @@ p,
                 width: 70%; } }
         .page .inner > .text.block ul.sponsors.list a .logo.container {
           position: relative; }
+          @media (max-width: 1000px) {
+            .page .inner > .text.block ul.sponsors.list a .logo.container {
+              margin-left: 1em; } }
           @media (max-width: 500px) {
             .page .inner > .text.block ul.sponsors.list a .logo.container {
+              margin-left: 0;
               margin-bottom: 1.5vh; } }
           .page .inner > .text.block ul.sponsors.list a .logo.container img {
             position: absolute;
