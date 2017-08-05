@@ -689,6 +689,10 @@ p,
         margin: 1em 20%; } }
   .page.about.travel h3 {
     margin: 0; }
+  @media (max-width: 10000px) {
+    .page.about.travel p,
+    .page.about.travel ul {
+      margin: 1.25em 0 !important; } }
   @media (max-width: 700px) {
     .page.about.travel p,
     .page.about.travel ul {

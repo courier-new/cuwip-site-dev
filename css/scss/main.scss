@@ -137,6 +137,9 @@ p,
 		}
 		p,
 		ul {
+			@include respond-to('xlarge') {
+				margin: 1.25em 0 !important;
+			}
 			@include respond-to('at700') {
 				margin: 1em 0 !important;
 			}
