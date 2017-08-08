@@ -113,17 +113,22 @@ p,
 			text-align: left;
 		}
 	}
-	&.about.travel {
+	&.about.travel,
+	&.about.faq {
 		@include respond-to('min1000') {
 			padding-left: 15em;
 		}
-		span.address {
+		span.address,
+		span.template {
 			background: white;
 			display: block;
 			padding: 1em 1.5em;
 			line-height: 1.5em;
 			margin: 2em;
 			max-width: 300px;
+		}
+		span.template {
+			max-width: 90%;
 		}
 		img {
 			@include respond-to('min700') {
@@ -231,7 +236,7 @@ p,
 		text-align: center;
 		&.hiding.container {
 			overflow: hidden;
-			height: 100vh; /* height set dynamically by scroll-effect.js */
+			height: auto; /* height set dynamically by scroll-effect.js */
 			& > .text.block {
 				margin-bottom: 10px;
 			}

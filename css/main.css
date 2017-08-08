@@ -671,37 +671,43 @@ p,
   .page.about .inner > .text.block {
     text-align: left; }
   @media (min-width: 1000px) {
-    .page.about.travel {
+    .page.about.travel, .page.about.faq {
       padding-left: 15em; } }
-  .page.about.travel span.address {
+  .page.about.travel span.address,
+  .page.about.travel span.template, .page.about.faq span.address,
+  .page.about.faq span.template {
     background: white;
     display: block;
     padding: 1em 1.5em;
     line-height: 1.5em;
     margin: 2em;
     max-width: 300px; }
-  .page.about.travel img {
+  .page.about.travel span.template, .page.about.faq span.template {
+    max-width: 90%; }
+  .page.about.travel img, .page.about.faq img {
     width: 80%;
     margin: 1em 10%; }
     @media (min-width: 700px) {
-      .page.about.travel img {
+      .page.about.travel img, .page.about.faq img {
         width: 60%;
         margin: 1em 20%; } }
-  .page.about.travel h3 {
+  .page.about.travel h3, .page.about.faq h3 {
     margin: 0; }
   @media (max-width: 10000px) {
     .page.about.travel p,
-    .page.about.travel ul {
+    .page.about.travel ul, .page.about.faq p,
+    .page.about.faq ul {
       margin: 1.25em 0 !important; } }
   @media (max-width: 700px) {
     .page.about.travel p,
-    .page.about.travel ul {
+    .page.about.travel ul, .page.about.faq p,
+    .page.about.faq ul {
       margin: 1em 0 !important; } }
   @media (max-width: 10000px) {
-    .page.about.travel .forward.back.buttons {
+    .page.about.travel .forward.back.buttons, .page.about.faq .forward.back.buttons {
       display: none; } }
   @media (max-width: 1000px) {
-    .page.about.travel .forward.back.buttons {
+    .page.about.travel .forward.back.buttons, .page.about.faq .forward.back.buttons {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -716,13 +722,15 @@ p,
       align-items: center;
       padding: 2em 0 3em 0; } }
   .page.about.travel .forward.back.buttons a:hover,
-  .page.about.travel .forward.back.buttons a:active {
+  .page.about.travel .forward.back.buttons a:active, .page.about.faq .forward.back.buttons a:hover,
+  .page.about.faq .forward.back.buttons a:active {
     cursor: pointer; }
     .page.about.travel .forward.back.buttons a:hover .button,
-    .page.about.travel .forward.back.buttons a:active .button {
+    .page.about.travel .forward.back.buttons a:active .button, .page.about.faq .forward.back.buttons a:hover .button,
+    .page.about.faq .forward.back.buttons a:active .button {
       background: #851e46;
       color: white; }
-  .page.about.travel .forward.back.buttons .button {
+  .page.about.travel .forward.back.buttons .button, .page.about.faq .forward.back.buttons .button {
     background: white;
     min-width: 120px;
     padding: 0.3em 1em 0.5em 1em;
@@ -730,17 +738,17 @@ p,
     -webkit-transition: background 0.3s, color 0.3s;
     -o-transition: background 0.3s, color 0.3s;
     transition: background 0.3s, color 0.3s; }
-    .page.about.travel .forward.back.buttons .button.none {
+    .page.about.travel .forward.back.buttons .button.none, .page.about.faq .forward.back.buttons .button.none {
       opacity: 0; }
-    .page.about.travel .forward.back.buttons .button.next {
+    .page.about.travel .forward.back.buttons .button.next, .page.about.faq .forward.back.buttons .button.next {
       text-align: right; }
-    .page.about.travel .forward.back.buttons .button.back {
+    .page.about.travel .forward.back.buttons .button.back, .page.about.faq .forward.back.buttons .button.back {
       text-align: left; }
-    .page.about.travel .forward.back.buttons .button span {
+    .page.about.travel .forward.back.buttons .button span, .page.about.faq .forward.back.buttons .button span {
       display: block;
       font-weight: 400;
       line-height: 1.5em; }
-      .page.about.travel .forward.back.buttons .button span.next.label, .page.about.travel .forward.back.buttons .button span.back.label {
+      .page.about.travel .forward.back.buttons .button span.next.label, .page.about.travel .forward.back.buttons .button span.back.label, .page.about.faq .forward.back.buttons .button span.next.label, .page.about.faq .forward.back.buttons .button span.back.label {
         font-size: 1.2em;
         font-weight: 600;
         text-transform: uppercase; }
@@ -781,7 +789,7 @@ p,
     text-align: center; }
     .page .inner.hiding.container {
       overflow: hidden;
-      height: 100vh;
+      height: auto;
       /* height set dynamically by scroll-effect.js */ }
       .page .inner.hiding.container > .text.block {
         margin-bottom: 10px; }
