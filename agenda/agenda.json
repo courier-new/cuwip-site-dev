@@ -1,0 +1,113 @@
+{
+	"schedule": [
+		{
+			"day": "friday",
+			"college": "Harvey Mudd College",
+			"scollege": "Harvey Mudd",
+			"event": [
+				{
+					"name": "Check-In",
+					"sname": "checkin",
+					"type": "logistics",
+					"timeStart": "12:00 PM",
+					"timeEnd": "2:00 PM",
+					"place": "DoubleTree Hotel",
+					"shortDesc": "Upon arrival at DoubleTree, please have your photo ID available to check in at the front desk. If you are presenting research, you will be able to leave your poster in x location."
+				},
+				{
+					"name": "Lunch",
+					"sname": "lunch",
+					"type": "food",
+					"timeStart": "12:30 PM",
+					"timeEnd": "2:00 PM",
+					"place": "TBD",
+					"shortDesc": "Lunch will be provided by blahblahblah. Need to RSVP. Optional lunch, next meal is dinner."
+				},
+				{
+					"name": "Opening Remarks",
+					"sname": "opening",
+					"type": "talk",
+					"timeStart": "2:00 PM",
+					"timeEnd": "3:00 PM",
+					"place": "Galileo/McAlester Auditorium",
+					"shortDesc": "Mary Sue will deliver a warm welcome too all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic etc. of the conference."
+				},
+				{
+					"name": "Panel1",
+					"sname": "panel1",
+					"type": "panel",
+					"timeStart": "3:00 PM",
+					"timeEnd": "4:00 PM",
+					"place": "Galileo/McAlester Auditorium",
+					"shortDesc": "Some people will form a panel to discuss some topic and their experiences and take questions about said topic and stuff blahblahblah."
+				}
+			]
+		},
+		{
+			"day": "saturday",
+			"college": "Pomona College",
+			"scollege": "Pomona",
+			"event": [
+				{
+					"name": "Check-In",
+					"sname": "checkin",
+					"type": "logistics",
+					"timeStart": "12:00 PM",
+					"timeEnd": "2:00 PM",
+					"place": "DoubleTree Hotel",
+					"shortDesc": "Upon arrival at DoubleTree, please have your photo ID available to check in at the front desk. If you are presenting research, you will be able to leave your poster in x location."
+				},
+				{
+					"name": "Lunch",
+					"sname": "lunch",
+					"type": "food",
+					"timeStart": "12:30 PM",
+					"timeEnd": "2:00 PM",
+					"place": "TBD",
+					"shortDesc": "Lunch will be provided by blahblahblah. Need to RSVP. Optional lunch, next meal is dinner."
+				},
+				{
+					"name": "Opening Remarks",
+					"sname": "opening",
+					"type": "talk",
+					"timeStart": "2:00 PM",
+					"place": "Galileo/McAlester Auditorium",
+					"shortDesc": "Mary Sue will deliver a warm welcome too all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic etc. of the conference."
+				}
+			]
+		},
+		{
+			"day": "sunday",
+			"college": "Cal Poly Pomona",
+			"scollege": "Cal Poly Pomona",
+			"event": [
+				{
+					"name": "Check-In",
+					"sname": "checkin",
+					"type": "logistics",
+					"timeStart": "12:00 PM",
+					"timeEnd": "2:00 PM",
+					"place": "DoubleTree Hotel",
+					"shortDesc": "Upon arrival at DoubleTree, please have your photo ID available to check in at the front desk. If you are presenting research, you will be able to leave your poster in x location."
+				},
+				{
+					"name": "Lunch",
+					"sname": "lunch",
+					"type": "food",
+					"timeStart": "12:30 PM",
+					"timeEnd": "2:00 PM",
+					"place": "TBD",
+					"shortDesc": "Lunch will be provided by blahblahblah. Need to RSVP. Optional lunch, next meal is dinner."
+				},
+				{
+					"name": "Opening Remarks",
+					"sname": "opening",
+					"type": "talk",
+					"timeStart": "2:00 PM",
+					"place": "Galileo/McAlester Auditorium",
+					"shortDesc": "Mary Sue will deliver a warm welcome too all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic etc. of the conference."
+				}
+			]
+		}
+	]
+}
