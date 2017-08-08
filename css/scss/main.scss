@@ -540,10 +540,11 @@ p,
 		ul.organizers.list {
 			@include respond-to('xlarge') {
 				flex-direction: row;
+				margin: 0 0 1em 0;
 				width: 100%;
 			}
 			@include respond-to('at700') {
-				margin: 0 10%;
+				margin: 0 10% 1em 10%;
 				flex-direction: column;
 				width: 80%;
 			}
@@ -552,7 +553,6 @@ p,
 			display: flex;
 			justify-content: space-between;
 			padding: 0;
-			margin: 0;
 			li {
 				@include respond-to('xlarge') {
 					width: 31%;
@@ -569,7 +569,7 @@ p,
 				}
 				img {
 					@include respond-to('xlarge') {
-						margin: 2.3em 30%;
+						margin: 1em 30% 2.3em 30%;
 						width: 40%;
 					}
 					@include respond-to('at700') {
