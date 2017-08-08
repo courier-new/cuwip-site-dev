@@ -318,7 +318,7 @@
 			// Get name of subsection
 			var $name = $(this).find('h1')[0].innerHTML;
 			// Condense to short name of subsection
-			var $sname = $name.replace(" ", "").toLowerCase();
+			var $sname = $name.replace(/ /g, "").toLowerCase();
 			$menuOutput += "<a class='" + $sname;
 			$menuOutput += $isFirst ? " current" : "";
 			if ($isFirst) {
