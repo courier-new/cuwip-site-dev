@@ -670,6 +670,9 @@ p,
     background: #f5f2f1; }
   .page.about .inner > .text.block {
     text-align: left; }
+    .page.about .inner > .text.block img {
+      margin: 0 8%;
+      width: 84%; }
   @media (min-width: 1000px) {
     .page.about.travel, .page.about.faq {
       padding-left: 15em; } }

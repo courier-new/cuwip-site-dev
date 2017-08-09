@@ -58,6 +58,29 @@
 			"after": {
 				"text": "The application and registration for CUWiP 2018 are now closed, but keep an eye out for information about CUWiP 2019 next fall! To this year's attendees, if you completed registration but did not yet receive a welcome email, please <a href='../contact'>contact us</a> immediately so that we can locate the error."
 			}
+		},
+		{
+			"dataPlace": "posters",
+			"before": {
+				"header": "We are not yet accepting abstracts",
+				"text":   "If you would like to present a research poster at CUWiP 2018, please prepare and be ready to submit a poster title and abstract (250 words) during registration between November 6th and November 17th. Presenting a research poster is completely voluntary and will not affect your chances of being accepted to the conference in any way."
+			},
+			"applyPeriod": {
+				"header": "We are not yet accepting abstracts",
+				"text":   "If you would like to present a research poster at CUWiP 2018, please prepare and be ready to submit a poster title and abstract (250 words) during registration between November 6th and November 17th. Presenting a research poster is completely voluntary and will not affect your chances of being accepted to the conference in any way."
+			},
+			"reviewPeriod": {
+				"header": "We are not yet accepting abstracts",
+				"text":   "If you would like to present a research poster at CUWiP 2018, please prepare and be ready to submit a poster title and abstract (250 words) during registration between November 6th and November 17th. Presenting a research poster is completely voluntary and will not affect your chances of being accepted to the conference in any way."
+			},
+			"registerPeriod": {
+				"header": "We are now accepting abstracts",
+				"text":   "If you would like to present a research poster at CUWiP 2018, please submit a poster title and abstract of up to 250 words when you confirm your attendance and register for the conference. Presenting a research poster is completely voluntary but highly recommended if you have conducted physics or other related research. If you have questions about submitting an abstract, please <a href='../contact'>contact us</a> before November 17th."
+			},
+			"after": {
+				"header": "We are no longer accepting abstracts",
+				"text":   "The application and registration for CUWiP 2018 are now closed, and we have finished accepting abstracts. If you were unable to submit an abstract during registration but are interested in presenting a research poster, please <a href='../contact'>contact us</a> as soon as possible, and we will try to fit you in."
+			}
 		}
 	]
 }

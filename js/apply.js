@@ -125,6 +125,31 @@ function addAppInfo() {
 					$mesLoc.html(output);
 				}
 			}
+			// For poster message
+			if (curr.dataPlace === 'posters') {
+				// Identify posters alert box
+				let $alertBox = $('.alert.message');
+				// If alert box configured for poster info exists
+				if ($alertBox.length && $alertBox.data("place") === 'poster-info') {
+					// Variable to hold alert message content
+					let output = "<strong>";
+					// Variable to remember appropriate section of time data
+					let mes = "";
+					// If current time is before application opens
+					mes = getTimeUntil(applyOpen) > 0 ? curr.before : mes;
+					// If current time is after application opens and before application closes
+					mes = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? curr.applyPeriod : mes;
+					// If current time is after application closes and before registration opens
+					mes = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? curr.reviewPeriod : mes;
+					// If current time is after registration opens and before registration closes
+				 	mes = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? curr.registerPeriod : mes;
+					// If current time is after registration closes
+					mes = getTimeUntil(registerClose) < 0 ? curr.after : mes;
+					output += mes.header + "</strong>\n";
+					output += "<p>\n" + mes.text + "\n</p>\n";
+					$alertBox.html(output);
+				}
+			}
 	   });
 	}
 }

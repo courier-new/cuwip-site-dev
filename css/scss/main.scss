@@ -111,6 +111,10 @@ p,
 	&.about {
 		.inner > .text.block {
 			text-align: left;
+			img {
+				margin: 0 8%;
+				width: 84%;
+			}
 		}
 	}
 	&.about.travel,

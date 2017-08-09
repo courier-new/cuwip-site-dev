@@ -581,6 +581,31 @@
 						_$mesLoc.html(_output2);
 					}
 				}
+				// For poster message
+				if (curr.dataPlace === 'posters') {
+					// Identify posters alert box
+					var _$alertBox = $('.alert.message');
+					// If alert box configured for poster info exists
+					if (_$alertBox.length && _$alertBox.data("place") === 'poster-info') {
+						// Variable to hold alert message content
+						var _output3 = "<strong>";
+						// Variable to remember appropriate section of time data
+						var _mes = "";
+						// If current time is before application opens
+						_mes = getTimeUntil(applyOpen) > 0 ? curr.before : _mes;
+						// If current time is after application opens and before application closes
+						_mes = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod : _mes;
+						// If current time is after application closes and before registration opens
+						_mes = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod : _mes;
+						// If current time is after registration opens and before registration closes
+						_mes = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod : _mes;
+						// If current time is after registration closes
+						_mes = getTimeUntil(registerClose) < 0 ? curr.after : _mes;
+						_output3 += _mes.header + "</strong>\n";
+						_output3 += "<p>\n" + _mes.text + "\n</p>\n";
+						_$alertBox.html(_output3);
+					}
+				}
 			});
 		}
 	}
