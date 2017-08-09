@@ -18,69 +18,75 @@ if ($parallax.length) {
 
 // Main window scrolling and resizing actions
 let windowListener = function() {
-	let $scrollY = window.scrollY + 30
+	if (!appData.infoblocks.length) {
+		setTimeout(function() {
+			addAppInfo();
+		}, 50);
+	} else {
+		let $scrollY = window.scrollY + 30
 
-	// If parallax element is present on page
-	if ($parallax.length) {
-		let scrolled = $(window).scrollTop();
-		// Scroll parallax element at 40% normal scroll speed
-		$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
-		// If current scroll position is past the parallax title page and screen width is between mobile and large
-	}
-
-	// If nav menu is present on page
-	if ($nav.length) {
-		// If window is mobile size
-		if ($(window).width() <= 700) {
-			// Force mobile menu
-			$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
-			$nav.next().next().removeClass('sticky');
-			$footer.addClass('mobile');
+		// If parallax element is present on page
+		if ($parallax.length) {
+			let scrolled = $(window).scrollTop();
+			// Scroll parallax element at 40% normal scroll speed
+			$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
+			// If current scroll position is past the parallax title page and screen width is between mobile and large
 		}
-		// Otherwise, if parallax element is present on page
-		else if ($parallax.length) {
-			if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
+
+		// If nav menu is present on page
+		if ($nav.length) {
+			// If window is mobile size
+			if ($(window).width() <= 700) {
+				// Force mobile menu
+				$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
+				$nav.next().next().removeClass('sticky');
+				$footer.addClass('mobile');
+			}
+			// Otherwise, if parallax element is present on page
+			else if ($parallax.length) {
+				if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
+					// Force sticky menu
+					$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
+					$nav.next().next().addClass('sticky');
+					$footer.removeClass('mobile');
+					$('nav.menu.drawer').slideUp();
+				} else {
+					// Otherwise replace sticky menu at normal position
+					$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
+					$nav.next().next().removeClass('sticky');
+					$footer.removeClass('mobile');
+					$('nav.menu.drawer').slideUp();
+				}
+			}
+			// Otherwise, just use sticky menu
+			else {
 				// Force sticky menu
 				$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
 				$nav.next().next().addClass('sticky');
 				$footer.removeClass('mobile');
 				$('nav.menu.drawer').slideUp();
-			} else {
-				// Otherwise replace sticky menu at normal position
-				$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
-				$nav.next().next().removeClass('sticky');
-				$footer.removeClass('mobile');
-				$('nav.menu.drawer').slideUp();
 			}
 		}
-		// Otherwise, just use sticky menu
-		else {
-			// Force sticky menu
-			$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-			$nav.next().next().addClass('sticky');
-			$footer.removeClass('mobile');
-			$('nav.menu.drawer').slideUp();
-		}
-	}
 
-	// For each page section
-	$pages.each(function() {
-		// Remember the top of that page
-		let pageTop = $(this).offset().top
-		// If the current scroll position rests within this page section
-		if ($scrollY >= pageTop && $scrollY < (pageTop + $(this).height())) {
-			// Make sure page is marked as seen and focused
-			if (!$(this).hasClass('seen')) {
-				$(this).addClass('seen')
+		// For each page section
+		$pages.each(function() {
+			// Remember the top of that page
+			let pageTop = $(this).offset().top
+			// If the current scroll position rests within this page section
+			if ($scrollY >= pageTop && $scrollY < (pageTop + $(this).height())) {
+				// Make sure page is marked as seen and focused
+				if (!$(this).hasClass('seen')) {
+					$(this).addClass('seen')
+				}
+				if (!$(this).hasClass('focused')) {
+					$(this).addClass('focused')
+				}
+			} else if ($(this).hasClass('focused')) { // Otherwise if page is marked as focused but current scroll position does not rest within it
+				// Remove focused mark from page
+				$(this).removeClass('focused')
 			}
-			if (!$(this).hasClass('focused')) {
-				$(this).addClass('focused')
-			}
-		} else if ($(this).hasClass('focused')) { // Otherwise if page is marked as focused but current scroll position does not rest within it
-			// Remove focused mark from page
-			$(this).removeClass('focused')
-		}
-	});
+		});
+	}
 };
 
 // Set initial height of .inner.hiding.container

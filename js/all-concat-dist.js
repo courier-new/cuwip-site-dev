@@ -77,70 +77,76 @@
 
 	// Main window scrolling and resizing actions
 	var windowListener = function windowListener() {
-		var $scrollY = window.scrollY + 30;
+		if (!appData.infoblocks.length) {
+			setTimeout(function () {
+				addAppInfo();
+			}, 50);
+		} else {
+			var $scrollY = window.scrollY + 30;
 
-		// If parallax element is present on page
-		if ($parallax.length) {
-			var scrolled = $(window).scrollTop();
-			// Scroll parallax element at 40% normal scroll speed
-			$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
-			// If current scroll position is past the parallax title page and screen width is between mobile and large
-		}
-
-		// If nav menu is present on page
-		if ($nav.length) {
-			// If window is mobile size
-			if ($(window).width() <= 700) {
-				// Force mobile menu
-				$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
-				$nav.next().next().removeClass('sticky');
-				$footer.addClass('mobile');
+			// If parallax element is present on page
+			if ($parallax.length) {
+				var scrolled = $(window).scrollTop();
+				// Scroll parallax element at 40% normal scroll speed
+				$('.parallax.background').css('top', -(scrolled * 0.4) + 'px');
+				// If current scroll position is past the parallax title page and screen width is between mobile and large
 			}
-			// Otherwise, if parallax element is present on page
-			else if ($parallax.length) {
-					if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
-						// Force sticky menu
-						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-						$nav.next().next().addClass('sticky');
-						$footer.removeClass('mobile');
-						$('nav.menu.drawer').slideUp();
-					} else {
-						// Otherwise replace sticky menu at normal position
-						$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
-						$nav.next().next().removeClass('sticky');
-						$footer.removeClass('mobile');
-						$('nav.menu.drawer').slideUp();
-					}
-				}
-				// Otherwise, just use sticky menu
-				else {
-						// Force sticky menu
-						$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
-						$nav.next().next().addClass('sticky');
-						$footer.removeClass('mobile');
-						$('nav.menu.drawer').slideUp();
-					}
-		}
 
-		// For each page section
-		$pages.each(function () {
-			// Remember the top of that page
-			var pageTop = $(this).offset().top;
-			// If the current scroll position rests within this page section
-			if ($scrollY >= pageTop && $scrollY < pageTop + $(this).height()) {
-				// Make sure page is marked as seen and focused
-				if (!$(this).hasClass('seen')) {
-					$(this).addClass('seen');
+			// If nav menu is present on page
+			if ($nav.length) {
+				// If window is mobile size
+				if ($(window).width() <= 700) {
+					// Force mobile menu
+					$nav.removeClass('sticky').removeClass('docked').addClass('mobile');
+					$nav.next().next().removeClass('sticky');
+					$footer.addClass('mobile');
 				}
-				if (!$(this).hasClass('focused')) {
-					$(this).addClass('focused');
-				}
-			} else if ($(this).hasClass('focused')) {
-				// Otherwise if page is marked as focused but current scroll position does not rest within it
-				// Remove focused mark from page
-				$(this).removeClass('focused');
+				// Otherwise, if parallax element is present on page
+				else if ($parallax.length) {
+						if ($(window).scrollTop() > $menuLocation || $(window).width() <= 1000 && $(window).width() > 700) {
+							// Force sticky menu
+							$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
+							$nav.next().next().addClass('sticky');
+							$footer.removeClass('mobile');
+							$('nav.menu.drawer').slideUp();
+						} else {
+							// Otherwise replace sticky menu at normal position
+							$nav.removeClass('sticky').addClass('docked').removeClass('mobile');
+							$nav.next().next().removeClass('sticky');
+							$footer.removeClass('mobile');
+							$('nav.menu.drawer').slideUp();
+						}
+					}
+					// Otherwise, just use sticky menu
+					else {
+							// Force sticky menu
+							$nav.addClass('sticky').removeClass('docked').removeClass('mobile');
+							$nav.next().next().addClass('sticky');
+							$footer.removeClass('mobile');
+							$('nav.menu.drawer').slideUp();
+						}
 			}
-		});
+
+			// For each page section
+			$pages.each(function () {
+				// Remember the top of that page
+				var pageTop = $(this).offset().top;
+				// If the current scroll position rests within this page section
+				if ($scrollY >= pageTop && $scrollY < pageTop + $(this).height()) {
+					// Make sure page is marked as seen and focused
+					if (!$(this).hasClass('seen')) {
+						$(this).addClass('seen');
+					}
+					if (!$(this).hasClass('focused')) {
+						$(this).addClass('focused');
+					}
+				} else if ($(this).hasClass('focused')) {
+					// Otherwise if page is marked as focused but current scroll position does not rest within it
+					// Remove focused mark from page
+					$(this).removeClass('focused');
+				}
+			});
+		}
 	};
 
 	// Set initial height of .inner.hiding.container
@@ -229,73 +235,72 @@
 	// Variable for storing all of the navigation items retrieved from json
 	var navData = void 0;
 
-	$.when(getNavs()).then(function () {
-		setTimeout(function () {
-			addNavs();
-		}, 100);
+	$.getJSON('/js/nav.json', function (data) {
+		navData = data;
+		addNavs();
 	});
 
-	function getNavs() {
-		$.getJSON('/js/nav.json', function (data) {
-			navData = data;
-		});
-	}
-
 	function addNavs() {
-		// Variable to hold string of content to fill nav menu
-		var navContent = "<ul>\n";
-		// Variable to hold mobile drawer of certain nav items
-		var navDrawer = "<div class='drawer'><ul>\n";
-		// Boolean to track where the break between mobile and desktop-only items is
-		var stillOnMobile = true;
-		$(navData.pages).each(function () {
-			var curr = $(this)[0];
-			// Add components of nav menu item
-			// If stillOnMobile but curr is desktop-only
-			if (stillOnMobile && !curr.mobile) {
-				// Remember that all succeeding items are not mobile
-				stillOnMobile = false;
-				// Add "more" button
-				navContent += "<a class='hamburger'><img class='nav icon' src='../img/more-256.png' /><li>More</li></a>\n";
-			}
-			// Variable to hold current item's content string
-			var output = "<a class='";
-			// Check if current nav item corresponds to current page
-			var isCurrentPage = curr.name.toLowerCase() === $currPage;
-			output += isCurrentPage ? "current " : "";
-			// If current nav item is desktop-only
-			output += curr.mobile ? "" : "desktop only";
-			// Add link unless nav item is current page
-			output += isCurrentPage ? "'>" : "' href='.." + curr.link + "'>";
-			// Make sure only mobile items have nav icons
-			if (curr.mobile && curr.icon === "") {
-				console.log("Warning: " + curr.name + " navigation item is marked to display on mobile navigation menu but has no icon specified.");
-			} else if (!curr.mobile && curr.icon !== "") {
-				console.log("Warning: " + curr.name + " navigation item is marked to display on desktop navigation menu only but has an icon specified.");
-			}
-			// If nav item has an icon
-			if (curr.icon !== "") {
-				output += "<img class='nav icon' src='../img/" + curr.icon;
-				// If nav item is current page, use turquoise icon variant
-				output += isCurrentPage ? "-turquoise" : "";
-				output += ".png' />";
-			}
-			output += "<li>" + curr.name;
-			// Add border element if nav item is current page
-			output += isCurrentPage ? "<span class='border'></span>" : "";
-			output += "</li></a>\n";
-			// Add nav item content string to full nav menu string
-			navContent += output;
-			// Add relevant items to nav drawer string
-			navDrawer += stillOnMobile ? "" : output;
-		});
-		// Complete nav menu
-		navContent += "</ul>\n";
-		// Add completed navigation menu
-		$('nav.main.menu').html(navContent);
-		// Complete nav drawer
-		navDrawer += "</ul></div>\n";
-		$('nav.menu.drawer').html(navDrawer);
+		if (!navData.pages.length) {
+			setTimeout(function () {
+				addNavs();
+			}, 50);
+		} else {
+			// Variable to hold string of content to fill nav menu
+			var navContent = "<ul>\n";
+			// Variable to hold mobile drawer of certain nav items
+			var navDrawer = "<div class='drawer'><ul>\n";
+			// Boolean to track where the break between mobile and desktop-only items is
+			var stillOnMobile = true;
+			$(navData.pages).each(function () {
+				var curr = $(this)[0];
+				// Add components of nav menu item
+				// If stillOnMobile but curr is desktop-only
+				if (stillOnMobile && !curr.mobile) {
+					// Remember that all succeeding items are not mobile
+					stillOnMobile = false;
+					// Add "more" button
+					navContent += "<a class='hamburger'><img class='nav icon' src='../img/more-256.png' /><li>More</li></a>\n";
+				}
+				// Variable to hold current item's content string
+				var output = "<a class='";
+				// Check if current nav item corresponds to current page
+				var isCurrentPage = curr.name.toLowerCase() === $currPage;
+				output += isCurrentPage ? "current " : "";
+				// If current nav item is desktop-only
+				output += curr.mobile ? "" : "desktop only";
+				// Add link unless nav item is current page
+				output += isCurrentPage ? "'>" : "' href='.." + curr.link + "'>";
+				// Make sure only mobile items have nav icons
+				if (curr.mobile && curr.icon === "") {
+					console.log("Warning: " + curr.name + " navigation item is marked to display on mobile navigation menu but has no icon specified.");
+				} else if (!curr.mobile && curr.icon !== "") {
+					console.log("Warning: " + curr.name + " navigation item is marked to display on desktop navigation menu only but has an icon specified.");
+				}
+				// If nav item has an icon
+				if (curr.icon !== "") {
+					output += "<img class='nav icon' src='../img/" + curr.icon;
+					// If nav item is current page, use turquoise icon variant
+					output += isCurrentPage ? "-turquoise" : "";
+					output += ".png' />";
+				}
+				output += "<li>" + curr.name;
+				// Add border element if nav item is current page
+				output += isCurrentPage ? "<span class='border'></span>" : "";
+				output += "</li></a>\n";
+				// Add nav item content string to full nav menu string
+				navContent += output;
+				// Add relevant items to nav drawer string
+				navDrawer += stillOnMobile ? "" : output;
+			});
+			// Complete nav menu
+			navContent += "</ul>\n";
+			// Add completed navigation menu
+			$('nav.main.menu').html(navContent);
+			// Complete nav drawer
+			navDrawer += "</ul></div>\n";
+			$('nav.menu.drawer').html(navDrawer);
+		}
 	}
 
 	// On click of hamburger, toggle display of menu drawer
@@ -461,18 +466,11 @@
 	// Variable for storing all of the application information pieces retrieved from json
 	var appData = void 0;
 
-	$.when(getAppInfo()).then(function () {
-		setTimeout(function () {
-			addAppInfo();
-			windowListener();
-		}, 400);
+	$.getJSON('/js/apply.json', function (data) {
+		appData = data;
+		addAppInfo();
+		windowListener();
 	});
-
-	function getAppInfo() {
-		$.getJSON('/js/apply.json', function (data) {
-			appData = data;
-		});
-	}
 
 	function getTimeUntil(t, readable) {
 		readable = readable || false;
@@ -503,82 +501,88 @@
 	}
 
 	function addAppInfo() {
-
-		$(appData.infoblocks).each(function () {
-			var curr = $(this)[0];
-			// For alert message
-			if (curr.dataPlace === 'alert') {
-				// Identify alert box
-				var $alertBox = $('.alert.message');
-				// If alert box configured for application info exists
-				if ($alertBox.length && $alertBox.data("place") === 'app-info') {
-					// Variable to hold alert message content
-					var output = "<strong>";
-					// Variable to remember appropriate section of time data
-					var mes = "";
-					// If current time is before application opens
-					mes = getTimeUntil(applyOpen) > 0 ? curr.before : mes;
-					// If current time is after application opens and before application closes
-					mes = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod : mes;
-					// If current time is after application closes and before registration opens
-					mes = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod : mes;
-					// If current time is after registration opens and before registration closes
-					mes = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod : mes;
-					// If current time is after registration closes
-					mes = getTimeUntil(registerClose) < 0 ? curr.after : mes;
-					output += mes.header + "</strong>\n";
-					output += "<p>\n" + mes.text + "\n</p>\n";
-					$alertBox.html(output);
-					// If current time is after application opens and before application closes
-					if (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) {
-						// Set up application deadline countdown
-						$('.time.until.close').html(getTimeUntil(applyClose, true));
+		if (!appData.infoblocks.length) {
+			setTimeout(function () {
+				console.log('trying again');
+				addAppInfo();
+			}, 50);
+		} else {
+			$(appData.infoblocks).each(function () {
+				var curr = $(this)[0];
+				// For alert message
+				if (curr.dataPlace === 'alert') {
+					// Identify alert box
+					var $alertBox = $('.alert.message');
+					// If alert box configured for application info exists
+					if ($alertBox.length && $alertBox.data("place") === 'app-info') {
+						// Variable to hold alert message content
+						var output = "<strong>";
+						// Variable to remember appropriate section of time data
+						var mes = "";
+						// If current time is before application opens
+						mes = getTimeUntil(applyOpen) > 0 ? curr.before : mes;
+						// If current time is after application opens and before application closes
+						mes = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod : mes;
+						// If current time is after application closes and before registration opens
+						mes = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod : mes;
+						// If current time is after registration opens and before registration closes
+						mes = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod : mes;
+						// If current time is after registration closes
+						mes = getTimeUntil(registerClose) < 0 ? curr.after : mes;
+						output += mes.header + "</strong>\n";
+						output += "<p>\n" + mes.text + "\n</p>\n";
+						$alertBox.html(output);
+						// If current time is after application opens and before application closes
+						if (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) {
+							// Set up application deadline countdown
+							$('.time.until.close').html(getTimeUntil(applyClose, true));
+						}
 					}
 				}
-			}
-			// For closing message
-			if (curr.dataPlace === 'closing') {
-				// Identify closing message location
-				var $mesLoc = $('.closing');
-				// If message box configured for application info exists
-				if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
-					// Variable to hold alert message content
-					var _output = "";
-					// If current time is before application opens
-					_output = getTimeUntil(applyOpen) > 0 ? curr.before.text : _output;
-					// If current time is after application opens and before application closes
-					_output = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod.text : _output;
-					// If current time is after application closes and before registration opens
-					_output = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod.text : _output;
-					// If current time is after registration opens and before registration closes
-					_output = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod.text : _output;
-					// If current time is after registration closes
-					_output = getTimeUntil(registerClose) < 0 ? curr.after.text : _output;
-					$mesLoc.html(_output);
+				// For closing message
+				if (curr.dataPlace === 'closing') {
+					// Identify closing message location
+					var $mesLoc = $('.closing');
+					// If message box configured for application info exists
+					if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
+						// Variable to hold alert message content
+						var _output = "";
+						// If current time is before application opens
+						_output = getTimeUntil(applyOpen) > 0 ? curr.before.text : _output;
+						// If current time is after application opens and before application closes
+						_output = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod.text : _output;
+						// If current time is after application closes and before registration opens
+						_output = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod.text : _output;
+						// If current time is after registration opens and before registration closes
+						_output = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod.text : _output;
+						// If current time is after registration closes
+						_output = getTimeUntil(registerClose) < 0 ? curr.after.text : _output;
+						$mesLoc.html(_output);
+					}
 				}
-			}
-			// For about application message
-			if (curr.dataPlace === 'about') {
-				// Identify about application message location
-				var _$mesLoc = $('.about.app');
-				// If message box configured for application info exists
-				if (_$mesLoc.length && _$mesLoc.data("place") === 'app-info') {
-					// Variable to hold alert message content
-					var _output2 = "";
-					// If current time is before application opens
-					_output2 = getTimeUntil(applyOpen) > 0 ? curr.before.text : _output2;
-					// If current time is after application opens and before application closes
-					_output2 = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod.text : _output2;
-					// If current time is after application closes and before registration opens
-					_output2 = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod.text : _output2;
-					// If current time is after registration opens and before registration closes
-					_output2 = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod.text : _output2;
-					// If current time is after registration closes
-					_output2 = getTimeUntil(registerClose) < 0 ? curr.after.text : _output2;
-					_$mesLoc.html(_output2);
+				// For about application message
+				if (curr.dataPlace === 'about') {
+					// Identify about application message location
+					var _$mesLoc = $('.about.app');
+					// If message box configured for application info exists
+					if (_$mesLoc.length && _$mesLoc.data("place") === 'app-info') {
+						// Variable to hold alert message content
+						var _output2 = "";
+						// If current time is before application opens
+						_output2 = getTimeUntil(applyOpen) > 0 ? curr.before.text : _output2;
+						// If current time is after application opens and before application closes
+						_output2 = getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0 ? curr.applyPeriod.text : _output2;
+						// If current time is after application closes and before registration opens
+						_output2 = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? curr.reviewPeriod.text : _output2;
+						// If current time is after registration opens and before registration closes
+						_output2 = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? curr.registerPeriod.text : _output2;
+						// If current time is after registration closes
+						_output2 = getTimeUntil(registerClose) < 0 ? curr.after.text : _output2;
+						_$mesLoc.html(_output2);
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 
 	/* End of apply.js */
