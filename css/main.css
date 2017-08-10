@@ -326,10 +326,7 @@ nav.main.menu {
     background: #252122;
     opacity: 0.9; }
     nav.main.menu.sticky a {
-      color: white;
-      -webkit-transition: opacity 0.25s;
-      -o-transition: opacity 0.25s;
-      transition: opacity 0.25s; }
+      color: white; }
       nav.main.menu.sticky a:hover, nav.main.menu.sticky a:focus {
         outline: 0; }
       nav.main.menu.sticky a.current {
@@ -399,10 +396,7 @@ nav.sub.menu {
       z-index: 80; } }
   @media (max-width: 1400px) {
     nav.sub.menu {
-      padding: 3.75em 1em 3.75em 5%; } }
-  @media (max-width: 1200px) {
-    nav.sub.menu {
-      padding: 3.75em; } }
+      padding: 3.75em 1em 3.75em 3em; } }
   @media (max-width: 1000px) {
     nav.sub.menu {
       text-align: center;
@@ -410,6 +404,9 @@ nav.sub.menu {
       /* same as bottom margin of alerts page */
       padding: 0 0 4em 0;
       position: relative; } }
+  nav.sub.menu.sticky {
+    position: fixed;
+    top: 0; }
   nav.sub.menu strong {
     color: #252122;
     display: block;
@@ -481,13 +478,32 @@ nav.sub.menu {
           font-size: 1em;
           padding: 0.7em;
           margin: 0.4em; } }
+      nav.sub.menu ul a .border {
+        opacity: 0;
+        -webkit-transition: opacity 0.5s;
+        -o-transition: opacity 0.5s;
+        transition: opacity 0.5s; }
+        @media (max-width: 1000px) {
+          nav.sub.menu ul a .border {
+            display: none; } }
       @media (max-width: 10000px) {
         nav.sub.menu ul a.current {
-          color: #0f646d; } }
+          color: #0f646d; }
+          nav.sub.menu ul a.current .border {
+            display: inline-block;
+            width: 0;
+            height: 8.5px;
+            opacity: 1; }
+            nav.sub.menu ul a.current .border::after {
+              content: '';
+              border: 4.5px solid #0f646d;
+              border-radius: 50%;
+              display: block;
+              right: 1.3em;
+              position: relative; } }
       @media (max-width: 1000px) {
         nav.sub.menu ul a.current {
-          background-color: #3dbfbd;
-          color: white; } }
+          color: initial; } }
       nav.sub.menu ul a:hover {
         cursor: pointer; }
 
@@ -685,8 +701,14 @@ p,
     line-height: 1.5em;
     margin: 2em;
     max-width: 300px; }
-  .page.about.travel span.template, .page.about.faq span.template {
-    max-width: 90%; }
+  @media (max-width: 10000px) {
+    .page.about.travel span.template, .page.about.faq span.template {
+      max-width: 90%; } }
+  @media (max-width: 500px) {
+    .page.about.travel span.template, .page.about.faq span.template {
+      margin: 0;
+      margin-bottom: 2em;
+      max-width: 100%; } }
   .page.about.travel img, .page.about.faq img {
     width: 80%;
     margin: 1em 10%; }
@@ -706,55 +728,35 @@ p,
     .page.about.travel ul, .page.about.faq p,
     .page.about.faq ul {
       margin: 1em 0 !important; } }
-  @media (max-width: 10000px) {
-    .page.about.travel .forward.back.buttons, .page.about.faq .forward.back.buttons {
-      display: none; } }
-  @media (max-width: 1000px) {
-    .page.about.travel .forward.back.buttons, .page.about.faq .forward.back.buttons {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      padding: 2em 0 3em 0; } }
-  .page.about.travel .forward.back.buttons a:hover,
-  .page.about.travel .forward.back.buttons a:active, .page.about.faq .forward.back.buttons a:hover,
-  .page.about.faq .forward.back.buttons a:active {
-    cursor: pointer; }
-    .page.about.travel .forward.back.buttons a:hover .button,
-    .page.about.travel .forward.back.buttons a:active .button, .page.about.faq .forward.back.buttons a:hover .button,
-    .page.about.faq .forward.back.buttons a:active .button {
-      background: #851e46;
-      color: white; }
-  .page.about.travel .forward.back.buttons .button, .page.about.faq .forward.back.buttons .button {
+  .page.about.travel .to.top.button, .page.about.faq .to.top.button {
     background: white;
-    min-width: 120px;
+    color: #c68971;
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1.5em;
     padding: 0.3em 1em 0.5em 1em;
-    text-align: left;
+    text-align: center;
+    text-transform: uppercase;
     -webkit-transition: background 0.3s, color 0.3s;
     -o-transition: background 0.3s, color 0.3s;
     transition: background 0.3s, color 0.3s; }
-    .page.about.travel .forward.back.buttons .button.none, .page.about.faq .forward.back.buttons .button.none {
-      opacity: 0; }
-    .page.about.travel .forward.back.buttons .button.next, .page.about.faq .forward.back.buttons .button.next {
-      text-align: right; }
-    .page.about.travel .forward.back.buttons .button.back, .page.about.faq .forward.back.buttons .button.back {
-      text-align: left; }
-    .page.about.travel .forward.back.buttons .button span, .page.about.faq .forward.back.buttons .button span {
-      display: block;
-      font-weight: 400;
-      line-height: 1.5em; }
-      .page.about.travel .forward.back.buttons .button span.next.label, .page.about.travel .forward.back.buttons .button span.back.label, .page.about.faq .forward.back.buttons .button span.next.label, .page.about.faq .forward.back.buttons .button span.back.label {
-        font-size: 1.2em;
-        font-weight: 600;
-        text-transform: uppercase; }
+    @media (max-width: 10000px) {
+      .page.about.travel .to.top.button, .page.about.faq .to.top.button {
+        display: none; } }
+    @media (max-width: 1000px) {
+      .page.about.travel .to.top.button, .page.about.faq .to.top.button {
+        display: block;
+        padding: 1em;
+        width: 50%;
+        margin: 1.5em 25%; } }
+    @media (max-width: 500px) {
+      .page.about.travel .to.top.button, .page.about.faq .to.top.button {
+        width: 90%;
+        margin: 1.5em 5%; } }
+    .page.about.travel .to.top.button:hover, .page.about.travel .to.top.button:active, .page.about.faq .to.top.button:hover, .page.about.faq .to.top.button:active {
+      cursor: pointer;
+      background: #c68971;
+      color: white; }
   .page.header {
     background-color: #f5f2f1; }
     .page.header .header.image {
@@ -930,7 +932,8 @@ p,
     .page .inner > .text.block h3 {
       color: #af275c;
       font-size: 1.1em;
-      font-weight: 600; }
+      font-weight: 600;
+      line-height: 1.5em; }
     .page .inner > .text.block ul.sponsors.list {
       -webkit-box-align: center;
       -webkit-align-items: center;

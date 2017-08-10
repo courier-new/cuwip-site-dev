@@ -5,7 +5,7 @@
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
  * @since     File available since July 11, 2017
- * @version   1.2.0
+ * @version   1.3.0
  */
 
 // Identify parallax page
@@ -15,6 +15,8 @@ let $menuLocation = 0;
 if ($parallax.length) {
 	$menuLocation = ($parallax).offset().top + ($parallax).outerHeight();
 }
+// Remember initial y-location of non-sticky sub nav menu, in case of page with subsections
+let $submenuLocation = 0;
 
 // Main window scrolling and resizing actions
 let windowListener = function() {
@@ -68,6 +70,18 @@ let windowListener = function() {
 			}
 		}
 
+		// If sub nav menu is present on page and window is not mobile size
+		if ($('.sub.menu').length) {
+			// If scroll position passes sub nav menu and window is not mobile size
+			if ($(window).scrollTop() > $submenuLocation && $(window).width() > 1000) {
+				// Force sticky menu
+				$('.sub.menu').addClass('sticky');
+			} else {
+				// Otherwise replace sticky menu at normal position
+				$('.sub.menu').removeClass('sticky');
+			}
+		}
+
 		// For each page section
 		$pages.each(function() {
 			// Remember the top of that page
@@ -86,78 +100,72 @@ let windowListener = function() {
 				$(this).removeClass('focused')
 			}
 		});
-	}
-};
 
-// Set initial height of .inner.hiding.container
-let setSubsectionsHeight = function() {
-	if ($subsections.length) {
-		// Get current/active subsection
-		let $curr = $('nav.sub.menu').find('a.current').attr('class').split(' ')[0];
-		// Animate growing/shrinking of container to current subsection height or sub nav height (whichever is larger)
-		let $newHeight = 0;
-		if ($(window).width() > 700) {
-			$newHeight = $('.' + $curr + '.text.block').height();
-			let $subnavHeight = $('nav.sub.menu').height();
-			$('.hiding.container > .text.block').css('min-height', $subnavHeight);
-			$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
-		} else {
-			$newHeight = $('.' + $curr + '.text.block').outerHeight();
-		}
-		$newHeight += 20;
-		// Only if new height =/= old height
-		if ($('.inner.hiding.container').height() !== $newHeight) {
-			// Animate height change
-			$('.inner.hiding.container').animate({height: $newHeight}, {queue: false});
+		// If page has subsections
+		if ($subsections.length) {
+			// For each subsection
+			$subsections.each(function() {
+				// Remember the top of that subsection, minus the height of the main nav menu
+				let secTop = $(this).offset().top - navHeight;
+				// If the current scroll position rests within this subsection
+				if ($scrollY >= secTop && $scrollY < (secTop + $(this).outerHeight() + 10)) {
+					// Mark subsection as focused
+					if (!$(this).hasClass('focused')) {
+						$(this).addClass('focused');
+					}
+					// Mark corresponding sub menu item as current
+					let $menuItem = $('.sub.menu').find('a.' + $(this).attr('class').split(' ')[0]);
+					if (!$menuItem.hasClass('current')) {
+						$menuItem.addClass('current');
+					}
+				} else if ($(this).hasClass('focused')) { // Otherwise if section is marked as focused but current scroll position does not rest within it
+					// Remove focused mark from section and current mark from nav item
+					$(this).removeClass('focused');
+					$('.sub.menu').find('a.' + $(this).attr('class').split(' ')[0]).removeClass('current');
+				}
+			});
 		}
 	}
-};
-
-// Interpret and scroll to a designated section of an .inner.hiding.container
-let scrollToSubsection = function(section, goToTop) {
-	section = section.toLowerCase().replace(/\s/g, '');
-	let $container = $('.inner.hiding.container');
-	// Animate growing/shrinking of container to new subsection height or sub nav height (whichever is larger)
-	let $newHeight = $('.' + section + '.text.block').height();
-	let $subnavHeight = $('nav.sub.menu').height();
-	$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
-	$newHeight += 20;
-	$container.animate({height: $newHeight}, {queue: false});
-	// Scroll to container height + subsection height - subsection padding
-	let $scrollAmount = $('.' + section + '.text.block').position().top + $container.scrollTop() - parseFloat($container.parent().css('padding-top'));
-	// To also subtract h1 padding, replace this in calculation:
-	// - parseFloat($('.page .inner > .text.block h1').css('margin-top'));
-	$container.animate({scrollTop: $scrollAmount}, {queue: false});
-	if (goToTop) {
-		$('html, body').animate({scrollTop: $container.parent().offset().top}, {queue: false});
-	}
-	// Mark new current subsection on navigation menu
-	$('nav.sub.menu a').each(function() {
-		if ($(this).hasClass('current')) {
-			$(this).removeClass('current');
-		}
-		if ($(this).hasClass(section)) {
-			$(this).addClass('current');
-		}
-	});
 };
 
 // Call windowListener function on user scroll or resize of window
 $(document).on('scroll', windowListener);
 $(window).on('resize', windowListener);
 
-// Call scrollToSubsection function on click of sub navigation menu or next/prev button
-$('nav.sub.menu').on('click', 'a', function() {
-	// Call on name of subsection clicked
-	scrollToSubsection($(this).find('li')[0].innerHTML, false);
-});
-$('.forward.back.buttons, .inner.link').on('click', 'a', function() {
-	// Call on name of subsection clicked
-	if ($(window).width() <= 700) {
-		scrollToSubsection($(this).attr('class'), true);
-	} else {
-		scrollToSubsection($(this).attr('class'), false);
+// Select all links with hashes
+$('body, window').on('click', 'a[href*="#"]', function(event) {
+	// Only apply to same-page hash links
+	if (
+		location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+		&&
+		location.hostname == this.hostname
+	) {
+		// Figure out element to scroll to
+		let target = $(this.hash);
+		target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+		// Does a scroll target exist?
+		if (target.length) {
+			event.preventDefault();
+			// Set scroll amount to target location minus buffer
+			let $scrollAmount = target.offset().top - 20;
+			// If nav menu is in sticky form (at top of screen), subtract nav menu height
+			$scrollAmount -= ($('.main.menu').is('.sticky')) ? $('.main.menu').outerHeight() : 0; //
+			$('html, body').animate({
+				scrollTop: $scrollAmount
+			}, 1000, function() {
+				// Change focus
+				let $target = $(target);
+				$target.focus();
+				if ($target.is(":focus")) { // Checking if the target was focused
+					return false;
+				} else {
+					$target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+					$target.focus(); // Set focus again
+				};
+			});
+		}
 	}
 });
+
 
 /* End of scroll-effect.js */

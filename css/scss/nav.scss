@@ -143,7 +143,6 @@ nav.main.menu {
 		opacity: 0.9;
 		a {
 			color: white;
-			transition: opacity 0.25s;
 			&:hover,
 			&:focus {
 				outline: 0;
@@ -221,10 +220,7 @@ nav.sub.menu {
 		z-index: 80;
 	}
 	@include respond-to('at1400') {
-		padding: (3em * 1 / 0.8) 1em (3em * 1 / 0.8) 5%;
-	}
-	@include respond-to('at1200') {
-		padding: (3em * 1 / 0.8);
+		padding: (3em * 1 / 0.8) 1em (3em * 1 / 0.8) 3em;
 	}
 	@include respond-to('at1000') {
 		text-align: center;
@@ -234,6 +230,10 @@ nav.sub.menu {
 	}
 	font-size: 0.8em;
 	transition: padding 0.3s;
+	&.sticky {
+		position: fixed;
+		top: 0;
+	}
 	strong {
 		@include respond-to('xlarge') {
 			margin: 1em 0 0 0;
@@ -279,13 +279,33 @@ nav.sub.menu {
 			}
 			background: $grey-lightest;
 			transition: background 0.3s, color 0.3s;
+			.border {
+				@include respond-to('at1000') {
+					display: none;
+				}
+				opacity: 0;
+				transition: opacity 0.5s;
+			}
 			&.current {
 				@include respond-to('xlarge') {
 					color: $turquoise-dark;
+					.border {
+						display: inline-block;
+						width: 0;
+						height: 8.5px;
+						opacity: 1;
+						&::after {
+							content: '';
+							border: 4.5px solid $turquoise-dark;
+							border-radius: 50%;
+							display: block;
+							right: 1.3em;
+							position: relative;
+						}
+					}
 				}
 				@include respond-to('at1000') {
-					background-color: $turquoise-light;
-					color: white;
+					color: initial;
 				}
 
 			}

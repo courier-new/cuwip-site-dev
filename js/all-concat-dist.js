@@ -55,6 +55,9 @@
 	var $pages = $('.page');
 	var $subsections = $('.page > .inner.hiding.container > .text.block');
 
+	// Remember the height of main navigation menu
+	var navHeight = 0;
+
 	/* End of global variables*/
 
 	/**
@@ -64,7 +67,7 @@
   *
   * @author    Kelli Rockwell <kellirockwell@mail.com>
   * @since     File available since July 11, 2017
-  * @version   1.2.0
+  * @version   1.3.0
   */
 
 	// Identify parallax page
@@ -74,6 +77,8 @@
 	if ($parallax.length) {
 		$menuLocation = $parallax.offset().top + $parallax.outerHeight();
 	}
+	// Remember initial y-location of non-sticky sub nav menu, in case of page with subsections
+	var $submenuLocation = 0;
 
 	// Main window scrolling and resizing actions
 	var windowListener = function windowListener() {
@@ -127,6 +132,18 @@
 						}
 			}
 
+			// If sub nav menu is present on page and window is not mobile size
+			if ($('.sub.menu').length) {
+				// If scroll position passes sub nav menu and window is not mobile size
+				if ($(window).scrollTop() > $submenuLocation && $(window).width() > 1000) {
+					// Force sticky menu
+					$('.sub.menu').addClass('sticky');
+				} else {
+					// Otherwise replace sticky menu at normal position
+					$('.sub.menu').removeClass('sticky');
+				}
+			}
+
 			// For each page section
 			$pages.each(function () {
 				// Remember the top of that page
@@ -146,77 +163,68 @@
 					$(this).removeClass('focused');
 				}
 			});
-		}
-	};
 
-	// Set initial height of .inner.hiding.container
-	var setSubsectionsHeight = function setSubsectionsHeight() {
-		if ($subsections.length) {
-			// Get current/active subsection
-			var $curr = $('nav.sub.menu').find('a.current').attr('class').split(' ')[0];
-			// Animate growing/shrinking of container to current subsection height or sub nav height (whichever is larger)
-			var $newHeight = 0;
-			if ($(window).width() > 700) {
-				$newHeight = $('.' + $curr + '.text.block').height();
-				var $subnavHeight = $('nav.sub.menu').height();
-				$('.hiding.container > .text.block').css('min-height', $subnavHeight);
-				$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
-			} else {
-				$newHeight = $('.' + $curr + '.text.block').outerHeight();
-			}
-			$newHeight += 20;
-			// Only if new height =/= old height
-			if ($('.inner.hiding.container').height() !== $newHeight) {
-				// Animate height change
-				$('.inner.hiding.container').animate({ height: $newHeight }, { queue: false });
+			// If page has subsections
+			if ($subsections.length) {
+				// For each subsection
+				$subsections.each(function () {
+					// Remember the top of that subsection, minus the height of the main nav menu
+					var secTop = $(this).offset().top - navHeight;
+					// If the current scroll position rests within this subsection
+					if ($scrollY >= secTop && $scrollY < secTop + $(this).outerHeight() + 10) {
+						// Mark subsection as focused
+						if (!$(this).hasClass('focused')) {
+							$(this).addClass('focused');
+						}
+						// Mark corresponding sub menu item as current
+						var $menuItem = $('.sub.menu').find('a.' + $(this).attr('class').split(' ')[0]);
+						if (!$menuItem.hasClass('current')) {
+							$menuItem.addClass('current');
+						}
+					} else if ($(this).hasClass('focused')) {
+						// Otherwise if section is marked as focused but current scroll position does not rest within it
+						// Remove focused mark from section and current mark from nav item
+						$(this).removeClass('focused');
+						$('.sub.menu').find('a.' + $(this).attr('class').split(' ')[0]).removeClass('current');
+					}
+				});
 			}
 		}
-	};
-
-	// Interpret and scroll to a designated section of an .inner.hiding.container
-	var scrollToSubsection = function scrollToSubsection(section, goToTop) {
-		section = section.toLowerCase().replace(/\s/g, '');
-		var $container = $('.inner.hiding.container');
-		// Animate growing/shrinking of container to new subsection height or sub nav height (whichever is larger)
-		var $newHeight = $('.' + section + '.text.block').height();
-		var $subnavHeight = $('nav.sub.menu').height();
-		$newHeight = $subnavHeight > $newHeight ? $subnavHeight : $newHeight;
-		$newHeight += 20;
-		$container.animate({ height: $newHeight }, { queue: false });
-		// Scroll to container height + subsection height - subsection padding
-		var $scrollAmount = $('.' + section + '.text.block').position().top + $container.scrollTop() - parseFloat($container.parent().css('padding-top'));
-		// To also subtract h1 padding, replace this in calculation:
-		// - parseFloat($('.page .inner > .text.block h1').css('margin-top'));
-		$container.animate({ scrollTop: $scrollAmount }, { queue: false });
-		if (goToTop) {
-			$('html, body').animate({ scrollTop: $container.parent().offset().top }, { queue: false });
-		}
-		// Mark new current subsection on navigation menu
-		$('nav.sub.menu a').each(function () {
-			if ($(this).hasClass('current')) {
-				$(this).removeClass('current');
-			}
-			if ($(this).hasClass(section)) {
-				$(this).addClass('current');
-			}
-		});
 	};
 
 	// Call windowListener function on user scroll or resize of window
 	$(document).on('scroll', windowListener);
 	$(window).on('resize', windowListener);
 
-	// Call scrollToSubsection function on click of sub navigation menu or next/prev button
-	$('nav.sub.menu').on('click', 'a', function () {
-		// Call on name of subsection clicked
-		scrollToSubsection($(this).find('li')[0].innerHTML, false);
-	});
-	$('.forward.back.buttons, .inner.link').on('click', 'a', function () {
-		// Call on name of subsection clicked
-		if ($(window).width() <= 700) {
-			scrollToSubsection($(this).attr('class'), true);
-		} else {
-			scrollToSubsection($(this).attr('class'), false);
+	// Select all links with hashes
+	$('body, window').on('click', 'a[href*="#"]', function (event) {
+		// Only apply to same-page hash links
+		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+			// Figure out element to scroll to
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+			// Does a scroll target exist?
+			if (target.length) {
+				event.preventDefault();
+				// Set scroll amount to target location minus buffer
+				var $scrollAmount = target.offset().top - 20;
+				// If nav menu is in sticky form (at top of screen), subtract nav menu height
+				$scrollAmount -= $('.main.menu').is('.sticky') ? $('.main.menu').outerHeight() : 0; //
+				$('html, body').animate({
+					scrollTop: $scrollAmount
+				}, 1000, function () {
+					// Change focus
+					var $target = $(target);
+					$target.focus();
+					if ($target.is(":focus")) {
+						// Checking if the target was focused
+						return false;
+					} else {
+						$target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+						$target.focus(); // Set focus again
+					};
+				});
+			}
 		}
 	});
 
@@ -229,11 +237,11 @@
   *
   * @author    Kelli Rockwell <kellirockwell@mail.com>
   * @since     File available since July 23, 2017
-  * @version   1.0.0
+  * @version   1.1.0
   */
 
 	// Variable for storing all of the navigation items retrieved from json
-	var navData = void 0;
+	var navData = { pages: Array(0) };
 
 	$.getJSON('/js/nav.json', function (data) {
 		navData = data;
@@ -300,8 +308,27 @@
 			// Complete nav drawer
 			navDrawer += "</ul></div>\n";
 			$('nav.menu.drawer').html(navDrawer);
+			navHeight = $('nav.main.menu').outerHeight();
+			setLastSubsectionHeight();
 		}
 	}
+
+	// Add extra padding to last subsection to allow full scroll through it
+	var setLastSubsectionHeight = function setLastSubsectionHeight() {
+		// If page contains subsections and page is not mobile
+		if ($subsections.length && $(window).width() > 1000) {
+			// Get last subsection
+			var last = $subsections[$subsections.length - 1];
+			var $last = $(last);
+			// Get readable section of window
+			var $windowSpace = $(window).outerHeight() - navHeight - $('.footer').outerHeight();
+			// If last subsection is shorter than readable window
+			if ($last.outerHeight() < $windowSpace) {
+				// Make up the difference in padding
+				$last.css('padding-bottom', $windowSpace - $last.outerHeight());
+			}
+		}
+	};
 
 	// On click of hamburger, toggle display of menu drawer
 	$('nav.main.menu').on('click', 'a.hamburger', function () {
@@ -318,65 +345,15 @@
 	if ($subsections.length) {
 		// Fill subsection nav menu
 		var $menuOutput = "<div class='inner'>\n<strong>Quick Navigation</strong>\n<ul>\n";
-		var $isFirst = true;
 		$subsections.each(function () {
 			// Get name of subsection
 			var $name = $(this).find('h1')[0].innerHTML;
 			// Condense to short name of subsection
 			var $sname = $name.replace(/ /g, "").toLowerCase();
-			$menuOutput += "<a class='" + $sname;
-			$menuOutput += $isFirst ? " current" : "";
-			if ($isFirst) {
-				$isFirst = false;
-			}
-			$menuOutput += "'><li>" + $name + "</li></a>\n";
+			$menuOutput += "<a href='#" + $sname + "' class='" + $sname + "'><li><span class='border'></span>" + $name + "</li></a>\n";
 		});
 		$menuOutput += "</ul>\n</div>\n";
 		$('nav.sub.menu').html($menuOutput);
-
-		// Add previous and next buttons to each subsection
-		var addDirectionButtons = function addDirectionButtons() {
-			$subsections.each(function () {
-				var $output = "";
-				// Get previous text block
-				var $prev = $(this).prev();
-				// If previous text block exists
-				if ($prev.length) {
-					// Derive subsection short name from text block
-					$prev = $prev.attr('class').split(' ')[0];
-					$output += "<a class='" + $prev + "'><div class='back button " + $prev + "'>";
-					// Get readable name from corresponding subsection navigation menu label
-					$prev = $('nav.sub.menu').find('a.' + $prev + ' li')[0].innerHTML;
-					$output += "<span class='back label'>Back</span><span class='section label'>" + $prev + "</span>";
-				} else {
-					$output += "<a><div class='back button none'>";
-				}
-				$output += "</div></a>\n";
-				// Get next text block
-				var $next = $(this).next();
-				// If next text block exists
-				if ($next.length) {
-					// Derive subsection short name from text block
-					$next = $next.attr('class').split(' ')[0];
-					$output += "<a class='" + $next + "'><div class='next button " + $next + "'>";
-					// Get readable name from corresponding subsection navigation menu label
-					$next = $('nav.sub.menu').find('a.' + $next + ' li')[0].innerHTML;
-					$output += "<span class='next label'>Next</span><span class='section label'>" + $next + "</span>";
-				} else {
-					$output += "<a><div class='next button none'>";
-				}
-				$output += "</div></a>\n";
-				var $buttons = $(this).find('.forward.back.buttons');
-				$buttons.html($output);
-			});
-		};
-
-		$.when(addDirectionButtons()).then(function () {
-			setTimeout(function () {
-				// Set initial height of subsections panel once prev/next buttons are in
-				setSubsectionsHeight();
-			}, 100);
-		});
 	}
 
 	/* End of nav.js */
@@ -460,15 +437,19 @@
   *
   * @author    Kelli Rockwell <kellirockwell@mail.com>
   * @since     File available since July 23, 2017
-  * @version   1.0.0
+  * @version   1.0.2
   */
 
 	// Variable for storing all of the application information pieces retrieved from json
-	var appData = void 0;
+	var appData = { infoblocks: Array(0) };
 
 	$.getJSON('/js/apply.json', function (data) {
 		appData = data;
 		addAppInfo();
+		// If there is a submenu, set initial submenuLocation
+		if ($('.sub.menu').length) {
+			$submenuLocation = $('.sub.menu').offset().top - parseFloat($('.sub.menu').css('padding-top'));
+		}
 		windowListener();
 	});
 

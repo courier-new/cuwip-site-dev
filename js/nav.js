@@ -5,11 +5,11 @@
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
  * @since     File available since July 23, 2017
- * @version   1.0.0
+ * @version   1.1.0
  */
 
 // Variable for storing all of the navigation items retrieved from json
-let navData;
+let navData = {pages: Array(0)};
 
 $.getJSON('/js/nav.json', function(data) {
    navData = data;
@@ -76,8 +76,27 @@ function addNavs() {
 		// Complete nav drawer
 		navDrawer += "</ul></div>\n"
 		$('nav.menu.drawer').html(navDrawer);
+		navHeight = $('nav.main.menu').outerHeight();
+		setLastSubsectionHeight();
 	}
 }
+
+// Add extra padding to last subsection to allow full scroll through it
+let setLastSubsectionHeight = function() {
+	// If page contains subsections and page is not mobile
+	if ($subsections.length && $(window).width() > 1000) {
+		// Get last subsection
+		let last = $subsections[$subsections.length - 1];
+		let $last = $(last);
+		// Get readable section of window
+		let $windowSpace = $(window).outerHeight() - navHeight - $('.footer').outerHeight();
+		// If last subsection is shorter than readable window
+		if ($last.outerHeight() < $windowSpace) {
+			// Make up the difference in padding
+			$last.css('padding-bottom', $windowSpace - $last.outerHeight());
+		}
+	}
+};
 
 // On click of hamburger, toggle display of menu drawer
 $('nav.main.menu').on('click', 'a.hamburger', function() {	$('nav.menu.drawer').slideToggle();
@@ -93,65 +112,15 @@ $('html').click(function(e) {
 if ($subsections.length) {
 	// Fill subsection nav menu
 	let $menuOutput = "<div class='inner'>\n<strong>Quick Navigation</strong>\n<ul>\n";
-	let $isFirst = true;
 	$subsections.each(function() {
 		// Get name of subsection
 		let $name = $(this).find('h1')[0].innerHTML;
 		// Condense to short name of subsection
 		let $sname = $name.replace(/ /g, "").toLowerCase();
-		$menuOutput += "<a class='" + $sname;
-		$menuOutput += $isFirst ? " current" : "";
-		if ($isFirst) {
-			$isFirst = false;
-		}
-		$menuOutput += "'><li>" + $name + "</li></a>\n";
+		$menuOutput += "<a href='#" + $sname + "' class='" + $sname + "'><li><span class='border'></span>" + $name + "</li></a>\n";
 	});
 	$menuOutput += "</ul>\n</div>\n";
 	$('nav.sub.menu').html($menuOutput);
-
-	// Add previous and next buttons to each subsection
-	let addDirectionButtons = function() {
-		$subsections.each(function() {
-			let $output = "";
-			// Get previous text block
-			let $prev = $(this).prev();
-			// If previous text block exists
-			if ($prev.length) {
-				// Derive subsection short name from text block
-				$prev = $prev.attr('class').split(' ')[0];
-				$output += "<a class='" + $prev + "'><div class='back button " + $prev + "'>";
-				// Get readable name from corresponding subsection navigation menu label
-				$prev = $('nav.sub.menu').find('a.' + $prev + ' li')[0].innerHTML;
-				$output += "<span class='back label'>Back</span><span class='section label'>" + $prev + "</span>";
-			} else {
-				$output += "<a><div class='back button none'>"
-			}
-			$output += "</div></a>\n";
-			// Get next text block
-			let $next = $(this).next();
-			// If next text block exists
-			if ($next.length) {
-				// Derive subsection short name from text block
-				$next = $next.attr('class').split(' ')[0];
-				$output += "<a class='" + $next + "'><div class='next button " + $next + "'>";
-				// Get readable name from corresponding subsection navigation menu label
-				$next = $('nav.sub.menu').find('a.' + $next + ' li')[0].innerHTML;
-				$output += "<span class='next label'>Next</span><span class='section label'>" + $next + "</span>";
-			} else {
-				$output += "<a><div class='next button none'>"
-			}
-			$output += "</div></a>\n";
-			let $buttons = $(this).find('.forward.back.buttons');
-			$buttons.html($output);
-		});
-	}
-
-	$.when(addDirectionButtons()).then(function() {
-	   setTimeout(function() {
-			// Set initial height of subsections panel once prev/next buttons are in
-			setSubsectionsHeight();
-		}, 100);
-	});
 }
 
 /* End of nav.js */

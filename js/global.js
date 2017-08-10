@@ -20,4 +20,7 @@ let $currPage = $nav.attr('class').split(' ')[0];
 let $pages = $('.page');
 let $subsections = $('.page > .inner.hiding.container > .text.block');
 
+// Remember the height of main navigation menu
+let navHeight = 0;
+
 /* End of global variables*/

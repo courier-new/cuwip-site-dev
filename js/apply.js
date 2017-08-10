@@ -5,15 +5,19 @@
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
  * @since     File available since July 23, 2017
- * @version   1.0.0
+ * @version   1.0.2
  */
 
 // Variable for storing all of the application information pieces retrieved from json
-let appData;
+let appData = {infoblocks: Array(0)};
 
 $.getJSON('/js/apply.json', function(data) {
    appData = data;
 	addAppInfo();
+	// If there is a submenu, set initial submenuLocation
+	if ($('.sub.menu').length) {
+		$submenuLocation = $('.sub.menu').offset().top - parseFloat($('.sub.menu').css('padding-top'));
+	}
 	windowListener();
 });
 
