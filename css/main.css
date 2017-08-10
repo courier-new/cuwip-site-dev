@@ -391,7 +391,7 @@ nav.sub.menu {
   @media (max-width: 10000px) {
     nav.sub.menu {
       text-align: left;
-      padding: 3.75em 1em 3.75em 7%;
+      padding: 3.75em 1em 3.75em 5%;
       position: absolute;
       z-index: 80; } }
   @media (max-width: 1400px) {
@@ -408,7 +408,7 @@ nav.sub.menu {
     position: fixed;
     top: 0; }
   nav.sub.menu strong {
-    color: #252122;
+    color: #4d4547;
     display: block;
     font-family: "ABeeZee", sans-serif;
     font-size: 1.3em;
@@ -419,9 +419,14 @@ nav.sub.menu {
     text-transform: uppercase; }
     @media (max-width: 10000px) {
       nav.sub.menu strong {
+        font-size: 1.7em;
         margin: 1em 0 0 0; } }
+    @media (max-width: 1400px) {
+      nav.sub.menu strong {
+        font-size: 1.5em; } }
     @media (max-width: 1000px) {
       nav.sub.menu strong {
+        font-size: 1.3em;
         margin: 0; } }
   nav.sub.menu ul {
     -webkit-box-align: center;
@@ -471,7 +476,11 @@ nav.sub.menu {
       transition: background 0.3s, color 0.3s; }
       @media (max-width: 10000px) {
         nav.sub.menu ul a {
-          font-size: 1.1em;
+          font-size: 1.25em;
+          padding: 0.2em 0.4em 0.2em 0.2em; } }
+      @media (max-width: 1400px) {
+        nav.sub.menu ul a {
+          font-size: 1.2em;
           padding: 0.2em 0.4em 0.2em 0.2em; } }
       @media (max-width: 1000px) {
         nav.sub.menu ul a {
@@ -686,9 +695,14 @@ p,
     background: #f5f2f1; }
   .page.about .inner > .text.block {
     text-align: left; }
-    .page.about .inner > .text.block img {
-      margin: 0 8%;
-      width: 84%; }
+    @media (max-width: 10000px) {
+      .page.about .inner > .text.block img {
+        margin: 0 8%;
+        width: 84%; } }
+    @media (max-width: 1000px) {
+      .page.about .inner > .text.block img {
+        margin: 0 2.5%;
+        width: 95%; } }
   @media (min-width: 1000px) {
     .page.about.travel, .page.about.faq {
       padding-left: 15em; } }

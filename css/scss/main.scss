@@ -112,8 +112,14 @@ p,
 		.inner > .text.block {
 			text-align: left;
 			img {
-				margin: 0 8%;
-				width: 84%;
+				@include respond-to('xlarge') {
+					margin: 0 8%;
+					width: 84%;
+				}
+				@include respond-to('at1000') {
+					margin: 0 2.5%;
+					width: 95%;
+				}
 			}
 		}
 	}
