@@ -662,9 +662,9 @@ p,
         padding-top: 1.7em; } }
   @media (max-width: 10000px) {
     .page.parallax {
-      height: 100vh;
-      max-height: 100vh;
-      min-height: 100vh; } }
+      height: 90vh;
+      max-height: 90vh;
+      min-height: 90vh; } }
   @media (max-width: 700px) {
     .page.parallax {
       height: 82vh;

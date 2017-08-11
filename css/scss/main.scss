@@ -67,9 +67,9 @@ p,
 	}
 	&.parallax {
 		@include respond-to('xlarge') {
-			height: 100vh;
-			max-height: 100vh;
-			min-height: 100vh;
+			height: 90vh;
+			max-height: 90vh;
+			min-height: 90vh;
 		}
 		@include respond-to('at700') {
 			height: 100vh - $mobile-nav - 8vh;
