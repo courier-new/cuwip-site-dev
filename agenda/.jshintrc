@@ -1,0 +1,9 @@
+{
+	"esversion": 6,
+	"globals": {
+        "$": false,
+		  "browser": true,
+        "window": false,
+        "self": false
+    }
+}

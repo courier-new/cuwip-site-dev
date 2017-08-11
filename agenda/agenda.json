@@ -4,42 +4,128 @@
 			"day": "friday",
 			"college": "Harvey Mudd College",
 			"scollege": "Harvey Mudd",
-			"event": [
+			"events": [
 				{
 					"name": "Check-In",
 					"sname": "checkin",
-					"type": "logistics",
+					"types": ["logistics"],
 					"timeStart": "12:00 PM",
 					"timeEnd": "2:00 PM",
-					"place": "DoubleTree Hotel",
-					"shortDesc": "Upon arrival at DoubleTree, please have your photo ID available to check in at the front desk. If you are presenting research, you will be able to leave your poster in x location."
+					"required": true,
+					"place": "TBD",
+					"shortDesc": "The check-in table will be located outside of x location. You may store your bags onsite at Harvey Mudd or, if you are driving, leave them in your car. Parking is available at y."
 				},
 				{
 					"name": "Lunch",
 					"sname": "lunch",
-					"type": "food",
+					"types": ["food"],
 					"timeStart": "12:30 PM",
 					"timeEnd": "2:00 PM",
+					"required": false,
 					"place": "TBD",
-					"shortDesc": "Lunch will be provided by blahblahblah. Need to RSVP. Optional lunch, next meal is dinner."
+					"shortDesc": "Lunch will be provided by food place. Need to RSVP? Optional lunch, next meal would be dinner."
 				},
 				{
 					"name": "Opening Remarks",
 					"sname": "opening",
-					"type": "talk",
+					"types": ["talk"],
 					"timeStart": "2:00 PM",
 					"timeEnd": "3:00 PM",
+					"required": true,
 					"place": "Galileo/McAlester Auditorium",
-					"shortDesc": "Mary Sue will deliver a warm welcome too all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic etc. of the conference."
+					"shortDesc": "Mary Sue will deliver a warm welcome to all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic location etc. of the conference."
 				},
 				{
 					"name": "Panel1",
 					"sname": "panel1",
-					"type": "panel",
+					"types": ["panel"],
 					"timeStart": "3:00 PM",
 					"timeEnd": "4:00 PM",
+					"required": true,
 					"place": "Galileo/McAlester Auditorium",
-					"shortDesc": "Some people will form a panel to discuss some topic and their experiences and take questions about said topic and stuff blahblahblah."
+					"shortDesc": "Some people will form a panel to discuss some topic and their experiences and take questions about said topic and stuff depending on the people of the panel and the interest of the audience."
+				},
+				{
+					"name": "Lab Tours",
+					"sname": "labtours",
+					"types": ["misc"],
+					"timeStart": "4:00 PM",
+					"timeEnd": "6:00 PM",
+					"required": false,
+					"place": "TBD",
+					"meetingPlace": "TBD",
+					"shortDesc": "Visiting labs on the campuses, or maybe just Harvey Mudd. Cool interesting stuff. There should be a designated meeting place and time."
+				},
+				{
+					"name": "Free Time",
+					"sname": "free",
+					"types": ["free"],
+					"timeStart": "4:00 PM",
+					"timeEnd": "6:00 PM",
+					"required": false,
+					"place": "DoubleTree/Claremont",
+					"shortDesc": "Those who do not wish to attend the lab tours may return to the hotel to settle in or else explore <a href=''>Claremont</a>. Insert some information about Claremont or alternative things to do."
+				},
+				{
+					"name": "Dinner",
+					"sname": "dinner",
+					"types": ["food"],
+					"timeStart": "6:00 PM",
+					"timeEnd": "7:30 PM",
+					"required": true,
+					"place": "Platt Living Room",
+					"shortDesc": "We will gather for dinner at Harvey Mudd and some information about food or tables or if there is any dinner structure."
+				},
+				{
+					"name": "Dessert and a Talk",
+					"sname": "dessert",
+					"types": ["food", "talk"],
+					"timeStart": "7:30 PM",
+					"timeEnd": "8:30 PM",
+					"required": true,
+					"place": "Platt Living Room",
+					"shortDesc": "Hear from a cool speaker about a cool topic as you consume a cool dessert."
+				},
+				{
+					"name": "Free Time",
+					"sname": "free",
+					"types": ["free"],
+					"timeStart": "8:30 PM",
+					"timeEnd": "12:00 AM",
+					"required": false,
+					"place": "DoubleTree/Claremont",
+					"shortDesc": ""
+				},
+				{
+					"name": "Game Night",
+					"sname": "games",
+					"types": ["free"],
+					"timeStart": "8:30 PM",
+					"timeEnd": "10:00 PM",
+					"required": false,
+					"place": "Platt Living Room",
+					"shortDesc": ""
+				},
+				{
+					"name": "Galileo Movie",
+					"sname": "movie",
+					"types": ["free"],
+					"timeStart": "8:30 PM",
+					"timeEnd": "10:30 PM",
+					"required": false,
+					"place": "Platt Living Room",
+					"meetingPlace": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Pool Hangout",
+					"sname": "pool",
+					"types": ["free"],
+					"timeStart": "8:30 PM",
+					"timeEnd": "10:00 PM",
+					"required": false,
+					"place": "DoubleTree Hotel",
+					"shortDesc": ""
 				}
 			]
 		},
@@ -47,32 +133,216 @@
 			"day": "saturday",
 			"college": "Pomona College",
 			"scollege": "Pomona",
-			"event": [
+			"events": [
 				{
-					"name": "Check-In",
-					"sname": "checkin",
-					"type": "logistics",
-					"timeStart": "12:00 PM",
-					"timeEnd": "2:00 PM",
+					"name": "Breakfast",
+					"sname": "breakfast",
+					"types": ["food"],
+					"timeStart": "7:30 AM",
+					"timeEnd": "8:30 AM",
+					"required": true,
 					"place": "DoubleTree Hotel",
-					"shortDesc": "Upon arrival at DoubleTree, please have your photo ID available to check in at the front desk. If you are presenting research, you will be able to leave your poster in x location."
+					"shortDesc": ""
+				},
+				{
+					"name": "Shuttle Runs",
+					"sname": "shuttle",
+					"types": ["shuttle"],
+					"timeStart": "8:00 AM",
+					"timeEnd": "8:45 AM",
+					"required": true,
+					"place": "DoubleTree Hotel",
+					"meetingPlace": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Poster Setup",
+					"sname": "postersetup",
+					"types": ["logistics"],
+					"timeStart": "8:30 AM",
+					"timeEnd": "1:30 PM",
+					"required": false,
+					"place": "Millikan Courtyard",
+					"shortDesc": ""
+				},
+				{
+					"name": "Science Talk",
+					"sname": "talk1",
+					"types": ["talk"],
+					"timeStart": "9:00 AM",
+					"timeEnd": "9:45 AM",
+					"required": true,
+					"place": "Rose Hills Theater",
+					"shortDesc": ""
+				},
+				{
+					"name": "Breakout Session 1/3",
+					"sname": "breakout1",
+					"types": ["breakout"],
+					"timeStart": "9:45 AM",
+					"timeEnd": "10:30 AM",
+					"required": true,
+					"place": "Smith Campus Center/Millikan Hall",
+					"optionCount": 5,
+					"options": [1, 2, 3, 4, 5],
+					"shortDesc": ""
+				},
+				{
+					"name": "Coffee Break",
+					"sname": "coffee",
+					"types": ["food", "free"],
+					"timeStart": "10:30 AM",
+					"timeEnd": "11:00 AM",
+					"required": true,
+					"place": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Keynote Speaker",
+					"sname": "keynote",
+					"types": ["talk"],
+					"timeStart": "11:00 AM",
+					"timeEnd": "12:30 PM",
+					"required": true,
+					"place": "TBD",
+					"shortDesc": ""
 				},
 				{
 					"name": "Lunch",
 					"sname": "lunch",
-					"type": "food",
+					"types": ["food"],
 					"timeStart": "12:30 PM",
-					"timeEnd": "2:00 PM",
-					"place": "TBD",
-					"shortDesc": "Lunch will be provided by blahblahblah. Need to RSVP. Optional lunch, next meal is dinner."
+					"timeEnd": "2:30 PM",
+					"required": true,
+					"place": "Millikan Courtyard",
+					"shortDesc": ""
 				},
 				{
-					"name": "Opening Remarks",
-					"sname": "opening",
-					"type": "talk",
-					"timeStart": "2:00 PM",
-					"place": "Galileo/McAlester Auditorium",
-					"shortDesc": "Mary Sue will deliver a warm welcome too all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic etc. of the conference."
+					"name": "Poster Session",
+					"sname": "posters",
+					"types": ["misc"],
+					"timeStart": "12:30 PM",
+					"timeEnd": "2:30 PM",
+					"required": true,
+					"place": "Millikan Courtyard",
+					"shortDesc": ""
+				},
+				{
+					"name": "Breakout Session 2/3",
+					"sname": "breakout2",
+					"types": ["breakout"],
+					"timeStart": "2:30 PM",
+					"timeEnd": "3:15 PM",
+					"required": true,
+					"place": "Smith Campus Center/Millikan Hall",
+					"optionCount": 5,
+					"options": [1, 2, 3, 4, 5],
+					"shortDesc": ""
+				},
+				{
+					"name": "Coffee Break",
+					"sname": "coffee",
+					"types": ["food", "free"],
+					"timeStart": "3:15 PM",
+					"timeEnd": "3:45 PM",
+					"required": true,
+					"place": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Breakout Session 3/3",
+					"sname": "breakout3",
+					"types": ["breakout"],
+					"timeStart": "3:45 PM",
+					"timeEnd": "4:30 PM",
+					"place": "Smith Campus Center/Millikan Hall",
+					"required": true,
+					"optionCount": 5,
+					"options": [1, 2, 3, 4, 5],
+					"shortDesc": ""
+				},
+				{
+					"name": "Coffee Break",
+					"sname": "coffee",
+					"types": ["food", "free"	],
+					"timeStart": "4:30 PM",
+					"timeEnd": "5:00 PM",
+					"required": true,
+					"place": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Panel2",
+					"sname": "panel2",
+					"types": ["panel"],
+					"timeStart": "3:00 PM",
+					"timeEnd": "4:00 PM",
+					"required": true,
+					"place": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Dinner",
+					"sname": "dinner",
+					"types": ["food"],
+					"timeStart": "6:00 PM",
+					"timeEnd": "7:30 PM",
+					"required": true,
+					"place": "Edmunds Ballroom",
+					"shortDesc": ""
+				},
+				{
+					"name": "Free Time",
+					"sname": "free",
+					"types": ["free"],
+					"timeStart": "7:30 PM",
+					"timeEnd": "12:00 AM",
+					"required": false,
+					"place": "DoubleTree/Claremont",
+					"shortDesc": ""
+				},
+				{
+					"name": "Planetarium Shows",
+					"sname": "planetarium",
+					"types": ["free"],
+					"timeStart": "7:30 PM",
+					"timeEnd": "9:00 PM",
+					"required": false,
+					"place": "Millikan Hall",
+					"meetingPlace": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Village Walk",
+					"sname": "village",
+					"types": ["free"],
+					"timeStart": "7:30 PM",
+					"timeEnd": "10:00 PM",
+					"required": false,
+					"place": "Claremont",
+					"meetingPlace": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Game Night",
+					"sname": "games",
+					"types": ["free"],
+					"timeStart": "7:30 PM",
+					"timeEnd": "10:00 PM",
+					"required": false,
+					"place": "Millikan Hall",
+					"shortDesc": ""
+				},
+				{
+					"name": "Shuttle Runs",
+					"sname": "shuttle",
+					"types": ["shuttle"],
+					"timeStart": "10:00 PM",
+					"timeEnd": "10:30 PM",
+					"place": "Millikan Hall",
+					"required": true,
+					"meetingPlace": "TBD",
+					"shortDesc": ""
 				}
 			]
 		},
@@ -80,32 +350,87 @@
 			"day": "sunday",
 			"college": "Cal Poly Pomona",
 			"scollege": "Cal Poly Pomona",
-			"event": [
+			"events": [
 				{
-					"name": "Check-In",
-					"sname": "checkin",
-					"type": "logistics",
-					"timeStart": "12:00 PM",
-					"timeEnd": "2:00 PM",
+					"name": "Breakfast",
+					"sname": "breakfast",
+					"types": ["food"],
+					"timeStart": "7:30 AM",
+					"timeEnd": "8:30 AM",
+					"required": false,
 					"place": "DoubleTree Hotel",
-					"shortDesc": "Upon arrival at DoubleTree, please have your photo ID available to check in at the front desk. If you are presenting research, you will be able to leave your poster in x location."
+					"shortDesc": ""
+				},
+				{
+					"name": "Shuttle Runs",
+					"sname": "shuttle",
+					"types": ["shuttle"],
+					"timeStart": "8:00 AM",
+					"timeEnd": "9:30 AM",
+					"required": true,
+					"place": "DoubleTree Hotel",
+					"meetingPlace": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Career Panel",
+					"sname": "panel3",
+					"types": ["panel"],
+					"timeStart": "9:30 AM",
+					"timeEnd": "10:30 AM",
+					"required": true,
+					"place": "Ursa Minor",
+					"shortDesc": ""
+				},
+				{
+					"name": "Career Breakout Session",
+					"sname": "breakout4",
+					"types": ["breakout"],
+					"timeStart": "10:30 AM",
+					"timeEnd": "11:30 AM",
+					"required": true,
+					"place": "Bronco Student Center",
+					"shortDesc": ""
+				},
+				{
+					"name": "Career Fair",
+					"sname": "careerfair",
+					"types": ["misc"],
+					"timeStart": "11:30 AM",
+					"timeEnd": "12:30 PM",
+					"required": true,
+					"place": "Ursa Major",
+					"shortDesc": ""
 				},
 				{
 					"name": "Lunch",
 					"sname": "lunch",
-					"type": "food",
+					"types": ["food"],
 					"timeStart": "12:30 PM",
-					"timeEnd": "2:00 PM",
+					"timeEnd": "1:30 PM",
+					"required": true,
 					"place": "TBD",
-					"shortDesc": "Lunch will be provided by blahblahblah. Need to RSVP. Optional lunch, next meal is dinner."
+					"shortDesc": ""
 				},
 				{
-					"name": "Opening Remarks",
-					"sname": "opening",
-					"type": "talk",
-					"timeStart": "2:00 PM",
-					"place": "Galileo/McAlester Auditorium",
-					"shortDesc": "Mary Sue will deliver a warm welcome too all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic etc. of the conference."
+					"name": "Science Show",
+					"sname": "show",
+					"types": ["misc"],
+					"timeStart": "1:45 PM",
+					"timeEnd": "2:30 PM",
+					"required": true,
+					"place": "Business Building",
+					"shortDesc": ""
+				},
+				{
+					"name": "Closing Remarks",
+					"sname": "closing",
+					"types": ["talk"],
+					"timeStart": "2:30 PM",
+					"timeEnd": "3:00 PM",
+					"required": true,
+					"place": "Business Building",
+					"shortDesc": ""
 				}
 			]
 		}

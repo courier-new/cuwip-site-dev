@@ -1,0 +1,237 @@
+.page.about.agenda .inner > .text.block {
+	h1 {
+		margin-bottom: 0;
+	}
+	.event.types.legend {
+		@include respond-to('xlarge') {
+			width: 90%;
+		}
+		@include respond-to('at700') {
+			width: 100%;
+		}
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin-bottom: 2.8em;
+		div {
+			padding: 4px;
+		}
+		span {
+			border: 5px solid $turquoise-medium;
+			border-radius: 50%;
+			display: inline-block;
+			position: relative;
+			margin: 0 5px;
+			&.food {
+				border-color: $green-lime;
+			}
+			&.misc {
+				border-color: $turquoise-light;
+			}
+			&.talk {
+				border-color: $pink-salmon;
+			}
+			&.breakout {
+				border-color: $green-grass-light;
+			}
+			&.free {
+				border-color: $pink-berry;
+			}
+			&.logistics {
+				border-color: $gold-light;
+			}
+			&.panel {
+				border-color: $blue-light;
+			}
+			&.shuttle {
+				border-color: $grey-light;
+			}
+		}
+	}
+	.campus.reference {
+		color: $turquoise-medium;
+		display: block;
+		font-size: 1.2em;
+		font-style: italic;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		margin-bottom: 1em;
+	}
+	.day.table {
+		display: flex;
+		flex-direction: column;
+		& > .event {
+			align-items: center;
+			display: flex;
+			margin: 0.7em 0;
+			width: 100%;
+			.type.bubbles {
+				@include respond-to('xlarge') {
+					width: 10%;
+				}
+				@include respond-to('at1000') {
+					width: 15%;
+				}
+				@include respond-to('at400') {
+					width: 26%;
+				}
+				text-align: center;
+				position: relative;
+				span {
+					border: 7px solid $turquoise-medium;
+					border-radius: 50%;
+					display: inline-block;
+					position: relative;
+					width: 0;
+					height: 0.5em;
+					&.food {
+						border-color: $green-lime;
+						&::after {
+							background-color: $green-lime;
+							content: "Food";
+						}
+					}
+					&.misc {
+						border-color: $turquoise-light;
+						&::after {
+							background-color: $turquoise-light;
+							content: "Misc/Special";
+						}
+					}
+					&.talk {
+						border-color: $pink-salmon;
+						&::after {
+							background-color: $pink-salmon;
+							content: "Talk";
+						}
+					}
+					&.breakout {
+						border-color: $green-grass-light;
+						&::after {
+							background-color: $green-grass-light;
+							content: "Breakout Session";
+						}
+					}
+					&.free {
+						border-color: $pink-berry;
+						&::after {
+							background-color: $pink-berry;
+							content: "Free Time";
+						}
+					}
+					&.logistics {
+						border-color: $gold-light;
+						&::after {
+							background-color: $gold-light;
+							content: "Logistics";
+						}
+					}
+					&.panel {
+						border-color: $blue-light;
+						&::after {
+							background-color: $blue-light;
+							content: "Panel";
+						}
+					}
+					&.shuttle {
+						border-color: $grey-light;
+						&::after {
+							background-color: $grey-light;
+							content: "Shuttle Run";
+						}
+					}
+					&::after,
+					&:hover::after,
+					&.focused::after {
+						box-sizing: border-box;
+						color: white;
+						display: block;
+						opacity: 0;
+						overflow: hidden;
+						position: absolute;
+						width: 0;
+						height: 0;
+					}
+					&:hover::after {
+						@include respond-to('min700') {
+							left: -75px;
+							opacity: 1;
+							padding: 14px;
+							width: 150px;
+							height: auto;
+							z-index: 90;
+						}
+					}
+					&.focused::after {
+						left: -20px;
+						opacity: 1;
+						padding: 14px;
+						width: 150px;
+						height: auto;
+						z-index: 90;
+					}
+				}
+			}
+			.info {
+				@include respond-to('xlarge') {
+					width: 90%;
+				}
+				@include respond-to('at1000') {
+					width: 85%;
+				}
+				@include respond-to('at400') {
+					width: 74%;
+				}
+				align-items: center;
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				span {
+					line-height: 1.5em;
+					padding: 0.05em;
+					&.name {
+						@include respond-to('xlarge') {
+							flex-basis: 35%;
+						}
+						@include respond-to('at1000') {
+							flex-basis: 60%;
+						}
+						@include respond-to('at400') {
+							flex-basis: 100%;
+						}
+						font-size: 1.1em;
+						font-weight: 600;
+						.optional {
+							color: $grey-light;
+							display: inline-block;
+							font-size: 0.8em;
+							font-weight: 400;
+							padding-bottom: 0.15em;
+						}
+					}
+					&.time {
+						@include respond-to('xlarge') {
+							flex-basis: 30%;
+							text-align: center;
+						}
+						@include respond-to('at1000') {
+							flex-basis: 40%;
+						}
+						@include respond-to('at400') {
+							flex-basis: 100%;
+							text-align: left;
+						}
+					}
+					&.place {
+						@include respond-to('xlarge') {
+							flex-basis: 35%;
+						}
+						@include respond-to('at1000') {
+							flex-basis: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
