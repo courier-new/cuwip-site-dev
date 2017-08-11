@@ -1,23 +1,22 @@
 <!DOCTYPE html>
+
 <html lang='en'>
 <head>
-	<meta id='meta' name='viewport' content='width=device-width, initial-scale=1.0'>
-	<meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
-	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<title>Agenda | APS CUWiP @ HMC+POM+CPP</title>
+	<title>Agenda | APS CUWiP@SoCal</title>
 </head>
-<body>
-
-<!-- CSS -->
-<link rel='stylesheet' href='../../css/main.css' type='text/css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'>
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' type='text/css'>
-
-<!-- EXTERNAL FONTS -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700|ABeeZee:400,400i|Crete+Round:400,400i&amp;subset=latin-ext' rel='stylesheet'>
 
 <!-- JQUERY -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+$(function(){
+	$('head').load('../head.html', function() {
+		$('head').prepend('<title>Agenda | APS CUWiP@SoCal</title>');
+	});
+});
+</script>
+
+<body>
 
 <nav class='agenda main menu' role='navigation'>
 </nav>
