@@ -1580,6 +1580,12 @@ p,
     font-weight: 300;
     margin: 0;
     opacity: 0.92; }
+    @media (max-width: 10000px) {
+      .page.parallax h1 {
+        line-height: 1.2em; } }
+    @media (max-width: 700px) {
+      .page.parallax h1 {
+        line-height: 1em; } }
     .page.parallax h1.spells.undergraduate {
       color: #32858c;
       font-size: 3em;
@@ -1662,6 +1668,12 @@ p,
     align-items: center;
     margin: 2em 0 1.5em 0;
     padding: 0; }
+    .page.parallax .logos.array.colleges {
+      margin: 1em 0 -1em 0; }
+      .page.parallax .logos.array.colleges li {
+        padding-right: 5em; }
+        .page.parallax .logos.array.colleges li:first-child {
+          padding-left: 5em; }
     .page.parallax .logos.array li {
       display: inline-block;
       padding-right: 3em; }
@@ -1676,6 +1688,12 @@ p,
           height: 3em; }
         .page.parallax .logos.array li img.nsf {
           height: 3.5em; }
+        .page.parallax .logos.array li img.hmc {
+          height: 3em; }
+        .page.parallax .logos.array li img.pom {
+          height: 3.5em; }
+        .page.parallax .logos.array li img.cpp {
+          height: 4em; }
 
 
 

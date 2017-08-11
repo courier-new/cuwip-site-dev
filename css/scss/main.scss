@@ -702,6 +702,12 @@ p,
 		}
 	}
 	h1 {
+		@include respond-to('xlarge') {
+			line-height: 1.2em;
+		}
+		@include respond-to('at700') {
+			line-height: 1em;
+		}
 		text-transform: uppercase;
 		font-family: $titles-stack;
 		font-weight: 300;
@@ -765,6 +771,15 @@ p,
 		align-items: center;
 		margin: 2em 0 1.5em 0;
 		padding: 0;
+		&.colleges {
+			margin: 1em 0 -1em 0;
+			li {
+				padding-right: 5em;
+				&:first-child {
+					padding-left: 5em;
+				}
+			}
+		}
 		li {
 			display: inline-block;
 			padding-right: 3em;
@@ -782,6 +797,15 @@ p,
 				}
 				&.nsf {
 					height: 3.5em;
+				}
+				&.hmc {
+					height: 3em;
+				}
+				&.pom {
+					height: 3.5em;
+				}
+				&.cpp {
+					height: 4em;
 				}
 			}
 		}
