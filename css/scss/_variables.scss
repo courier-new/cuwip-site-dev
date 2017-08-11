@@ -5,6 +5,13 @@
 	font-style: normal;
 };
 
+@font-face {
+	font-family: 'Oleo Script';
+	src: url('../../font/Oleo-Script.ttf');
+	font-weight: 400;
+	font-style: normal;
+};
+
 $beige-lightest    : #f5e7e0;
 $blue-light        : #518bfa;
 $turquoise-light   : #3dbfbd;
@@ -34,3 +41,4 @@ $mobile-nav     : 10vh;
 $titles-stack: 'Ailerons', sans-serif;
 $main-stack: 'Open Sans', sans-serif;
 $special-main-stack: 'ABeeZee', sans-serif;
+$script: 'Oleo Script', serif;

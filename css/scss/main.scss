@@ -9,6 +9,13 @@
 @import 'countdown';
 @import 'agenda';
 
+.testing1 {
+	z-index: -10;
+}
+.testing2 {
+	z-dinex: 90;
+}
+
 * {
 	box-sizing: border-box;
 	font-family: $main-stack;
@@ -309,6 +316,10 @@ p,
 			line-height: 1.6em;
 			padding-bottom: 1em;
 			text-transform: uppercase;
+		}
+		em {
+			font-style: normal;
+			font-weight: 600;
 		}
 		p {
 			@include respond-to('at500') {
@@ -709,102 +720,134 @@ p,
 			line-height: 1em;
 		}
 		text-transform: uppercase;
-		font-family: $titles-stack;
 		font-weight: 300;
 		margin: 0;
 		opacity: 0.92;
+		&.date {
+			color: $pink-berry;
+			font-family: $script;
+			font-size: 2.2em;
+			letter-spacing: 0.18em;
+			margin-bottom: 0.4em;
+			word-spacing: -0.2em;
+		}
+		&.spells.conference {
+			color: $turquoise-dark;
+			font-family: $special-main-stack;
+			font-size: 1.8em;
+			letter-spacing: 0.34em;
+			line-height: 1.1em;
+			margin-bottom: 0.25em;
+			word-spacing: -0.2em;
+		}
 		&.spells.undergraduate {
 			color: $turquoise;
-			font-size: 3em;
+			font-family: $special-main-stack;
+			font-size: 2.7em;
 			letter-spacing: 0.2em;
-			margin-right: -0.15em;
 		}
 		&.spells.women.in {
 			color: $pink-salmon-light;
+			font-family: $titles-stack;
 			font-size: 7em;
+			line-height: 0.95em;
+			margin-bottom: 0.08em;
+			margin-right: -0.055em;
 			word-spacing: -0.25em;
 		}
 		&.spells.physics {
 			color: $pink-salmon-light;
+			font-family: $titles-stack;
 			font-size: 7em;
 			letter-spacing: 0.08em;
+			line-height: 0.95em;
+			margin-bottom: 0.15em;
 			margin-right: -0.055em;
 		}
-		&.spells.conference {
-			color: $turquoise;
-			font-size: 3em;
-			letter-spacing: 0.43em;
-			margin-right: -0.3em;
-		}
-	}
-	.event.signifier.container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		h1.year {
-			color: $pink-berry;
-			font-size: 7.5em;
-			letter-spacing: -0.1em;
-			margin-right: 0.15em; /* same value as .locations.container margin-left */
-			margin-top: -0.15em; /* offset text un-centering */
-		}
-		.locations.container {
+		&.at.socal {
+			align-items: center;
 			display: flex;
-			flex-direction: column;
+			font-size: 9em;
 			justify-content: center;
-			align-items: flex-start;
-			margin-left: 0.15em;
-			h1.gives.location {
-				color: $grey-medium-dark;
-				font-family: $special-main-stack;
-				font-weight: 500;
-				font-size: 1.4em;
-				padding-bottom: 0.3em;
-				text-align: left;
-				text-transform: none;
+			line-height: 0.8em;
+			margin-bottom: 0.05em;
+			text-transform: none;
+			.at {
+				font-size: 0.5em;
+				color: darken($grey-medium-dark, 12%);
+			}
+			.socal {
+				color: $green-grass-dark;
+				font-family: $script;
+				letter-spacing: 0.08em;
+				margin-left: 0.1em;
 			}
 		}
 	}
 	.logos.array {
+		@include respond-to('at500') {
+			margin: 0 25%;
+			width: 50%;
+		}
+		@include respond-to('at400') {
+			margin: 0 22%;
+			width: 56%;
+		}
+		@include respond-to('at330') {
+			margin: 0 18%;
+			width: 64%;
+		}
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 2em 0 1.5em 0;
 		padding: 0;
 		&.colleges {
-			margin: 1em 0 -1em 0;
-			li {
-				padding-right: 5em;
-				&:first-child {
-					padding-left: 5em;
-				}
-			}
+			margin-bottom: -1em;
 		}
 		li {
 			display: inline-block;
-			padding-right: 3em;
-			&:first-child {
-				padding-left: 3em;
+			text-align: center;
+			width: 25%;
+			&:nth-child(2) {
+				width: 50%;
 			}
 			img {
 				opacity: 0.8;
 				/* adjust each logo size to fit the row better */
 				&.aps {
+					@include respond-to('at330') {
+						height: 3em;
+					}
 					height: 4em;
 				}
 				&.energy {
+					@include respond-to('at330') {
+						height: 2.25em;
+					}
 					height: 3em;
 				}
 				&.nsf {
+					@include respond-to('at330') {
+						height: 2.625em;
+					}
 					height: 3.5em;
 				}
 				&.hmc {
+					@include respond-to('at330') {
+						height: 2.25em;
+					}
 					height: 3em;
 				}
 				&.pom {
+					@include respond-to('at330') {
+						height: 2.625em;
+					}
 					height: 3.5em;
 				}
 				&.cpp {
+					@include respond-to('at330') {
+						height: 3em;
+					}
 					height: 4em;
 				}
 			}
