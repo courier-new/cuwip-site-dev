@@ -4,7 +4,7 @@
 			"dataPlace": "alert",
 			"before": {
 				"header": "Application goes live September 1st",
-				"text":   "Check back here or visit the APS <a href='http://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='../reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from September 1st until October 13th."
+				"text":   "Check back here or visit the APS <a href='http://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='../reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from <em>September 1st</em> until <em>October 13th.</em>"
 			},
 			"applyPeriod": {
 				"header": "Application is now live",
@@ -16,7 +16,7 @@
 			},
 			"registerPeriod": {
 				"header": "Application period is closed",
-				"text":   "The application for CUWiP 2018 is now closed. To those who have been admitted, please be sure to confirm your attendance and fill out our site registration before November 17th. If you missed out this time around, keep an eye out for CUWiP 2019!"
+				"text":   "The application for CUWiP 2018 is now closed. To those who have been admitted, please be sure to confirm your attendance and fill out our site registration before <em>November 17th</em>. If you missed out this time around, keep an eye out for CUWiP 2019!"
 			},
 			"after": {
 				"header": "Application period is closed",
@@ -53,7 +53,7 @@
 				"text": "The application is now closed. To those who applied, thank you for your interest! We are review applications now and will inform you of your status on November 6th. Individuals admitted to the conference will also be directed to complete a separate online registration at that time. If you missed out this time around, keep an eye out for CUWiP 2019!"
 			},
 			"registerPeriod": {
-				"text": "The application is now closed. To those who have been admitted, please be sure to confirm your attendance and fill out our site registration before November 17th. If you missed out this time around, keep an eye out for CUWiP 2019!"
+				"text": "The application is now closed. To those who have been admitted, please be sure to confirm your attendance and fill out our site registration before <em>November 17th</em>. If you missed out this time around, keep an eye out for CUWiP 2019!"
 			},
 			"after": {
 				"text": "The application and registration for CUWiP 2018 are now closed, but keep an eye out for information about CUWiP 2019 next fall! To this year's attendees, if you completed registration but did not yet receive a welcome email, please <a href='../contact'>contact us</a> immediately so that we can locate the error."
