@@ -543,16 +543,26 @@ p,
 				h3 {
 					@include respond-to('xlarge') {
 						font-size: 1.2em;
+						margin-right: 2em;
+						width: 66%;
+					}
+					@include respond-to('at1000') {
+						width: 70%;
+					}
+					@include respond-to('at700') {
+						width: 64%;
+						text-align: left;
 					}
 					@include respond-to('at500') {
-						text-align: center;
 						padding-left: 0;
-						width: 90%;
+						width: 76%;
 					}
 					@include respond-to('at400') {
 						font-size: 0.9em;
+						width: 82%;
 					}
 					color: $grey-medium-dark;
+					margin: 0.8em 0 0.5em 0;
 				}
 			}
 		}

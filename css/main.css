@@ -1404,18 +1404,28 @@ p,
               .page .inner > .text.block ul.contacts.list a .type.container i {
                 font-size: 2em; } }
         .page .inner > .text.block ul.contacts.list a h3 {
-          color: #706c76; }
+          color: #706c76;
+          margin: 0.8em 0 0.5em 0; }
           @media (max-width: 10000px) {
             .page .inner > .text.block ul.contacts.list a h3 {
-              font-size: 1.2em; } }
+              font-size: 1.2em;
+              margin-right: 2em;
+              width: 66%; } }
+          @media (max-width: 1000px) {
+            .page .inner > .text.block ul.contacts.list a h3 {
+              width: 70%; } }
+          @media (max-width: 700px) {
+            .page .inner > .text.block ul.contacts.list a h3 {
+              width: 64%;
+              text-align: left; } }
           @media (max-width: 500px) {
             .page .inner > .text.block ul.contacts.list a h3 {
-              text-align: center;
               padding-left: 0;
-              width: 90%; } }
+              width: 76%; } }
           @media (max-width: 400px) {
             .page .inner > .text.block ul.contacts.list a h3 {
-              font-size: 0.9em; } }
+              font-size: 0.9em;
+              width: 82%; } }
     .page .inner > .text.block ul.organizers.list {
       -webkit-box-align: center;
       -webkit-align-items: center;
