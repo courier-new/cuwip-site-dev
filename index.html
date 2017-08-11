@@ -1,26 +1,20 @@
 <!DOCTYPE html>
+
 <html lang='en'>
 <head>
-	<meta id='meta' name='viewport' content='width=device-width, initial-scale=1.0'>
-	<meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
-	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<title>APS CUWiP @ HMC+POM+CPP</title>
 </head>
-<body>
-
-<!-- CSS -->
-<link rel='stylesheet' href='css/main.css' type='text/css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'>
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css'>
-
-<!-- EXTERNAL FONTS -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700|ABeeZee:400,400i|Crete+Round:400,400i&amp;subset=latin-ext' rel='stylesheet'>
 
 <!-- JQUERY -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
-<!-- PDF RENDERER -->
-<script src='../js/pdfobject.min.js'></script>
+<script>
+$(function(){
+	$('head').load('head.html', function() {
+		$('head').prepend('<title>APS CUWiP @ HMC+POM+CPP</title>');
+	});
+});
+</script>
 
 <section class='page parallax'>
 	<div class='parallax background'></div>
@@ -28,10 +22,12 @@
 		<div class='hexagon container'>
 			<div class='hexagon'>
 				<div class='title box'>
+					<h1 class='date'>1.12.2018 - 1.14.2018</h1>
+					<h1 class='spells conference'>aps conference for</h1>
 					<h1 class='spells undergraduate'>undergraduate</h1>
 					<h1 class='spells women in'>women in</h1>
 					<h1 class='spells physics'>physics</h1>
-					<h1 class='spells conference'>conference</h1>
+					<h1 class='at socal'><span class='at'>@</span><span class='socal'>SoCal</span></h1>
 					<ul class='logos array'>
 						<li>
 							<img class='aps' src='../img/aps-logo-200.png' />
@@ -43,22 +39,12 @@
 							<img class='nsf' src='../img/nsf-logo-200.png' />
 						</li>
 					</ul>
-					<div class='event signifier container'>
-						<div class='year container'>
-							<h1 class='year'>2018</h1>
-						</div>
-						<div class='locations container'>
-							<h1 class='gives location'>Harvey Mudd College</h1>
-							<h1 class='gives location'>Pomona College</h1>
-							<h1 class='gives location'>Cal Poly Pomona</h1>
-						</div>
-					</div>
 					<ul class='logos array colleges'>
 						<li>
 							<img class='hmc' src='../img/hmc-logo-200.png' />
 						</li>
 						<li>
-							<img class='pom' src='../img/pom-logo-200.png' />
+							<img class='pom' src='../img/pom-logo-120.png' />
 						</li>
 						<li>
 							<img class='cpp' src='../img/cpp-logo-200.png' />
@@ -99,7 +85,7 @@
 		<div class='text block welcome'>
 			<h1>Welcome to CUWiP</h1>
 			<p>
-				The <a href='https://www.aps.org/'>American Physical Society (APS)</a> Conferences for Undergraduate Women in Physics (CUWiP) are three-day regional conferences held simultaneously throughout the United States and Canada for undergraduate women and underrepresented genders interested in physics and astronomy. The institutions of <a href='https://www.hmc.edu/'>Harvey Mudd College</a>, <a href='https://www.pomona.edu/'>Pomona College</a>, and <a href='https://www.cpp.edu/'>California State Polytechnic University, Pomona</a> are pleased to host the 2018 Western Regional CUWiP, representing southern California, Alaska, and Hawaii. The conference will be held from <strong>Friday, January 12 to Sunday, January 14, 2018</strong>.
+				The <a href='https://www.aps.org/'>American Physical Society (APS)</a> Conferences for Undergraduate Women in Physics (CUWiP) are three-day regional conferences held simultaneously throughout the United States and Canada for undergraduate women and underrepresented genders interested in physics and astronomy. The institutions of <a href='https://www.hmc.edu/'>Harvey Mudd College</a>, <a href='https://www.pomona.edu/'>Pomona College</a>, and <a href='https://www.cpp.edu/'>California State Polytechnic University, Pomona</a> are pleased to host the 2018 CUWiP@SoCal, representing southern California, Alaska, and Hawaii. The conference will be held from <strong>Friday, January 12 to Sunday, January 14, 2018</strong>.
 			</p>
 			<p>
 				The goal of APS CUWiP is to provide a professional conference for undergraduate women and underrepresented genders to explore opportunities in graduate schools, careers, research, and community-building in physics. CUWiP is a unique networking opportunity for students to share meaningful experiences and have important conversations about the space we navigate as physicists.
@@ -123,7 +109,7 @@
 					<div class='text block'>
 						<h2>3 Colleges</h2>
 						<p>
-							The Western Regional CUWiP is co-hosted this year by 3 unique undergraduate institutions of southern California. Conference attendees will check-in and spend Friday at <a href='https://www.hmc.edu/'>Harvey Mudd</a>, Saturday at <a href='https://www.pomona.edu/'>Pomona</a>, and finish up on Sunday at <a href='https://www.cpp.edu/'>Cal Poly Pomona</a>.
+							CUWiP@SoCal is co-hosted this year by 3 unique undergraduate institutions of southern California. Conference attendees will check-in and spend Friday at <a href='https://www.hmc.edu/'>Harvey Mudd</a>, Saturday at <a href='https://www.pomona.edu/'>Pomona</a>, and finish up on Sunday at <a href='https://www.cpp.edu/'>Cal Poly Pomona</a>.
 						</p>
 					</div>
 				</div>
@@ -176,11 +162,6 @@
 </section>
 
 </body>
-
-<script>
-	// embed pdf syntax
-	// PDFObject.embed('/resume.pdf', '#pdf-view');
-</script>
 
 <script>
 $(function(){
