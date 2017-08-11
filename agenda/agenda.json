@@ -208,10 +208,20 @@
 					"shortDesc": ""
 				},
 				{
+					"name": "Group Photo",
+					"sname": "photo",
+					"types": ["misc"],
+					"timeStart": "12:30 PM",
+					"timeEnd": "12:45 PM",
+					"required" : true,
+					"place": "Millikan Courtyard",
+					"shortDesc": ""
+				},
+				{
 					"name": "Lunch",
 					"sname": "lunch",
 					"types": ["food"],
-					"timeStart": "12:30 PM",
+					"timeStart": "12:45 PM",
 					"timeEnd": "2:30 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
@@ -221,7 +231,7 @@
 					"name": "Poster Session",
 					"sname": "posters",
 					"types": ["misc"],
-					"timeStart": "12:30 PM",
+					"timeStart": "12:45 PM",
 					"timeEnd": "2:30 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
