@@ -9,13 +9,6 @@
 @import 'countdown';
 @import 'agenda';
 
-.testing1 {
-	z-index: -10;
-}
-.testing2 {
-	z-dinex: 90;
-}
-
 * {
 	box-sizing: border-box;
 	font-family: $main-stack;
@@ -84,6 +77,7 @@ p,
 			max-height: 85vh;
 			min-height: 85vh;
 		}
+		z-index: -10;
 	}
 	&.alerts,
 	&.welcome,

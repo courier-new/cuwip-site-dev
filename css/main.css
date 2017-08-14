@@ -849,12 +849,6 @@ nav.sub.menu {
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%; } }
 
-.testing1 {
-  z-index: -10; }
-
-.testing2 {
-  z-dinex: 90; }
-
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -909,16 +903,18 @@ p,
     @media (max-width: 1000px) {
       .page.sticky.alerts {
         padding-top: 1.7em; } }
-  @media (max-width: 10000px) {
-    .page.parallax {
-      height: 90vh;
-      max-height: 90vh;
-      min-height: 90vh; } }
-  @media (max-width: 700px) {
-    .page.parallax {
-      height: 82vh;
-      max-height: 85vh;
-      min-height: 85vh; } }
+  .page.parallax {
+    z-index: -10; }
+    @media (max-width: 10000px) {
+      .page.parallax {
+        height: 90vh;
+        max-height: 90vh;
+        min-height: 90vh; } }
+    @media (max-width: 700px) {
+      .page.parallax {
+        height: 82vh;
+        max-height: 85vh;
+        min-height: 85vh; } }
   .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
     padding-top: 2.8em;
     padding-bottom: 2em; }
