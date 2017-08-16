@@ -849,6 +849,12 @@ nav.sub.menu {
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%; } }
 
+.highlight {
+  background-color: rgba(241, 235, 100, 0.5) !important;
+  -webkit-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s; }
+
 .module.container {
   background: rgba(0, 0, 0, 0.6);
   position: fixed;

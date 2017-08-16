@@ -489,10 +489,8 @@
 				addAppInfo();
 			}, 50);
 		} else {
-			// Print what testDate is, if it is going to be used
-			if (testDate) {
-				console.log("test date used: " + testDate);
-			}
+			// Array to hold elements with dynamic content
+			var elements = [];
 			// Variable to record current stage of application process
 			// Key:
 			// Bad value                              | -100
@@ -549,6 +547,7 @@
 				if (curr.dataPlace === 'alert' || curr.dataPlace === 'posters') {
 					// Identify alert box
 					var $alertBox = $('.alert.message');
+					elements.push($alertBox);
 					// If alert box configured for application info exists
 					if ($alertBox.length && $alertBox.hasClass(curr.dataPlace) && $alertBox.data("place") === 'app-info') {
 						// Variable to hold alert message content
@@ -572,6 +571,7 @@
 					});
 					// Identify closing message location based on className
 					var $mesLoc = $(className);
+					elements.push($mesLoc);
 					// If message box configured for application info exists
 					if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
 						// Fill in appropriate text
@@ -579,6 +579,20 @@
 					}
 				}
 			});
+			// If test date was used
+			if (testDate) {
+				// Print it
+				console.log("test date used: " + testDate);
+				// Highlight elements that have been changed
+				$(elements).each(function () {
+					$(this).addClass('highlight');
+				});
+			} else {
+				// Remove highlighting on elements
+				$(elements).each(function () {
+					$(this).removeClass('highlight');
+				});
+			}
 		}
 	}
 
