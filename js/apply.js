@@ -5,7 +5,7 @@
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
  * @since     File available since July 23, 2017
- * @version   1.0.2
+ * @version   1.1.0
  */
 
 // Variable for storing all of the application information pieces retrieved from json
@@ -25,10 +25,8 @@ function getTimeUntil(t, readable) {
 	readable = readable || false;
 	// Compute seconds from since midnight January 1st 1970 to input time
 	let endTime = Date.parse(t) / 1e3;
-	// Compute seconds from since midnight January 1st 1970 to current time
-	let currentTime = Math.floor(new Date().getTime() / 1e3);
-	// Test other dates here
-	// currentTime = Date.parse("10-12-2017 23:00:00") / 1e3;
+	// Compute seconds from since midnight January 1st 1970 to current time, unless test date is specified
+	let currentTime = (testDate.length) ? Date.parse(testDate) / 1e3 : Math.floor(new Date().getTime() / 1e3);
 	// Compute seconds between now and event time
 	let seconds, result;
 	seconds = result = endTime - currentTime;
@@ -55,103 +53,87 @@ function addAppInfo() {
 			addAppInfo();
 		}, 50);
 	} else {
+		// Print what testDate is, if it is going to be used
+		if (testDate.length) {
+			console.log("Test Date Used: " + testDate);
+		}
+		// Variable to record current stage of application process
+		// Key:
+		// Bad value                              | -100
+		// Before application opens               |   -1
+		// During application period              |    0
+		// After application, before registration |    1
+		// During registration period             |    2
+		// After registration (last stage)        |    3
+		let stage = -100;
+		// (-1) If current time is before application opens
+		stage = (getTimeUntil(applyOpen) > 0) ? -1 : stage;
+		// (0) If current time is after application opens and before application closes = during application period
+		stage = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? 0 : stage;
+		// (1) If current time is after application closes and before registration opens
+		stage = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? 1 : stage;
+		// (2) If current time is after registration opens and before registration closes = during registration period
+		stage = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? 2 : stage;
+		// (3) If current time is after registration closes
+		stage = getTimeUntil(registerClose) < 0 ? 3 : stage;
+
 	   $(appData.infoblocks).each(function() {
 	      let curr = $(this)[0];
-			// For alert message
-			if (curr.dataPlace === 'alert') {
+			// Variable to remember appropriate section of time data
+			let mes;
+			// Use current stage value to identify appropriate section
+			switch(stage) {
+				case -1: // Before application opens
+					mes = curr.before;
+					break;
+				case 0: // During application period
+					mes = curr.applyPeriod;
+					break;
+				case 1: // After application, before registration
+					mes = curr.reviewPeriod;
+					break;
+				case 2: // During registration period
+					mes = curr.registerPeriod;
+					break;
+				case 3: // After registration closes
+					mes = curr.after;
+					break;
+				default: // Bad date calculation
+					console.log("bad date");
+					// Default to before block
+					mes = curr.before;
+			}
+			// For general application and postre alert messages
+			if (curr.dataPlace === 'alert' || curr.dataPlace === 'posters') {
 				// Identify alert box
 				let $alertBox = $('.alert.message');
 				// If alert box configured for application info exists
 				if ($alertBox.length && $alertBox.data("place") === 'app-info') {
 					// Variable to hold alert message content
 					let output = "<strong>";
-					// Variable to remember appropriate section of time data
-					let mes = "";
-					// If current time is before application opens
-					mes = getTimeUntil(applyOpen) > 0 ? curr.before : mes;
-					// If current time is after application opens and before application closes
-					mes = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? curr.applyPeriod : mes;
-					// If current time is after application closes and before registration opens
-					mes = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? curr.reviewPeriod : mes;
-					// If current time is after registration opens and before registration closes
-				 	mes = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? curr.registerPeriod : mes;
-					// If current time is after registration closes
-					mes = getTimeUntil(registerClose) < 0 ? curr.after : mes;
 					output += mes.header + "</strong>\n";
 					output += "<p>\n" + mes.text + "\n</p>\n";
 					$alertBox.html(output);
 					// If current time is after application opens and before application closes
-					if (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) {
+					if (stage == 0) {
 						// Set up application deadline countdown
 						$('.time.until.close').html(getTimeUntil(applyClose, true));
 					}
 				}
 			}
-			// For closing message
-			if (curr.dataPlace === 'closing') {
-				// Identify closing message location
-				let $mesLoc = $('.closing');
+			// For closing message (index.html, after countdown) and about application message (/apply, "What do I do now?")
+			if (curr.dataPlace === 'closing' || curr.dataPlace === 'about app') {
+				// Form class name from dataPlace by splitting at spaces and adding dots before each
+				let className = "";
+				$(curr.dataPlace.split(" ")).each(function() {
+					className += "." + this;
+				});
+				// Identify closing message location based on className
+				let $mesLoc = $(className);
 				// If message box configured for application info exists
 				if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
-					// Variable to hold alert message content
-					let output = "";
-					// If current time is before application opens
-					output = getTimeUntil(applyOpen) > 0 ? curr.before.text : output;
-					// If current time is after application opens and before application closes
-					output = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? curr.applyPeriod.text : output;
-					// If current time is after application closes and before registration opens
-					output = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? curr.reviewPeriod.text : output;
-					// If current time is after registration opens and before registration closes
-				 	output = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? curr.registerPeriod.text : output;
-					// If current time is after registration closes
-					output = getTimeUntil(registerClose) < 0 ? curr.after.text : output;
-					$mesLoc.html(output);
-				}
-			}
-			// For about application message
-			if (curr.dataPlace === 'about') {
-				// Identify about application message location
-				let $mesLoc = $('.about.app');
-				// If message box configured for application info exists
-				if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
-					// Variable to hold alert message content
-					let output = "";
-					// If current time is before application opens
-					output = getTimeUntil(applyOpen) > 0 ? curr.before.text : output;
-					// If current time is after application opens and before application closes
-					output = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? curr.applyPeriod.text : output;
-					// If current time is after application closes and before registration opens
-					output = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? curr.reviewPeriod.text : output;
-					// If current time is after registration opens and before registration closes
-				 	output = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? curr.registerPeriod.text : output;
-					// If current time is after registration closes
-					output = getTimeUntil(registerClose) < 0 ? curr.after.text : output;
-					$mesLoc.html(output);
-				}
-			}
-			// For poster message
-			if (curr.dataPlace === 'posters') {
-				// Identify posters alert box
-				let $alertBox = $('.alert.message');
-				// If alert box configured for poster info exists
-				if ($alertBox.length && $alertBox.data("place") === 'poster-info') {
-					// Variable to hold alert message content
-					let output = "<strong>";
-					// Variable to remember appropriate section of time data
-					let mes = "";
-					// If current time is before application opens
-					mes = getTimeUntil(applyOpen) > 0 ? curr.before : mes;
-					// If current time is after application opens and before application closes
-					mes = (getTimeUntil(applyOpen) < 0 && getTimeUntil(applyClose) > 0) ? curr.applyPeriod : mes;
-					// If current time is after application closes and before registration opens
-					mes = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? curr.reviewPeriod : mes;
-					// If current time is after registration opens and before registration closes
-				 	mes = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? curr.registerPeriod : mes;
-					// If current time is after registration closes
-					mes = getTimeUntil(registerClose) < 0 ? curr.after : mes;
-					output += mes.header + "</strong>\n";
-					output += "<p>\n" + mes.text + "\n</p>\n";
-					$alertBox.html(output);
+					// Fill in appropriate text
+					$mesLoc.html(mes.text);
 				}
 			}
 	   });
