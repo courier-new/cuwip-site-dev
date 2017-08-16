@@ -6,51 +6,31 @@
 			"scollege": "Harvey Mudd",
 			"events": [
 				{
-					"name": "Check-In",
-					"sname": "checkin",
-					"types": ["logistics"],
-					"timeStart": "12:00 PM",
-					"timeEnd": "2:00 PM",
-					"required": true,
-					"place": "TBD",
-					"shortDesc": "The check-in table will be located outside of x location. You may store your bags onsite at Harvey Mudd or, if you are driving, leave them in your car. Parking is available at y."
-				},
-				{
 					"name": "Lunch",
 					"sname": "lunch",
 					"types": ["food"],
-					"timeStart": "12:30 PM",
-					"timeEnd": "2:00 PM",
+					"timeStart": "1:00 PM",
+					"timeEnd": "3:00 PM",
 					"required": false,
 					"place": "TBD",
 					"shortDesc": "Lunch will be provided by food place. Need to RSVP? Optional lunch, next meal would be dinner."
 				},
 				{
-					"name": "Opening Remarks",
-					"sname": "opening",
-					"types": ["talk"],
-					"timeStart": "2:00 PM",
-					"timeEnd": "3:00 PM",
-					"required": true,
-					"place": "Galileo/McAlester Auditorium",
-					"shortDesc": "Mary Sue will deliver a warm welcome to all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic location etc. of the conference."
-				},
-				{
-					"name": "Panel1",
-					"sname": "panel1",
-					"types": ["panel"],
+					"name": "Check-In",
+					"sname": "checkin",
+					"types": ["logistics"],
 					"timeStart": "3:00 PM",
-					"timeEnd": "4:00 PM",
+					"timeEnd": "5:00 PM",
 					"required": true,
-					"place": "Galileo/McAlester Auditorium",
-					"shortDesc": "Some people will form a panel to discuss some topic and their experiences and take questions about said topic and stuff depending on the people of the panel and the interest of the audience."
+					"place": "TBD",
+					"shortDesc": "The check-in table will be located outside of x location. You may store your bags onsite at Harvey Mudd or, if you are driving, leave them in your car. Parking is available at y."
 				},
 				{
 					"name": "Lab Tours",
 					"sname": "labtours",
 					"types": ["misc"],
-					"timeStart": "4:00 PM",
-					"timeEnd": "6:00 PM",
+					"timeStart": "3:00 PM",
+					"timeEnd": "5:00 PM",
 					"required": false,
 					"place": "TBD",
 					"meetingPlace": "TBD",
@@ -60,11 +40,21 @@
 					"name": "Free Time",
 					"sname": "free",
 					"types": ["free"],
-					"timeStart": "4:00 PM",
-					"timeEnd": "6:00 PM",
+					"timeStart": "3:00 PM",
+					"timeEnd": "5:00 PM",
 					"required": false,
 					"place": "DoubleTree/Claremont",
 					"shortDesc": "Those who do not wish to attend the lab tours may return to the hotel to settle in or else explore <a href=''>Claremont</a>. Insert some information about Claremont or alternative things to do."
+				},
+				{
+					"name": "Opening Remarks",
+					"sname": "opening",
+					"types": ["talk"],
+					"timeStart": "5:00 PM",
+					"timeEnd": "6:30 PM",
+					"required": true,
+					"place": "Galileo/McAlester Auditorium",
+					"shortDesc": "Mary Sue will deliver a warm welcome to all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic location etc. of the conference."
 				},
 				{
 					"name": "Dinner",
@@ -166,7 +156,7 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Science Talk",
+					"name": "Some Talk",
 					"sname": "talk1",
 					"types": ["talk"],
 					"timeStart": "9:00 AM",
@@ -176,7 +166,7 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Breakout Session 1/3",
+					"name": "Parallel Session 1/3",
 					"sname": "breakout1",
 					"types": ["breakout"],
 					"timeStart": "9:45 AM",
@@ -208,21 +198,11 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Group Photo",
-					"sname": "photo",
-					"types": ["misc"],
-					"timeStart": "12:30 PM",
-					"timeEnd": "12:45 PM",
-					"required" : true,
-					"place": "Millikan Courtyard",
-					"shortDesc": ""
-				},
-				{
 					"name": "Lunch",
 					"sname": "lunch",
 					"types": ["food"],
-					"timeStart": "12:45 PM",
-					"timeEnd": "2:30 PM",
+					"timeStart": "12:30 PM",
+					"timeEnd": "2:15 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
 					"shortDesc": ""
@@ -231,22 +211,32 @@
 					"name": "Poster Session",
 					"sname": "posters",
 					"types": ["misc"],
-					"timeStart": "12:45 PM",
-					"timeEnd": "2:30 PM",
+					"timeStart": "12:30 PM",
+					"timeEnd": "2:15 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
 					"shortDesc": ""
 				},
 				{
-					"name": "Breakout Session 2/3",
-					"sname": "breakout2",
-					"types": ["breakout"],
+					"name": "Group Photo",
+					"sname": "photo",
+					"types": ["misc"],
+					"timeStart": "2:15 PM",
+					"timeEnd": "2:30 PM",
+					"required" : true,
+					"place": "Millikan Courtyard",
+					"shortDesc": ""
+				},
+				{
+					"name": "Panel1",
+					"sname": "panel1",
+					"types": ["panel"],
 					"timeStart": "2:30 PM",
 					"timeEnd": "3:15 PM",
 					"required": true,
 					"place": "Smith Campus Center/Millikan Hall",
-					"optionCount": 5,
-					"options": [1, 2, 3, 4, 5],
+					"optionCount": 2,
+					"options": [1, 2],
 					"shortDesc": ""
 				},
 				{
@@ -260,13 +250,13 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Breakout Session 3/3",
-					"sname": "breakout3",
+					"name": "Parallel Session 2/3",
+					"sname": "breakout2",
 					"types": ["breakout"],
 					"timeStart": "3:45 PM",
 					"timeEnd": "4:30 PM",
-					"place": "Smith Campus Center/Millikan Hall",
 					"required": true,
+					"place": "Smith Campus Center/Millikan Hall",
 					"optionCount": 5,
 					"options": [1, 2, 3, 4, 5],
 					"shortDesc": ""
@@ -282,13 +272,15 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Panel2",
-					"sname": "panel2",
-					"types": ["panel"],
-					"timeStart": "3:00 PM",
-					"timeEnd": "4:00 PM",
+					"name": "Parallel Session 3/3",
+					"sname": "breakout3",
+					"types": ["breakout"],
+					"timeStart": "5:00 PM",
+					"timeEnd": "5:45 PM",
+					"place": "Smith Campus Center/Millikan Hall",
 					"required": true,
-					"place": "TBD",
+					"optionCount": 5,
+					"options": [1, 2, 3, 4, 5],
 					"shortDesc": ""
 				},
 				{
@@ -320,6 +312,8 @@
 					"required": false,
 					"place": "Millikan Hall",
 					"meetingPlace": "TBD",
+					"optionCount": 2,
+					"options": [1, 2],
 					"shortDesc": ""
 				},
 				{
@@ -365,8 +359,8 @@
 					"name": "Breakfast",
 					"sname": "breakfast",
 					"types": ["food"],
-					"timeStart": "7:30 AM",
-					"timeEnd": "8:30 AM",
+					"timeStart": "7:00 AM",
+					"timeEnd": "8:00 AM",
 					"required": false,
 					"place": "DoubleTree Hotel",
 					"shortDesc": ""
@@ -376,18 +370,18 @@
 					"sname": "shuttle",
 					"types": ["shuttle"],
 					"timeStart": "8:00 AM",
-					"timeEnd": "9:30 AM",
+					"timeEnd": "8:45 AM",
 					"required": true,
 					"place": "DoubleTree Hotel",
 					"meetingPlace": "TBD",
 					"shortDesc": ""
 				},
 				{
-					"name": "Career Panel",
-					"sname": "panel3",
+					"name": "Futures in Physics Panel",
+					"sname": "panel2",
 					"types": ["panel"],
-					"timeStart": "9:30 AM",
-					"timeEnd": "10:30 AM",
+					"timeStart": "9:00 AM",
+					"timeEnd": "9:50 AM",
 					"required": true,
 					"place": "Ursa Minor",
 					"shortDesc": ""
@@ -396,8 +390,8 @@
 					"name": "Career Breakout Session",
 					"sname": "breakout4",
 					"types": ["breakout"],
-					"timeStart": "10:30 AM",
-					"timeEnd": "11:30 AM",
+					"timeStart": "10:00 AM",
+					"timeEnd": "11:00 AM",
 					"required": true,
 					"place": "Bronco Student Center",
 					"shortDesc": ""
@@ -406,8 +400,8 @@
 					"name": "Career Fair",
 					"sname": "careerfair",
 					"types": ["misc"],
-					"timeStart": "11:30 AM",
-					"timeEnd": "12:30 PM",
+					"timeStart": "11:00 AM",
+					"timeEnd": "12:00 PM",
 					"required": true,
 					"place": "Ursa Major",
 					"shortDesc": ""
@@ -416,18 +410,28 @@
 					"name": "Lunch",
 					"sname": "lunch",
 					"types": ["food"],
-					"timeStart": "12:30 PM",
-					"timeEnd": "1:30 PM",
+					"timeStart": "12:00 PM",
+					"timeEnd": "1:00 PM",
 					"required": true,
 					"place": "TBD",
+					"shortDesc": ""
+				},
+				{
+					"name": "Science Talk",
+					"sname": "talk1",
+					"types": ["talk"],
+					"timeStart": "1:00 PM",
+					"timeEnd": "2:00 PM",
+					"required": true,
+					"place": "Business Building",
 					"shortDesc": ""
 				},
 				{
 					"name": "Science Show",
 					"sname": "show",
 					"types": ["misc"],
-					"timeStart": "1:45 PM",
-					"timeEnd": "2:30 PM",
+					"timeStart": "2:00 PM",
+					"timeEnd": "3:00 PM",
 					"required": true,
 					"place": "Business Building",
 					"shortDesc": ""
@@ -436,8 +440,8 @@
 					"name": "Closing Remarks",
 					"sname": "closing",
 					"types": ["talk"],
-					"timeStart": "2:30 PM",
-					"timeEnd": "3:00 PM",
+					"timeStart": "3:00 PM",
+					"timeEnd": "3:30 PM",
 					"required": true,
 					"place": "Business Building",
 					"shortDesc": ""
