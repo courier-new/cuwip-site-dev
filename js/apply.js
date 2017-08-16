@@ -26,7 +26,7 @@ function getTimeUntil(t, readable) {
 	// Compute seconds from since midnight January 1st 1970 to input time
 	let endTime = Date.parse(t) / 1e3;
 	// Compute seconds from since midnight January 1st 1970 to current time, unless test date is specified
-	let currentTime = (testDate.length) ? testDate : Math.floor(new Date().getTime() / 1e3);
+	let currentTime = (testDate) ? testDate : Math.floor(new Date().getTime() / 1e3);
 	// Compute seconds between now and event time
 	let seconds, result;
 	seconds = result = endTime - currentTime;
@@ -53,10 +53,9 @@ function addAppInfo() {
 			addAppInfo();
 		}, 50);
 	} else {
-		console.log('here');
 		// Print what testDate is, if it is going to be used
-		if (testDate.length) {
-			console.log("Test Date Used: " + testDate);
+		if (testDate) {
+			console.log("test date used: " + testDate);
 		}
 		// Variable to record current stage of application process
 		// Key:

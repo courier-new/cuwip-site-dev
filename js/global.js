@@ -8,7 +8,7 @@ let registerClose = '17 November 2017 23:59:00 PST';
 // Set date/time of event in this format
 let startOfCUWiP = '12 January 2018 18:00:00 PDT';
 // Variable for holding test date
-let testDate = '';
+let testDate;
 
 // Identify main navigation menu
 let $nav = $('nav.main.menu');

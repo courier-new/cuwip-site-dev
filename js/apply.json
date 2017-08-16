@@ -8,11 +8,11 @@
 			},
 			"applyPeriod": {
 				"header": "Application is now live",
-				"text":   "Interested in attending CUWiP 2018? <a href='../apply'>Begin your application today</a> through APS or visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend. The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 13th."
+				"text":   "Interested in attending CUWiP 2018? <a href='../apply'>Begin your application today</a> through APS or visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend. The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
 			},
 			"reviewPeriod": {
 				"header": "Application period is closed",
-				"text":   "The application for CUWiP 2018 is now closed. To those who applied, thank you for your interest! We will review applications and inform you of your status on November 6th. If you missed out this time around, keep an eye out for CUWiP 2019!"
+				"text":   "The application for CUWiP 2018 is now closed. To those who applied, thank you for your interest! We will review applications and inform you of your status on <em>November 6th.</em> If you missed out this time around, keep an eye out for CUWiP 2019!"
 			},
 			"registerPeriod": {
 				"header": "Application period is closed",

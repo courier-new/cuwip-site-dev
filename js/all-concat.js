@@ -16,4 +16,5 @@
 // @prepros-append countdown.js
 // @prepros-append apply.js
 // @prepros-append device.js
+// @prepros-append test-date.js
 // @prepros-append end.js

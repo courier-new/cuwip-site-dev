@@ -849,6 +849,75 @@ nav.sub.menu {
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%; } }
 
+.module.container {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 200; }
+  .module.container .test.date.module {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .module.container .test.date.module .text {
+      background: rgba(230, 230, 230, 0.95);
+      color: #969696;
+      font-size: 0.8em;
+      line-height: 2em;
+      padding: 2em;
+      text-align: center; }
+      .module.container .test.date.module .text .input.bar {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-bottom: 0.8em; }
+        .module.container .test.date.module .text .input.bar input {
+          border: 2px solid rgba(180, 180, 180, 0.95);
+          font-size: 1.5em;
+          letter-spacing: 1px;
+          margin-right: 1em;
+          padding: 0.5em;
+          outline: none;
+          text-align: center; }
+          @media (max-width: 10000px) {
+            .module.container .test.date.module .text .input.bar input {
+              max-width: 500px;
+              width: 50vw; } }
+          @media (max-width: 1000px) {
+            .module.container .test.date.module .text .input.bar input {
+              min-width: 400px; } }
+        .module.container .test.date.module .text .input.bar .button {
+          background-color: rgba(202, 119, 108, 0.9);
+          border-radius: 2em;
+          color: #f5f2f1;
+          font-weight: 600;
+          padding: 0.3em 1.5em;
+          text-transform: uppercase;
+          -webkit-transition: background 0.3s;
+          -o-transition: background 0.3s;
+          transition: background 0.3s; }
+          .module.container .test.date.module .text .input.bar .button:hover {
+            background-color: #851e46;
+            cursor: pointer; }
+          .module.container .test.date.module .text .input.bar .button.reset {
+            margin-left: 1em; }
+      .module.container .test.date.module .text strong {
+        color: #851e46;
+        display: block;
+        font-size: 1.1em; }
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
