@@ -26,7 +26,7 @@ function getTimeUntil(t, readable) {
 	// Compute seconds from since midnight January 1st 1970 to input time
 	let endTime = Date.parse(t) / 1e3;
 	// Compute seconds from since midnight January 1st 1970 to current time, unless test date is specified
-	let currentTime = (testDate.length) ? Date.parse(testDate) / 1e3 : Math.floor(new Date().getTime() / 1e3);
+	let currentTime = (testDate.length) ? testDate : Math.floor(new Date().getTime() / 1e3);
 	// Compute seconds between now and event time
 	let seconds, result;
 	seconds = result = endTime - currentTime;
@@ -53,6 +53,7 @@ function addAppInfo() {
 			addAppInfo();
 		}, 50);
 	} else {
+		console.log('here');
 		// Print what testDate is, if it is going to be used
 		if (testDate.length) {
 			console.log("Test Date Used: " + testDate);
@@ -108,7 +109,7 @@ function addAppInfo() {
 				// Identify alert box
 				let $alertBox = $('.alert.message');
 				// If alert box configured for application info exists
-				if ($alertBox.length && $alertBox.data("place") === 'app-info') {
+				if ($alertBox.length && $alertBox.hasClass(curr.dataPlace) && $alertBox.data("place") === 'app-info') {
 					// Variable to hold alert message content
 					let output = "<strong>";
 					output += mes.header + "</strong>\n";
