@@ -10,6 +10,7 @@
 	width: 100vw;
 	z-index: 200;
 	.test.date.module {
+		box-shadow: 2px 2px 15px rgba($grey-dark, 0.4);
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -21,6 +22,9 @@
 			line-height: 2em;
 			padding: 2em;
 			text-align: center;
+			.instruction {
+				margin-right: 26%;
+			}
 			.input.bar {
 				align-items: center;
 				display: flex;
