@@ -55,15 +55,14 @@ function addAppInfo() {
 	} else {
 		// Array to hold elements with dynamic content
 		let elements = [];
-		// Variable to record current stage of application process
-		// Key:
+		// Set stage to correspond to time period:
 		// Bad value                              | -100
 		// Before application opens               |   -1
 		// During application period              |    0
 		// After application, before registration |    1
 		// During registration period             |    2
-		// After registration (last stage)        |    3
-		let stage = -100;
+		// After registration                     |    3
+		// After travel reimbursement form due    |    4
 		// (-1) If current time is before application opens
 		stage = (getTimeUntil(applyOpen) > 0) ? -1 : stage;
 		// (0) If current time is after application opens and before application closes = during application period
@@ -72,8 +71,10 @@ function addAppInfo() {
 		stage = (getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0) ? 1 : stage;
 		// (2) If current time is after registration opens and before registration closes = during registration period
 		stage = (getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0) ? 2 : stage;
-		// (3) If current time is after registration closes
-		stage = getTimeUntil(registerClose) < 0 ? 3 : stage;
+		// (3) If current time is after registration closes and before conference weekend
+		stage = (getTimeUntil(registerClose) < 0 && getTimeUntil(startOfCUWiP) > 0) ? 3 : stage;
+		// (4) If current time is after conference weekend and before travel reimbursement form is due
+		stage = (getTimeUntil(startOfCUWiP) < 0 && getTimeUntil(travelClose) > 0) ? 4 : stage;
 
 	   $(appData.infoblocks).each(function() {
 	      let curr = $(this)[0];
@@ -94,6 +95,9 @@ function addAppInfo() {
 					mes = curr.registerPeriod;
 					break;
 				case 3: // After registration closes
+					mes = curr.after;
+					break;
+				case 4: // After travel reimbursement form due
 					mes = curr.after;
 					break;
 				default: // Bad date calculation

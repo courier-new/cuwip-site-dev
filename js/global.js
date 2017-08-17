@@ -5,10 +5,32 @@ let applyOpen = '1 September 2017 00:00:00 EDT';
 let applyClose = '13 October 2017 23:59:00 EDT';
 let registerOpen = '6 November 2017 00:00:00 PST';
 let registerClose = '17 November 2017 23:59:00 PST';
-// Set date/time of event in this format
 let startOfCUWiP = '12 January 2018 18:00:00 PDT';
+let travelClose = '21 January 2018 23:59:00 PST';
+
+// Store events Array
+let events = {
+	"Application Opens": applyOpen,
+	"Application Closes": applyClose,
+	"Applicant Status Announced": registerOpen,
+	"Registration Closes": registerClose,
+	"Conference Weekend": startOfCUWiP,
+	"Travel Reimbursement Form Due": travelClose
+};
+
 // Variable for holding test date
 let testDate;
+
+// Variable to record current stage of application process
+// Key:
+// Bad value                              | -100
+// Before application opens               |   -1
+// During application period              |    0
+// After application, before registration |    1
+// During registration period             |    2
+// After registration                     |    3
+// After travel reimbursement form due    |    4
+let stage = -100;
 
 // Identify main navigation menu
 let $nav = $('nav.main.menu');
