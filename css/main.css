@@ -1020,7 +1020,8 @@ nav.sub.menu {
             font-size: 1.5em; } }
         @media (max-width: 400px) {
           .page.timeline ul li.current .desc .date {
-            font-size: 1.35em; } }
+            font-size: 1.35em;
+            margin-left: -1px; } }
       .page.timeline ul li.current .circle:before {
         background: #9dc628;
         border: 5px solid #9dc628;

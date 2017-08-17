@@ -136,6 +136,7 @@
 						}
 						@include respond-to('at400') {
 							font-size: 1.35em;
+							margin-left: -1px;
 						}
 						color: $green-lime;
 						font-size: 1.2em;
