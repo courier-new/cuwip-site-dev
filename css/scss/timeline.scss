@@ -1,11 +1,12 @@
 .page.timeline {
 	@include respond-to('xlarge') {
-		background-color: $grey-medium-dark;
+		padding: 3em 0 0.8em 0;
 	}
 	@include respond-to('at1000') {
-		background-color: darken($grey-medium-dark, 10%);
+		padding: 2em 0 0 0;
 	}
-	padding: 2.4em 0;
+	background-color: $grey-lightest;
+
 	ul {
 		@include respond-to('at1000') {
 			flex-wrap: wrap;
@@ -28,10 +29,15 @@
 			}
 			@include respond-to('at1000') {
 				width: 100%;
-				border-left: 2px solid $grey-light;
+				border-left: 2px solid lighten($grey-light, 10%);
 			}
 			box-sizing: border-box;
 			list-style: none;
+			&:first-child {
+				@include respond-to('at1000') {
+					padding-top: 1.8em;
+				}
+			}
 			.desc {
 				@include respond-to('xlarge') {
 					align-items: center;
@@ -54,7 +60,7 @@
 				}
 				.event {
 					@include respond-to('xlarge') {
-						font-size: 0.6em;
+						font-size: 0.68em;
 					}
 					@include respond-to('at1000') {
 						font-size: 0.8em;
@@ -62,11 +68,11 @@
 					@include respond-to('at400') {
 						font-size: 0.7em;
 					}
-					color: lighten($grey-medium, 10%);
+					color: $grey-light;
 				}
 				.date {
 					@include respond-to('xlarge') {
-						font-size: 0.9em;
+						font-size: 0.95em;
 					}
 					@include respond-to('at1000') {
 						font-size: 1.1em;
@@ -81,7 +87,7 @@
 			}
 			.circle {
 				@include respond-to('xlarge') {
-					border-top: 2px solid $grey-light;
+					border-top: 2px solid lighten($grey-light, 10%);
 				}
 				@include respond-to('at1000') {
 					border-top: none;
@@ -106,7 +112,7 @@
 					content: '';
 					width: 10px;
 					height: 10px;
-					background: $grey-medium;
+					background: $grey-lightest;
 					border-radius: 15px;
 					border: 3px solid $grey-light;
 					position: absolute;
@@ -125,7 +131,8 @@
 						@include respond-to('at400') {
 							font-size: 0.9em;
 						}
-						color: $grey-light;
+						color: $green-lime;
+						font-weight: 600;
 					}
 					.date {
 						@include respond-to('xlarge') {

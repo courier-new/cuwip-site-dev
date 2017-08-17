@@ -850,13 +850,13 @@ nav.sub.menu {
             flex-basis: 100%; } }
 
 .page.timeline {
-  padding: 2.4em 0; }
+  background-color: #f5f2f1; }
   @media (max-width: 10000px) {
     .page.timeline {
-      background-color: #706c76; } }
+      padding: 3em 0 0.8em 0; } }
   @media (max-width: 1000px) {
     .page.timeline {
-      background-color: #57545b; } }
+      padding: 2em 0 0 0; } }
   .page.timeline ul {
     margin: 0;
     padding: 0;
@@ -896,7 +896,10 @@ nav.sub.menu {
       @media (max-width: 1000px) {
         .page.timeline ul li {
           width: 100%;
-          border-left: 2px solid #c9bcba; } }
+          border-left: 2px solid #dfd8d7; } }
+      @media (max-width: 1000px) {
+        .page.timeline ul li:first-child {
+          padding-top: 1.8em; } }
       .page.timeline ul li .desc {
         display: -webkit-box;
         display: -webkit-flex;
@@ -935,10 +938,10 @@ nav.sub.menu {
           .page.timeline ul li .desc .date {
             text-align: left; } }
         .page.timeline ul li .desc .event {
-          color: #a9a2a6; }
+          color: #c9bcba; }
           @media (max-width: 10000px) {
             .page.timeline ul li .desc .event {
-              font-size: 0.6em; } }
+              font-size: 0.68em; } }
           @media (max-width: 1000px) {
             .page.timeline ul li .desc .event {
               font-size: 0.8em; } }
@@ -951,7 +954,7 @@ nav.sub.menu {
           margin-bottom: 0.5em; }
           @media (max-width: 10000px) {
             .page.timeline ul li .desc .date {
-              font-size: 0.9em; } }
+              font-size: 0.95em; } }
           @media (max-width: 1000px) {
             .page.timeline ul li .desc .date {
               font-size: 1.1em; } }
@@ -971,7 +974,7 @@ nav.sub.menu {
         position: relative; }
         @media (max-width: 10000px) {
           .page.timeline ul li .circle {
-            border-top: 2px solid #c9bcba; } }
+            border-top: 2px solid #dfd8d7; } }
         @media (max-width: 1000px) {
           .page.timeline ul li .circle {
             border-top: none; } }
@@ -979,7 +982,7 @@ nav.sub.menu {
           content: '';
           width: 10px;
           height: 10px;
-          background: #91878d;
+          background: #f5f2f1;
           border-radius: 15px;
           border: 3px solid #c9bcba;
           position: absolute;
@@ -999,7 +1002,8 @@ nav.sub.menu {
               top: -56px;
               left: -9px; } }
       .page.timeline ul li.current .desc .event {
-        color: #c9bcba; }
+        color: #9dc628;
+        font-weight: 600; }
         @media (max-width: 10000px) {
           .page.timeline ul li.current .desc .event {
             font-size: 0.8em; } }
