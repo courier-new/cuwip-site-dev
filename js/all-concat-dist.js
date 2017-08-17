@@ -17,6 +17,7 @@
 // @prepros-append nav.js
 // @prepros-append countdown.js
 // @prepros-append apply.js
+// @prepros-append timeline.js
 // @prepros-append device.js
 // @prepros-append test-date.js
 // @prepros-append end.js
@@ -41,10 +42,32 @@
 	var applyClose = '13 October 2017 23:59:00 EDT';
 	var registerOpen = '6 November 2017 00:00:00 PST';
 	var registerClose = '17 November 2017 23:59:00 PST';
-	// Set date/time of event in this format
 	var startOfCUWiP = '12 January 2018 18:00:00 PDT';
+	var travelClose = '21 January 2018 23:59:00 PST';
+
+	// Store events Array
+	var events = {
+		"Application Opens": applyOpen,
+		"Application Closes": applyClose,
+		"Applicant Status Announced": registerOpen,
+		"Registration Closes": registerClose,
+		"Conference Weekend": startOfCUWiP,
+		"Travel Reimbursement Form Due": travelClose
+	};
+
 	// Variable for holding test date
 	var testDate = void 0;
+
+	// Variable to record current stage of application process
+	// Key:
+	// Bad value                              | -100
+	// Before application opens               |   -1
+	// During application period              |    0
+	// After application, before registration |    1
+	// During registration period             |    2
+	// After registration                     |    3
+	// After travel reimbursement form due    |    4
+	var stage = -100;
 
 	// Identify main navigation menu
 	var $nav = $('nav.main.menu');
@@ -491,15 +514,14 @@
 		} else {
 			// Array to hold elements with dynamic content
 			var elements = [];
-			// Variable to record current stage of application process
-			// Key:
+			// Set stage to correspond to time period:
 			// Bad value                              | -100
 			// Before application opens               |   -1
 			// During application period              |    0
 			// After application, before registration |    1
 			// During registration period             |    2
-			// After registration (last stage)        |    3
-			var stage = -100;
+			// After registration                     |    3
+			// After travel reimbursement form due    |    4
 			// (-1) If current time is before application opens
 			stage = getTimeUntil(applyOpen) > 0 ? -1 : stage;
 			// (0) If current time is after application opens and before application closes = during application period
@@ -508,8 +530,10 @@
 			stage = getTimeUntil(applyClose) < 0 && getTimeUntil(registerOpen) > 0 ? 1 : stage;
 			// (2) If current time is after registration opens and before registration closes = during registration period
 			stage = getTimeUntil(registerOpen) < 0 && getTimeUntil(registerClose) > 0 ? 2 : stage;
-			// (3) If current time is after registration closes
-			stage = getTimeUntil(registerClose) < 0 ? 3 : stage;
+			// (3) If current time is after registration closes and before conference weekend
+			stage = getTimeUntil(registerClose) < 0 && getTimeUntil(startOfCUWiP) > 0 ? 3 : stage;
+			// (4) If current time is after conference weekend and before travel reimbursement form is due
+			stage = getTimeUntil(startOfCUWiP) < 0 && getTimeUntil(travelClose) > 0 ? 4 : stage;
 
 			$(appData.infoblocks).each(function () {
 				var curr = $(this)[0];
@@ -535,6 +559,10 @@
 						break;
 					case 3:
 						// After registration closes
+						mes = curr.after;
+						break;
+					case 4:
+						// After travel reimbursement form due
 						mes = curr.after;
 						break;
 					default:
@@ -598,6 +626,65 @@
 
 	/* End of apply.js */
 
+	/**
+  * timeline.js
+  *
+  * Fills and formats a timeline of conference-related events from application to travel reimbursement form, according to global.js array events
+  *
+  * @author    Kelli Rockwell <kellirockwell@mail.com>
+  * @since     File available since August 16, 2017
+  * @version   1.0.0
+  */
+
+	Date.prototype.getMonthName = function () {
+		var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		return months[this.getMonth()];
+	};
+
+	Date.prototype.getMonthSName = function () {
+		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		return months[this.getMonth()];
+	};
+
+	var highlightCurrentPeriod = function highlightCurrentPeriod() {
+		if ($('.page.timeline').length) {
+			if (!appData.infoblocks.length) {
+				setTimeout(function () {
+					console.log('trying again');
+					highlightCurrentPeriod();
+				}, 50);
+			} else {
+				// Find list item
+				var listItem = stage + 2;
+				$('.page.timeline li').each(function () {
+					$(this).removeClass('current');
+				});
+				$('.page.timeline li:nth-child(' + listItem + ')').addClass('current');
+			}
+		}
+	};
+
+	if ($('.page.timeline').length) {
+		// Variable to hold content
+		var output = "";
+		for (var e in events) {
+			var date = new Date(events[e]);
+			output += "<li>\n<div class='desc'>\n";
+			if (e == "Application Opens") {
+				output += "<span class='date'>Sep 1</span>\n";
+				output += "<span class='event'>" + e + "</span>\n";
+			} else {
+				output += "<span class='date'>" + date.getMonthSName() + " " + date.getDate() + "</span>\n";
+				output += "<span class='event'>" + e + "</span>\n";
+			}
+			output += "</div>\n<div class='circle'></div>\n</li>";
+		}
+		$('.page.timeline ul').html(output);
+		highlightCurrentPeriod();
+	}
+
+	/* End of timeline.js */
+
 	$('.device.word').each(function () {
 		var word = "";
 		// If mobile
@@ -641,7 +728,7 @@
 			console.log('opening test date module');
 			var module = "<div class='module container'>\n<div class='test date module'>\n<div class='text'>\n";
 			module += "<div class='input bar'><input type='text'></input><div class='go button'>Try</div><div class='reset button'>Reset</div></div>\n";
-			module += "Recommended input format is<strong>17 November 2017 23:59:00 PST</strong>\n</div>\n</div>\n</div>";
+			module += "<div class='instruction'>Recommended input format is<strong>17 November 2017 23:59:00 PST</strong></div>\n</div>\n</div>\n</div>";
 			$('body').prepend(module);
 			$('.test.date.module input').focus();
 		} else {
@@ -660,6 +747,7 @@
 		// Set date and reload content
 		testDate = input;
 		addAppInfo();
+		highlightCurrentPeriod();
 	});
 
 	// Reset to current date on click of reset button
@@ -667,6 +755,7 @@
 		// Reset date and reload content
 		testDate = null;
 		addAppInfo();
+		highlightCurrentPeriod();
 	});
 
 	// Close test date changing module on click of anywhere outside of it
@@ -682,19 +771,35 @@
 	// Close test date changing module on press of escape button
 	document.onkeydown = function (e) {
 		e = e || window.event;
-		// Boolean for remembering if key pressed is escape key or not
+		// Boolean for remembering if key pressed is escape
 		var isEscape = false;
+		// Boolean for remembering if key pressed is enter
+		var isEnter = false;
 		if ("key" in e) {
 			// Newer browsers
 			isEscape = e.key == "Escape" || e.key == "Esc";
+			isEnter = e.key == "Enter";
 		} else {
 			// Older browsers
 			isEscape = e.keyCode == 27;
+			isEnter = e.keyCode == 13;
 		}
 		// If module is present and keypress of escape
 		if ($('.test.date.module').length && isEscape) {
 			console.log('closing test date module');
 			$('.module.container').remove();
+		}
+		// If module is present and keypress of enter
+		if ($('.test.date.module').length && isEnter) {
+			// Try to parse date
+			var input = Date.parse($('.test.date.module input').val()) / 1e3;
+			if (!input) {
+				console.log('could not parse date from input');
+			}
+			// Set date and reload content
+			testDate = input;
+			addAppInfo();
+			highlightCurrentPeriod();
 		}
 	};
 
