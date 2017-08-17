@@ -849,6 +849,196 @@ nav.sub.menu {
             -ms-flex-preferred-size: 100%;
             flex-basis: 100%; } }
 
+.page.timeline {
+  padding: 2.4em 0; }
+  @media (max-width: 10000px) {
+    .page.timeline {
+      background-color: #706c76; } }
+  @media (max-width: 1000px) {
+    .page.timeline {
+      background-color: #57545b; } }
+  .page.timeline ul {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
+    @media (max-width: 1000px) {
+      .page.timeline ul {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-left: 40%;
+        width: 30%; } }
+    @media (max-width: 700px) {
+      .page.timeline ul {
+        margin-left: 10%;
+        width: 85%; } }
+    .page.timeline ul li {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      list-style: none; }
+      @media (max-width: 10000px) {
+        .page.timeline ul li {
+          width: 16.6%; } }
+      @media (max-width: 1000px) {
+        .page.timeline ul li {
+          width: 100%;
+          border-left: 2px solid #c9bcba; } }
+      .page.timeline ul li .desc {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding: 0px 20px; }
+        @media (max-width: 10000px) {
+          .page.timeline ul li .desc {
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center; } }
+        @media (max-width: 1000px) {
+          .page.timeline ul li .desc {
+            -webkit-box-align: start;
+            -webkit-align-items: flex-start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -webkit-box-pack: start;
+            -webkit-justify-content: flex-start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            padding-left: 3em; } }
+        @media (max-width: 1000px) {
+          .page.timeline ul li .desc .event,
+          .page.timeline ul li .desc .date {
+            text-align: left; } }
+        .page.timeline ul li .desc .event {
+          color: #a9a2a6; }
+          @media (max-width: 10000px) {
+            .page.timeline ul li .desc .event {
+              font-size: 0.6em; } }
+          @media (max-width: 1000px) {
+            .page.timeline ul li .desc .event {
+              font-size: 0.8em; } }
+          @media (max-width: 400px) {
+            .page.timeline ul li .desc .event {
+              font-size: 0.7em; } }
+        .page.timeline ul li .desc .date {
+          color: #c9bcba;
+          font-weight: 600;
+          margin-bottom: 0.5em; }
+          @media (max-width: 10000px) {
+            .page.timeline ul li .desc .date {
+              font-size: 0.9em; } }
+          @media (max-width: 1000px) {
+            .page.timeline ul li .desc .date {
+              font-size: 1.1em; } }
+          @media (max-width: 400px) {
+            .page.timeline ul li .desc .date {
+              font-size: 1em; } }
+      .page.timeline ul li .circle {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: 0px 30px;
+        position: relative; }
+        @media (max-width: 10000px) {
+          .page.timeline ul li .circle {
+            border-top: 2px solid #c9bcba; } }
+        @media (max-width: 1000px) {
+          .page.timeline ul li .circle {
+            border-top: none; } }
+        .page.timeline ul li .circle:before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          background: #91878d;
+          border-radius: 15px;
+          border: 3px solid #c9bcba;
+          position: absolute;
+          -webkit-transition: all 200ms ease-in;
+          -o-transition: all 200ms ease-in;
+          transition: all 200ms ease-in; }
+          @media (max-width: 10000px) {
+            .page.timeline ul li .circle:before {
+              top: -9px;
+              left: 45%; } }
+          @media (max-width: 1000px) {
+            .page.timeline ul li .circle:before {
+              top: -58px;
+              left: -9px; } }
+          @media (max-width: 400px) {
+            .page.timeline ul li .circle:before {
+              top: -56px;
+              left: -9px; } }
+      .page.timeline ul li.current .desc .event {
+        color: #c9bcba; }
+        @media (max-width: 10000px) {
+          .page.timeline ul li.current .desc .event {
+            font-size: 0.8em; } }
+        @media (max-width: 1000px) {
+          .page.timeline ul li.current .desc .event {
+            font-size: 1em; } }
+        @media (max-width: 400px) {
+          .page.timeline ul li.current .desc .event {
+            font-size: 0.9em; } }
+      .page.timeline ul li.current .desc .date {
+        color: #9dc628;
+        font-size: 1.2em; }
+        @media (max-width: 10000px) {
+          .page.timeline ul li.current .desc .date {
+            font-size: 1.2em; } }
+        @media (max-width: 1000px) {
+          .page.timeline ul li.current .desc .date {
+            font-size: 1.5em; } }
+        @media (max-width: 400px) {
+          .page.timeline ul li.current .desc .date {
+            font-size: 1.35em; } }
+      .page.timeline ul li.current .circle:before {
+        background: #9dc628;
+        border: 5px solid #9dc628;
+        top: -11.5px;
+        left: 43%; }
+        @media (max-width: 10000px) {
+          .page.timeline ul li.current .circle:before {
+            top: -11.5px;
+            left: 43%; } }
+        @media (max-width: 1000px) {
+          .page.timeline ul li.current .circle:before {
+            top: -70px;
+            left: -11px; } }
+        @media (max-width: 400px) {
+          .page.timeline ul li.current .circle:before {
+            top: -67px;
+            left: -11px; } }
+
 .highlight {
   background-color: rgba(241, 235, 100, 0.5) !important;
   -webkit-transition: background 0.3s;
@@ -862,6 +1052,8 @@ nav.sub.menu {
   width: 100vw;
   z-index: 200; }
   .module.container .test.date.module {
+    -webkit-box-shadow: 2px 2px 15px rgba(37, 33, 34, 0.4);
+    box-shadow: 2px 2px 15px rgba(37, 33, 34, 0.4);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -875,6 +1067,8 @@ nav.sub.menu {
       line-height: 2em;
       padding: 2em;
       text-align: center; }
+      .module.container .test.date.module .text .instruction {
+        margin-right: 26%; }
       .module.container .test.date.module .text .input.bar {
         -webkit-box-align: center;
         -webkit-align-items: center;
