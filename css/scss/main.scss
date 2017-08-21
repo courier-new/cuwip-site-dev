@@ -329,6 +329,12 @@ p,
 		&.general::after {
 			border-color: $pink-salmon-light;
 		}
+		&.form::after {
+			border-color: $gold-light;
+		}
+		&.form p {
+			text-align: center;
+		}
 	}
 	.inner > .text.block {
 		@include respond-to('xlarge') {

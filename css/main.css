@@ -1428,6 +1428,10 @@ p,
       border-color: #af275c; }
     .page .message.general::after {
       border-color: #c68971; }
+    .page .message.form::after {
+      border-color: #b19a50; }
+    .page .message.form p {
+      text-align: center; }
   .page .inner > .text.block {
     color: #706c76;
     font-size: 0.8em;
