@@ -80,7 +80,8 @@
       .columns.three .column img {
         height: auto;
         margin: 0;
-        width: 40%; } }
+        max-width: 100px;
+        width: 30%; } }
   .columns.two {
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -1765,6 +1766,9 @@ p,
     @media (max-width: 1000px) {
       .page img.hexagons {
         height: 80px; } }
+    @media (max-width: 500px) {
+      .page img.hexagons {
+        height: 60px; } }
 
 .page.parallax {
   /* image overlay, controlled by opacity of .parallax background */ }

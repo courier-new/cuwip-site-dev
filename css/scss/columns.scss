@@ -52,7 +52,8 @@
 				@include respond-to('at500') {
 					height: auto;
 					margin: 0;
-					width: 40%;
+					max-width: 100px;
+					width: 30%;
 				}
 			}
 		}

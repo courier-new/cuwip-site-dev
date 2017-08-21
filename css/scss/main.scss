@@ -618,6 +618,9 @@ p,
 		@include respond-to('at1000') {
 			height: 80px;
 		}
+		@include respond-to('at500') {
+			height: 60px;
+		}
 		margin: 1em auto;
 	}
 }
