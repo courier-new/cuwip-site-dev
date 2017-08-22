@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Ailerons';
-  src: url("../../font/Ailerons-Typeface.otf");
+  src: url("../../font/Ailerons-Typeface-Webfont.woff2") format("woff2"), url("../../font/Ailerons-Typeface-Webfont.woff") format("woff"), url("../../font/Ailerons-Typeface.ttf") format("embedded-opentype");
   font-weight: 400;
   font-style: normal; }
 @font-face {
@@ -329,6 +329,7 @@ nav.main.menu {
   nav.main.menu.sticky {
     top: 0;
     height: 5vh;
+    min-height: 40px;
     background: #252122;
     opacity: 0.9; }
     nav.main.menu.sticky a {
@@ -662,7 +663,7 @@ nav.sub.menu {
   display: block;
   font-size: 1.2em;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   margin-bottom: 1em; }
 .page.about.agenda .inner > .text.block .day.table {
@@ -800,7 +801,7 @@ nav.sub.menu {
         padding: 0.05em; }
         .page.about.agenda .inner > .text.block .day.table > .event .info span.name {
           font-size: 1.1em;
-          font-weight: 600; }
+          font-weight: 700; }
           @media (max-width: 10000px) {
             .page.about.agenda .inner > .text.block .day.table > .event .info span.name {
               -webkit-flex-basis: 35%;
@@ -1166,6 +1167,26 @@ p,
   line-height: 1.5em;
   margin: 1.8em 0; }
 
+/* Firefox faux-bold avoidance fix for headers */
+@-moz-document url-prefix() {
+  .page .inner > .text.block h1,
+  .page .inner > .text.block h2,
+  .page.about.agenda .inner > .text.block .campus.reference,
+  nav.sub.menu strong {
+    font-weight: 400; } }
+/* IE and Edge faux-bold avoidance fix for headers */
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+  .page .inner > .text.block h1,
+  .page .inner > .text.block h2,
+  .page.about.agenda .inner > .text.block .campus.reference,
+  nav.sub.menu strong {
+    font-weight: 400; } }
+@supports (-ms-ime-align: auto) {
+  .page .inner > .text.block h1,
+  .page .inner > .text.block h2,
+  .page.about.agenda .inner > .text.block .campus.reference,
+  nav.sub.menu strong {
+    font-weight: 400; } }
 .page {
   width: 100vw;
   position: relative;
@@ -1268,7 +1289,7 @@ p,
     background: white;
     color: #c68971;
     font-size: 1.3em;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.5em;
     padding: 0.3em 1em 0.5em 1em;
     text-align: center;
@@ -1420,7 +1441,7 @@ p,
       text-transform: uppercase; }
     .page .message em {
       font-style: normal;
-      font-weight: 600; }
+      font-weight: 700; }
     .page .message p {
       margin: 0; }
       @media (max-width: 500px) {
@@ -1499,7 +1520,7 @@ p,
     .page .inner > .text.block h3 {
       color: #af275c;
       font-size: 1.1em;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.5em; }
     .page .inner > .text.block ul.sponsors.list {
       -webkit-box-align: center;

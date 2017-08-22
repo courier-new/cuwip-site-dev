@@ -139,6 +139,7 @@ nav.main.menu {
 	&.sticky {
 		top: 0;
 		height: $sticky-nav;
+		min-height: 40px;
 		background: $grey-dark;
 		opacity: 0.9;
 		a {
