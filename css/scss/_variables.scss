@@ -1,9 +1,9 @@
 @font-face {
 	font-family: 'Ailerons';
-	src: url('../../font/Ailerons-Typeface.otf');
+	src: url('../../font/Ailerons-Typeface-Webfont.woff2') format('woff2'), url('../../font/Ailerons-Typeface-Webfont.woff') format('woff'), url('../../font/Ailerons-Typeface.ttf') format('embedded-opentype');
 	font-weight: 400;
 	font-style: normal;
-};
+}
 
 @font-face {
 	font-family: 'Oleo Script';

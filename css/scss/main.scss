@@ -53,6 +53,36 @@ p,
 	margin: 1.8em 0;
 }
 
+/* Firefox faux-bold avoidance fix for headers */
+@-moz-document url-prefix() {
+	.page .inner > .text.block h1,
+	.page .inner > .text.block h2,
+	.page.about.agenda .inner > .text.block .campus.reference,
+	nav.sub.menu strong {
+		font-weight: 400;
+	}
+}
+
+/* IE and Edge faux-bold avoidance fix for headers */
+@media screen and (-ms-high-contrast: active),
+		 screen and (-ms-high-contrast: none) {
+	.page .inner > .text.block h1,
+	.page .inner > .text.block h2,
+	.page.about.agenda .inner > .text.block .campus.reference,
+	nav.sub.menu strong {
+		font-weight: 400;
+	}
+}
+@supports (-ms-ime-align: auto) {
+	.page .inner > .text.block h1,
+	.page .inner > .text.block h2,
+	.page.about.agenda .inner > .text.block .campus.reference,
+	nav.sub.menu strong {
+		font-weight: 400;
+	}
+}
+
+
 .page {
 	width: 100vw;
 	position: relative;
@@ -190,7 +220,7 @@ p,
 			background: white;
 			color: $pink-salmon-light;
 			font-size: 1.3em;
-			font-weight: 600;
+			font-weight: 700;
 			line-height: 1.5em;
 			padding: 0.3em 1em 0.5em 1em;
 			text-align: center;
@@ -317,7 +347,7 @@ p,
 		}
 		em {
 			font-style: normal;
-			font-weight: 600;
+			font-weight: 700;
 		}
 		p {
 			@include respond-to('at500') {
@@ -412,7 +442,7 @@ p,
 		h3 {
 			color: lighten($pink-berry, 10%);
 			font-size: 1.1em;
-			font-weight: 600;
+			font-weight: 700;
 			line-height: 1.5em;
 		}
 		ul.sponsors.list {
