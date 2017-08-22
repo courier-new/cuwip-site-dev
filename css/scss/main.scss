@@ -323,6 +323,29 @@ p,
 			}
 			margin: 0;
 		}
+		.apply.button {
+			@include respond-to('at700') {
+				margin-top: -0.3em;
+			}
+			background-color: rgba($pink-salmon, 0.9);
+			border-radius: 3em;
+			box-sizing: border-box;
+			color: $grey-lightest;
+			cursor: pointer;
+			display: block;
+			font-size: 1.1em;
+			text-align: center;
+			padding: 0.6em;
+			margin: 0 auto 0.5em auto;
+			max-width: 250px;
+			min-width: 200px;
+			width: 70%;
+			text-transform: uppercase;
+			transition: background 0.3s;
+			&:hover {
+				background-color: rgba($pink-berry, 1);
+			}
+		}
 		&.alert::after {
 			border-color: lighten($pink-berry, 10%);
 		}

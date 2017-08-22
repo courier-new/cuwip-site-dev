@@ -1424,6 +1424,30 @@ p,
       @media (max-width: 500px) {
         .page .message p {
           text-align: left; } }
+    .page .message .apply.button {
+      background-color: rgba(202, 119, 108, 0.9);
+      border-radius: 3em;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #f5f2f1;
+      cursor: pointer;
+      display: block;
+      font-size: 1.1em;
+      text-align: center;
+      padding: 0.6em;
+      margin: 0 auto 0.5em auto;
+      max-width: 250px;
+      min-width: 200px;
+      width: 70%;
+      text-transform: uppercase;
+      -webkit-transition: background 0.3s;
+      -o-transition: background 0.3s;
+      transition: background 0.3s; }
+      @media (max-width: 700px) {
+        .page .message .apply.button {
+          margin-top: -0.3em; } }
+      .page .message .apply.button:hover {
+        background-color: #851e46; }
     .page .message.alert::after {
       border-color: #af275c; }
     .page .message.general::after {
