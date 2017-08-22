@@ -113,7 +113,6 @@ function addAppInfo() {
 					className += "." + this;
 				});
 				// Identify alert box
-				console.log(className + ".message");
 				let $alertBox = $(className + '.message');
 				elements.push($alertBox);
 				// If alert box configured for application info exists
