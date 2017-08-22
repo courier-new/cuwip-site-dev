@@ -514,6 +514,7 @@ nav.sub.menu {
               content: '';
               border: 4.5px solid #0f646d;
               border-radius: 50%;
+              bottom: 1px;
               display: block;
               right: 1.3em;
               position: relative; } }
