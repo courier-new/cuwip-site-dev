@@ -1,14 +1,37 @@
 {
 	"infoblocks": [
 		{
-			"dataPlace": "alert",
+			"dataPlace": "index alert",
 			"before": {
 				"header": "Application goes live September 1st",
-				"text":   "Check back here or visit the APS <a href='http://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='../reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from <em>September 1st</em> until <em>October 13th.</em>"
+				"text":   "Check back here or visit the APS <a href='https://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='../reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from <em>September 1st</em> until <em>October 13th.</em>"
 			},
 			"applyPeriod": {
 				"header": "Application is now live",
-				"text":   "Interested in attending CUWiP 2018? <a href='../apply'>Begin your application today</a> through APS or visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend. The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
+				"text":   "Interested in attending CUWiP 2018? Learn <a href='../apply'>how to apply</a> and <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>begin your application today</a> through APS. Not sure if you should apply? Visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend, and check out our jam-packed <a href='../agenda'>agenda</a> if you still need convincing! The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
+			},
+			"reviewPeriod": {
+				"header": "Application period is closed",
+				"text":   "The application for CUWiP 2018 is now closed. To those who applied, thank you for your interest! We will review applications and inform you of your status on <em>November 6th.</em> If you missed out this time around, keep an eye out for CUWiP 2019!"
+			},
+			"registerPeriod": {
+				"header": "Application period is closed",
+				"text":   "The application for CUWiP 2018 is now closed. To those who have been admitted, please be sure to confirm your attendance and fill out our site registration before <em>November 17th</em>. If you missed out this time around, keep an eye out for CUWiP 2019!"
+			},
+			"after": {
+				"header": "Application period is closed",
+				"text":   "The application and registration for CUWiP 2018 are now closed, but keep an eye out for information about CUWiP 2019 next fall! To this year's attendees, if you completed registration but did not yet receive a welcome email, please <a href='../contact'>contact us</a> immediately so that we can locate the error."
+			}
+		},
+		{
+			"dataPlace": "apply alert",
+			"before": {
+				"header": "Application goes live September 1st",
+				"text":   "Check back here or visit the APS <a href='https://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='../reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from <em>September 1st</em> until <em>October 13th.</em>"
+			},
+			"applyPeriod": {
+				"header": "<a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm' class='apply button'>Apply Here</a>",
+				"text":   "Not sure if you should apply? Visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend, and check out our jam-packed <a href='../agenda'>agenda</a> if you still need convincing! The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
 			},
 			"reviewPeriod": {
 				"header": "Application period is closed",
@@ -29,7 +52,7 @@
 				"text": "We hope you'll join us then! Look out for the application, coming September 1st!"
 			},
 			"applyPeriod": {
-				"text": "We hope you'll join us then! Don't forget to complete the <a href='../apply'>application</a> if you have not already done so!"
+				"text": "We hope you'll join us then! Don't forget to complete the <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>application</a> through APS if you have not already done so!"
 			},
 			"reviewPeriod": {
 				"text": "We hope you'll join us then! Keep an eye out for information regarding your application status, which will be released around November 6th."
@@ -44,10 +67,10 @@
 		{
 			"dataPlace": "about app",
 			"before": {
-				"text": "Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status. While the application is not yet open, we encourage you to check back here or visit the APS <a href='http://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> regularly for updates. You can also <a href='../reminder'>sign up</a> to be reminded when the application goes live on September 1st."
+				"text": "Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status. While the application is not yet open, we encourage you to check back here or visit the APS <a href='https://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> regularly for updates. You can also <a href='../reminder'>sign up</a> to be reminded when the application goes live on September 1st."
 			},
 			"applyPeriod": {
-				"text": "The application is now live! Head over to the <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>APS CUWiP application site</a> to start your application today. The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 13th. Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status."
+				"text": "The APS CUWiP application is now live! <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>Start yours</a> today! The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 13th. Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status."
 			},
 			"reviewPeriod": {
 				"text": "The application is now closed. To those who applied, thank you for your interest! We are review applications now and will inform you of your status on November 6th. Individuals admitted to the conference will also be directed to complete a separate online registration at that time. If you missed out this time around, keep an eye out for CUWiP 2019!"
@@ -60,7 +83,7 @@
 			}
 		},
 		{
-			"dataPlace": "posters",
+			"dataPlace": "posters alert",
 			"before": {
 				"header": "We are not yet accepting abstracts",
 				"text":   "If you would like to present a research poster at CUWiP 2018, please prepare and be ready to submit a poster title and abstract (250 words) during registration between November 6th and November 17th. Presenting a research poster is completely voluntary and will not affect your chances of being accepted to the conference in any way."
