@@ -1164,7 +1164,7 @@ a:active {
 p,
 .message {
   line-height: 1.5em;
-  margin: 2em 0; }
+  margin: 1.8em 0; }
 
 .page {
   width: 100vw;
@@ -1203,12 +1203,14 @@ p,
         padding-right: 5em; } }
     @media (max-width: 1000px) {
       .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
-        padding-left: 2em;
-        padding-right: 2em; } }
+        padding: 2.8em 2em 1.5em 2em; } }
     @media (max-width: 700px) {
       .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
         padding-left: 0.5em;
         padding-right: 0.5em; } }
+    @media (max-width: 500px) {
+      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+        padding: 2em 0.5em 0.8em 0.5em; } }
   .page.alerts {
     background: white; }
   .page.welcome, .page.about {
@@ -1787,16 +1789,16 @@ p,
             margin: 2.3em 30%;
             width: 40%; } }
   .page img.hexagons {
-    margin: 1em auto; }
+    margin: 0 auto 1em auto; }
     @media (max-width: 10000px) {
       .page img.hexagons {
         height: 50px; } }
     @media (max-width: 1000px) {
       .page img.hexagons {
-        height: 80px; } }
+        height: 60px; } }
     @media (max-width: 500px) {
       .page img.hexagons {
-        height: 60px; } }
+        height: 50px; } }
 
 .page.parallax {
   /* image overlay, controlled by opacity of .parallax background */ }

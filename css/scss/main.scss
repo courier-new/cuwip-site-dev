@@ -50,7 +50,7 @@ a:active {
 p,
 .message {
 	line-height: 1.5em;
-	margin: 2em 0;
+	margin: 1.8em 0;
 }
 
 .page {
@@ -95,12 +95,14 @@ p,
 			padding-right: 5em;
 		}
 		@include respond-to('at1000') {
-			padding-left: 2em;
-			padding-right: 2em;
+			padding: 2.8em 2em 1.5em 2em;
 		}
 		@include respond-to('at700') {
 			padding-left: 0.5em;
 			padding-right: 0.5em;
+		}
+		@include respond-to('at500') {
+			padding: 2em 0.5em 0.8em 0.5em;
 		}
 		padding-top: 2.8em;
 		padding-bottom: 2em;
@@ -645,12 +647,12 @@ p,
 			height: 50px;
 		}
 		@include respond-to('at1000') {
-			height: 80px;
-		}
-		@include respond-to('at500') {
 			height: 60px;
 		}
-		margin: 1em auto;
+		@include respond-to('at500') {
+			height: 50px;
+		}
+		margin: 0 auto 1em auto;
 	}
 }
 
