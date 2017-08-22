@@ -5,7 +5,7 @@
  *
  * @author    Kelli Rockwell <kellirockwell@mail.com>
  * @since     File available since July 23, 2017
- * @version   1.1.0
+ * @version   1.1.1
  */
 
 // Variable for storing all of the application information pieces retrieved from json
@@ -106,9 +106,15 @@ function addAppInfo() {
 					mes = curr.before;
 			}
 			// For general application and postre alert messages
-			if (curr.dataPlace === 'alert' || curr.dataPlace === 'posters') {
+			if (curr.dataPlace.includes('alert')) {
+				// Form class name from dataPlace by splitting at spaces and adding dots before each
+				let className = "";
+				$(curr.dataPlace.split(" ")).each(function() {
+					className += "." + this;
+				});
 				// Identify alert box
-				let $alertBox = $('.alert.message');
+				console.log(className + ".message");
+				let $alertBox = $(className + '.message');
 				elements.push($alertBox);
 				// If alert box configured for application info exists
 				if ($alertBox.length && $alertBox.hasClass(curr.dataPlace) && $alertBox.data("place") === 'app-info') {

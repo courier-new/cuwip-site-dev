@@ -463,7 +463,7 @@
   *
   * @author    Kelli Rockwell <kellirockwell@mail.com>
   * @since     File available since July 23, 2017
-  * @version   1.1.0
+  * @version   1.1.1
   */
 
 	// Variable for storing all of the application information pieces retrieved from json
@@ -572,9 +572,15 @@
 						mes = curr.before;
 				}
 				// For general application and postre alert messages
-				if (curr.dataPlace === 'alert' || curr.dataPlace === 'posters') {
+				if (curr.dataPlace.includes('alert')) {
+					// Form class name from dataPlace by splitting at spaces and adding dots before each
+					var className = "";
+					$(curr.dataPlace.split(" ")).each(function () {
+						className += "." + this;
+					});
 					// Identify alert box
-					var $alertBox = $('.alert.message');
+					console.log(className + ".message");
+					var $alertBox = $(className + '.message');
 					elements.push($alertBox);
 					// If alert box configured for application info exists
 					if ($alertBox.length && $alertBox.hasClass(curr.dataPlace) && $alertBox.data("place") === 'app-info') {
@@ -593,12 +599,12 @@
 				// For closing message (index.html, after countdown) and about application message (/apply, "What do I do now?")
 				if (curr.dataPlace === 'closing' || curr.dataPlace === 'about app') {
 					// Form class name from dataPlace by splitting at spaces and adding dots before each
-					var className = "";
+					var _className = "";
 					$(curr.dataPlace.split(" ")).each(function () {
-						className += "." + this;
+						_className += "." + this;
 					});
 					// Identify closing message location based on className
-					var $mesLoc = $(className);
+					var $mesLoc = $(_className);
 					elements.push($mesLoc);
 					// If message box configured for application info exists
 					if ($mesLoc.length && $mesLoc.data("place") === 'app-info') {
