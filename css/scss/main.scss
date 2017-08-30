@@ -11,18 +11,23 @@
 @import 'timeline';
 @import 'testdate';
 
-* {
+html {
 	box-sizing: border-box;
+	height: 100%;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+* {
 	font-family: $main-stack;
 }
 
-*::selection,
-*::-moz-selection {
+*::selection {
 	background: #adadad;
-}
-
-html {
-	height: 100%;
 }
 
 body {
