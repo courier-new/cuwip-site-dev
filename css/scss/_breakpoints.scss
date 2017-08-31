@@ -1,4 +1,4 @@
-// List of breakpoints
+// Map of breakpoints
 $breakpoints: (
   'at330'   : ( max-width:   330px ),
   'at400'   : ( max-width:   400px ),
@@ -13,28 +13,26 @@ $breakpoints: (
 );
 
 // Example use case:
-// @include respond-to('tiny') {
+// @include respond-to('xlarge') {
+//     display: block;
+//     padding: 8%;
+// }
+// @include respond-to('at1000') {
 //     display: flex;
 //     justify-content: space-between;
 //     padding: 5%;
 // }
-// @include respond-to('small') {
-//     display: block;
-//     padding: 8%;
-// }
+// (Work in order of largest to smallest)
 
 @mixin respond-to($name) {
-  // If the key exists in the map
-  @if map-has-key($breakpoints, $name) {
-    // Prints a media query based on the value
-    @media #{inspect(map-get($breakpoints, $name))} {
-      @content;
-    }
-  }
-
-  // If the key doesn't exist in the map
-  @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Please make sure it is defined in `$breakpoints` map.";
-  }
+	// If the key exists in the map
+	@if map-has-key($breakpoints, $name) {
+		// Prints a media query based on the value
+		@media #{inspect(map-get($breakpoints, $name))} {
+			@content;
+		}
+	} @else { // If the key doesn't exist in the map
+		@warn 'No value could be retrieved from `#{$breakpoint}`. '
+		+ 'Please make sure it is defined in `$breakpoints` map.';
+	}
 }

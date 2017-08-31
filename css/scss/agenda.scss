@@ -1,3 +1,15 @@
+// Map of Event types, colors, and readable labels
+$event-attrs: (
+	food      : ($green-lime, "Food"),
+	misc      : ($turquoise-light, "Misc/Special"),
+	talk      : ($pink-salmon, "Talk"),
+	breakout  : ($green-grass-light, "Breakout Session"),
+	free      : ($pink-berry, "Free Time"),
+	logistics : ($gold-light, "Logistics"),
+	panel     : ($blue-light, "Panel"),
+	shuttle   : ($grey-light, "Shuttle Run")
+);
+
 .page.about.agenda .inner > .text.block {
 	h1 {
 		margin-bottom: 0;
@@ -22,29 +34,11 @@
 			display: inline-block;
 			position: relative;
 			margin: 0 5px;
-			&.food {
-				border-color: $green-lime;
-			}
-			&.misc {
-				border-color: $turquoise-light;
-			}
-			&.talk {
-				border-color: $pink-salmon;
-			}
-			&.breakout {
-				border-color: $green-grass-light;
-			}
-			&.free {
-				border-color: $pink-berry;
-			}
-			&.logistics {
-				border-color: $gold-light;
-			}
-			&.panel {
-				border-color: $blue-light;
-			}
-			&.shuttle {
-				border-color: $grey-light;
+			// Fill in border-color for each event type
+			@each $type, $attrs in $event-attrs {
+				&.#{$type} {
+					border-color: nth($attrs, 1);
+				}
 			}
 		}
 	}
@@ -84,60 +78,14 @@
 					position: relative;
 					width: 0;
 					height: 0.5em;
-					&.food {
-						border-color: $green-lime;
-						&::after {
-							background-color: $green-lime;
-							content: "Food";
-						}
-					}
-					&.misc {
-						border-color: $turquoise-light;
-						&::after {
-							background-color: $turquoise-light;
-							content: "Misc/Special";
-						}
-					}
-					&.talk {
-						border-color: $pink-salmon;
-						&::after {
-							background-color: $pink-salmon;
-							content: "Talk";
-						}
-					}
-					&.breakout {
-						border-color: $green-grass-light;
-						&::after {
-							background-color: $green-grass-light;
-							content: "Breakout Session";
-						}
-					}
-					&.free {
-						border-color: $pink-berry;
-						&::after {
-							background-color: $pink-berry;
-							content: "Free Time";
-						}
-					}
-					&.logistics {
-						border-color: $gold-light;
-						&::after {
-							background-color: $gold-light;
-							content: "Logistics";
-						}
-					}
-					&.panel {
-						border-color: $blue-light;
-						&::after {
-							background-color: $blue-light;
-							content: "Panel";
-						}
-					}
-					&.shuttle {
-						border-color: $grey-light;
-						&::after {
-							background-color: $grey-light;
-							content: "Shuttle Run";
+					// Fill in border-color and tool-tip box for each event type
+					@each $type, $attrs in $event-attrs {
+						&.#{$type} {
+							border-color: nth($attrs, 1);
+							&::after {
+								background-color: nth($attrs, 1);
+								content: quote(nth($attrs, 2));
+							}
 						}
 					}
 					&::after,
