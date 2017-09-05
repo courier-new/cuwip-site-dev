@@ -8,7 +8,7 @@
 			},
 			"applyPeriod": {
 				"header": "Application is now live",
-				"text":   "Interested in attending CUWiP 2018? Learn <a href='../apply'>how to apply</a> and <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>begin your application today</a> through APS. Not sure if you should apply? Visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend, and check out our jam-packed <a href='../agenda'>agenda</a> if you still need convincing! The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
+				"text":   "Interested in attending CUWiP 2018? Learn <a href='../apply'>how to apply</a> and <a href='https://secure.aps.org/cuwip/'>begin your application today</a> through APS. Not sure if you should apply? Visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend, and check out our jam-packed <a href='../agenda'>agenda</a> if you still need convincing! The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
 			},
 			"reviewPeriod": {
 				"header": "Application period is closed",
@@ -30,7 +30,7 @@
 				"text":   "Check back here or visit the APS <a href='https://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> to fill out your application at this time or <a href='../reminder'>sign up</a> to be reminded when the application goes live. The application period will be open from <em>September 1st</em> until <em>October 13th.</em>"
 			},
 			"applyPeriod": {
-				"header": "<a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm' class='apply button'>Apply Here</a>",
+				"header": "<a href='https://secure.aps.org/cuwip/' class='apply button'>Apply Here</a>",
 				"text":   "Not sure if you should apply? Visit our <a href='../faq#whocanapply'>FAQ</a> to learn if you are eligible to attend, and check out our jam-packed <a href='../agenda'>agenda</a> if you still need convincing! The application period closes in <em><span class='time until close'></span></em> at <em>11:59 PM EDT October 13th.</em>"
 			},
 			"reviewPeriod": {
@@ -52,7 +52,7 @@
 				"text": "We hope you'll join us then! Look out for the application, coming September 1st!"
 			},
 			"applyPeriod": {
-				"text": "We hope you'll join us then! Don't forget to complete the <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>application</a> through APS if you have not already done so!"
+				"text": "We hope you'll join us then! Don't forget to complete the <a href='https://secure.aps.org/cuwip/'>application</a> through APS if you have not already done so!"
 			},
 			"reviewPeriod": {
 				"text": "We hope you'll join us then! Keep an eye out for information regarding your application status, which will be released around November 6th."
@@ -70,7 +70,7 @@
 				"text": "Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status. While the application is not yet open, we encourage you to check back here or visit the APS <a href='https://www.aps.org/programs/women/workshops/cuwip.cfm'>CUWiP homepage</a> regularly for updates. You can also <a href='../reminder'>sign up</a> to be reminded when the application goes live on September 1st."
 			},
 			"applyPeriod": {
-				"text": "The APS CUWiP application is now live! <a href='https://www.aps.org/programs/women/workshops/cuwipapp.cfm'>Start yours</a> today! The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 13th. Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status."
+				"text": "The APS CUWiP application is now live! <a href='https://secure.aps.org/cuwip/'>Start yours</a> today! The application period closes in <span class='time until close'></span> at 11:59 PM EDT October 13th. Individuals admitted to the conference will also be directed to complete a separate online registration, which will be available after November 6th when applicants are informed of their application status."
 			},
 			"reviewPeriod": {
 				"text": "The application is now closed. To those who applied, thank you for your interest! We are review applications now and will inform you of your status on November 6th. Individuals admitted to the conference will also be directed to complete a separate online registration at that time. If you missed out this time around, keep an eye out for CUWiP 2019!"
