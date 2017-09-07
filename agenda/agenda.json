@@ -54,6 +54,8 @@
 					"timeEnd": "6:30 PM",
 					"required": true,
 					"place": "Galileo/McAlester Auditorium",
+					"speaker": "TBD",
+					"speakerHome": "APS",
 					"shortDesc": "Mary Sue will deliver a warm welcome to all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic location etc. of the conference."
 				},
 				{
@@ -74,6 +76,8 @@
 					"timeEnd": "8:30 PM",
 					"required": true,
 					"place": "Platt Living Room",
+					"speaker": "TBD",
+					"speakerHome": "",
 					"shortDesc": "Hear from a cool speaker about a cool topic as you consume a cool dessert."
 				},
 				{
@@ -156,14 +160,19 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Some Talk",
+					"name": "Invited Plenary Talk",
 					"sname": "talk1",
 					"types": ["talk"],
 					"timeStart": "9:00 AM",
 					"timeEnd": "9:45 AM",
 					"required": true,
 					"place": "Rose Hills Theater",
-					"shortDesc": ""
+					"speaker": "Monika Schleier-Smith",
+					"debugHide": true,
+					"speakerPage": "https://physics.stanford.edu/people/faculty/monika-schleier-smith",
+					"speakerImg": "monika-schleier-smith.jpg",
+					"speakerHome": "Stanford University",
+					"shortDesc": "More information coming soon."
 				},
 				{
 					"name": "Parallel Session 1/3",
@@ -194,8 +203,12 @@
 					"timeStart": "11:00 AM",
 					"timeEnd": "12:30 PM",
 					"required": true,
-					"place": "TBD",
-					"shortDesc": ""
+					"place": "Rose Hills Theater",
+					"speaker": "Patricia Burchat",
+					"speakerPage": "https://physics.stanford.edu/people/faculty/patricia-burchat",
+					"speakerImg": "patricia-burchat.jpg",
+					"speakerHome": "Stanford University",
+					"shortDesc": "Professor Patricia Burchat from Stan&shy;ford Uni&shy;versity will speak about the breadth of op&shy;por&shy;tun&shy;ities for phys&shy;icists in fore&shy;front areas of re&shy;search, education, and leading roles in the private sector."
 				},
 				{
 					"name": "Lunch",
@@ -387,20 +400,10 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Career Breakout Session",
-					"sname": "breakout4",
-					"types": ["breakout"],
-					"timeStart": "10:00 AM",
-					"timeEnd": "11:00 AM",
-					"required": true,
-					"place": "Bronco Student Center",
-					"shortDesc": ""
-				},
-				{
 					"name": "Career Fair",
 					"sname": "careerfair",
 					"types": ["misc"],
-					"timeStart": "11:00 AM",
+					"timeStart": "10:00 AM",
 					"timeEnd": "12:00 PM",
 					"required": true,
 					"place": "Ursa Major",
@@ -417,14 +420,19 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Science Talk",
-					"sname": "talk1",
+					"name": "Invited Plenary Talk",
+					"sname": "talk2",
 					"types": ["talk"],
 					"timeStart": "1:00 PM",
 					"timeEnd": "2:00 PM",
 					"required": true,
 					"place": "Business Building",
-					"shortDesc": ""
+					"speaker": "Hilke Schlichting",
+					"debugHide": true,
+					"speakerPage": "http://epss.ucla.edu/people/faculty/833/",
+					"speakerImg": "hilke-schlichting.jpg",
+					"speakerHome": "UCLA",
+					"shortDesc": "More information coming soon."
 				},
 				{
 					"name": "Science Show",
@@ -444,7 +452,9 @@
 					"timeEnd": "3:30 PM",
 					"required": true,
 					"place": "Business Building",
-					"shortDesc": ""
+					"speaker": "TBD",
+					"speakerHome": "APS",
+					"shortDesc": "More information coming soon."
 				}
 			]
 		}
