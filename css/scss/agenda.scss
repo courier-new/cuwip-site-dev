@@ -57,6 +57,7 @@ $event-attrs: (
 		& > .event {
 			align-items: center;
 			display: flex;
+			flex-wrap: wrap;
 			margin: 0.7em 0;
 			width: 100%;
 			.type.bubbles {
@@ -177,6 +178,94 @@ $event-attrs: (
 						@include respond-to('at1000') {
 							flex-basis: 100%;
 						}
+					}
+				}
+			}
+			.about {
+				@include respond-to('xlarge') {
+					margin: 2em 2% 2em 0;
+					width: 100%;
+				}
+				@include respond-to('at1000') {
+					align-items: center;
+					margin: 1em 7%;
+					width: 86%;
+				}
+				@include respond-to('at500') {
+					margin: 0.2em 7% 0.5em 7%;
+				}
+				display: flex;
+				flex-wrap: wrap;
+				margin-left: 10%;
+				width: 90%;
+				.desc {
+					@include respond-to('xlarge') {
+						order: 2;
+						width: 77%;
+					}
+					@include respond-to('at1000') {
+						order: 1;
+						padding-right: 5%;
+					}
+					@include respond-to('at500') {
+						padding-right: 0;
+						width: 100%;
+					}
+					h2 {
+						color: map-get($event-attrs, talk);
+						font-size: 1em;
+						margin: 1.5em 0 1em 0;
+						em {
+							@include respond-to('at500') {
+								display: block;
+							}
+							color: $grey-medium;
+							font-weight: normal;
+							text-transform: none;
+						}
+					}
+					p {
+						@include respond-to('at1000') {
+							margin: 1em 0;
+						}
+						@include respond-to('at500') {
+							margin: 1em 0 0 0;
+						}
+					}
+				}
+				.lil-img {
+					@include respond-to('xlarge') {
+						display: none;
+					}
+					@include respond-to('at500') {
+						display: block;
+						float: left;
+						margin-right: 1.5em;
+						shape-outside: circle(50%);
+						width: 30%;
+					}
+					img {
+						border-radius: 50%;
+					}
+				}
+				.big-img {
+					@include respond-to('xlarge') {
+						order: 1;
+						width: 23%;
+					}
+					@include respond-to('at1000') {
+						order: 2;
+					}
+					@include respond-to('at500') {
+						display: none;
+					}
+					align-items: center;
+					display: flex;
+					justify-content: center;
+					img {
+						border-radius: 50%;
+						max-height: 110px;
+						max-width: 110px;
 					}
 				}
 			}

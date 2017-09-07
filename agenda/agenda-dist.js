@@ -62,7 +62,10 @@ var addAgenda = function addAgenda() {
 				currOutput += "<span class='time " + $e.sname + "'>" + $e.timeStart + " - " + $e.timeEnd + "</span>";
 				// Add event location
 				currOutput += "<span class='place " + $e.sname + "'>" + $e.place + "</span>";
-				currOutput += "</div>\n</div>\n";
+				currOutput += "</div>\n";
+				// Add desc element, if event is talk
+				currOutput += $e.types.includes("talk") ? addTalkDesc($e) : "";
+				currOutput += "</div>\n";
 			});
 			currOutput += "</div>\n";
 			output += currOutput;
@@ -90,6 +93,20 @@ var addAgenda = function addAgenda() {
 			legend += "<div><span class='" + this + "'></span>" + pn + "</div>\n";
 		});
 		$('.event.types.legend').html(legend);
+	}
+};
+
+var addTalkDesc = function addTalkDesc(e) {
+	var output = "";
+	if (!e.speaker || e.speaker === "TBD" || e.debugHide) {
+		return output;
+	} else {
+		output += "<div class='about'>\n<div class='desc'>\n";
+		output += "<h2>" + e.speaker + " <em>" + e.speakerHome + "</em></h2>\n";
+		output += "<div class='lil-img'><img src='../img/" + e.speakerImg + "'></div>\n";
+		output += "<p>" + e.shortDesc + " Visit her <a target='_blank' href='" + e.speakerPage + "'>faculty profile</a> to learn more.</p>\n";
+		output += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>";
+		return output;
 	}
 };
 
