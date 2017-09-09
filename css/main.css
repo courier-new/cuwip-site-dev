@@ -1682,7 +1682,6 @@ p,
               background: #f5f2f1; } }
         @media (max-width: 1000px) {
           .page .inner > .text.block ul.sponsors.list a {
-            border-top: 3px solid #f5f2f1;
             padding: 5vh 1vh;
             width: 100%; } }
         @media (max-width: 500px) {
@@ -1715,7 +1714,8 @@ p,
               -webkit-box-direction: normal;
               -webkit-flex-direction: row;
               -ms-flex-direction: row;
-              flex-direction: row; }
+              flex-direction: row;
+              padding-right: 5%; }
               .page .inner > .text.block ul.sponsors.list a li .logo.container {
                 height: 100%;
                 width: 30%; } }
@@ -1725,7 +1725,8 @@ p,
               -webkit-box-direction: normal;
               -webkit-flex-direction: column;
               -ms-flex-direction: column;
-              flex-direction: column; }
+              flex-direction: column;
+              padding-right: initial; }
               .page .inner > .text.block ul.sponsors.list a li .logo.container {
                 height: 15vh;
                 width: 70%; } }
@@ -1744,10 +1745,16 @@ p,
             left: 50%;
             -webkit-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            width: 100%; }
+            transform: translate(-50%, -50%); }
+            @media (max-width: 10000px) {
+              .page .inner > .text.block ul.sponsors.list a .logo.container img {
+                width: 80%; } }
+            @media (max-width: 500px) {
+              .page .inner > .text.block ul.sponsors.list a .logo.container img {
+                width: 100%; } }
         .page .inner > .text.block ul.sponsors.list a h3 {
-          color: #706c76; }
+          color: #706c76;
+          font-size: 1.4em; }
           @media (max-width: 1000px) {
             .page .inner > .text.block ul.sponsors.list a h3 {
               text-align: left;

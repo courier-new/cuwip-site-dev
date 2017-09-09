@@ -473,7 +473,6 @@ p,
 					}
 				}
 				@include respond-to('at1000') {
-					border-top: 3px solid $grey-lightest;
 					padding: 5vh 1vh;
 					width: 100%;
 				}
@@ -496,6 +495,7 @@ p,
 					@include respond-to('at1000') {
 						align-items: center;
 						flex-direction: row;
+						padding-right: 5%;
 						.logo.container {
 							height: 100%;
 							width: 30%;
@@ -503,6 +503,7 @@ p,
 					}
 					@include respond-to('at500') {
 						flex-direction: column;
+						padding-right: initial;
 						.logo.container {
 							height: 15vh;
 							width: 70%;
@@ -521,11 +522,16 @@ p,
 					}
 					position: relative;
 					img {
+						@include respond-to('xlarge') {
+							width: 80%;
+						}
+						@include respond-to('at500') {
+							width: 100%;
+						}
 						position: absolute;
 						top: 50%;
 			    		left: 50%;
 			    		transform: translate(-50%, -50%);
-						width: 100%;
 					}
 				}
 				h3 {
@@ -540,6 +546,7 @@ p,
 						width: 90%;
 					}
 					color: $grey-medium-dark;
+					font-size: 1.4em;
 				}
 			}
 		}
