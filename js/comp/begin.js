@@ -3,7 +3,7 @@
 
 	$(document).on('ready', function(){
 		// Gather array of all pages
-		let pages = $('.page');
+		var pages = $('.page');
 
 		// Mark each section as ready
 		pages.each(function(){

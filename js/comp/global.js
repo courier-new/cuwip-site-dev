@@ -1,12 +1,12 @@
 /* Global variables */
 
 // Set date/time of application-related dates in this format
-let applyOpen = '1 September 2017 00:00:00 EDT';
-let applyClose = '13 October 2017 23:59:00 EDT';
-let registerOpen = '6 November 2017 00:00:00 PST';
-let registerClose = '17 November 2017 23:59:00 PST';
-let startOfCUWiP = '12 January 2018 18:00:00 PDT';
-let travelClose = '21 January 2018 23:59:00 PST';
+let applyOpen = '1 September 2017 00:00:00 EDT',
+    applyClose = '13 October 2017 23:59:00 EDT',
+    registerOpen = '6 November 2017 00:00:00 PST',
+    registerClose = '17 November 2017 23:59:00 PST',
+    startOfCUWiP = '12 January 2018 18:00:00 PDT',
+    travelClose = '21 January 2018 23:59:00 PST';
 
 // Store events Array
 let events = {

@@ -11,7 +11,7 @@
 // Variable for storing all of the application information pieces retrieved from json
 let appData = {infoblocks: Array(0)};
 
-$.getJSON('/js/apply.json', function(data) {
+$.getJSON('/js/comp/apply.min.json', function(data) {
    appData = data;
 	addAppInfo();
 	// If there is a submenu, set initial submenuLocation

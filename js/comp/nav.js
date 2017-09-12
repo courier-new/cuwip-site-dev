@@ -11,12 +11,14 @@
 // Variable for storing all of the navigation items retrieved from json
 let navData = {pages: Array(0)};
 
-$.getJSON('/js/nav.json', function(data) {
+$.getJSON('/js/comp/nav.min.json', function(data) {
    navData = data;
 	addNavs();
 });
 
 function addNavs() {
+	// fake = 4;
+	console.log('hello');
 	if (!navData.pages.length) {
 		setTimeout(function() {
 			addNavs();
@@ -74,7 +76,7 @@ function addNavs() {
 		// Add completed navigation menu
 	   $('nav.main.menu').html(navContent);
 		// Complete nav drawer
-		navDrawer += "</ul></div>\n"
+		navDrawer += "</ul></div>\n";
 		$('nav.menu.drawer').html(navDrawer);
 		navHeight = $('nav.main.menu').outerHeight();
 		setLastSubsectionHeight();
