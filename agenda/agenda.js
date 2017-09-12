@@ -14,7 +14,7 @@ let progData = {schedule: Array(0)};
 // Array for storing all the different event types for creating legend
 let eventTypes = [];
 
-$.getJSON('agenda.json', function(data) {
+$.getJSON('agenda.min.json', function(data) {
    progData = data;
 	addAgenda();
 });
@@ -34,7 +34,7 @@ let addAgenda = function() {
 			// Begin parsing data with date title
 			let currOutput = "<h1>" + $c.day + "</h1>\n";
 			currOutput += "<span class='campus reference'>" + $c.college + "</span>\n";
-			currOutput += "<div class='day table'>\n"
+			currOutput += "<div class='day table'>\n";
 			$($c.events).each(function() {
 				// Save current event
 				let $e = $(this)[0];
@@ -49,7 +49,7 @@ let addAgenda = function() {
 						eventTypes.push(this);
 					}
 					currOutput += "<span class='" + this + "'></span>\n";
-				})
+				});
 				currOutput += "</div>\n<div class='info'>";
 				// Add event name
 				currOutput += "<span class='name " + $e.sname + "'>" + $e.name;
@@ -86,7 +86,7 @@ let addAgenda = function() {
 		} else if (this == "shuttle") {
 			pn = "Shuttle Run";
 		} else {
-			pn = pn.charAt(0).toUpperCase() + pn.slice(1)
+			pn = pn.charAt(0).toUpperCase() + pn.slice(1);
 		}
 		legend += "<div><span class='" + this + "'></span>" + pn + "</div>\n";
 	});

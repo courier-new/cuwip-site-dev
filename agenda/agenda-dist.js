@@ -16,7 +16,7 @@ var progData = { schedule: Array(0) };
 // Array for storing all the different event types for creating legend
 var eventTypes = [];
 
-$.getJSON('agenda.json', function (data) {
+$.getJSON('agenda.min.json', function (data) {
 	progData = data;
 	addAgenda();
 });
@@ -129,3 +129,4 @@ $('html').click(function (e) {
 });
 
 /* End of agenda.js */
+//# sourceMappingURL=agenda-dist.js.map
