@@ -17,8 +17,6 @@ $.getJSON('/js/comp/nav.min.json', function(data) {
 });
 
 function addNavs() {
-	// fake = 4;
-	console.log('hello');
 	if (!navData.pages.length) {
 		setTimeout(function() {
 			addNavs();
