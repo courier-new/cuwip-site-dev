@@ -1,2 +1,0 @@
-// Outer wrapper
-(function () {
