@@ -1,3 +1,4 @@
+(function() {
 'use strict';
 
 /**
@@ -129,4 +130,5 @@ $('html').click(function (e) {
 });
 
 /* End of agenda.js */
+})();
 //# sourceMappingURL=agenda-dist.js.map
