@@ -1,4 +1,7 @@
-
-css/main.css.map
-*.map
 prepros-6.config
+.DS_Store
+node_modules
+*.tmp
+.*hintrc
+.csscomb.json
+.sass-lint.yml
