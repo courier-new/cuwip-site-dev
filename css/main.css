@@ -617,6 +617,9 @@ nav.sub.menu {
         .countdown p.string {
           padding: 0.5em 0; } }
 
+.page.about.agenda .inner > .text.block.agenda.spread {
+  padding-bottom: 2em; }
+
 .page.about.agenda .inner > .text.block h1 {
   margin-bottom: 0; }
 
