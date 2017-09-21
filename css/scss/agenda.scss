@@ -1,13 +1,13 @@
 // Map of Event types, colors, and readable labels
 $event-attrs: (
-	food      : ($green-lime, "Food"),
-	misc      : ($turquoise-light, "Misc/Special"),
-	talk      : ($pink-salmon, "Talk"),
-	breakout  : ($green-grass-light, "Breakout Session"),
-	free      : ($pink-berry, "Free Time"),
-	logistics : ($gold-light, "Logistics"),
-	panel     : ($blue-light, "Panel"),
-	shuttle   : ($grey-light, "Shuttle Run")
+	food      : ($green-lime, 'Food'),
+	misc      : ($turquoise-light, 'Misc/Special'),
+	talk      : ($pink-salmon, 'Talk'),
+	breakout  : ($green-grass-light, 'Breakout Session'),
+	free      : ($pink-berry, 'Free Time'),
+	logistics : ($gold-light, 'Logistics'),
+	panel     : ($blue-light, 'Panel'),
+	shuttle   : ($grey-light, 'Shuttle Run')
 );
 
 .page.about.agenda .inner > .text.block {
