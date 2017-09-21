@@ -1,0 +1,32 @@
+{
+  "name": "cuwip-site-dev",
+  "version": "1.2.0",
+  "description": "CUWiP 2018 informational site for Western Regional Conference",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/courier-new/cuwip-site-dev"
+  },
+  "author": "Kelli Rockwell",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.18.13",
+    "browserify": "^14.4.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-jsonminify": "^1.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-lint": "^1.3.3",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-wrap": "^0.13.0",
+    "node-notifier": "^5.1.2"
+  }
+}
