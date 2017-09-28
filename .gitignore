@@ -3,5 +3,12 @@ prepros-6.config
 node_modules
 *.tmp
 .*hintrc
+.*hintrc.json
 .csscomb.json
+.babelrc
+.sass-lint.yml
+img/orig
+*.yml
+.sass-lint.yml
+.stylelintrc.json
 .sass-lint.yml
