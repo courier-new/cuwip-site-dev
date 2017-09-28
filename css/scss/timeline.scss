@@ -1,9 +1,9 @@
 .page.timeline {
 	@include respond-to('xlarge') {
-		padding: 3em 0 0.8em 0;
+		padding: 3em 0 0.8em;
 	}
 	@include respond-to('at1000') {
-		padding: 2em 0 0 0;
+		padding: 2em 0 0;
 	}
 	background-color: $grey-lightest;
 
@@ -51,7 +51,7 @@
 				display: flex;
 				flex-direction: column;
 				margin-bottom: 20px;
-				padding: 0px 20px;
+				padding: 0 20px;
 				.event,
 				.date {
 					@include respond-to('at1000') {
@@ -90,13 +90,13 @@
 					border-top: 2px solid lighten($grey-light, 10%);
 				}
 				@include respond-to('at1000') {
-					border-top: none;
+					border-top: 0;
 				}
 				display: flex;
 				justify-content: center;
-				padding: 0px 30px;
+				padding: 0 30px;
 				position: relative;
-				&:before {
+				&::before {
 					@include respond-to('xlarge') {
 						top: -9px;
 						left: 45%;
@@ -149,19 +149,19 @@
 						font-size: 1.2em;
 					}
 				}
-				.circle:before {
-						@include respond-to('xlarge') {
-							top: -11.5px;
-							left: 43%;
-						}
-						@include respond-to('at1000') {
-							top: -70px;
-							left: -11px;
-						}
-						@include respond-to('at400') {
-							top: -67px;
-							left: -11px;
-						}
+				.circle::before {
+					@include respond-to('xlarge') {
+						top: -11.5px;
+						left: 43%;
+					}
+					@include respond-to('at1000') {
+						top: -70px;
+						left: -11px;
+					}
+					@include respond-to('at400') {
+						top: -67px;
+						left: -11px;
+					}
 					background: $green-lime;
 					border: 5px solid $green-lime;
 					top: -11.5px;

@@ -17,8 +17,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	box-sizing: inherit;
 }
 
@@ -70,15 +70,7 @@ p,
 
 /* IE and Edge faux-bold avoidance fix for headers */
 @media screen and (-ms-high-contrast: active),
-		 screen and (-ms-high-contrast: none) {
-	.page .inner > .text.block h1,
-	.page .inner > .text.block h2,
-	.page.about.agenda .inner > .text.block .campus.reference,
-	nav.sub.menu strong {
-		font-weight: 400;
-	}
-}
-@supports (-ms-ime-align: auto) {
+	screen and (-ms-high-contrast: none) {
 	.page .inner > .text.block h1,
 	.page .inner > .text.block h2,
 	.page.about.agenda .inner > .text.block .campus.reference,
@@ -87,6 +79,14 @@ p,
 	}
 }
 
+@supports (-ms-ime-align: auto) {
+	.page .inner > .text.block h1,
+	.page .inner > .text.block h2,
+	.page.about.agenda .inner > .text.block .campus.reference,
+	nav.sub.menu strong {
+		font-weight: 400;
+	}
+}
 
 .page {
 	width: 100vw;
@@ -130,20 +130,20 @@ p,
 			padding-right: 5em;
 		}
 		@include respond-to('at1000') {
-			padding: 2.8em 2em 1.5em 2em;
+			padding: 2.8em 2em 1.5em;
 		}
 		@include respond-to('at700') {
 			padding-left: 0.5em;
 			padding-right: 0.5em;
 		}
 		@include respond-to('at500') {
-			padding: 2em 0.5em 0.8em 0.5em;
+			padding: 2em 0.5em 0.8em;
 		}
 		padding-top: 2.8em;
 		padding-bottom: 2em;
 	}
 	&.alerts {
-		background: white;
+		background: #fff;
 	}
 	&.welcome,
 	&.about {
@@ -171,7 +171,7 @@ p,
 		}
 		span.address,
 		span.template {
-			background: white;
+			background: #fff;
 			display: block;
 			padding: 1em 1.5em;
 			line-height: 1.5em;
@@ -222,12 +222,12 @@ p,
 				width: 90%;
 				margin: 1.5em 5%;
 			}
-			background: white;
+			background: #fff;
 			color: $pink-salmon-light;
 			font-size: 1.3em;
 			font-weight: 700;
 			line-height: 1.5em;
-			padding: 0.3em 1em 0.5em 1em;
+			padding: 0.3em 1em 0.5em;
 			text-align: center;
 			text-transform: uppercase;
 			transition: background 0.3s, color 0.3s;
@@ -235,7 +235,7 @@ p,
 			&:active {
 				cursor: pointer;
 				background: $pink-salmon-light;
-				color: white;
+				color: #fff;
 			}
 		}
 	}
@@ -279,7 +279,7 @@ p,
 		&.hiding.container {
 			overflow: hidden;
 			height: auto; /* height set dynamically by scroll-effect.js */
-			& > .text.block {
+			> .text.block {
 				margin-bottom: 10px;
 			}
 		}
@@ -296,14 +296,14 @@ p,
 			width: 4em;
 			height: 4em;
 			border-radius: 50%;
-			background: white;
+			background: #fff;
 			margin: 0 0.5em;
 			transition: background 0.4s;
 			&:hover,
 			&:active {
 				background: $pink-berry;
 				i {
-					color: white;
+					color: #fff;
 				}
 			}
 			i {
@@ -316,19 +316,19 @@ p,
 	}
 	.message {
 		@include respond-to('xlarge') {
-			padding: 0 3em 3em 3em;
+			padding: 0 3em 3em;
 			width: 86%;
 		}
 		@include respond-to('at1000') {
 			width: 100%;
 		}
 		@include respond-to('at700') {
-			padding: 0 1em 3em 1em;
+			padding: 0 1em 3em;
 		}
 		color: $grey-medium-dark;
 		font-size: 0.8em;
 		position: relative;
-		margin: 1em auto 3em auto;
+		margin: 1em auto 3em;
 		text-align: center;
 		&::after {
 			content: '';
@@ -373,7 +373,7 @@ p,
 			font-size: 1.1em;
 			text-align: center;
 			padding: 0.6em;
-			margin: 0 auto 0.5em auto;
+			margin: 0 auto 0.5em;
 			max-width: 250px;
 			min-width: 200px;
 			width: 70%;
@@ -398,24 +398,24 @@ p,
 	}
 	.inner > .text.block {
 		@include respond-to('xlarge') {
-			padding: 0 3em 0.5em 3em;
+			padding: 0 3em 0.5em;
 		}
 		@include respond-to('at700') {
-			padding: 0 1em 0.5em 1em;
+			padding: 0 1em 0.5em;
 		}
 		color: $grey-medium-dark;
 		font-size: 0.8em;
-		padding: 0 3em 0.5em 3em;
+		padding: 0 3em 0.5em;
 		text-align: center;
-		& > ul,
-		& > ol {
+		> ul,
+		> ol {
 			line-height: 1.5em;
 			margin: 2em 0;
 			li {
 				margin-bottom: 0.2em;
 			}
 		}
-		& > p {
+		> p {
 			@include respond-to('at500') {
 				text-align: left;
 			}
@@ -433,7 +433,7 @@ p,
 		}
 		h1 {
 			line-height: 1.5em;
-			margin: 0.5em auto 1em auto;
+			margin: 0.5em auto 1em;
 			&.faq {
 				letter-spacing: 0.1em;
 			}
@@ -442,7 +442,7 @@ p,
 			color: $pink-salmon;
 			font-size: 1.5em;
 			letter-spacing: 0.12em;
-			margin: 1em auto 1.5em auto;
+			margin: 1em auto 1.5em;
 		}
 		h3 {
 			color: lighten($pink-berry, 10%);
@@ -530,8 +530,8 @@ p,
 						}
 						position: absolute;
 						top: 50%;
-			    		left: 50%;
-			    		transform: translate(-50%, -50%);
+						left: 50%;
+						transform: translate(-50%, -50%);
 					}
 				}
 				h3 {
@@ -560,7 +560,7 @@ p,
 			margin: 0;
 			a {
 				@include respond-to('xlarge') {
-					padding: 1vh 1vh;
+					padding: 1vh;
 					width: 60%;
 					&:hover {
 						background: $grey-lightest;
@@ -603,8 +603,8 @@ p,
 						}
 						position: absolute;
 						top: 50%;
-			    		left: 50%;
-			    		transform: translate(-50%, -50%);
+						left: 50%;
+						transform: translate(-50%, -50%);
 						transition: color 0.3s;
 						width: 100%;
 					}
@@ -631,18 +631,18 @@ p,
 						width: 82%;
 					}
 					color: $grey-medium-dark;
-					margin: 0.8em 0 0.5em 0;
+					margin: 0.8em 0 0.5em;
 				}
 			}
 		}
 		ul.organizers.list {
 			@include respond-to('xlarge') {
 				flex-direction: row;
-				margin: 0 0 1em 0;
+				margin: 0 0 1em;
 				width: 100%;
 			}
 			@include respond-to('at700') {
-				margin: 0 10% 1em 10%;
+				margin: 0 10% 1em;
 				flex-direction: column;
 				width: 80%;
 			}
@@ -667,7 +667,7 @@ p,
 				}
 				img {
 					@include respond-to('xlarge') {
-						margin: 1em 30% 2.3em 30%;
+						margin: 1em 30% 2.3em;
 						width: 40%;
 					}
 					@include respond-to('at700') {
@@ -694,7 +694,7 @@ p,
 		@include respond-to('at500') {
 			height: 50px;
 		}
-		margin: 0 auto 1em auto;
+		margin: 0 auto 1em;
 	}
 }
 

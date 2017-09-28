@@ -8,7 +8,7 @@
 		align-items: flex-start;
 		.column {
 			@include respond-to('xlarge') {
-				padding: 2em 2em 1em 2em;
+				padding: 2em 2em 1em;
 				width: 33%;
 			}
 			@include respond-to('at1000') {
@@ -21,7 +21,7 @@
 				display: block;
 			}
 			@include respond-to('at400') {
-				padding: 2em 0 1em 0;
+				padding: 2em 0 1em;
 			}
 			.text.block {
 				@include respond-to('at1000') {
@@ -35,13 +35,13 @@
 					text-align: center;
 					h2 {
 						font-size: 2em;
-						margin: 1.2em 0 1em 0;
+						margin: 1.2em 0 1em;
 					}
 				}
 			}
 			img {
 				@include respond-to('xlarge') {
-					margin: 0 auto 1em auto;
+					margin: 0 auto 1em;
 					width: 50%;
 				}
 				@include respond-to('at1000') {
@@ -85,7 +85,7 @@
 				@include respond-to('at500') {
 					padding: 0;
 					text-align: center;
-					border: none;
+					border: 0;
 					width: 95%;
 				}
 			}
