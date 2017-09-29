@@ -28,6 +28,6 @@
     "gulp-watch": "^4.3.11",
     "gulp-wrap": "^0.13.0",
     "node-notifier": "^5.1.2",
-    "stylelint-config-sass-guidelines": "~3.1.0"
+    "stylelint-config-sass-guidelines": "^3.1.0"
   }
 }
