@@ -427,7 +427,6 @@
 					"required": true,
 					"place": "Business Building",
 					"speaker": "Hilke Schlichting",
-					"debugHide": true,
 					"speakerPage": "http://epss.ucla.edu/people/faculty/833/",
 					"speakerImg": "hilke-schlichting.jpg",
 					"speakerHome": "UCLA",
