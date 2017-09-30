@@ -105,7 +105,7 @@ var addTalkDesc = function addTalkDesc(e) {
 		output += "<div class='about'>\n<div class='desc'>\n";
 		output += "<h2>" + e.speaker + " <em>" + e.speakerHome + "</em></h2>\n";
 		output += "<div class='lil-img'><img src='../img/" + e.speakerImg + "'></div>\n";
-		output += "<p>" + e.shortDesc + " Visit her <a target='_blank' href='" + e.speakerPage + "'>faculty profile</a> to learn more.</p>\n";
+		output += "<p>" + e.shortDesc + " Visit her <a target='_blank' href='" + e.speakerPage.URL + "'>" + e.speakerPage.type + "</a> to learn more.</p>\n";
 		output += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>";
 		return output;
 	}

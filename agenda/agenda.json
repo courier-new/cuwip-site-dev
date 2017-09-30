@@ -76,9 +76,14 @@
 					"timeEnd": "8:30 PM",
 					"required": true,
 					"place": "Platt Living Room",
-					"speaker": "TBD",
-					"speakerHome": "",
-					"shortDesc": "Hear from a cool speaker about a cool topic as you consume a cool dessert."
+					"speaker": "Dianna Cowern",
+					"speakerPage": {
+						"type": "website",
+						"URL": "http://physicsgirl.org"
+						},
+					"speakerImg": "dianna-cowern.jpg",
+					"speakerHome": "UCSD, Physics Girl",
+					"shortDesc": "More information coming soon."
 				},
 				{
 					"name": "Free Time",
@@ -168,7 +173,10 @@
 					"required": true,
 					"place": "Rose Hills Theater",
 					"speaker": "Monika Schleier-Smith",
-					"speakerPage": "https://physics.stanford.edu/people/faculty/monika-schleier-smith",
+					"speakerPage": {
+						"type": "faculty profile",
+						"URL": "https://physics.stanford.edu/people/faculty/monika-schleier-smith"
+					},
 					"speakerImg": "monika-schleier-smith.jpg",
 					"speakerHome": "Stanford University",
 					"shortDesc": "More information coming soon."
@@ -204,7 +212,10 @@
 					"required": true,
 					"place": "Rose Hills Theater",
 					"speaker": "Patricia Burchat",
-					"speakerPage": "https://physics.stanford.edu/people/faculty/patricia-burchat",
+					"speakerPage": {
+						"type": "faculty profile",
+						"URL": "https://physics.stanford.edu/people/faculty/patricia-burchat"
+					},
 					"speakerImg": "patricia-burchat.jpg",
 					"speakerHome": "Stanford University",
 					"shortDesc": "Professor Patricia Burchat from Stan&shy;ford Uni&shy;versity will speak about the breadth of op&shy;por&shy;tun&shy;ities for phys&shy;icists in fore&shy;front areas of re&shy;search, education, and leading roles in the private sector."
@@ -427,7 +438,10 @@
 					"required": true,
 					"place": "Business Building",
 					"speaker": "Hilke Schlichting",
-					"speakerPage": "http://epss.ucla.edu/people/faculty/833/",
+					"speakerPage": {
+						"type": "faculty profile",
+						"URL": "http://epss.ucla.edu/people/faculty/833/"
+					},
 					"speakerImg": "hilke-schlichting.jpg",
 					"speakerHome": "UCLA",
 					"shortDesc": "More information coming soon."
