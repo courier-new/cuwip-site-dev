@@ -1,4 +1,35 @@
 {
+	"panels": {
+		"ppe1": {
+			"name": "Equity and Inclusion in STEM",
+			"special": "Post-Panel Extension"
+		},
+		"ppe2": {
+			"name": "Balancing Career/&#8203;Life",
+			"special": "Post-Panel Extension"
+		},
+		"sj": {
+			"name": "Free Radicals: Intersection of Science/&#8203;Social Justice"
+		},
+		"is": {
+			"name" : "Imposter Syndrome: Do you feel like you belong?"
+		},
+		"sf": {
+			"name": "Science Frontiers/&#8203;Research Fields"
+		},
+		"outreach": {
+			"name": "Science Outreach"
+		},
+		"wip": {
+			"name": "Starting/&#8203;Revitalizing a WIP group @ your home institution"
+		},
+		"cc": {
+			"name": "Transitioning from Community College to a 4-year Institution"
+		},
+		"jpl": {
+			"name": "REU/&#8203;Internship Panels with JPL"
+		}
+	},
 	"schedule": [
 		{
 			"day": "friday",
@@ -189,8 +220,7 @@
 					"timeEnd": "10:30 AM",
 					"required": true,
 					"place": "Smith Campus Center/Millikan Hall",
-					"optionCount": 5,
-					"options": [1, 2, 3, 4, 5],
+					"options": ["ppe1", "sj", "sf", "outreach", "cc", "jpl"],
 					"shortDesc": ""
 				},
 				{
@@ -251,15 +281,23 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Panel1",
-					"sname": "panel1",
+					"name": "<span>Panel Option A: </span><span>Equity and Inclusion in STEM</span>",
+					"sname": "panela",
 					"types": ["panel"],
 					"timeStart": "2:30 PM",
 					"timeEnd": "3:15 PM",
 					"required": true,
 					"place": "Smith Campus Center/Millikan Hall",
-					"optionCount": 2,
-					"options": [1, 2],
+					"shortDesc": ""
+				},
+				{
+					"name": "<span>Panel Option B: </span><span>Balancing Career/&#8203;Life</span>",
+					"sname": "panelb",
+					"types": ["panel"],
+					"timeStart": "2:30 PM",
+					"timeEnd": "3:15 PM",
+					"required": true,
+					"place": "Smith Campus Center/Millikan Hall",
 					"shortDesc": ""
 				},
 				{
@@ -280,8 +318,7 @@
 					"timeEnd": "4:30 PM",
 					"required": true,
 					"place": "Smith Campus Center/Millikan Hall",
-					"optionCount": 5,
-					"options": [1, 2, 3, 4, 5],
+					"options": ["ppe1", "ppe2", "sf", "outreach", "wip", "jpl"],
 					"shortDesc": ""
 				},
 				{
@@ -302,8 +339,7 @@
 					"timeEnd": "5:45 PM",
 					"place": "Smith Campus Center/Millikan Hall",
 					"required": true,
-					"optionCount": 5,
-					"options": [1, 2, 3, 4, 5],
+					"options": ["ppe1", "ppe2", "is", "sf", "wip", "jpl"],
 					"shortDesc": ""
 				},
 				{
