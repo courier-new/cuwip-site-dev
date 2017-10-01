@@ -160,6 +160,17 @@ $event-attrs: (
 							font-weight: 400;
 							padding-bottom: 0.15em;
 						}
+						span {
+							@include respond-to('xlarge') {
+								display: block;
+							}
+							@include respond-to('at1000') {
+								display: inline;
+							}
+							@include respond-to('at500') {
+								display: block;
+							}
+						}
 					}
 					&.time {
 						@include respond-to('xlarge') {
