@@ -197,28 +197,39 @@ $event-attrs: (
 			}
 			.about {
 				@include respond-to('xlarge') {
-					margin: 2em 2% 2em 0;
+					margin: 1.5em 0 0;
+					padding: 1.5em 5% 1.5em 3%;
 					width: 100%;
 				}
 				@include respond-to('at1000') {
 					align-items: center;
-					margin: 1em 7%;
-					width: 86%;
+					margin: 0.5em 7.5% 0 2%;
+					padding: 1em 0 1em 7%;
+					width: 90.5%;
 				}
 				@include respond-to('at500') {
-					margin: 0.2em 7% 0.5em;
+					margin-right: 0;
+					padding: 0.2em 5% 1em 7%;
+					width: 97%;
 				}
+				// Fill in border-color for each event type
+				@each $type, $attrs in $event-attrs {
+					&.#{$type} {
+						border-color: nth($attrs, 1);
+					}
+				}
+				border-left: 2px solid #000;
 				display: flex;
 				flex-wrap: wrap;
-				margin-left: 10%;
-				width: 90%;
 				.desc {
 					@include respond-to('xlarge') {
 						order: 2;
+						padding-left: 3%;
 						width: 77%;
 					}
 					@include respond-to('at1000') {
 						order: 1;
+						padding-left: 0;
 						padding-right: 5%;
 					}
 					@include respond-to('at500') {
