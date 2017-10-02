@@ -679,7 +679,7 @@ nav.sub.menu {
 .page.about.agenda .inner > .text.block .separator {
   content: '';
   width: 30%;
-  margin: 0 35% 3em;
+  margin-bottom: 3em;
   border-bottom: 0.3em solid #c9bcba; }
 
 .page.about.agenda .inner > .text.block .day.table {
