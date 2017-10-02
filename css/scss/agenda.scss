@@ -54,7 +54,16 @@ $event-attrs: (
 		letter-spacing: 0.1em;
 		margin-bottom: 1em;
 	}
+	.separator {
+		content: '';
+		width: 30%;
+		margin: 0 35% 3em;
+		border-bottom: 0.3em solid $grey-light;
+	}
 	.day.table {
+		@include respond-to('xlarge') {
+			margin-bottom: 2.5em;
+		}
 		display: flex;
 		flex-direction: column;
 		> .event {
@@ -197,30 +206,64 @@ $event-attrs: (
 			}
 			.about {
 				@include respond-to('xlarge') {
-					margin: 1.5em 0 0;
+					margin: 0;
 					padding: 1.5em 5% 1.5em 3%;
 					width: 100%;
 				}
 				@include respond-to('at1000') {
 					align-items: center;
-					margin: 0.5em 7.5% 0 2%;
-					padding: 1em 0 1em 7%;
+					margin: 0 7.5% 0 2%;
+					padding: 0.5em 0 0 7%;
 					width: 90.5%;
 				}
 				@include respond-to('at500') {
 					margin-right: 0;
-					padding: 0.2em 5% 1em 7%;
+					padding: 0 5% 0 7%;
 					width: 97%;
 				}
-				// Fill in border-color for each event type
-				@each $type, $attrs in $event-attrs {
-					&.#{$type} {
-						border-color: nth($attrs, 1);
-					}
-				}
-				border-left: 2px solid #000;
 				display: flex;
 				flex-wrap: wrap;
+				&.breakout {
+					ul {
+						@include respond-to('xlarge') {
+							grid-template-columns: 47.5% 47.5%;
+							padding-left: 7.4%;
+						}
+						@include respond-to('at1000') {
+							grid-template-columns: 100%;
+							padding-left: 3%;
+							padding-top: 1em;
+						}
+						@include respond-to('at500') {
+							padding-left: 11%;
+						}
+						align-items: flex-start;
+						display: grid;
+						grid-gap: 0 5%;
+						margin: 0;
+						width: 100%;
+					}
+					li {
+						@include respond-to('xlarge') {
+							min-height: 2.5em;
+						}
+						@include respond-to('at500') {
+							min-height: 2.8em;
+						}
+						margin: 0;
+						padding: 0.2em;
+					}
+					span {
+						color: $grey-light;
+						display: block;
+						font-size: 0.8em;
+						margin-top: 0.5em;
+						text-transform: uppercase;
+						&.once {
+							color: $pink-salmon-light;
+						}
+					}
+				}
 				.desc {
 					@include respond-to('xlarge') {
 						order: 2;
