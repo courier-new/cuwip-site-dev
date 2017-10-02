@@ -216,7 +216,7 @@
 					"shortDesc": "More information coming soon."
 				},
 				{
-					"name": "Parallel Session 1/3",
+					"name": "Breakout Session 1 of 3",
 					"sname": "breakout1",
 					"types": ["breakout"],
 					"timeStart": "9:45 AM",
@@ -314,7 +314,7 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Parallel Session 2/3",
+					"name": "Breakout Session 2 of 3",
 					"sname": "breakout2",
 					"types": ["breakout"],
 					"timeStart": "3:45 PM",
@@ -335,7 +335,7 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Parallel Session 3/3",
+					"name": "Breakout Session 3 of 3",
 					"sname": "breakout3",
 					"types": ["breakout"],
 					"timeStart": "5:00 PM",
