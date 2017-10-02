@@ -1,5 +1,5 @@
 {
-	"panels": {
+	"breakouts": {
 		"ppe1": {
 			"name": "Equity and Inclusion in STEM",
 			"special": "Post-Panel Extension"
@@ -9,10 +9,12 @@
 			"special": "Post-Panel Extension"
 		},
 		"sj": {
-			"name": "Free Radicals: Intersection of Science/&#8203;Social Justice"
+			"name": "Free Radicals: Intersection of Science/&#8203;Social Justice",
+			"special": "Only Offered Once"
 		},
 		"is": {
-			"name" : "Imposter Syndrome: Do you feel like you belong?"
+			"name" : "Imposter Syndrome: Do you feel like you belong?",
+			"special": "Only Offered Once"
 		},
 		"sf": {
 			"name": "Science Frontiers/&#8203;Research Fields"
@@ -24,10 +26,11 @@
 			"name": "Starting/&#8203;Revitalizing a WIP group @ your home institution"
 		},
 		"cc": {
-			"name": "Transitioning from Community College to a 4-year Institution"
+			"name": "Transitioning from Community College to a 4-year Institution",
+			"special": "Only Offered Once"
 		},
 		"jpl": {
-			"name": "REU/&#8203;Internship Panels with JPL"
+			"name": "REUs/&#8203;Internships, featuring JPL"
 		}
 	},
 	"schedule": [
