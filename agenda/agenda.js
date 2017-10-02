@@ -23,9 +23,9 @@ let addAgenda = function() {
 	let output = "";
 	if (!progData.schedule.length) {
 		setTimeout(function() {
-			console.log('trying again');
+			console.log('trying to fetch agenda again');
 			addAgenda();
-		}, 50);
+		}, 200);
 	} else {
 		// For each day of the schedule
 		$(progData.schedule).each(function() {
@@ -33,8 +33,7 @@ let addAgenda = function() {
 			let $c = $(this)[0];
 			// Begin parsing data with date title
 			let currOutput = "<h1>" + $c.day + "</h1>\n";
-			currOutput += "<span class='campus reference'>" + $c.college + "</span>\n";
-			currOutput += "<div class='day table'>\n";
+			currOutput += "<span class='campus reference'>" + $c.college + "</span>\n<div class='day table'>\n";
 			$($c.events).each(function() {
 				// Save current event
 				let $e = $(this)[0];
@@ -61,15 +60,18 @@ let addAgenda = function() {
 				// Add event location
 				currOutput += "<span class='place " + $e.sname + "'>" + $e.place + "</span>";
 				currOutput += "</div>\n";
-				// Add desc element, if event is talk
+				// Add desc/options element, if event is talk or parallel session
 				currOutput += ($e.types.includes("talk")) ? addTalkDesc($e) : "";
+				currOutput += ($e.types.includes("breakout")) ? addBreakoutOptions($e) : "";
 				currOutput += "</div>\n";
 			});
 			currOutput += "</div>\n";
+			// Add separator unless last day
+			currOutput += (progData.schedule.indexOf($c) !== progData.schedule.length - 1) ? "<div class='separator'></div>" : "";
 			output += currOutput;
 		});
-	// Fill agenda
-	$('.agenda.spread').html(output);
+		// Fill agenda
+		$('.agenda.spread').html(output);
 
 	let legend = "";
 	eventTypes.sort();
@@ -99,11 +101,36 @@ let addTalkDesc = function(e) {
 	if (!e.speaker || e.speaker === "TBD" || e.debugHide) {
 		return output;
 	} else {
-		output += "<div class='about'>\n<div class='desc'>\n";
+		output += "<div class='about " + e.types[0] + "'>\n<div class='desc'>\n";
 		output += "<h2>" + e.speaker + " <em>" + e.speakerHome + "</em></h2>\n";
 		output += "<div class='lil-img'><img src='../img/" + e.speakerImg + "'></div>\n";
 		output += "<p>" + e.shortDesc + " Visit her <a target='_blank' href='" + e.speakerPage.URL + "'>" + e.speakerPage.type + "</a> to learn more.</p>\n";
-		output += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>";
+		output += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>\n";
+		return output;
+	}
+};
+
+let addBreakoutOptions = function(e) {
+	let output = "";
+	if (!e.options || e.options.length === 0 || e.debugHide) {
+		return output;
+	} else {
+		output += "<div class='about " + e.types[0] + "'>\n<ul>\n";
+		for (let i = 0; i < e.options.length; i++) {
+			let optID = e.options[i];
+			// Locate breakout option by its ID
+			let option = progData.breakouts[optID];
+			output += "<li>" + option.name;
+			// If breakout session as special property
+			if (option.hasOwnProperty("special")) {
+				output += "<span";
+				// If breakout session is labeled as only occurring once
+				output += (option.special.toLowerCase().includes("once")) ? " class='once'>" : ">";
+				output += option.special + "</span>";
+			}
+			output += "</li>\n";
+		}
+		output += "</ul>\n</div>\n";
 		return output;
 	}
 };
