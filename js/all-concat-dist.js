@@ -222,7 +222,7 @@ $('body, window').on('click', 'a[href*="#"]', function (event) {
 });
 
 /* End of scroll-effect.js */
-"use strict";
+'use strict';
 
 /**
  * nav.js
@@ -245,8 +245,9 @@ $.getJSON('/js/comp/nav.min.json', function (data) {
 function addNavs() {
 	if (!navData.pages.length) {
 		setTimeout(function () {
+			console.log('trying to fetch nav again');
 			addNavs();
-		}, 50);
+		}, 200);
 	} else {
 		// Variable to hold string of content to fill nav menu
 		var navContent = "<ul>\n";
