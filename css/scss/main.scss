@@ -467,7 +467,7 @@ p,
 			margin: 0;
 			a {
 				@include respond-to('xlarge') {
-					width: 33%;
+					width: 50%;
 					&:hover {
 						background: $grey-lightest;
 					}
@@ -498,7 +498,7 @@ p,
 						padding-right: 5%;
 						.logo.container {
 							height: 100%;
-							width: 30%;
+							width: 38%;
 						}
 					}
 					@include respond-to('at500') {
@@ -523,7 +523,10 @@ p,
 					position: relative;
 					img {
 						@include respond-to('xlarge') {
-							width: 80%;
+							width: 70%;
+						}
+						@include respond-to('at700') {
+							width: 90%;
 						}
 						@include respond-to('at500') {
 							width: 100%;
@@ -537,8 +540,8 @@ p,
 				h3 {
 					@include respond-to('at1000') {
 						text-align: left;
-						padding-left: 10%;
-						width: 70%;
+						padding-left: 8%;
+						width: 64%;
 					}
 					@include respond-to('at500') {
 						text-align: center;
