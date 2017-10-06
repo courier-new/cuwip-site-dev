@@ -114,26 +114,47 @@ let addBreakoutOptions = function(e) {
 	let output = "";
 	if (!e.options || e.options.length === 0 || e.debugHide) {
 		return output;
-	} else {
+   } else {
+      // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
+      let snum = parseInt(e.name.match(/\d of \d/)[0].substr(0, 1));
 		output += "<div class='about " + e.types[0] + "'>\n<ul>\n";
-		for (let i = 0; i < e.options.length; i++) {
-			let optID = e.options[i];
-			// Locate breakout option by its ID
-			let option = progData.breakouts[optID];
-			output += "<li>" + option.name;
-			// If breakout session as special property
-			if (option.hasOwnProperty("special")) {
-				output += "<span";
-				// If breakout session is labeled as only occurring once
-				output += (option.special.toLowerCase().includes("once")) ? " class='once'>" : ">";
-				output += option.special + "</span>";
-			}
-			output += "</li>\n";
-		}
+      for (let id in progData.breakouts) {
+         // Store current breakout session data
+         let s = progData.breakouts[id];
+         // If breakout session is included in current session number
+         if (s.sessions.includes(snum)) {
+            // Add breakout session
+            output += "<li>" + s.name;
+            // If breakout session as special property
+      		if (s.hasOwnProperty("special")) {
+      			output += "<span";
+      			// If breakout session is labeled as only occurring once
+      			output += (s.special.toLowerCase().includes("once")) ? " class='once'>" : ">";
+      			output += s.special + "</span>";
+            }
+         }
+   		output += "</li>\n";
+      }
+	// } else {
+	// 	output += "<div class='about " + e.types[0] + "'>\n<ul>\n";
+	// 	for (let i = 0; i < e.options.length; i++) {
+	// 		let optID = e.options[i];
+	// 		// Locate breakout option by its ID
+	// 		let option = progData.breakouts[optID];
+	// 		output += "<li>" + option.name;
+	// 		// If breakout session as special property
+	// 		if (option.hasOwnProperty("special")) {
+	// 			output += "<span";
+	// 			// If breakout session is labeled as only occurring once
+	// 			output += (option.special.toLowerCase().includes("once")) ? " class='once'>" : ">";
+	// 			output += option.special + "</span>";
+	// 		}
+	// 		output += "</li>\n";
+	// 	}
 		output += "</ul>\n</div>\n";
 		return output;
 	}
-};
+}
 
 // Clicking on agenda event type bubble
 $('.agenda.spread').on('click', '.type.bubbles span', function() {
