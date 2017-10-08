@@ -42,6 +42,26 @@
 			"sessions": [1, 2, 3]
 		}
 	},
+	"careerBreakouts": {
+		"jpl": {
+			"name": "Is JPL for me?"
+		},
+		"pgs": {
+			"name": "Is physics grad school for me?"
+		},
+		"npgs": {
+			"name": "Is non-physics grad school for me?"
+		},
+		"teacher": {
+			"name": "Is K-12 teaching for me?"
+		},
+		"industry": {
+			"name": "Is industry for me?"
+		},
+		"professor": {
+			"name": "Is a career as a professor for me?"
+		}
+	},
 	"schedule": [
 		{
 			"day": "friday",
@@ -49,14 +69,14 @@
 			"scollege": "Harvey Mudd",
 			"events": [
 				{
-					"name": "Lunch",
-					"sname": "lunch",
-					"types": ["food"],
-					"timeStart": "1:00 PM",
-					"timeEnd": "3:00 PM",
+					"name": "APS Skills Workshop",
+					"sname": "apsskills",
+					"types": ["misc"],
+					"timeStart": "2:00 PM",
+					"timeEnd": "4:00 PM",
 					"required": false,
 					"place": "TBD",
-					"shortDesc": "Lunch will be provided by food place. Need to RSVP? Optional lunch, next meal would be dinner."
+					"shortDesc": ""
 				},
 				{
 					"name": "Check-In",
@@ -96,7 +116,7 @@
 					"timeStart": "5:00 PM",
 					"timeEnd": "6:30 PM",
 					"required": true,
-					"place": "Galileo/McAlester Auditorium",
+					"place": "Galileo-McAlister Auditorium",
 					"speaker": "TBD",
 					"speakerHome": "APS",
 					"shortDesc": "Mary Sue will deliver a warm welcome to all CUWiP participants and kick off events at Harvey Mudd College. The talk will introduce the theme topic location etc. of the conference."
@@ -336,7 +356,7 @@
 				{
 					"name": "Coffee Break",
 					"sname": "coffee",
-					"types": ["food", "free"	],
+					"types": ["food", "free"],
 					"timeStart": "4:30 PM",
 					"timeEnd": "5:00 PM",
 					"required": true,
@@ -459,12 +479,12 @@
 				},
 				{
 					"name": "Career Fair/Breakout Sessions",
-					"todo": "list breakouts",
 					"sname": "careerfair",
-					"types": ["misc"],
+					"types": ["breakout", "misc"],
 					"timeStart": "10:00 AM",
 					"timeEnd": "12:00 PM",
 					"required": true,
+					"options": true,
 					"place": "Ursa Major",
 					"shortDesc": ""
 				},
