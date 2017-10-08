@@ -939,11 +939,14 @@ nav.sub.menu {
         padding: 0.3em 0; }
       @media (max-width: 10000px) {
         .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
+          grid-auto-flow: column dense;
           grid-template-columns: 47.5% 47.5%;
+          grid-template-rows: repeat(3, auto);
           padding-left: 7.4%; } }
       @media (max-width: 1000px) {
         .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
-          grid-template-columns: 100%; } }
+          grid-template-columns: 100%;
+          grid-template-rows: repeat(6, auto); } }
       @media (max-width: 500px) {
         .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
           padding-left: 11%; } }

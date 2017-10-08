@@ -248,11 +248,14 @@ $event-attrs: (
 					}
 					&.misc ul {
 						@include respond-to('xlarge') {
+							grid-auto-flow: column dense;
 							grid-template-columns: 47.5% 47.5%;
+							grid-template-rows: repeat(3, auto);
 							padding-left: 7.4%;
 						}
 						@include respond-to('at1000') {
 							grid-template-columns: 100%;
+							grid-template-rows: repeat(6, auto);
 						}
 						@include respond-to('at500') {
 							padding-left: 11%;
