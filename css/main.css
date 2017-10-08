@@ -922,6 +922,9 @@ nav.sub.menu {
         @media (max-width: 10000px) {
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout ul {
             padding-left: 3%; } }
+        @media (max-width: 1000px) {
+          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout ul {
+            padding-right: 4.2%; } }
         @media (max-width: 500px) {
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout ul {
             padding-left: 7%; } }

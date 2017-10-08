@@ -228,6 +228,9 @@ $event-attrs: (
 						@include respond-to('xlarge') {
 							padding-left: 3%;
 						}
+						@include respond-to('at1000') {
+							padding-right: 4.2%;
+						}
 						@include respond-to('at500') {
 							padding-left: 7%;
 						}
