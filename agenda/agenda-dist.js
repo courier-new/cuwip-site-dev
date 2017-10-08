@@ -117,43 +117,55 @@ var addBreakoutOptions = function addBreakoutOptions(e) {
 	var output = "";
 	if (!e.options || e.options.length === 0 || e.debugHide) {
 		return output;
-	} else {
+	} else if (e.name.match(/breakout session \d of \d/i)) {
 		// Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
 		var snum = parseInt(e.name.match(/\d of \d/)[0].substr(0, 1));
-		output += "<div class='about " + e.types[0] + "'>\n<ul>\n";
+		// Label container with event types
+		output += "<div class='about ";
+		for (var t = 0; t < e.types.length; t++) {
+			output += e.types[t];
+			output += t + 1 === e.types.length ? "" : " ";
+		}
+		output += "'>\n<ul>\n";
 		for (var id in progData.breakouts) {
 			// Store current breakout session data
 			var s = progData.breakouts[id];
 			// If breakout session is included in current session number
 			if (s.sessions.includes(snum)) {
-				// Add breakout session
-				output += "<li>" + s.name;
-				// If breakout session as special property
+				// Add breakout session occurrences
+				output += "<li>\n<div class='occurrences'>";
+				for (var i = 1; i < 4; i++) {
+					output += s.sessions.includes(i) ? '<span class=\'indicator true\'>' + i + '</span>' : '<span class=\'indicator false\'>' + i + '</span>';
+				}
+				// Add breakout session info
+				output += "</div>\n<div class='details'><span class='session'>" + s.name + "</span>";
+				// If breakout session has special property
 				if (s.hasOwnProperty("special")) {
-					output += "<span";
+					output += "<span class='label";
 					// If breakout session is labeled as only occurring once
-					output += s.special.toLowerCase().includes("once") ? " class='once'>" : ">";
+					output += s.special.toLowerCase().includes("once") ? " once'>" : "'>";
 					output += s.special + "</span>";
 				}
 			}
 			output += "</li>\n";
 		}
-		// } else {
-		// 	output += "<div class='about " + e.types[0] + "'>\n<ul>\n";
-		// 	for (let i = 0; i < e.options.length; i++) {
-		// 		let optID = e.options[i];
-		// 		// Locate breakout option by its ID
-		// 		let option = progData.breakouts[optID];
-		// 		output += "<li>" + option.name;
-		// 		// If breakout session as special property
-		// 		if (option.hasOwnProperty("special")) {
-		// 			output += "<span";
-		// 			// If breakout session is labeled as only occurring once
-		// 			output += (option.special.toLowerCase().includes("once")) ? " class='once'>" : ">";
-		// 			output += option.special + "</span>";
-		// 		}
-		// 		output += "</li>\n";
-		// 	}
+		output += "</ul>\n</div>\n";
+		return output;
+	} else if (e.name.match(/career/i)) {
+		// Label container with event types
+		output += "<div class='about ";
+		for (var _t = 0; _t < e.types.length; _t++) {
+			output += e.types[_t];
+			output += _t + 1 === e.types.length ? "" : " ";
+		}
+		output += "'>\n<ul>\n";
+		for (var _id in progData.careerBreakouts) {
+			// Store current breakout session data
+			var _s = progData.careerBreakouts[_id];
+			// Add breakout session info
+			output += "<li>\n<div class='details'><span class='session'>&#8226;&emsp;" + _s.name + "</span>";
+			output += "</li>\n";
+		}
 		output += "</ul>\n</div>\n";
 		return output;
 	}
