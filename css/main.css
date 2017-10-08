@@ -1837,7 +1837,7 @@ p,
       -ms-flex-pack: center;
       justify-content: center;
       padding: 0;
-      margin: 0; }
+      margin: 0 0 2.8em; }
       @media (max-width: 10000px) {
         .page .inner > .text.block ul.sponsors.list {
           -webkit-box-orient: horizontal;

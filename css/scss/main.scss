@@ -464,7 +464,7 @@ p,
 			display: flex;
 			justify-content: center;
 			padding: 0;
-			margin: 0;
+			margin: 0 0 2.8em;
 			a {
 				@include respond-to('xlarge') {
 					width: 50%;
