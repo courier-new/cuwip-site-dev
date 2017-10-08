@@ -148,7 +148,7 @@ $event-attrs: (
 				justify-content: space-between;
 				flex-wrap: wrap;
 				span {
-					line-height: 1.5em;
+					line-height: 1.25em;
 					padding: 0.05em;
 					&.name {
 						@include respond-to('xlarge') {
@@ -226,22 +226,52 @@ $event-attrs: (
 				&.breakout {
 					ul {
 						@include respond-to('xlarge') {
+							padding-left: 3%;
+						}
+						@include respond-to('at500') {
+							padding-left: 7%;
+						}
+						align-items: flex-start;
+						display: grid;
+						grid-template-columns: 100%;
+						grid-gap: 0 5%;
+						margin: 0;
+						padding-top: 1em;
+						width: 100%;
+					}
+					&:not(.misc) li {
+						align-items: center;
+						display: flex;
+						list-style: none;
+						margin: 0;
+						padding: 0.3em 0;
+					}
+					&.misc ul {
+						@include respond-to('xlarge') {
 							grid-template-columns: 47.5% 47.5%;
 							padding-left: 7.4%;
 						}
 						@include respond-to('at1000') {
 							grid-template-columns: 100%;
-							padding-left: 3%;
-							padding-top: 1em;
 						}
 						@include respond-to('at500') {
 							padding-left: 11%;
 						}
-						align-items: flex-start;
-						display: grid;
-						grid-gap: 0 5%;
-						margin: 0;
-						width: 100%;
+						@include respond-to('at400') {
+							padding-left: 5%;
+						}
+						@include respond-to('at330') {
+							padding-left: 0;
+						}
+						li {
+							display: inline-block;
+							span.session,
+							span.label {
+								@include respond-to('xlarge') {
+									width: 100%;
+								}
+							}
+						}
 					}
 					li {
 						@include respond-to('xlarge') {
@@ -250,17 +280,79 @@ $event-attrs: (
 						@include respond-to('at500') {
 							min-height: 2.8em;
 						}
-						margin: 0;
-						padding: 0.2em;
+						span {
+							font-size: 1em;
+							font-weight: 400;
+							margin: 0.25em 0;
+							&.session {
+								@include respond-to('xlarge') {
+									padding-right: 15px;
+									width: 66%;
+								}
+								@include respond-to('at700') {
+									padding-right: 0;
+									width: 100%;
+								}
+								line-height: 1.25em;
+							}
+							&.label {
+								@include respond-to('xlarge') {
+									text-align: right;
+									width: 33%;
+								}
+								@include respond-to('at700') {
+									text-align: left;
+									width: 100%;
+								}
+								color: $grey-light;
+								font-size: 0.8em;
+								margin: 0.25em 0;
+								min-width: 110px;
+								text-transform: uppercase;
+								&.once {
+									color: $pink-salmon-light;
+								}
+							}
+						}
 					}
-					span {
-						color: $grey-light;
-						display: block;
-						font-size: 0.8em;
-						margin-top: 0.5em;
-						text-transform: uppercase;
-						&.once {
-							color: $pink-salmon-light;
+					.details {
+						@include respond-to('at1000') {
+							align-items: center;
+							display: flex;
+							justify-content: space-between;
+							flex-wrap: wrap;
+							width: 100%;
+						}
+					}
+					.occurrences {
+						display: flex;
+						padding-right: 5px;
+						span.indicator {
+							@include respond-to('at500') {
+								font-size: 1em;
+								line-height: 18px;
+								height: 21px;
+								width: 21px;
+							}
+							align-items: center;
+							background-color: #fff;
+							border: 3px solid #fff;
+							border-radius: 50%;
+							display: flex;
+							font-size: 1.2em;
+							font-weight: 800;
+							justify-content: center;
+							line-height: 22px;
+							height: 26px;
+							margin-right: 6px;
+							width: 26px;
+							&.false {
+								background-color: rgba(#fff, 0.2);
+								color: darken($grey-lightest, 10%);
+							}
+							&.true {
+								color: saturate($green-lime, 20);
+							}
 						}
 					}
 				}

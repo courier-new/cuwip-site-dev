@@ -819,7 +819,7 @@ nav.sub.menu {
         .page.about.agenda .inner > .text.block .day.table > .event .info {
           width: 74%; } }
       .page.about.agenda .inner > .text.block .day.table > .event .info span {
-        line-height: 1.5em;
+        line-height: 1.25em;
         padding: 0.05em; }
         .page.about.agenda .inner > .text.block .day.table > .event .info span.name {
           font-size: 1.1em;
@@ -914,38 +914,144 @@ nav.sub.menu {
         -ms-flex-align: start;
         align-items: flex-start;
         display: grid;
+        grid-template-columns: 100%;
         grid-gap: 0 5%;
         margin: 0;
+        padding-top: 1em;
         width: 100%; }
         @media (max-width: 10000px) {
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout ul {
-            grid-template-columns: 47.5% 47.5%;
-            padding-left: 7.4%; } }
-        @media (max-width: 1000px) {
-          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout ul {
-            grid-template-columns: 100%;
-            padding-left: 3%;
-            padding-top: 1em; } }
+            padding-left: 3%; } }
         @media (max-width: 500px) {
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout ul {
-            padding-left: 11%; } }
-      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li {
+            padding-left: 7%; } }
+      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        list-style: none;
         margin: 0;
-        padding: 0.2em; }
+        padding: 0.3em 0; }
+      @media (max-width: 10000px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
+          grid-template-columns: 47.5% 47.5%;
+          padding-left: 7.4%; } }
+      @media (max-width: 1000px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
+          grid-template-columns: 100%; } }
+      @media (max-width: 500px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
+          padding-left: 11%; } }
+      @media (max-width: 400px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
+          padding-left: 5%; } }
+      @media (max-width: 330px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul {
+          padding-left: 0; } }
+      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul li {
+        display: inline-block; }
         @media (max-width: 10000px) {
-          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li {
-            min-height: 2.5em; } }
-        @media (max-width: 500px) {
-          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li {
-            min-height: 2.8em; } }
-      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout span {
-        color: #c9bcba;
-        display: block;
-        font-size: 0.8em;
-        margin-top: 0.5em;
-        text-transform: uppercase; }
-        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout span.once {
-          color: #c68971; }
+          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul li span.session,
+          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout.misc ul li span.label {
+            width: 100%; } }
+      @media (max-width: 10000px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li {
+          min-height: 2.5em; } }
+      @media (max-width: 500px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li {
+          min-height: 2.8em; } }
+      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span {
+        font-size: 1em;
+        font-weight: 400;
+        margin: 0.25em 0; }
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.session {
+          line-height: 1.25em; }
+          @media (max-width: 10000px) {
+            .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.session {
+              padding-right: 15px;
+              width: 66%; } }
+          @media (max-width: 700px) {
+            .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.session {
+              padding-right: 0;
+              width: 100%; } }
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.label {
+          color: #c9bcba;
+          font-size: 0.8em;
+          margin: 0.25em 0;
+          min-width: 110px;
+          text-transform: uppercase; }
+          @media (max-width: 10000px) {
+            .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.label {
+              text-align: right;
+              width: 33%; } }
+          @media (max-width: 700px) {
+            .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.label {
+              text-align: left;
+              width: 100%; } }
+          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout li span.label.once {
+            color: #c68971; }
+      @media (max-width: 1000px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .details {
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+          -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          width: 100%; } }
+      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .occurrences {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        padding-right: 5px; }
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .occurrences span.indicator {
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          background-color: #fff;
+          border: 3px solid #fff;
+          border-radius: 50%;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          font-size: 1.2em;
+          font-weight: 800;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          line-height: 22px;
+          height: 26px;
+          margin-right: 6px;
+          width: 26px; }
+          @media (max-width: 500px) {
+            .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .occurrences span.indicator {
+              font-size: 1em;
+              line-height: 18px;
+              height: 21px;
+              width: 21px; } }
+          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .occurrences span.indicator.false {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #e0d6d3; }
+          .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .occurrences span.indicator.true {
+            color: #a8de10; }
       @media (max-width: 10000px) {
         .page.about.agenda .inner > .text.block .day.table > .event .about .desc {
           -webkit-box-ordinal-group: 3;
