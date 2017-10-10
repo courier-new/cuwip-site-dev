@@ -362,7 +362,8 @@ $event-attrs: (
 						}
 					}
 				}
-				.desc {
+				&.breakout .desc,
+				&.talk .desc {
 					@include respond-to('xlarge') {
 						order: 2;
 						padding-left: 3%;
@@ -396,6 +397,19 @@ $event-attrs: (
 						}
 						@include respond-to('at600') {
 							margin: 1em 0 0;
+						}
+					}
+				}
+				&.misc .desc {
+					p {
+						@include respond-to('xlarge') {
+							margin: 0 9.5em 0 5.4em;
+						}
+						@include respond-to('at1000') {
+							margin: 1em 22% 0.5em 7.35%;
+						}
+						@include respond-to('at600') {
+							margin-right: 2em;
 						}
 					}
 				}

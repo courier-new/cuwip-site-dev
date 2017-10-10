@@ -1059,7 +1059,8 @@ nav.sub.menu {
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .occurrences span.indicator.true {
             color: #a8de10; }
       @media (max-width: 10000px) {
-        .page.about.agenda .inner > .text.block .day.table > .event .about .desc {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc,
+        .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc {
           -webkit-box-ordinal-group: 3;
           -webkit-order: 2;
           -ms-flex-order: 2;
@@ -1067,42 +1068,59 @@ nav.sub.menu {
           padding-left: 3%;
           width: 77%; } }
       @media (max-width: 1000px) {
-        .page.about.agenda .inner > .text.block .day.table > .event .about .desc {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc,
+        .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc {
           -webkit-box-ordinal-group: 2;
           -webkit-order: 1;
           -ms-flex-order: 1;
           order: 1;
           padding-left: 0;
           padding-right: 5%; } }
-      @media (max-width: 500px) {
-        .page.about.agenda .inner > .text.block .day.table > .event .about .desc {
+      @media (max-width: 600px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc,
+        .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc {
           padding-right: 0;
           width: 100%; } }
-      .page.about.agenda .inner > .text.block .day.table > .event .about .desc h2 {
+      .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc h2,
+      .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc h2 {
         color: #ca776c, "Talk";
         font-size: 1em;
         margin: 1.5em 0 1em; }
-        .page.about.agenda .inner > .text.block .day.table > .event .about .desc h2 em {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc h2 em,
+        .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc h2 em {
           color: #91878d;
           font-weight: normal;
           text-transform: none; }
-          @media (max-width: 500px) {
-            .page.about.agenda .inner > .text.block .day.table > .event .about .desc h2 em {
+          @media (max-width: 600px) {
+            .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc h2 em,
+            .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc h2 em {
               display: block; } }
       @media (max-width: 1000px) {
-        .page.about.agenda .inner > .text.block .day.table > .event .about .desc p {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc p,
+        .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc p {
           margin: 1em 0; } }
-      @media (max-width: 500px) {
-        .page.about.agenda .inner > .text.block .day.table > .event .about .desc p {
+      @media (max-width: 600px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.breakout .desc p,
+        .page.about.agenda .inner > .text.block .day.table > .event .about.talk .desc p {
           margin: 1em 0 0; } }
+      @media (max-width: 10000px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.misc .desc p {
+          margin: 0 9.5em 0 5.4em; } }
+      @media (max-width: 1000px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.misc .desc p {
+          margin: 1em 22% 0.5em 7.35%; } }
+      @media (max-width: 600px) {
+        .page.about.agenda .inner > .text.block .day.table > .event .about.misc .desc p {
+          margin-right: 2em; } }
       @media (max-width: 10000px) {
         .page.about.agenda .inner > .text.block .day.table > .event .about .lil-img {
           display: none; } }
-      @media (max-width: 500px) {
+      @media (max-width: 600px) {
         .page.about.agenda .inner > .text.block .day.table > .event .about .lil-img {
           display: block;
           float: left;
           margin-right: 1.5em;
+          max-width: 125px;
           -webkit-shape-outside: circle(50%);
           shape-outside: circle(50%);
           width: 30%; } }
@@ -1134,7 +1152,7 @@ nav.sub.menu {
             -webkit-order: 2;
             -ms-flex-order: 2;
             order: 2; } }
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
           .page.about.agenda .inner > .text.block .day.table > .event .about .big-img {
             display: none; } }
         .page.about.agenda .inner > .text.block .day.table > .event .about .big-img img {
