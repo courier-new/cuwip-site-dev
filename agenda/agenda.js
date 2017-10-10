@@ -11,7 +11,7 @@
 // Variable for storing all of the program data retrieved from json
 let progData = {schedule: Array(0)};
 
-// Array for storing all the different event types for creating legend
+// Array for storing all the different event types for creating bubble legend
 let eventTypes = [];
 
 $.getJSON('agenda.min.json', function(data) {
@@ -19,6 +19,7 @@ $.getJSON('agenda.min.json', function(data) {
 	addAgenda();
 });
 
+// Function for populating the whole agenda via data read in from json
 let addAgenda = function() {
 	let output = "";
 	if (!progData.schedule.length) {
@@ -42,11 +43,12 @@ let addAgenda = function() {
 				// Add event type designations
 				currOutput += "<div class='type bubbles'>\n";
 				$($e.types).each(function() {
-					// If event type is not yet part of array
+					// If event type is not yet part of legend array
 					if (!eventTypes.includes(this)) {
 						// Add it
 						eventTypes.push(this);
 					}
+               // Mark what type of event this is
 					currOutput += "<span class='" + this + "'></span>\n";
 				});
 				currOutput += "</div>\n<div class='info'>";
@@ -61,8 +63,15 @@ let addAgenda = function() {
 				currOutput += "<span class='place " + $e.sname + "'>" + $e.place + "</span>";
 				currOutput += "</div>\n";
 				// Add desc/options element, if event is talk or parallel session
-				currOutput += ($e.types.includes("talk")) ? addTalkDesc($e) : "";
-				currOutput += ($e.types.includes("breakout")) ? addBreakoutOptions($e) : "";
+            if ($e.types.includes("talk")) {
+               currOutput += addTalkDesc($e);
+            } else if ($e.types.includes("breakout")) {
+               currOutput += addBreakoutOptions($e);
+            } else if ($e.shortDesc.length || $e.shortDesc !== "" && !$e.debugHide) {
+               currOutput += "<div class='about " + $e.types[0] + "'>\n<div class='desc'>\n";
+               currOutput += "<p>" + $e.shortDesc + "</p>\n";
+               currOutput += "</div>\n</div>";
+            }
 				currOutput += "</div>\n";
 			});
 			currOutput += "</div>\n";
