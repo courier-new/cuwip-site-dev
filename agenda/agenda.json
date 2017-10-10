@@ -134,7 +134,7 @@
 				{
 					"name": "Dessert and a Talk",
 					"sname": "dessert",
-					"types": ["food", "talk"],
+					"types": ["talk", "food"],
 					"timeStart": "7:30 PM",
 					"timeEnd": "8:30 PM",
 					"required": true,
