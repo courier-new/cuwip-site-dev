@@ -98,16 +98,16 @@
 				position: relative;
 				&::before {
 					@include respond-to('xlarge') {
-						top: -9px;
-						left: 45%;
+						top: -6px;
+						left: 47%;
 					}
 					@include respond-to('at1000') {
 						top: -58px;
-						left: -9px;
+						left: -6px;
 					}
 					@include respond-to('at400') {
 						top: -56px;
-						left: -9px;
+						left: -6px;
 					}
 					content: '';
 					width: 10px;
@@ -151,16 +151,16 @@
 				}
 				.circle::before {
 					@include respond-to('xlarge') {
-						top: -11.5px;
-						left: 43%;
+						top: -6.7px;
+						left: 47%;
 					}
 					@include respond-to('at1000') {
 						top: -70px;
-						left: -11px;
+						left: -6px;
 					}
 					@include respond-to('at400') {
 						top: -67px;
-						left: -11px;
+						left: -6px;
 					}
 					background: $green-lime;
 					border: 5px solid $green-lime;

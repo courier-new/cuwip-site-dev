@@ -1302,16 +1302,16 @@ nav.sub.menu {
           transition: all 200ms ease-in; }
           @media (max-width: 10000px) {
             .page.timeline ul li .circle::before {
-              top: -9px;
-              left: 45%; } }
+              top: -6px;
+              left: 47%; } }
           @media (max-width: 1000px) {
             .page.timeline ul li .circle::before {
               top: -58px;
-              left: -9px; } }
+              left: -6px; } }
           @media (max-width: 400px) {
             .page.timeline ul li .circle::before {
               top: -56px;
-              left: -9px; } }
+              left: -6px; } }
       .page.timeline ul li.current .desc .event {
         color: #9dc628;
         font-weight: 600; }
@@ -1344,16 +1344,16 @@ nav.sub.menu {
         left: 43%; }
         @media (max-width: 10000px) {
           .page.timeline ul li.current .circle::before {
-            top: -11.5px;
-            left: 43%; } }
+            top: -6.7px;
+            left: 47%; } }
         @media (max-width: 1000px) {
           .page.timeline ul li.current .circle::before {
             top: -70px;
-            left: -11px; } }
+            left: -6px; } }
         @media (max-width: 400px) {
           .page.timeline ul li.current .circle::before {
             top: -67px;
-            left: -11px; } }
+            left: -6px; } }
 
 .highlight {
   background-color: rgba(241, 235, 100, 0.5) !important;
