@@ -14,69 +14,31 @@ let progData = {schedule: Array(0)};
 // Array for storing all the different event types for creating bubble legend
 let eventTypes = [];
 
-$.getJSON('agenda.min.json', function(data) {
+$.getJSON('agenda.min.json', (data) => {
    progData = data;
 	addAgenda();
 });
 
 // Function for populating the whole agenda via data read in from json
-let addAgenda = function() {
+let addAgenda = () => {
 	let output = "";
 	if (!progData.schedule.length) {
-		setTimeout(function() {
+		setTimeout(() => {
 			console.log('trying to fetch agenda again');
 			addAgenda();
 		}, 200);
 	} else {
 		// For each day of the schedule
-		$(progData.schedule).each(function() {
-			// Save current day data
-			let $c = $(this)[0];
+		$(progData.schedule).each((i, dayObj) => {
 			// Begin parsing data with date title
-			let currOutput = "<h1>" + $c.day + "</h1>\n";
-			currOutput += "<span class='campus reference'>" + $c.college + "</span>\n<div class='day table'>\n";
-			$($c.events).each(function() {
-				// Save current event
-				let $e = $(this)[0];
-				// Add individual event item
-				currOutput += "<div class='event " + $e.sname + "'>\n";
-				// Add event type designations
-				currOutput += "<div class='type bubbles'>\n";
-				$($e.types).each(function() {
-					// If event type is not yet part of legend array
-					if (!eventTypes.includes(this)) {
-						// Add it
-						eventTypes.push(this);
-					}
-               // Mark what type of event this is
-					currOutput += "<span class='" + this + "'></span>\n";
-				});
-				currOutput += "</div>\n<div class='info'>";
-				// Add event name
-				currOutput += "<span class='name " + $e.sname + "'>" + $e.name;
-				// Mark if event is Optional
-				currOutput += (!$e.required) ? " <span class='optional'>(Optional)</span>" : "";
-				currOutput += "</span>\n";
-				// Add event time
-				currOutput += "<span class='time " + $e.sname + "'>" + $e.timeStart + " - " + $e.timeEnd + "</span>";
-				// Add event location
-				currOutput += "<span class='place " + $e.sname + "'>" + $e.place + "</span>";
-				currOutput += "</div>\n";
-				// Add desc/options element, if event is talk or parallel session
-            if ($e.types.includes("talk")) {
-               currOutput += addTalkDesc($e);
-            } else if ($e.types.includes("breakout")) {
-               currOutput += addBreakoutOptions($e);
-            } else if ($e.shortDesc.length || $e.shortDesc !== "" && !$e.debugHide) {
-               currOutput += "<div class='about " + $e.types[0] + "'>\n<div class='desc'>\n";
-               currOutput += "<p>" + $e.shortDesc + "</p>\n";
-               currOutput += "</div>\n</div>";
-            }
-				currOutput += "</div>\n";
+			let currOutput = "<h1>" + dayObj.day + "</h1>\n";
+			currOutput += "<span class='campus reference'>" + dayObj.college + "</span>\n<div class='day table'>\n";
+			$(dayObj.events).each((i, eventObj) => {
+                currOutput += addEvent(eventObj);
 			});
 			currOutput += "</div>\n";
 			// Add separator unless last day
-			currOutput += (progData.schedule.indexOf($c) !== progData.schedule.length - 1) ? "<div class='separator'></div>" : "";
+			currOutput += (progData.schedule.indexOf(dayObj) !== progData.schedule.length - 1) ? "<div class='separator'></div>" : "";
 			output += currOutput;
 		});
 		// Fill agenda
@@ -85,27 +47,66 @@ let addAgenda = function() {
 	let legend = "";
 	eventTypes.sort();
 	// For each type of event
-	$(eventTypes).each(function() {
+	$(eventTypes).each((i, eType) => {
 		// Get event proper name
-		let pn = this;
-		if (this == "breakout") {
+		let pn = eType;
+		if (eType == "breakout") {
 			pn = "Breakout Session";
-		} else if (this == "free") {
+		} else if (eType == "free") {
 			pn = "Free Time";
-		} else if (this == "misc") {
+		} else if (eType == "misc") {
 			pn = "Misc/Special";
-		} else if (this == "shuttle") {
+		} else if (eType == "shuttle") {
 			pn = "Shuttle Run";
 		} else {
 			pn = pn.charAt(0).toUpperCase() + pn.slice(1);
 		}
-		legend += "<div><span class='" + this + "'></span>" + pn + "</div>\n";
+		legend += "<div><span class='" + eType + "'></span>" + pn + "</div>\n";
 	});
 	$('.event.types.legend').html(legend);
 	}
 };
 
-let addTalkDesc = function(e) {
+let addEvent = (e) => {
+    // Add individual event item
+    let currOutput = "<div class='event " + e.sname + "'>\n";
+    // Add event type designations
+    currOutput += "<div class='type bubbles'>\n";
+    $(e.types).each((i, eType) => {
+        // If event type is not yet part of legend array
+        if (!eventTypes.includes(eType)) {
+            // Add it
+            eventTypes.push(eType);
+        }
+        // Mark what type of event this is
+        currOutput += "<span class='" + eType + "'></span>\n";
+    });
+    currOutput += "</div>\n<div class='info'>";
+    // Add event name
+    currOutput += "<span class='name " + e.sname + "'>" + e.name;
+    // Mark if event is Optional
+    currOutput += (!e.required) ? " <span class='optional'>(Optional)</span>" : "";
+    currOutput += "</span>\n";
+    // Add event time
+    currOutput += "<span class='time " + e.sname + "'>" + e.timeStart + " - " + e.timeEnd + "</span>";
+    // Add event location
+    currOutput += "<span class='place " + e.sname + "'>" + e.place + "</span>";
+    currOutput += "</div>\n";
+    // Add desc/options element, if event is talk or parallel session
+    if (e.types.includes("talk")) {
+        currOutput += addTalkDesc(e);
+    } else if (e.types.includes("breakout")) {
+        currOutput += addBreakoutOptions(e);
+    } else if (e.shortDesc.length || e.shortDesc !== "" && !e.debugHide) {
+        currOutput += "<div class='about " + e.types[0] + "'>\n<div class='desc'>\n";
+        currOutput += "<p>" + e.shortDesc + "</p>\n";
+        currOutput += "</div>\n</div>";
+    }
+    currOutput += "</div>\n";
+    return currOutput;
+};
+
+let addTalkDesc = (e) => {
 	let output = "";
 	if (!e.speaker || e.speaker === "TBD" || e.debugHide) {
 		return output;
@@ -119,7 +120,7 @@ let addTalkDesc = function(e) {
 	}
 };
 
-let addBreakoutOptions = function(e) {
+let addBreakoutOptions = (e) => {
 	let output = "";
 	if (!e.options || e.options.length === 0 || e.debugHide) {
 		return output;
@@ -178,7 +179,7 @@ let addBreakoutOptions = function(e) {
 };
 
 // Clicking on agenda event type bubble
-$('.agenda.spread').on('click', '.type.bubbles span', function() {
+$('.agenda.spread').on('click', '.type.bubbles span', () => {
 	if ($(window).width() <= 700) {
 		if ($(this).hasClass('focused')) {
 			$(this).removeClass('focused');
@@ -189,7 +190,7 @@ $('.agenda.spread').on('click', '.type.bubbles span', function() {
 });
 
 // On click anywhere outside event type bubble on mobile, close bubble
-$('html').click(function(e) {
+$('html').click((e) => {
    if (!$(e.target).parents('.type.bubbles').length && $(window).width() <= 700) {
 		$('.type.bubbles span').removeClass('focused');
    }
