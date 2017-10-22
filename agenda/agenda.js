@@ -98,9 +98,9 @@ let addEvent = (e) => {
     } else if (e.types.includes("breakout")) {
         currOutput += addBreakoutOptions(e);
     } else if (e.shortDesc.length || e.shortDesc !== "" && !e.debugHide) {
-        currOutput += "<div class='about " + e.types[0] + "'>\n<div class='desc'>\n";
+        currOutput += "<div class='about'>\n<div class='inside flex " + e.types[0] + "'>\n<div class='desc'>\n";
         currOutput += "<p>" + e.shortDesc + "</p>\n";
-        currOutput += "</div>\n</div>";
+        currOutput += "</div>\n</div>\n</div>";
     }
     currOutput += "</div>\n";
     return currOutput;
@@ -111,11 +111,11 @@ let addTalkDesc = (e) => {
 	if (!e.speaker || e.speaker === "TBD" || e.debugHide) {
 		return output;
 	} else {
-		output += "<div class='about " + e.types[0] + "'>\n<div class='desc'>\n";
+		output += "<div class='about'>\n<div class='inside flex " + e.types[0] + "'>\n<div class='desc'>\n";
 		output += "<h2>" + e.speaker + " <em>" + e.speakerHome + "</em></h2>\n";
 		output += "<div class='lil-img'><img src='../img/" + e.speakerImg + "'></div>\n";
 		output += "<p>" + e.shortDesc + " Visit her <a target='_blank' href='" + e.speakerPage.URL + "'>" + e.speakerPage.type + "</a> to learn more.</p>\n";
-		output += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>\n";
+		output += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>\n</div>\n";
 		return output;
 	}
 };
@@ -133,7 +133,7 @@ let addBreakoutOptions = (e) => {
          output += e.types[t];
          output += (t + 1 === e.types.length) ? "" : " ";
       }
-      output += "'>\n<ul>\n";
+      output += "'>\n<div class='inside flex'>\n<ul>\n";
       for (let id in progData.breakouts) {
          // Store current breakout session data
          let s = progData.breakouts[id];
@@ -156,7 +156,7 @@ let addBreakoutOptions = (e) => {
          }
    		output += "</li>\n";
       }
-		output += "</ul>\n</div>\n";
+		output += "</ul>\n</div>\n</div>\n";
 		return output;
 	} else if (e.name.match(/career/i)) {
       // Label container with event types
@@ -165,7 +165,7 @@ let addBreakoutOptions = (e) => {
          output += e.types[t];
          output += (t + 1 === e.types.length) ? "" : " ";
       }
-      output += "'>\n<ul>\n";
+      output += "'>\n<div class='inside flex'>\n<ul>\n";
       for (let id in progData.careerBreakouts) {
          // Store current breakout session data
          let s = progData.careerBreakouts[id];
@@ -173,18 +173,18 @@ let addBreakoutOptions = (e) => {
          output += "<li>\n<div class='details'><span class='session'>&#8226;&emsp;" + s.name + "</span>";
    		output += "</li>\n";
       }
-		output += "</ul>\n</div>\n";
+		output += "</ul>\n</div>\n</div>\n";
 		return output;
    }
 };
 
 // Clicking on agenda event type bubble
-$('.agenda.spread').on('click', '.type.bubbles span', () => {
+$('.agenda.spread').on('click', '.type.bubbles span', (e) => {
 	if ($(window).width() <= 700) {
-		if ($(this).hasClass('focused')) {
-			$(this).removeClass('focused');
+		if ($(e.target).hasClass('focused')) {
+			$(e.target).removeClass('focused');
 		} else {
-			$(this).addClass('focused');
+			$(e.target).addClass('focused');
 		}
 	}
 });
@@ -193,6 +193,18 @@ $('.agenda.spread').on('click', '.type.bubbles span', () => {
 $('html').click((e) => {
    if (!$(e.target).parents('.type.bubbles').length && $(window).width() <= 700) {
 		$('.type.bubbles span').removeClass('focused');
+   }
+});
+
+// Clicking agenda event will open event's details
+$('.agenda.spread').on('click', '.event', (e) => {
+    let $eventItem = $(e.target).closest('.event');
+   if ($eventItem.hasClass('expanded')) {
+       $eventItem.removeClass('expanded');
+       $eventItem.find('.about').slideUp();
+   } else {
+       $eventItem.addClass('expanded');
+       $eventItem.find('.about').slideDown();
    }
 });
 
