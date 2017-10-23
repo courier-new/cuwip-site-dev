@@ -139,7 +139,7 @@
 					"timeEnd": "8:30 PM",
 					"required": true,
 					"place": "Platt Living Room",
-					"speaker": "<span>Dianna</span> <span>Cowern</span>",
+					"speaker": "<span>Dianna</span><span>Cowern</span>",
 					"speakerPage": {
 						"type": "website",
 						"URL": "http://physicsgirl.org"
@@ -235,7 +235,7 @@
 					"timeEnd": "9:45 AM",
 					"required": true,
 					"place": "Rose Hills Theater",
-					"speaker": "<span>Monika</span> <span>Schleier-Smith</span>",
+					"speaker": "<span>Monika</span><span>Schleier-Smith</span>",
 					"speakerPage": {
 						"type": "faculty profile",
 						"URL": "https://physics.stanford.edu/people/faculty/monika-schleier-smith"
@@ -273,7 +273,7 @@
 					"timeEnd": "12:30 PM",
 					"required": true,
 					"place": "Rose Hills Theater",
-					"speaker": "<span>Patricia</span> <span>Burchat</span>",
+					"speaker": "<span>Patricia</span><span>Burchat</span>",
 					"speakerPage": {
 						"type": "faculty profile",
 						"URL": "https://physics.stanford.edu/people/faculty/patricia-burchat"
@@ -506,7 +506,7 @@
 					"timeEnd": "2:00 PM",
 					"required": true,
 					"place": "Business Building",
-					"speaker": "<span>Hilke</span> <span>Schlichting</span>",
+					"speaker": "<span>Hilke</span><span>Schlichting</span>",
 					"speakerPage": {
 						"type": "faculty profile",
 						"URL": "http://epss.ucla.edu/people/faculty/833/"
