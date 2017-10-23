@@ -1129,7 +1129,7 @@ nav.sub.menu {
             padding-top: 1em; } }
         @media (max-width: 500px) {
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) ul {
-            padding-left: 7%; } }
+            padding-left: 0; } }
       .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li {
         -webkit-box-align: center;
         -webkit-align-items: center;
@@ -1220,16 +1220,15 @@ nav.sub.menu {
           -webkit-justify-content: center;
           -ms-flex-pack: center;
           justify-content: center;
-          line-height: 22px;
-          height: 26px;
+          height: 2em;
           margin-right: 6px;
-          width: 26px; }
+          width: 2em; }
           @media (max-width: 500px) {
             .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) .occurrences span.indicator {
               font-size: 1em;
-              line-height: 18px;
-              height: 21px;
-              width: 21px; } }
+              height: 1.7em;
+              margin-right: 4px;
+              width: 1.7em; } }
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) .occurrences span.indicator.false {
             background-color: rgba(255, 255, 255, 0.2);
             color: #e0d6d3; }

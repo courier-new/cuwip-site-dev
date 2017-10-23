@@ -420,7 +420,7 @@ $event-attrs: (
 							padding-top: 1em;
 						}
 						@include respond-to('at500') {
-							padding-left: 7%;
+							padding-left: 0;
 						}
 						align-items: flex-start;
 						display: grid;
@@ -492,9 +492,9 @@ $event-attrs: (
 						span.indicator {
 							@include respond-to('at500') {
 								font-size: 1em;
-								line-height: 18px;
-								height: 21px;
-								width: 21px;
+								height: 1.7em;
+								margin-right: 4px;
+								width: 1.7em;
 							}
 							align-items: center;
 							background-color: $grey-lightest;
@@ -504,10 +504,9 @@ $event-attrs: (
 							font-size: 1.2em;
 							font-weight: 800;
 							justify-content: center;
-							line-height: 22px;
-							height: 26px;
+							height: 2em;
 							margin-right: 6px;
-							width: 26px;
+							width: 2em;
 							&.false {
 								background-color: rgba(#fff, 0.2);
 								color: darken($grey-lightest, 10%);
