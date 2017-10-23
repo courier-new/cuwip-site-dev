@@ -10,6 +10,11 @@
 			"special": "Panel B Extension",
 			"sessions": [2, 3]
 		},
+		"cc": {
+			"name": "Transitioning from Community College to a 4-year Institution",
+			"special": "Only Offered Once",
+			"sessions": [1]
+		},
 		"sj": {
 			"name": "Free Radicals: Intersection of Science/&#8203;Social Justice",
 			"special": "Only Offered Once",
@@ -31,11 +36,6 @@
 		"wip": {
 			"name": "Starting/&#8203;Revitalizing a WIP group @ your home institution",
 			"sessions": [1, 3]
-		},
-		"cc": {
-			"name": "Transitioning from Community College to a 4-year Institution",
-			"special": "Only Offered Once",
-			"sessions": [1]
 		},
 		"jpl": {
 			"name": "REUs/&#8203;Internships, featuring JPL",
