@@ -26,7 +26,6 @@ const addAgenda = () => {
     // Wait until agenda data has been loaded
 	if (!progData.schedule.length) {
 		setTimeout(() => {
-			console.log('trying to fetch agenda again');
 			addAgenda();
 		}, 200);
 	} else {
@@ -127,9 +126,9 @@ const addExpandedInfo = ({
     } else if (isBreakout && !shouldBeHidden) {
         expandedInfo += addBreakoutOptions(event);
     } else if (!shouldBeHidden && event.shortDesc.length && event.shortDesc !== "") {
-        expandedInfo += `<div class='about ${event.types[0]}'>\n<div class='inside flex'>\n<div class='desc'>\n`;
+        expandedInfo += `<div class='about ${event.types[0]}'>\n<div class='inside grid'>\n<div class='desc'>\n`;
         expandedInfo += `<p>${event.shortDesc}</p>\n`;
-        expandedInfo += `<!--end desc--></div>\n<!--end inside flex--></div>\n<!-- end about--></div>`;
+        expandedInfo += `<!--end desc--></div>\n<!--end inside grid--></div>\n<!-- end about--></div>`;
     }
     return expandedInfo;
 };
@@ -139,11 +138,17 @@ const addTalkDesc = (event) => {
 	if (!event.speaker || event.speaker === "TBD" || event.debugHide) {
 		return component;
 	} else {
-		component += `<div class='about ${event.types[0]}'>\n<div class='inside flex'>\n<div class='desc'>\n`;
-		component += "<h2>" + event.speaker + " <em>" + event.speakerHome + "</em></h2>\n";
-		component += "<div class='lil-img'><img src='../img/" + event.speakerImg + "'></div>\n";
-		component += "<p>" + event.shortDesc + " Visit her <a target='_blank' href='" + event.speakerPage.URL + "'>" + event.speakerPage.type + "</a> to learn more.</p>\n";
-		component += "</div>\n<div class='big-img'><img src='../img/" + event.speakerImg + "'></div>\n</div>\n</div>\n";
+        // Add extra info container
+		component += `<div class='about ${event.types[0]}'>\n<div class='inside grid'>\n`;
+        // Add speaker image
+        component += `<div class='img'><img src='../img/${event.speakerImg}'></div>\n`;
+        // Add speaker name
+        component += `<div class='img-header'><h2>${event.speaker}</h2></div>\n`;
+        // Add speaker home
+		component += `<div class='img-caption'>${event.speakerHome}</div>\n`;
+        // Add event description and link to speaker page
+		component += `<div class='desc'>\n<p>${event.shortDesc}</p>\n<p>Visit her <a target='_blank' href='${event.speakerPage.URL}'>${event.speakerPage.type}</a> to learn more.</p>\n</div>\n`;
+        component += `<!--end inside grid--></div>\n<!--end about--></div>\n`;
 		return component;
 	}
 };
@@ -161,7 +166,7 @@ const addBreakoutOptions = (event) => {
          component += event.types[t];
          component += (t + 1 === event.types.length) ? "" : " ";
       }
-      component += "'>\n<div class='inside flex'>\n<ul>\n";
+      component += "'>\n<div class='inside grid'>\n<ul>\n";
       for (let id in progData.breakouts) {
          // Store current breakout session data
          let s = progData.breakouts[id];
@@ -193,7 +198,7 @@ const addBreakoutOptions = (event) => {
          component += event.types[t];
          component += (t + 1 === event.types.length) ? "" : " ";
       }
-      component += "'>\n<div class='inside flex'>\n<ul>\n";
+      component += "'>\n<div class='inside grid'>\n<ul>\n";
       for (let id in progData.careerBreakouts) {
          // Store current breakout session data
          let s = progData.careerBreakouts[id];
