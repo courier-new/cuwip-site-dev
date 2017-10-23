@@ -68,24 +68,36 @@ $event-attrs: (
 		flex-direction: column;
 		> .event {
 			align-items: center;
+			background: rgba(#fff, 0.6);
+			box-shadow: 1px 1px 4px rgba($grey-medium, 0.1);
 			display: flex;
 			flex-wrap: wrap;
+			margin: 0.3em 0;
 			padding: 0.7em 0;
-			transition: background linear 0.2s;
+			transition: all linear 0.2s;
 			width: 100%;
 			&:hover {
-				background: rgba(#fff, 0.65);
+				background: #fff;
+				box-shadow: 1px 1px 4px rgba($grey-medium, 0.3);
 				cursor: pointer;
 			}
 			&.expanded {
 				background: #fff;
+				padding-top: 1.4em;
+				.about {
+					opacity: 1;
+				}
+				.expandable.arrow {
+					color: $turquoise;
+					transform: rotate(90deg);
+				}
 			}
 			.type.bubbles {
 				@include respond-to('xlarge') {
 					width: 10%;
 				}
 				@include respond-to('at400') {
-					width: 16%;
+					width: 20%;
 				}
 				text-align: center;
 				position: relative;
@@ -148,27 +160,33 @@ $event-attrs: (
 					text-align: left;
 					width: 9%;
 				}
-				color: $grey-light;
+				color: rgba($grey-light, 0.7);
 				order: 3;
 				position: relative;
+				transition: all linear 0.4s;
 			}
 			.info {
 				@include respond-to('xlarge') {
-					grid-template-columns: 1fr 0.9fr 1fr;
 					grid-template-areas: 'name time place';
+					grid-template-columns: 1fr 0.9fr 1fr;
 					width: 80%;
 				}
 				@include respond-to('at1000') {
 					grid-template-areas:
 						'name time'
 						'place time';
+					grid-template-columns: 2fr 1fr;
+				}
+				@include respond-to('at600') {
+					grid-template-columns: 1fr 0.9fr;
 				}
 				@include respond-to('at400') {
+					grid-template-columns: 1fr;
 					grid-template-areas:
 						'name'
 						'time'
 						'place';
-					width: 74%;
+					width: 70%;
 				}
 				align-items: center;
 				display: grid;
@@ -177,15 +195,6 @@ $event-attrs: (
 					line-height: 1.25em;
 					padding: 0.05em;
 					&.name {
-						@include respond-to('xlarge') {
-							width: 1.5fr;
-						}
-						@include respond-to('at1000') {
-							width: 60%;
-						}
-						@include respond-to('at400') {
-							width: 100%;
-						}
 						font-size: 1.1em;
 						font-weight: 700;
 						grid-area: name;
@@ -210,25 +219,21 @@ $event-attrs: (
 					}
 					&.time {
 						@include respond-to('xlarge') {
-							width: 1fr;
 							text-align: center;
 						}
 						@include respond-to('at1000') {
-							width: 40%;
+							text-align: right;
+						}
+						@include respond-to('at600') {
+							margin-left: 5px;
 						}
 						@include respond-to('at400') {
-							width: 100%;
+							margin-left: 0;
 							text-align: left;
 						}
 						grid-area: time;
 					}
 					&.place {
-						@include respond-to('xlarge') {
-							width: 1fr;
-						}
-						@include respond-to('at1000') {
-							width: 100%;
-						}
 						grid-area: place;
 					}
 				}
@@ -251,7 +256,9 @@ $event-attrs: (
 					width: 97%;
 				}
 				display: none;
+				opacity: 0;
 				order: 4;
+				transition: opacity linear 1.5s;
 				.inside.flex {
 					display: flex;
 					flex-wrap: wrap;
@@ -374,8 +381,8 @@ $event-attrs: (
 								width: 21px;
 							}
 							align-items: center;
-							background-color: #fff;
-							border: 3px solid #fff;
+							background-color: $grey-lightest;
+							border: 3px solid $grey-lightest;
 							border-radius: 50%;
 							display: flex;
 							font-size: 1.2em;
@@ -390,7 +397,7 @@ $event-attrs: (
 								color: darken($grey-lightest, 10%);
 							}
 							&.true {
-								color: saturate($green-lime, 20);
+								color: saturate($green-grass-light, 20);
 							}
 						}
 					}
