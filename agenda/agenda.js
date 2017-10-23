@@ -68,8 +68,11 @@ const addDay = ({
 
 // Adds an event card to a day
 const addEvent = (event) => {
+    // Determine if event has extra description for expandable info section
+    const hasExpandable = !event.debugHide && (event.shortDesc.length || event.options);
     // Add event card
-    let eventCard = `<div class='event ${event.sname}'>`;
+    let eventCard = `<div class='event ${event.sname}`;
+    eventCard += hasExpandable ? ` expandable'>` : `'>`;
     // Add item name, time, place, and type designations
     eventCard += addBasicInfo(event);
     // Add expandable section with additional details for event
@@ -77,10 +80,11 @@ const addEvent = (event) => {
         'event': event,
         'isTalk': event.types.includes("talk"),
         'isBreakout': event.types.includes("breakout"),
-        'shouldBeHidden': event.debugHide || false
+        'shouldBeHidden': event.debugHide || false,
+        'hasExpandable': hasExpandable
     });
-    // Add expandable arrow indicator
-    eventCard += `<div class='expandable arrow'><i class="fa fa-chevron-right" aria-hidden="true"></i></div>\n`;
+    // Condtionally add expandable arrow indicator
+    eventCard += hasExpandable ? `<div class='expandable arrow'><i class="fa fa-chevron-right" aria-hidden="true"></i></div>\n` : ``;
     eventCard += `<!--end event card--></div>\n`;
     return eventCard;
 };
@@ -117,20 +121,26 @@ const addExpandedInfo = ({
     'event': event,
     'isTalk': isTalk,
     'isBreakout': isBreakout,
-    'shouldBeHidden': shouldBeHidden
+    'shouldBeHidden': shouldBeHidden,
+    'hasExpandable': hasExpandable
 }) => {
-    // Add desc/options element, if event is talk or breakout session
-    let expandedInfo = "";
-    if (isTalk && !shouldBeHidden) {
-        expandedInfo += addTalkDesc(event);
-    } else if (isBreakout && !shouldBeHidden) {
-        expandedInfo += addBreakoutOptions(event);
-    } else if (!shouldBeHidden && event.shortDesc.length && event.shortDesc !== "") {
-        expandedInfo += `<div class='about ${event.types[0]}'>\n<div class='inside grid'>\n<div class='desc'>\n`;
-        expandedInfo += `<p>${event.shortDesc}</p>\n`;
-        expandedInfo += `<!--end desc--></div>\n<!--end inside grid--></div>\n<!-- end about--></div>`;
+    // If card has no expandable
+    if (!hasExpandable) {
+        return "";
+    } else {
+        // Add desc/options element, if event is talk or breakout session
+        let expandedInfo = "";
+        if (isTalk && !shouldBeHidden) {
+            expandedInfo += addTalkDesc(event);
+        } else if (isBreakout && !shouldBeHidden) {
+            expandedInfo += addBreakoutOptions(event);
+        } else if (!shouldBeHidden) {
+            expandedInfo += `<div class='about ${event.types[0]}'>\n<div class='inside grid'>\n<div class='desc'>\n`;
+            expandedInfo += (event.shortDesc.length) ? `<p>${event.shortDesc}</p>\n` : `<p>No details currently available for this event.</p>`;
+            expandedInfo += `<!--end desc--></div>\n<!--end inside grid--></div>\n<!-- end about--></div>`;
+        }
+        return expandedInfo;
     }
-    return expandedInfo;
 };
 
 const addTalkDesc = (event) => {
@@ -203,7 +213,7 @@ const addBreakoutOptions = (event) => {
          // Store current breakout session data
          let s = progData.careerBreakouts[id];
          // Add breakout session info
-         component += "<li>\n<div class='details'><span class='session'>&#8226;&emsp;" + s.name + "</span>";
+         component += `<li>\n<div class='details'><span class='session'>${s.name}</span>`;
    		component += "</li>\n";
       }
 		component += "</ul>\n</div>\n</div>\n";
@@ -263,7 +273,7 @@ $('.agenda.spread').on('click', '.event', (e) => {
    if ($eventItem.hasClass('expanded')) {
        $eventItem.removeClass('expanded');
        $eventItem.find('.about').slideUp();
-   } else {
+   } else if ($eventItem.hasClass('expandable')) {
        $eventItem.addClass('expanded');
        $eventItem.find('.about').slideDown();
    }
