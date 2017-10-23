@@ -55,7 +55,7 @@ var addDay = function addDay(_ref) {
         isLast = _ref['isLast'];
 
     // Define day of week and institution of the day
-    var daySection = '<h1>' + day.day + '</h1>\n        <span class=\'campus reference\'>' + day.college + '</span>\n            <div class=\'day table\'>\n';
+    var daySection = '<a name=\'' + day.day + '\'></a>\n        <h1>' + day.day + '</h1>\n        <span class=\'campus reference\'>' + day.college + '</span>\n            <div class=\'day table\'>\n';
     // For each event in the day
     $(day.events).each(function (i, eventObj) {
         // Add event to the agenda

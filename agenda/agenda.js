@@ -52,7 +52,8 @@ const addDay = ({
     'isLast': isLast
 }) => {
     // Define day of week and institution of the day
-    let daySection = `<h1>${day.day}</h1>
+    let daySection = `<a name='${day.day}'></a>
+        <h1>${day.day}</h1>
         <span class='campus reference'>${day.college}</span>
             <div class='day table'>\n`;
     // For each event in the day

@@ -325,3 +325,21 @@ nav.sub.menu {
 		}
 	}
 }
+
+nav.agenda.nav {
+	margin-bottom: 1.5em;
+	a {
+		background: rgba($grey-light, 0.4);
+		border: 1px solid $grey-light;
+		color: $grey-medium-dark;
+		display: inline-block;
+		font-size: 0.8em;
+		margin: 0 0.4em;
+		padding: 0.8em 1em;
+		text-transform: uppercase;
+		transition: background linear 0.2s;
+		&:hover {
+			background: $grey-light;
+		}
+	}
+}
