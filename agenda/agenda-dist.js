@@ -56,7 +56,7 @@ var addDay = function addDay(_ref) {
       isLast = _ref['isLast'];
 
   // Define day of week and institution of the day
-  var daySection = '<h1>' + day.day + '</h1>\n        <span class=\'campus reference\'>' + day.college + '$</span>\n            <div class=\'day table\'>\n';
+  var daySection = '<h1>' + day.day + '</h1>\n        <span class=\'campus reference\'>' + day.college + '</span>\n            <div class=\'day table\'>\n';
   // For each event in the day
   $(day.events).each(function (i, eventObj) {
     // Add event to the agenda
@@ -69,27 +69,29 @@ var addDay = function addDay(_ref) {
 };
 
 // Adds an event card to a day
-var addEvent = function addEvent(e) {
+var addEvent = function addEvent(event) {
   // Add event card
-  var eventCard = '<div class=\'event ' + e.sname + '\'>';
+  var eventCard = '<div class=\'event ' + event.sname + '\'>';
   // Add item name, time, place, and type designations
-  eventCard += addBasicInfo(e);
+  eventCard += addBasicInfo(event);
   // Add expandable section with additional details for event
   eventCard += addExpandedInfo({
-    'event': e,
-    'isTalk': e.types.includes("talk"),
-    'isBreakout': e.types.includes("breakout"),
-    'shouldBeHidden': !e.shortDesc.length || e.shortDesc === "" || e.debugHide
+    'event': event,
+    'isTalk': event.types.includes("talk"),
+    'isBreakout': event.types.includes("breakout"),
+    'shouldBeHidden': event.debugHide || false
   });
+  // Add expandable arrow indicator
+  eventCard += '<div class=\'expandable arrow\'><i class="fa fa-chevron-right" aria-hidden="true"></i></div>\n';
   eventCard += '<!--end event card--></div>\n';
   return eventCard;
 };
 
 // Adds name, time, place, and type designations for an event
-var addBasicInfo = function addBasicInfo(e) {
+var addBasicInfo = function addBasicInfo(event) {
   // Add container for event types
   var basicInfo = '<div class=\'type bubbles\'>\n';
-  $(e.types).each(function (i, eType) {
+  $(event.types).each(function (i, eType) {
     // If event type is not yet part of legend array
     if (!eventTypes.includes(eType)) {
       // Add it
@@ -100,14 +102,14 @@ var addBasicInfo = function addBasicInfo(e) {
   });
   basicInfo += '<!--end type bubbles--></div>\n<div class=\'info\'>';
   // Add event name
-  basicInfo += '<span class=\'name ' + e.sname + '\'>' + e.name;
+  basicInfo += '<span class=\'name ' + event.sname + '\'>' + event.name;
   // Mark if event is Optional
-  basicInfo += !e.required ? ' <span class=\'optional\'>(Optional)</span>' : '';
+  basicInfo += !event.required ? ' <span class=\'optional\'>(Optional)</span>' : '';
   basicInfo += '<!--end name span--></span>\n';
   // Add event time
-  basicInfo += '<span class=\'time ' + e.sname + '\'>' + e.timeStart + ' - ' + e.timeEnd + '</span>';
+  basicInfo += '<span class=\'time ' + event.sname + '\'>' + event.timeStart + ' - ' + event.timeEnd + '</span>';
   // Add event location
-  basicInfo += '<span class=\'place ' + e.sname + '\'>' + e.place + '</span>';
+  basicInfo += '<span class=\'place ' + event.sname + '\'>' + event.place + '</span>';
   basicInfo += '<!--end info--></div>\n';
   return basicInfo;
 };
@@ -125,40 +127,40 @@ var addExpandedInfo = function addExpandedInfo(_ref2) {
     expandedInfo += addTalkDesc(event);
   } else if (isBreakout && !shouldBeHidden) {
     expandedInfo += addBreakoutOptions(event);
-  } else if (!shouldBeHidden) {
-    expandedInfo += '<div class=\'about\'>\n<div class=\'inside flex ' + event.types[0] + '\'>\n<div class=\'desc\'>\n';
+  } else if (!shouldBeHidden && event.shortDesc.length && event.shortDesc !== "") {
+    expandedInfo += '<div class=\'about ' + event.types[0] + '\'>\n<div class=\'inside flex\'>\n<div class=\'desc\'>\n';
     expandedInfo += '<p>' + event.shortDesc + '</p>\n';
     expandedInfo += '<!--end desc--></div>\n<!--end inside flex--></div>\n<!-- end about--></div>';
   }
   return expandedInfo;
 };
 
-var addTalkDesc = function addTalkDesc(e) {
+var addTalkDesc = function addTalkDesc(event) {
   var component = "";
-  if (!e.speaker || e.speaker === "TBD" || e.debugHide) {
+  if (!event.speaker || event.speaker === "TBD" || event.debugHide) {
     return component;
   } else {
-    component += "<div class='about'>\n<div class='inside flex " + e.types[0] + "'>\n<div class='desc'>\n";
-    component += "<h2>" + e.speaker + " <em>" + e.speakerHome + "</em></h2>\n";
-    component += "<div class='lil-img'><img src='../img/" + e.speakerImg + "'></div>\n";
-    component += "<p>" + e.shortDesc + " Visit her <a target='_blank' href='" + e.speakerPage.URL + "'>" + e.speakerPage.type + "</a> to learn more.</p>\n";
-    component += "</div>\n<div class='big-img'><img src='../img/" + e.speakerImg + "'></div>\n</div>\n</div>\n";
+    component += '<div class=\'about ' + event.types[0] + '\'>\n<div class=\'inside flex\'>\n<div class=\'desc\'>\n';
+    component += "<h2>" + event.speaker + " <em>" + event.speakerHome + "</em></h2>\n";
+    component += "<div class='lil-img'><img src='../img/" + event.speakerImg + "'></div>\n";
+    component += "<p>" + event.shortDesc + " Visit her <a target='_blank' href='" + event.speakerPage.URL + "'>" + event.speakerPage.type + "</a> to learn more.</p>\n";
+    component += "</div>\n<div class='big-img'><img src='../img/" + event.speakerImg + "'></div>\n</div>\n</div>\n";
     return component;
   }
 };
 
-var addBreakoutOptions = function addBreakoutOptions(e) {
+var addBreakoutOptions = function addBreakoutOptions(event) {
   var component = "";
-  if (!e.options || e.options.length === 0 || e.debugHide) {
+  if (!event.options || event.options.length === 0 || event.debugHide) {
     return component;
-  } else if (e.name.match(/breakout session \d of \d/i)) {
+  } else if (event.name.match(/breakout session \d of \d/i)) {
     // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
-    var snum = parseInt(e.name.match(/\d of \d/)[0].substr(0, 1));
+    var snum = parseInt(event.name.match(/\d of \d/)[0].substr(0, 1));
     // Label container with event types
     component += "<div class='about ";
-    for (var t = 0; t < e.types.length; t++) {
-      component += e.types[t];
-      component += t + 1 === e.types.length ? "" : " ";
+    for (var t = 0; t < event.types.length; t++) {
+      component += event.types[t];
+      component += t + 1 === event.types.length ? "" : " ";
     }
     component += "'>\n<div class='inside flex'>\n<ul>\n";
     for (var id in progData.breakouts) {
@@ -185,12 +187,12 @@ var addBreakoutOptions = function addBreakoutOptions(e) {
     }
     component += "</ul>\n</div>\n</div>\n";
     return component;
-  } else if (e.name.match(/career/i)) {
+  } else if (event.name.match(/career/i)) {
     // Label container with event types
     component += "<div class='about ";
-    for (var _t = 0; _t < e.types.length; _t++) {
-      component += e.types[_t];
-      component += _t + 1 === e.types.length ? "" : " ";
+    for (var _t = 0; _t < event.types.length; _t++) {
+      component += event.types[_t];
+      component += _t + 1 === event.types.length ? "" : " ";
     }
     component += "'>\n<div class='inside flex'>\n<ul>\n";
     for (var _id in progData.careerBreakouts) {
