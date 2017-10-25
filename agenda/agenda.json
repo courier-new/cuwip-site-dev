@@ -69,22 +69,22 @@
 			"scollege": "Harvey Mudd",
 			"events": [
 				{
+					"name": "Check-In",
+					"sname": "checkin",
+					"types": ["logistics"],
+					"timeStart": "2:00 PM",
+					"timeEnd": "5:00 PM",
+					"required": true,
+					"place": "Galileo Atrium",
+					"shortDesc": ""
+				},
+				{
 					"name": "APS Skills Workshop",
 					"sname": "apsskills",
 					"types": ["misc"],
 					"timeStart": "2:00 PM",
 					"timeEnd": "4:00 PM",
 					"required": false,
-					"place": "TBD",
-					"shortDesc": ""
-				},
-				{
-					"name": "Check-In",
-					"sname": "checkin",
-					"types": ["logistics"],
-					"timeStart": "3:00 PM",
-					"timeEnd": "5:00 PM",
-					"required": true,
 					"place": "TBD",
 					"shortDesc": ""
 				},
@@ -125,10 +125,10 @@
 					"name": "Dinner",
 					"sname": "dinner",
 					"types": ["food"],
-					"timeStart": "6:00 PM",
+					"timeStart": "6:30 PM",
 					"timeEnd": "7:30 PM",
 					"required": true,
-					"place": "Platt Living Room",
+					"place": "Hoch-Shanahan Dining Commons",
 					"shortDesc": ""
 				},
 				{
@@ -138,7 +138,7 @@
 					"timeStart": "7:30 PM",
 					"timeEnd": "8:30 PM",
 					"required": true,
-					"place": "Platt Living Room",
+					"place": "Hoch-Shanahan Dining Commons",
 					"speaker": "<span>Dianna</span><span>Cowern</span>",
 					"speakerPage": {
 						"type": "website",
@@ -175,7 +175,7 @@
 					"timeStart": "8:30 PM",
 					"timeEnd": "10:30 PM",
 					"required": false,
-					"place": "Platt Living Room",
+					"place": "Galileo-McAlister",
 					"meetingPlace": "TBD",
 					"shortDesc": ""
 				},
