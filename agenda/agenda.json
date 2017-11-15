@@ -43,8 +43,8 @@
 		}
 	},
 	"careerBreakouts": {
-		"jpl": {
-			"name": "Is JPL for me?"
+		"lab": {
+			"name": "Is a government lab for me?"
 		},
 		"pgs": {
 			"name": "Is physics grad school for me?"
