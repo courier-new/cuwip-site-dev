@@ -38,7 +38,7 @@
 			"sessions": [1, 3]
 		},
 		"jpl": {
-			"name": "REUs/&#8203;Internships, featuring JPL",
+			"name": "REUs/&#8203;Internships",
 			"sessions": [1, 2, 3]
 		}
 	},
@@ -478,7 +478,7 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Career Fair/Breakout Sessions",
+					"name": "Career Exploration Fair/Breakout Sessions",
 					"sname": "careerfair",
 					"types": ["breakout", "misc"],
 					"timeStart": "10:00 AM",
