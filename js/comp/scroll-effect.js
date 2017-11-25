@@ -25,7 +25,7 @@ let windowListener = function() {
 			addAppInfo();
 		}, 50);
 	} else {
-		let $scrollY = window.scrollY + 30
+		let $scrollY = window.scrollY + 30;
 
 		// If parallax element is present on page
 		if ($parallax.length) {
@@ -85,19 +85,19 @@ let windowListener = function() {
 		// For each page section
 		$pages.each(function() {
 			// Remember the top of that page
-			let pageTop = $(this).offset().top
+			let pageTop = $(this).offset().top;
 			// If the current scroll position rests within this page section
 			if ($scrollY >= pageTop && $scrollY < (pageTop + $(this).height())) {
 				// Make sure page is marked as seen and focused
 				if (!$(this).hasClass('seen')) {
-					$(this).addClass('seen')
+					$(this).addClass('seen');
 				}
 				if (!$(this).hasClass('focused')) {
-					$(this).addClass('focused')
+					$(this).addClass('focused');
 				}
 			} else if ($(this).hasClass('focused')) { // Otherwise if page is marked as focused but current scroll position does not rest within it
 				// Remove focused mark from page
-				$(this).removeClass('focused')
+				$(this).removeClass('focused');
 			}
 		});
 
@@ -136,8 +136,7 @@ $(window).on('resize', windowListener);
 $('body, window').on('click', 'a[href*="#"]', function(event) {
 	// Only apply to same-page hash links
 	if (
-		location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-		&&
+		location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
 		location.hostname == this.hostname
 	) {
 		// Figure out element to scroll to
@@ -161,7 +160,7 @@ $('body, window').on('click', 'a[href*="#"]', function(event) {
 				} else {
 					$target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
 					$target.focus(); // Set focus again
-				};
+				}
 			});
 		}
 	}
