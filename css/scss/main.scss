@@ -94,7 +94,8 @@ p,
 	display: block;
 	&.sticky {
 		padding-top: $sticky-nav;
-		&.alerts {
+		&.alerts,
+		&.preface {
 			@include respond-to('xlarge') {
 				padding-top: $non-sticky-nav + ($non-sticky-nav - $sticky-nav) - 1vh;
 			}
@@ -120,7 +121,8 @@ p,
 	&.welcome,
 	&.about,
 	&.sponsors,
-	&.contact {
+	&.contact,
+	&.preface {
 		@include respond-to('xlarge') {
 			padding-left: 10em;
 			padding-right: 10em;
@@ -142,7 +144,8 @@ p,
 		padding-top: 2.8em;
 		padding-bottom: 2em;
 	}
-	&.alerts {
+	&.alerts,
+	&.preface {
 		background: #fff;
 	}
 	&.welcome,
@@ -162,6 +165,17 @@ p,
 					width: 95%;
 				}
 			}
+		}
+	}
+	&.about.agenda {
+		@include respond-to('xlarge') {
+			padding-left: 10em;
+		}
+		@include respond-to('at1400') {
+			padding-left: 11.3em;
+		}
+		@include respond-to('at1000') {
+			padding-left: inherit;
 		}
 	}
 	&.about.travel,

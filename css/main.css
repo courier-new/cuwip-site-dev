@@ -634,55 +634,57 @@ nav.agenda.nav {
         .countdown p.string {
           padding: 0.5em 0; } }
 
+.page.agenda.preface .inner > .text.block {
+  text-align: left; }
+  .page.agenda.preface .inner > .text.block .event.types.legend {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 2.8em; }
+    @media (max-width: 10000px) {
+      .page.agenda.preface .inner > .text.block .event.types.legend {
+        width: 90%; } }
+    @media (max-width: 700px) {
+      .page.agenda.preface .inner > .text.block .event.types.legend {
+        width: 100%; } }
+    .page.agenda.preface .inner > .text.block .event.types.legend div {
+      padding: 4px; }
+    .page.agenda.preface .inner > .text.block .event.types.legend span {
+      border: 5px solid #3178ab;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      margin: 0 5px; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.food {
+        border-color: #9dc628; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.misc {
+        border-color: #3dbfbd; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.talk {
+        border-color: #ca776c; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.breakout {
+        border-color: #5c9e33; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.free {
+        border-color: #851e46; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.logistics {
+        border-color: #b19a50; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.panel {
+        border-color: #518bfa; }
+      .page.agenda.preface .inner > .text.block .event.types.legend span.shuttle {
+        border-color: #c9bcba; }
+
 .page.about.agenda .inner > .text.block.agenda.spread {
   padding-bottom: 2em; }
 
 .page.about.agenda .inner > .text.block h1 {
   margin-bottom: 0; }
-
-.page.about.agenda .inner > .text.block .event.types.legend {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  margin-bottom: 2.8em; }
-  @media (max-width: 10000px) {
-    .page.about.agenda .inner > .text.block .event.types.legend {
-      width: 90%; } }
-  @media (max-width: 700px) {
-    .page.about.agenda .inner > .text.block .event.types.legend {
-      width: 100%; } }
-  .page.about.agenda .inner > .text.block .event.types.legend div {
-    padding: 4px; }
-  .page.about.agenda .inner > .text.block .event.types.legend span {
-    border: 5px solid #3178ab;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    margin: 0 5px; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.food {
-      border-color: #9dc628; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.misc {
-      border-color: #3dbfbd; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.talk {
-      border-color: #ca776c; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.breakout {
-      border-color: #5c9e33; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.free {
-      border-color: #851e46; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.logistics {
-      border-color: #b19a50; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.panel {
-      border-color: #518bfa; }
-    .page.about.agenda .inner > .text.block .event.types.legend span.shuttle {
-      border-color: #c9bcba; }
 
 .page.about.agenda .inner > .text.block .campus.reference {
   color: #3178ab;
@@ -1642,10 +1644,10 @@ p,
   .page.sticky {
     padding-top: 5vh; }
     @media (max-width: 10000px) {
-      .page.sticky.alerts {
+      .page.sticky.alerts, .page.sticky.preface {
         padding-top: 14vh; } }
     @media (max-width: 1000px) {
-      .page.sticky.alerts {
+      .page.sticky.alerts, .page.sticky.preface {
         padding-top: 1.7em; } }
   .page.parallax {
     z-index: -10; }
@@ -1659,28 +1661,28 @@ p,
         height: 82vh;
         max-height: 85vh;
         min-height: 85vh; } }
-  .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+  .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact, .page.preface {
     padding-top: 2.8em;
     padding-bottom: 2em; }
     @media (max-width: 10000px) {
-      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact, .page.preface {
         padding-left: 10em;
         padding-right: 10em; } }
     @media (max-width: 1400px) {
-      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact, .page.preface {
         padding-left: 5em;
         padding-right: 5em; } }
     @media (max-width: 1000px) {
-      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact, .page.preface {
         padding: 2.8em 2em 1.5em; } }
     @media (max-width: 700px) {
-      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact, .page.preface {
         padding-left: 0.5em;
         padding-right: 0.5em; } }
     @media (max-width: 500px) {
-      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact {
+      .page.alerts, .page.welcome, .page.about, .page.sponsors, .page.contact, .page.preface {
         padding: 2em 0.5em 0.8em; } }
-  .page.alerts {
+  .page.alerts, .page.preface {
     background: #fff; }
   .page.welcome, .page.about {
     background: #f5f2f1; }
@@ -1694,6 +1696,15 @@ p,
       .page.about .inner > .text.block img {
         margin: 0 2.5%;
         width: 95%; } }
+  @media (max-width: 10000px) {
+    .page.about.agenda {
+      padding-left: 10em; } }
+  @media (max-width: 1400px) {
+    .page.about.agenda {
+      padding-left: 11.3em; } }
+  @media (max-width: 1000px) {
+    .page.about.agenda {
+      padding-left: inherit; } }
   @media (min-width: 1000px) {
     .page.about.travel, .page.about.faq {
       padding-left: 15em; } }
