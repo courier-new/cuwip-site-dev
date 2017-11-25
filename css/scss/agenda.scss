@@ -10,13 +10,8 @@ $event-attrs: (
 	shuttle   : ($grey-light, 'Shuttle Run')
 );
 
-.page.about.agenda .inner > .text.block {
-	&.agenda.spread {
-		padding-bottom: 2em;
-	}
-	h1 {
-		margin-bottom: 0;
-	}
+.page.agenda.preface .inner > .text.block {
+	text-align: left;
 	.event.types.legend {
 		@include respond-to('xlarge') {
 			width: 90%;
@@ -44,6 +39,15 @@ $event-attrs: (
 			position: relative;
 			margin: 0 5px;
 		}
+	}
+}
+
+.page.about.agenda .inner > .text.block {
+	&.agenda.spread {
+		padding-bottom: 2em;
+	}
+	h1 {
+		margin-bottom: 0;
 	}
 	.campus.reference {
 		color: $turquoise-medium;
