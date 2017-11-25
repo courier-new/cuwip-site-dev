@@ -45,7 +45,7 @@ var $currPage = $nav.attr('class').split(' ')[0];
 
 // Remember each of the page sections and subsections
 var $pages = $('.page');
-var $subsections = $('.page > .inner.container > .text.block');
+var $subsections = $('.page > .inner.hiding.container > .text.block');
 
 // Remember the height of main navigation menu
 var navHeight = 0;
