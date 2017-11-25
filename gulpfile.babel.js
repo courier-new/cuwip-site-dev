@@ -30,7 +30,7 @@ const scssPaths = {
 const jsPaths = {
 	src: 'js/comp/*.js',
 	srcFolder: 'js/comp/',
-	srcOrdered: ['global.js', 'scroll-effect.js', 'nav.js', 'countdown.js', 'apply.js', 'timeline.js', 'device.js', 'test-date.js'],
+	srcOrdered: ['global.js', 'scroll-effect.js', 'nav.js', 'agenda.js', 'countdown.js', 'apply.js', 'timeline.js', 'device.js', 'test-date.js'],
 	dest: 'js',
 	distName: 'all-concat-dist.js'
 };
@@ -47,6 +47,9 @@ const imgPaths = {
 	src: 'img/orig/*.{png,gif,jpg}',
 	dest: 'img'
 };
+
+// Prod env dest
+const prod = '../cuwip-site.github.io';
 
 gulp.task('browserSync', () =>
 	browserSync.init({
@@ -68,8 +71,10 @@ gulp.task('styles', () => {
 			.pipe(autoprefixer({
 				browsers: ['last 5 versions'],
 				cascade: false
-			})).pipe(sourcemaps.write('.'))
+			})).pipe(plumber())
+         .pipe(sourcemaps.write('.'))
 			.pipe(gulp.dest(scssPaths.dest))
+			//.pipe(gulp.dest('../test/' + scssPaths.dest))
 			.on('end', resolve)
 			.pipe(browserSync.reload({
 				stream: true
@@ -103,6 +108,7 @@ let bindJSTask = (src, name, dest) => () => {
 			.pipe(plumber())
 			.pipe(sourcemaps.write('.'))
 		   .pipe(gulp.dest(dest))
+			//.pipe(gulp.dest('../test/' + src))
 			.on('end', resolve)
 			.pipe(browserSync.reload({
 				stream: true
@@ -137,6 +143,7 @@ let bindJSONTask = (src) => () => {
 			.pipe(rename({
          	suffix: '.min'
         	})).pipe(gulp.dest('.'))
+			//.pipe(gulp.dest('../test/' + src))
 			.on('end', resolve)
 			.pipe(browserSync.reload({
 				stream: true
@@ -169,6 +176,7 @@ gulp.task('images', () => {
 				imagemin.optipng({optimizationLevel: 5})
 			])).on('error', reject)
 			.pipe(gulp.dest(imgPaths.dest))
+			.pipe(gulp.dest(prod + '/' + imgPaths.dest))
 			.on('end', resolve)
 		   .pipe(browserSync.reload({
 				stream: true
@@ -228,7 +236,11 @@ gulp.task('watch', ['browserSync', 'build'], () => {
 		'images': imgPaths.src,
 	};
 
-	Object.entries(watchPairs).forEach(([t, s]) => wrapWatch({src: s, task: t}));
+	for (let task in watchPairs) {
+      let source = watchPairs[task];
+      wrapWatch({src: source, task: task});
+   }
+
 	watch('**/*.html', () => browserSync.reload());
 });
 
