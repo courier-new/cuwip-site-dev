@@ -110,18 +110,23 @@ $('html').click(function(e) {
 });
 
 // If page contains subsections
-if ($subsections.length) {
-	// Fill subsection nav menu
-	let $menuOutput = "<div class='inner'>\n<strong>Quick Navigation</strong>\n<ul>\n";
-	$subsections.each(function() {
-		// Get name of subsection
-		let $name = $(this).find('h1')[0].innerHTML;
-		// Condense to short name of subsection
-		let $sname = $name.replace(/ /g, "").toLowerCase();
-		$menuOutput += "<a href='#" + $sname + "' class='" + $sname + "'><li><span class='border'></span>" + $name + "</li></a>\n";
-	});
-	$menuOutput += "</ul>\n</div>\n";
-	$('nav.sub.menu').html($menuOutput);
-}
+let addSubMenu = (headerText = "Quick Navigation") => {
+    if ($subsections.length) {
+    	// Fill subsection nav menu
+        let $menuOutput = `<div class='inner'>
+    	   <strong>${headerText}</strong>
+           <ul>\n`;
+    	$subsections.each(function() {
+    		// Get name of subsection
+    		let $name = $(this).find('h1')[0].innerHTML;
+    		// Condense to short name of subsection
+    		let $sname = $name.replace(/ /g, "").toLowerCase();
+    		$menuOutput += "<a href='#" + $sname + "' class='" + $sname + "'><li><span class='border'></span>" + $name + "</li></a>\n";
+    	});
+    	$menuOutput += "</ul>\n</div>\n";
+    	$('nav.sub.menu').html($menuOutput);
+    }
+};
+addSubMenu();
 
 /* End of nav.js */
