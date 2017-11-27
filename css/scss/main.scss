@@ -121,8 +121,9 @@ p,
 	&.welcome,
 	&.about,
 	&.sponsors,
+	&.preface,
 	&.contact,
-	&.preface {
+	&.loc {
 		@include respond-to('xlarge') {
 			padding-left: 10em;
 			padding-right: 10em;
@@ -143,6 +144,14 @@ p,
 		}
 		padding-top: 2.8em;
 		padding-bottom: 2em;
+	}
+	&.contact {
+		padding-top: 2.8em;
+		padding-bottom: 0.5em;
+	}
+	&.loc {
+		padding-top: 0.5em;
+		padding-bottom: 2.8em;
 	}
 	&.alerts,
 	&.preface {
@@ -655,7 +664,7 @@ p,
 		ul.organizers.list {
 			@include respond-to('xlarge') {
 				flex-direction: row;
-				margin: 0 0 1em;
+				margin: 0 0 2.5em;
 				width: 100%;
 			}
 			@include respond-to('at700') {
@@ -663,11 +672,17 @@ p,
 				flex-direction: column;
 				width: 80%;
 			}
-			align-items: center;
+			align-items: flex-start;
 			list-style: none;
 			display: flex;
+			flex-wrap: wrap;
 			justify-content: space-between;
 			padding: 0;
+			&.loc {
+				@include respond-to('at700') {
+					flex-direction: row;
+				}
+			}
 			li {
 				@include respond-to('xlarge') {
 					width: 31%;
@@ -675,11 +690,36 @@ p,
 				@include respond-to('at700') {
 					width: 100%;
 				}
-				a img {
-					opacity: 0.8;
-					transition: opacity 0.3s, width 0.3s;
+				&.sixth-column {
+					@include respond-to('xlarge') {
+						width: 16%;
+					}
+					@include respond-to('at800') {
+						font-size: 0.88em;
+					}
+					@include respond-to('at700') {
+						font-size: 1em;
+						width: 49%;
+					}
+					@include respond-to('at400') {
+						font-size: 0.88em;
+					}
+					img {
+						@include respond-to('xlarge') {
+							margin: 1em 20% 1.5em;
+							width: 60%;
+						}
+						@include respond-to('at700') {
+							margin: 2.3em 33% 2em;
+							width: 34%;
+						}
+						@include respond-to('at500') {
+							margin: 2.3em 23%;
+							width: 54%;
+						}
+					}
 				}
-				a:hover img {
+				img:hover {
 					opacity: 1;
 				}
 				img {
@@ -697,6 +737,8 @@ p,
 					}
 					border-radius: 50%;
 					display: block;
+					opacity: 0.85;
+					transition: opacity 0.3s, width 0.3s;
 				}
 			}
 		}
