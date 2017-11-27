@@ -324,9 +324,14 @@ $event-attrs: (
 					}
 				}
 				&.talk {
-					.desc p {
+					.desc {
 						@include respond-to('at500') {
-							margin: 1.5em 0;
+							margin-top: 1.2em;
+						}
+						p {
+							@include respond-to('at500') {
+								margin: 1.5em 0;
+							}
 						}
 					}
 					.img-header {
@@ -392,9 +397,11 @@ $event-attrs: (
 						}
 						@include respond-to('at1000') {
 							justify-content: flex-start;
+							margin: 1.2em 0;
 						}
 						@include respond-to('at500') {
 							justify-content: center;
+							margin: 0;
 						}
 						display: flex;
 						img {

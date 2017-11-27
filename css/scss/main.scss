@@ -184,7 +184,10 @@ p,
 			padding-left: 11.3em;
 		}
 		@include respond-to('at1000') {
-			padding-left: inherit;
+			padding-left: 2em;
+		}
+		@include respond-to('at700') {
+			padding-left: 0.5em;
 		}
 	}
 	&.about.travel,
@@ -472,6 +475,13 @@ p,
 			font-size: 1.1em;
 			font-weight: 700;
 			line-height: 1.5em;
+		}
+		h4 {
+			color: $grey-light;
+			font-size: 1.1em;
+			font-weight: 700;
+			line-height: 1.2em;
+			margin: 0 0 -0.5em;
 		}
 		ul.sponsors.list {
 			@include respond-to('xlarge') {
