@@ -702,7 +702,7 @@ p,
 				}
 				&.sixth-column {
 					@include respond-to('xlarge') {
-						width: 16%;
+						width: 24%;
 					}
 					@include respond-to('at800') {
 						font-size: 0.88em;
@@ -716,8 +716,8 @@ p,
 					}
 					img {
 						@include respond-to('xlarge') {
-							margin: 1em 20% 1.5em;
-							width: 60%;
+							margin: 1em 27% 1.5em;
+							width: 46%;
 						}
 						@include respond-to('at700') {
 							margin: 2.3em 33% 2em;
@@ -734,8 +734,8 @@ p,
 				}
 				img {
 					@include respond-to('xlarge') {
-						margin: 1em 30% 2.3em;
-						width: 40%;
+						margin: 1em 28% 2.3em;
+						width: 44%;
 					}
 					@include respond-to('at700') {
 						margin: 2.3em 38%;

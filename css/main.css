@@ -2290,7 +2290,7 @@ p,
           width: 100%; } }
       @media (max-width: 10000px) {
         .page .inner > .text.block ul.organizers.list li.sixth-column {
-          width: 16%; } }
+          width: 24%; } }
       @media (max-width: 800px) {
         .page .inner > .text.block ul.organizers.list li.sixth-column {
           font-size: 0.88em; } }
@@ -2303,8 +2303,8 @@ p,
           font-size: 0.88em; } }
       @media (max-width: 10000px) {
         .page .inner > .text.block ul.organizers.list li.sixth-column img {
-          margin: 1em 20% 1.5em;
-          width: 60%; } }
+          margin: 1em 27% 1.5em;
+          width: 46%; } }
       @media (max-width: 700px) {
         .page .inner > .text.block ul.organizers.list li.sixth-column img {
           margin: 2.3em 33% 2em;
@@ -2324,8 +2324,8 @@ p,
         transition: opacity 0.3s, width 0.3s; }
         @media (max-width: 10000px) {
           .page .inner > .text.block ul.organizers.list li img {
-            margin: 1em 30% 2.3em;
-            width: 40%; } }
+            margin: 1em 28% 2.3em;
+            width: 44%; } }
         @media (max-width: 700px) {
           .page .inner > .text.block ul.organizers.list li img {
             margin: 2.3em 38%;
