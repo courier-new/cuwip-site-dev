@@ -60,6 +60,9 @@
 		},
 		"professor": {
 			"name": "Is a career as a professor for me?"
+		},
+		"med": {
+			"name": "Is medical physics for me?"
 		}
 	},
 	"schedule": [
