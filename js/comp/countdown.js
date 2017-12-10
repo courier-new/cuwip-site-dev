@@ -48,13 +48,13 @@ if ($countdown.length) {
 				minutes = String(minutes).length >= 2 ? minutes : '0' + minutes;
 				seconds = String(seconds).length >= 2 ? seconds : '0' + seconds;
 			}
-
-			// Fill countdown blocks with computed and formatted values
-			$countdown.find('.number.of.days').text(days);
-			$countdown.find('.number.of.hours').text(hours);
-			$countdown.find('.number.of.minutes').text(minutes);
-			$countdown.find('.number.of.seconds').text(seconds);
 		}
+
+		// Fill countdown blocks with computed and formatted values
+		$countdown.find('.number.of.days').text(days);
+		$countdown.find('.number.of.hours').text(hours);
+		$countdown.find('.number.of.minutes').text(minutes);
+		$countdown.find('.number.of.seconds').text(seconds);
 	};
 
 	// Call initial setting of countdown
