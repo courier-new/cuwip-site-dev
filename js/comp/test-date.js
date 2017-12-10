@@ -26,7 +26,7 @@ $('.page.footer').on('click', '.test.date.trigger', function() {
 	if (!$('.test.date.module').length) {
 		console.log('opening test date module');
 		console.log(`current time is ${new Date()}`);
-		let module = "<div class='module container'>\n<div class='test date module'>\n<div class='text'>\n"
+		let module = "<div class='module container'>\n<div class='test date module'>\n<div class='text'>\n";
 		module += "<div class='input bar'><input type='text'></input><div class='go button'>Try</div><div class='reset button'>Reset</div></div>\n";
 		module += "<div class='instruction'>Recommended input format is<strong>17 November 2017 23:59:00 PST</strong></div>\n</div>\n</div>\n</div>";
 		$('body').prepend(module);
@@ -91,7 +91,7 @@ document.onkeydown = function(e) {
 	// If module is present and keypress of enter
 	if ($('.test.date.module').length && isEnter) {
 		// Try to parse date
-		let input = Date.parse($('.test.date.module input').val());
+		let input = new Date(Date.parse($('.test.date.module input').val()));
 		if (!input) {
 			console.log('could not parse date from input');
 		}

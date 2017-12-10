@@ -830,7 +830,7 @@ function getTimeUntil(t, readable) {
 	// Compute seconds between now and event time
 	var seconds = void 0,
 	    result = void 0;
-	seconds = result = endTime - currentTime;
+	seconds = result = (endTime - currentTime) / 1e3;
 	if (readable) {
 		var days = Math.floor(seconds / 86400);
 		if (days >= 2) {
@@ -957,7 +957,7 @@ function addAppInfo() {
 		// If test date was used
 		if (testDate) {
 			// Print it
-			console.log("test date used: " + testDate);
+			console.log('using testdate ' + testDate);
 			// Highlight elements that have been changed
 			$(elements).each(function () {
 				$(this).addClass('highlight');
@@ -1144,7 +1144,7 @@ document.onkeydown = function (e) {
 	// If module is present and keypress of enter
 	if ($('.test.date.module').length && isEnter) {
 		// Try to parse date
-		var input = Date.parse($('.test.date.module input').val());
+		var input = new Date(Date.parse($('.test.date.module input').val()));
 		if (!input) {
 			console.log('could not parse date from input');
 		}
