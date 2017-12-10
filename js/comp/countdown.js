@@ -18,10 +18,10 @@ if ($countdown.length) {
 
 	let countdown = function(t) {
 		//let getFutureFormattedDate();
-		// Compute seconds from since midnight January 1st 1970 to event time
+		// Compute seconds from midnight January 1st 1970 to event time
 		let eventTime = Date.parse(t.date) / 1e3;
-		// Compute seconds from since midnight January 1st 1970 to current time
-		let currentTime = Math.floor(new Date().getTime() / 1e3);
+		// Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
+		let currentTime = testDate ? testDate : Math.floor(new Date().getTime() / 1e3);
 
 		// If event has arrived
 		if (eventTime <= currentTime) {
