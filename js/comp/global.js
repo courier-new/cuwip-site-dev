@@ -5,7 +5,7 @@ let applyOpen = '1 September 2017 00:00:00 EDT',
     applyClose = '13 October 2017 23:59:00 EDT',
     registerOpen = '6 November 2017 00:00:00 PST',
     registerClose = '17 November 2017 23:59:00 PST',
-    startOfCUWiP = '12 January 2018 18:00:00 PDT',
+    startOfCUWiP = '12 January 2018 14:00:00 PST',
     travelClose = '21 January 2018 23:59:00 PST';
 
 // Store events Array
