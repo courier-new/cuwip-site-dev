@@ -237,7 +237,7 @@
 					"timeStart": "9:00 AM",
 					"timeEnd": "9:45 AM",
 					"required": true,
-					"place": "Rose Hills Theater",
+					"place": "Edmunds Ballroom",
 					"speaker": "<span>Monika</span><span>Schleier-Smith</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -254,7 +254,7 @@
 					"timeStart": "9:45 AM",
 					"timeEnd": "10:30 AM",
 					"required": true,
-					"place": "Smith Campus Center/Millikan Hall",
+					"place": "Millikan Hall",
 					"options": true,
 					"shortDesc": ""
 				},
@@ -265,7 +265,7 @@
 					"timeStart": "10:30 AM",
 					"timeEnd": "11:00 AM",
 					"required": true,
-					"place": "TBD",
+					"place": "Millikan Courtyard",
 					"shortDesc": ""
 				},
 				{
@@ -275,7 +275,7 @@
 					"timeStart": "11:00 AM",
 					"timeEnd": "12:30 PM",
 					"required": true,
-					"place": "Rose Hills Theater",
+					"place": "Edmunds Ballroom",
 					"speaker": "<span>Patricia</span><span>Burchat</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -292,7 +292,7 @@
 					"timeStart": "12:30 PM",
 					"timeEnd": "2:15 PM",
 					"required": true,
-					"place": "Millikan Courtyard",
+					"place": "Frary Dining Hall",
 					"shortDesc": ""
 				},
 				{
@@ -322,7 +322,7 @@
 					"timeStart": "2:30 PM",
 					"timeEnd": "3:15 PM",
 					"required": true,
-					"place": "Smith Campus Center/Millikan Hall",
+					"place": "Rose Hills Theater",
 					"shortDesc": ""
 				},
 				{
@@ -332,7 +332,7 @@
 					"timeStart": "2:30 PM",
 					"timeEnd": "3:15 PM",
 					"required": true,
-					"place": "Smith Campus Center/Millikan Hall",
+					"place": "Millikan Argue Auditorium",
 					"shortDesc": ""
 				},
 				{
@@ -342,7 +342,7 @@
 					"timeStart": "3:15 PM",
 					"timeEnd": "3:45 PM",
 					"required": true,
-					"place": "TBD",
+					"place": "Millikan Courtyard",
 					"shortDesc": ""
 				},
 				{
@@ -352,7 +352,7 @@
 					"timeStart": "3:45 PM",
 					"timeEnd": "4:30 PM",
 					"required": true,
-					"place": "Smith Campus Center/Millikan Hall",
+					"place": "Millikan Hall",
 					"options": true,
 					"shortDesc": ""
 				},
@@ -363,7 +363,7 @@
 					"timeStart": "4:30 PM",
 					"timeEnd": "5:00 PM",
 					"required": true,
-					"place": "TBD",
+					"place": "Millikan Courtyard",
 					"shortDesc": ""
 				},
 				{
@@ -372,7 +372,7 @@
 					"types": ["breakout"],
 					"timeStart": "5:00 PM",
 					"timeEnd": "5:45 PM",
-					"place": "Smith Campus Center/Millikan Hall",
+					"place": "Millikan Hall",
 					"required": true,
 					"options": true,
 					"shortDesc": ""
