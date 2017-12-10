@@ -34,6 +34,55 @@ if ($('nav.agenda').length) {
         }
     };
 
+    // Function to open event card if it is now
+    const openCurrentEvent = () => {
+        // Wait until agenda data has populated the DOM
+    	if (!$('.agenda.spread .day.block').length) {
+    		setTimeout(() => {
+    			openCurrentEvent();
+    		}, 200);
+    	} else {
+            // Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
+            const now = testDate ? testDate : new Date();
+            console.log(now);
+            // Get all event cards
+            const $events = $('.agenda.spread .day.block .event');
+            // For each event, check if it is currently happening
+            $events.each((index, event) => {
+                const dateRange = getDateRangeForEvent(event);
+                if (now > dateRange.start / 1e3 && now < dateRange.end / 1e3) {
+                    // Open event card
+                    openCard($(event));
+                }
+            });
+        }
+    };
+
+    // Function for getting js Date objects describing the duration of an event
+    const getDateRangeForEvent = (event) => {
+        // Get the day, start, and end time for the event
+        const day = $(event).closest('.day.block').find('h1').html(),
+              times = $(event).find('span.time').html().split(' - '),
+              start = times[0],
+              end = times[1];
+        let dateRange = {start: 0, end: 0};
+        // Generate Date objects for event's start and end time
+        switch(day) {
+            case 'Friday' :
+                dateRange.start = new Date(`January 12, 2018 ${start}`);
+                dateRange.end = new Date(`January 12, 2018 ${end}`);
+                break;
+            case 'Saturday' :
+                dateRange.start = new Date(`January 13, 2018 ${start}`);
+                dateRange.end = new Date(`January 13, 2018 ${end}`);
+                break;
+            default:
+                dateRange.start = new Date(`January 14, 2018 ${start}`);
+                dateRange.end = new Date(`January 14, 2018 ${end}`);
+        }
+        return dateRange;
+    };
+
     // Function for populating the whole agenda via data read in from json
     const addAgenda = () => {
     	let agendaContent = "";
@@ -59,6 +108,8 @@ if ($('nav.agenda').length) {
             addSubnav();
             // Add events legend
     	    addLegend();
+            // Open current event
+            openCurrentEvent();
     	}
     };
 
