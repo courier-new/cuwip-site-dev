@@ -487,7 +487,7 @@ if ($('nav.agenda').length) {
         // For each event in the day
         $(day.events).each(function (i, eventObj) {
             // Add event to the agenda
-            daySection += addEvent(eventObj);
+            daySection += addEvent(eventObj, day.scollege);
         });
         daySection += "<!--end day table--></div>\n";
         // Add separator except on last day
@@ -497,7 +497,7 @@ if ($('nav.agenda').length) {
     };
 
     // Adds an event card to a day
-    var addEvent = function addEvent(event) {
+    var addEvent = function addEvent(event, campus) {
         // Determine if event has extra description for expandable info section
         var hasExpandable = !event.debugHide && (event.shortDesc.length || event.options);
         // Add event card
@@ -508,6 +508,7 @@ if ($('nav.agenda').length) {
         // Add expandable section with additional details for event
         eventCard += addExpandedInfo({
             'event': event,
+            'campus': campus,
             'isTalk': event.types.includes("talk"),
             'isBreakout': event.types.includes("breakout"),
             'shouldBeHidden': event.debugHide || false,
@@ -549,6 +550,7 @@ if ($('nav.agenda').length) {
     // Adds expandable section with additional details for an event
     var addExpandedInfo = function addExpandedInfo(_ref2) {
         var event = _ref2['event'],
+            campus = _ref2['campus'],
             isTalk = _ref2['isTalk'],
             isBreakout = _ref2['isBreakout'],
             shouldBeHidden = _ref2['shouldBeHidden'],
@@ -559,16 +561,21 @@ if ($('nav.agenda').length) {
             return "";
         } else {
             // Add desc/options element, if event is talk or breakout session
-            var expandedInfo = "";
+            var expandedInfo = '<div class=\'about ' + event.types.join(' ') + '\'>\n';
             if (isTalk && !shouldBeHidden) {
                 expandedInfo += addTalkDesc(event);
             } else if (isBreakout && !shouldBeHidden) {
                 expandedInfo += addBreakoutOptions(event);
             } else if (!shouldBeHidden) {
-                expandedInfo += '<div class=\'about ' + event.types[0] + '\'>\n<div class=\'inside grid\'>\n<div class=\'desc\'>\n';
+                expandedInfo += '<div class=\'inside grid\'>\n<div class=\'desc\'>\n';
                 expandedInfo += event.shortDesc.length ? '<p>' + event.shortDesc + '</p>\n' : '<p>No details currently available for this event.</p>';
-                expandedInfo += '<!--end desc--></div>\n<!--end inside grid--></div>\n<!-- end about--></div>';
+                expandedInfo += '<!--end desc--></div>\n<!--end inside grid--></div>\n';
             }
+            expandedInfo += addMap({
+                'event': event,
+                'campus': campus
+            });
+            expandedInfo += "<!-- end about--></div>";
             return expandedInfo;
         }
     };
@@ -578,8 +585,8 @@ if ($('nav.agenda').length) {
         if (!event.speaker || event.speaker === "TBD" || event.debugHide) {
             return component;
         } else {
-            // Add extra info container
-            component += '<div class=\'about ' + event.types[0] + '\'>\n<div class=\'inside grid\'>\n';
+            // Add inner grid container
+            component += '<div class=\'inside grid\'>\n';
             // Add speaker image
             component += '<div class=\'img\'><img src=\'../img/' + event.speakerImg + '\'></div>\n';
             // Add speaker name
@@ -588,7 +595,7 @@ if ($('nav.agenda').length) {
             component += '<div class=\'img-caption\'>' + event.speakerHome + '</div>\n';
             // Add event description and link to speaker page
             component += '<div class=\'desc\'>\n<p>' + event.shortDesc + '</p>\n<p>Visit her <a target=\'_blank\' href=\'' + event.speakerPage.URL + '\'>' + event.speakerPage.type + '</a> to learn more.</p>\n</div>\n';
-            component += '<!--end inside grid--></div>\n<!--end about--></div>\n';
+            component += '<!--end inside grid--></div>\n';
             return component;
         }
     };
@@ -600,13 +607,8 @@ if ($('nav.agenda').length) {
         } else if (event.name.match(/breakout session \d of \d/i)) {
             // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
             var snum = parseInt(event.name.match(/\d of \d/)[0].substr(0, 1));
-            // Label container with event types
-            component += "<div class='about ";
-            for (var t = 0; t < event.types.length; t++) {
-                component += event.types[t];
-                component += t + 1 === event.types.length ? "" : " ";
-            }
-            component += "'>\n<div class='inside grid'>\n<ul>\n";
+            // Add inner grid container
+            component += "<div class='inside grid'>\n<ul>\n";
             for (var id in progData.breakouts) {
                 // Store current breakout session data
                 var s = progData.breakouts[id];
@@ -629,16 +631,11 @@ if ($('nav.agenda').length) {
                 }
                 component += "</li>\n";
             }
-            component += "</ul>\n</div>\n</div>\n";
+            component += "</ul>\n</div>\n";
             return component;
         } else if (event.name.match(/career/i)) {
-            // Label container with event types
-            component += "<div class='about ";
-            for (var _t = 0; _t < event.types.length; _t++) {
-                component += event.types[_t];
-                component += _t + 1 === event.types.length ? "" : " ";
-            }
-            component += "'>\n<div class='inside grid'>\n<ul>\n";
+            // Add inner grid container
+            component += "<div class='inside grid'>\n<ul>\n";
             for (var _id in progData.careerBreakouts) {
                 // Store current breakout session data
                 var _s = progData.careerBreakouts[_id];
@@ -646,7 +643,7 @@ if ($('nav.agenda').length) {
                 component += '<li>\n<div class=\'details\'><span class=\'session\'>' + _s.name + '</span>';
                 component += "</li>\n";
             }
-            component += "</ul>\n</div>\n</div>\n";
+            component += "</ul>\n</div>\n";
             return component;
         }
     };
@@ -1047,6 +1044,24 @@ $('.device.word').each(function () {
 	}
 	$(this).html(word);
 });
+'use strict';
+
+/**
+ * maps.js
+ *
+ * Controls rendering and interaction with maps around agenda and faq
+ *
+ * @author    Kelli Rockwell <kellirockwell@mail.com>
+ * @since     File available since December 10th, 2017
+ * @version   1.0.0
+ */
+
+var addMap = function addMap(_ref) {
+  var event = _ref['event'],
+      campus = _ref['campus'];
+
+  return '<div class=\'map\'>' + campus + '</div>';
+};
 'use strict';
 
 /**
