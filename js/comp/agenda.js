@@ -51,7 +51,7 @@ if ($('nav.agenda').length) {
                 // For each event, check if it is currently happening
                 $events.each((index, event) => {
                     const dateRange = getDateRangeForEvent(event);
-                    if (now > dateRange.start / 1e3 && now < dateRange.end / 1e3) {
+                    if (now > dateRange.start && now < dateRange.end) {
                         // Open event card
                         openCard($(event));
                     }

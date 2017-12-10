@@ -8,7 +8,7 @@ var applyOpen = '1 September 2017 00:00:00 EDT',
     applyClose = '13 October 2017 23:59:00 EDT',
     registerOpen = '6 November 2017 00:00:00 PST',
     registerClose = '17 November 2017 23:59:00 PST',
-    startOfCUWiP = '12 January 2018 18:00:00 PDT',
+    startOfCUWiP = '12 January 2018 14:00:00 PST',
     travelClose = '21 January 2018 23:59:00 PST';
 
 // Store events Array
@@ -412,7 +412,7 @@ if ($('nav.agenda').length) {
                 // For each event, check if it is currently happening
                 $events.each(function (index, event) {
                     var dateRange = getDateRangeForEvent(event);
-                    if (now > dateRange.start / 1e3 && now < dateRange.end / 1e3) {
+                    if (now > dateRange.start && now < dateRange.end) {
                         // Open event card
                         openCard($(event));
                     }
@@ -737,24 +737,31 @@ if ($countdown.length) {
 	var formatSwitch = 'on';
 
 	var countdown = function countdown(t) {
-		//let getFutureFormattedDate();
-		// Compute seconds from midnight January 1st 1970 to event time
-		var eventTime = Date.parse(t.date) / 1e3;
-		// Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
-		var currentTime = testDate ? testDate : Math.floor(new Date().getTime() / 1e3);
+		// Parse event time
+		var eventTime = Date.parse(t.date);
+		// Get current time, unless test date is specified
+		var currentTime = testDate ? testDate : new Date();
+
+		var days = void 0,
+		    hours = void 0,
+		    minutes = void 0,
+		    seconds = void 0;
 
 		// If event has arrived
 		if (eventTime <= currentTime) {
-			// (End behavior)
-			console.log('event has arrived!');
+			// End behavior
+			days = 0;
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
 		} else {
 			// Compute seconds between now and event time
-			var seconds = eventTime - currentTime;
-			var days = Math.floor(seconds / 86400);
+			seconds = Math.floor((eventTime - currentTime) / 1e3);
+			days = Math.floor(seconds / 86400);
 			seconds -= days * 60 * 60 * 24;
-			var hours = Math.floor(seconds / 3600);
+			hours = Math.floor(seconds / 3600);
 			seconds -= hours * 60 * 60;
-			var minutes = Math.floor(seconds / 60);
+			minutes = Math.floor(seconds / 60);
 			seconds -= minutes * 60;
 
 			// If formatting is on, utilize at least two digits for every countdown value, adding a leading zero if the computed value is only one digit
@@ -764,13 +771,13 @@ if ($countdown.length) {
 				minutes = String(minutes).length >= 2 ? minutes : '0' + minutes;
 				seconds = String(seconds).length >= 2 ? seconds : '0' + seconds;
 			}
-
-			// Fill countdown blocks with computed and formatted values
-			$countdown.find('.number.of.days').text(days);
-			$countdown.find('.number.of.hours').text(hours);
-			$countdown.find('.number.of.minutes').text(minutes);
-			$countdown.find('.number.of.seconds').text(seconds);
 		}
+
+		// Fill countdown blocks with computed and formatted values
+		$countdown.find('.number.of.days').text(days);
+		$countdown.find('.number.of.hours').text(hours);
+		$countdown.find('.number.of.minutes').text(minutes);
+		$countdown.find('.number.of.seconds').text(seconds);
 	};
 
 	// Call initial setting of countdown
@@ -816,10 +823,10 @@ $.getJSON('/js/comp/apply.min.json', function (data) {
 
 function getTimeUntil(t, readable) {
 	readable = readable || false;
-	// Compute seconds from since midnight January 1st 1970 to input time
-	var endTime = Date.parse(t) / 1e3;
-	// Compute seconds from since midnight January 1st 1970 to current time, unless test date is specified
-	var currentTime = testDate ? testDate : Math.floor(new Date().getTime() / 1e3);
+	// Parse date
+	var endTime = Date.parse(t);
+	// Get current time, unless test date is specified
+	var currentTime = testDate ? testDate : new Date();
 	// Compute seconds between now and event time
 	var seconds = void 0,
 	    result = void 0;
@@ -1069,6 +1076,7 @@ $('.page.footer').on('dblclick', function () {
 $('.page.footer').on('click', '.test.date.trigger', function () {
 	if (!$('.test.date.module').length) {
 		console.log('opening test date module');
+		console.log('current time is ' + new Date());
 		var module = "<div class='module container'>\n<div class='test date module'>\n<div class='text'>\n";
 		module += "<div class='input bar'><input type='text'></input><div class='go button'>Try</div><div class='reset button'>Reset</div></div>\n";
 		module += "<div class='instruction'>Recommended input format is<strong>17 November 2017 23:59:00 PST</strong></div>\n</div>\n</div>\n</div>";
@@ -1083,7 +1091,7 @@ $('.page.footer').on('click', '.test.date.trigger', function () {
 // Apply new test date on click of go button
 $('body').on('click', '.test.date.module .go.button', function () {
 	// Try to parse date
-	var input = Date.parse($('.test.date.module input').val()) / 1e3;
+	var input = Date.parse($('.test.date.module input').val());
 	if (!input) {
 		console.log('could not parse date from input');
 	}
@@ -1136,7 +1144,7 @@ document.onkeydown = function (e) {
 	// If module is present and keypress of enter
 	if ($('.test.date.module').length && isEnter) {
 		// Try to parse date
-		var input = Date.parse($('.test.date.module input').val()) / 1e3;
+		var input = Date.parse($('.test.date.module input').val());
 		if (!input) {
 			console.log('could not parse date from input');
 		}

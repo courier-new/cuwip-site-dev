@@ -17,24 +17,28 @@ if ($countdown.length) {
 	let formatSwitch = 'on';
 
 	let countdown = function(t) {
-		//let getFutureFormattedDate();
-		// Compute seconds from midnight January 1st 1970 to event time
-		let eventTime = Date.parse(t.date) / 1e3;
-		// Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
-		let currentTime = testDate ? testDate : Math.floor(new Date().getTime() / 1e3);
+		// Parse event time
+		let eventTime = Date.parse(t.date);
+		// Get current time, unless test date is specified
+		let currentTime = testDate ? testDate : new Date();
+
+		let days, hours, minutes, seconds;
 
 		// If event has arrived
 		if (eventTime <= currentTime) {
-			// (End behavior)
-			console.log('event has arrived!')
+			// End behavior
+			days = 0;
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
 		} else {
 			// Compute seconds between now and event time
-			let seconds = eventTime - currentTime;
-			let days = Math.floor(seconds / 86400);
+			seconds = Math.floor((eventTime - currentTime) / 1e3);
+			days = Math.floor(seconds / 86400);
 			seconds -= days * 60 * 60 * 24;
-			let hours = Math.floor(seconds / 3600);
+			hours = Math.floor(seconds / 3600);
 			seconds -= hours * 60 * 60;
-			let minutes = Math.floor(seconds / 60);
+			minutes = Math.floor(seconds / 60);
 			seconds -= minutes * 60;
 
 			// If formatting is on, utilize at least two digits for every countdown value, adding a leading zero if the computed value is only one digit
@@ -42,7 +46,7 @@ if ($countdown.length) {
 				days = String(days).length >= 2 ? days : '0' + days;
 				hours = String(hours).length >= 2 ? hours : '0' + hours;
 				minutes = String(minutes).length >= 2 ? minutes : '0' + minutes;
-				seconds = String(seconds).length >= 2 ? seconds : '0' + seconds
+				seconds = String(seconds).length >= 2 ? seconds : '0' + seconds;
 			}
 
 			// Fill countdown blocks with computed and formatted values
