@@ -47,6 +47,7 @@ $('body').on('click', '.test.date.module .go.button', function() {
 	testDate = input;
 	addAppInfo();
 	highlightCurrentPeriod();
+	openCurrentEvent();
 });
 
 // Reset to current date on click of reset button
