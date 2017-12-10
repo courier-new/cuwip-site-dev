@@ -287,16 +287,21 @@ if ($('nav.agenda').length) {
        }
     });
 
+    // Function to open event card details
+    const openCard = (card) => {
+        if (card.hasClass('expanded')) {
+            card.removeClass('expanded');
+            card.find('.about').slideUp();
+        } else if (card.hasClass('expandable')) {
+            card.addClass('expanded');
+            card.find('.about').slideDown();
+        }
+    };
+
     // Clicking agenda event will open event's details
     $('.agenda.spread').on('click', '.event', (e) => {
-        let $eventItem = $(e.target).closest('.event');
-       if ($eventItem.hasClass('expanded')) {
-           $eventItem.removeClass('expanded');
-           $eventItem.find('.about').slideUp();
-       } else if ($eventItem.hasClass('expandable')) {
-           $eventItem.addClass('expanded');
-           $eventItem.find('.about').slideDown();
-       }
+        let $eventCard = $(e.target).closest('.event');
+        openCard($eventCard);
     });
 }
 
