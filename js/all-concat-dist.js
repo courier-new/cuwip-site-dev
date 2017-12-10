@@ -395,6 +395,57 @@ if ($('nav.agenda').length) {
         }
     };
 
+    // Function to open event card if it is now
+    var openCurrentEvent = function openCurrentEvent() {
+        // Only run on agenda page
+        if ($('.agenda.spread').length) {
+            // Wait until agenda data has populated the DOM
+            if (!$('.agenda.spread .day.block').length) {
+                setTimeout(function () {
+                    openCurrentEvent();
+                }, 200);
+            } else {
+                // Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
+                var now = testDate ? testDate : new Date();
+                // Get all event cards
+                var $events = $('.agenda.spread .day.block .event');
+                // For each event, check if it is currently happening
+                $events.each(function (index, event) {
+                    var dateRange = getDateRangeForEvent(event);
+                    if (now > dateRange.start / 1e3 && now < dateRange.end / 1e3) {
+                        // Open event card
+                        openCard($(event));
+                    }
+                });
+            }
+        }
+    };
+
+    // Function for getting js Date objects describing the duration of an event
+    var getDateRangeForEvent = function getDateRangeForEvent(event) {
+        // Get the day, start, and end time for the event
+        var day = $(event).closest('.day.block').find('h1').html(),
+            times = $(event).find('span.time').html().split(' - '),
+            start = times[0],
+            end = times[1];
+        var dateRange = { start: 0, end: 0 };
+        // Generate Date objects for event's start and end time
+        switch (day) {
+            case 'Friday':
+                dateRange.start = new Date('January 12, 2018 ' + start);
+                dateRange.end = new Date('January 12, 2018 ' + end);
+                break;
+            case 'Saturday':
+                dateRange.start = new Date('January 13, 2018 ' + start);
+                dateRange.end = new Date('January 13, 2018 ' + end);
+                break;
+            default:
+                dateRange.start = new Date('January 14, 2018 ' + start);
+                dateRange.end = new Date('January 14, 2018 ' + end);
+        }
+        return dateRange;
+    };
+
     // Function for populating the whole agenda via data read in from json
     var addAgenda = function addAgenda() {
         var agendaContent = "";
@@ -420,6 +471,8 @@ if ($('nav.agenda').length) {
             addSubnav();
             // Add events legend
             addLegend();
+            // Open current event
+            openCurrentEvent();
         }
     };
 
@@ -644,16 +697,21 @@ if ($('nav.agenda').length) {
         }
     });
 
+    // Function to open event card details
+    var openCard = function openCard(card) {
+        if (card.hasClass('expanded')) {
+            card.removeClass('expanded');
+            card.find('.about').slideUp();
+        } else if (card.hasClass('expandable')) {
+            card.addClass('expanded');
+            card.find('.about').slideDown();
+        }
+    };
+
     // Clicking agenda event will open event's details
     $('.agenda.spread').on('click', '.event', function (e) {
-        var $eventItem = $(e.target).closest('.event');
-        if ($eventItem.hasClass('expanded')) {
-            $eventItem.removeClass('expanded');
-            $eventItem.find('.about').slideUp();
-        } else if ($eventItem.hasClass('expandable')) {
-            $eventItem.addClass('expanded');
-            $eventItem.find('.about').slideDown();
-        }
+        var $eventCard = $(e.target).closest('.event');
+        openCard($eventCard);
     });
 }
 
@@ -680,10 +738,10 @@ if ($countdown.length) {
 
 	var countdown = function countdown(t) {
 		//let getFutureFormattedDate();
-		// Compute seconds from since midnight January 1st 1970 to event time
+		// Compute seconds from midnight January 1st 1970 to event time
 		var eventTime = Date.parse(t.date) / 1e3;
-		// Compute seconds from since midnight January 1st 1970 to current time
-		var currentTime = Math.floor(new Date().getTime() / 1e3);
+		// Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
+		var currentTime = testDate ? testDate : Math.floor(new Date().getTime() / 1e3);
 
 		// If event has arrived
 		if (eventTime <= currentTime) {
@@ -1033,6 +1091,7 @@ $('body').on('click', '.test.date.module .go.button', function () {
 	testDate = input;
 	addAppInfo();
 	highlightCurrentPeriod();
+	openCurrentEvent();
 });
 
 // Reset to current date on click of reset button

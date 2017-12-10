@@ -36,25 +36,27 @@ if ($('nav.agenda').length) {
 
     // Function to open event card if it is now
     const openCurrentEvent = () => {
-        // Wait until agenda data has populated the DOM
-    	if (!$('.agenda.spread .day.block').length) {
-    		setTimeout(() => {
-    			openCurrentEvent();
-    		}, 200);
-    	} else {
-            // Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
-            const now = testDate ? testDate : new Date();
-            console.log(now);
-            // Get all event cards
-            const $events = $('.agenda.spread .day.block .event');
-            // For each event, check if it is currently happening
-            $events.each((index, event) => {
-                const dateRange = getDateRangeForEvent(event);
-                if (now > dateRange.start / 1e3 && now < dateRange.end / 1e3) {
-                    // Open event card
-                    openCard($(event));
-                }
-            });
+        // Only run on agenda page
+        if ($('.agenda.spread').length) {
+            // Wait until agenda data has populated the DOM
+        	if (!$('.agenda.spread .day.block').length) {
+        		setTimeout(() => {
+        			openCurrentEvent();
+        		}, 200);
+        	} else {
+                // Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
+                const now = testDate ? testDate : new Date();
+                // Get all event cards
+                const $events = $('.agenda.spread .day.block .event');
+                // For each event, check if it is currently happening
+                $events.each((index, event) => {
+                    const dateRange = getDateRangeForEvent(event);
+                    if (now > dateRange.start / 1e3 && now < dateRange.end / 1e3) {
+                        // Open event card
+                        openCard($(event));
+                    }
+                });
+            }
         }
     };
 
