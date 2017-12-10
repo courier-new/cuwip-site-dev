@@ -29,7 +29,7 @@ function getTimeUntil(t, readable) {
 	let currentTime = (testDate) ? testDate : new Date();
 	// Compute seconds between now and event time
 	let seconds, result;
-	seconds = result = endTime - currentTime;
+	seconds = result = (endTime - currentTime) / 1e3;
 	if (readable) {
 		let days = Math.floor(seconds / 86400);
 		if (days >= 2) {
@@ -149,7 +149,7 @@ function addAppInfo() {
 		// If test date was used
 		if (testDate) {
 			// Print it
-			console.log("test date used: " + testDate);
+			console.log(`using testdate ${testDate}`);
 			// Highlight elements that have been changed
 			$(elements).each(function() {
 				$(this).addClass('highlight');
