@@ -40,6 +40,10 @@
 		"jpl": {
 			"name": "REUs/&#8203;Internships",
 			"sessions": [1, 2, 3]
+		},
+		"su4w": {
+			"name": "STEP UP for Women",
+			"sessions": [2, 3]
 		}
 	},
 	"careerBreakouts": {
