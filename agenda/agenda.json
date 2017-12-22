@@ -468,7 +468,7 @@
 					"sname": "shuttle",
 					"types": ["shuttle"],
 					"timeStart": "8:00 AM",
-					"timeEnd": "8:45 AM",
+					"timeEnd": "8:30 AM",
 					"required": true,
 					"place": "DoubleTree Hotel",
 					"meetingPlace": "TBD",
