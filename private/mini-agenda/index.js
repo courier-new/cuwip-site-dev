@@ -81,12 +81,7 @@ const addEvent = (event, campus) => {
 // Adds name, time, place, and type designations for an event
 const addBasicInfo = (event) => {
     // Add container for event types
-    let basicInfo = `<div class='type bubbles'>\n`;
-    $(event.types).each((i, eType) => {
-        // Mark what type of event this is with span bubble element
-        basicInfo += `<span class='${eType}'></span>\n`;
-    });
-    basicInfo += `<!--end type bubbles--></div>\n<div class='info'>`;
+    let basicInfo = `<div class='info'>`;
     // Add event name
     basicInfo += `<span class='name ${event.sname}'>${event.name}`;
     basicInfo += `<!--end name span--></span>\n`;

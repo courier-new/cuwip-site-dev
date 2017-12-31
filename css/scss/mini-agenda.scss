@@ -26,6 +26,9 @@
 		}
 		display: flex;
 		flex-direction: column;
+		> .event:nth-child(2n) {
+			background-color: rgba(#000, 0.05);
+		}
 		> .event {
 			@include respond-to('xlarge') {
 				padding: 1.5em 0;
@@ -34,30 +37,12 @@
 				padding: 1em 0;
 			}
 			align-items: center;
-			background: rgba(#fff, 0.6);
-			box-shadow: 1px 1px 4px rgba($grey-medium, 0.1);
+			background: #fff;
 			display: flex;
 			flex-wrap: wrap;
 			margin: 0.3em 0;
 			transition: all linear 0.2s;
 			width: 100%;
-			&.expandable:hover {
-				background: #fff;
-				box-shadow: 1px 1px 4px rgba($grey-medium, 0.3);
-				cursor: pointer;
-			}
-			&.expandable.expanded {
-				background: #fff;
-				padding-top: 1.4em;
-				.about {
-					opacity: 1;
-				}
-				.expandable.arrow {
-					color: $turquoise;
-					padding: 0 0 0 3px;
-					transform: rotate(90deg);
-				}
-			}
 			.type.bubbles {
 				@include respond-to('xlarge') {
 					width: 10%;

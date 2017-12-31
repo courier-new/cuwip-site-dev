@@ -92,7 +92,7 @@
 					"timeStart": "2:00 PM",
 					"timeEnd": "4:00 PM",
 					"required": false,
-					"place": "TBD",
+					"place": "Galileo-McAlister Auditorium",
 					"shortDesc": ""
 				},
 				{
@@ -102,7 +102,7 @@
 					"timeStart": "3:00 PM",
 					"timeEnd": "5:00 PM",
 					"required": false,
-					"place": "TBD",
+					"place": "Galileo Atrium",
 					"meetingPlace": "TBD",
 					"shortDesc": ""
 				},
