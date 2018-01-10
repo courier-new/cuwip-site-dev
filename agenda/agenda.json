@@ -3,47 +3,72 @@
 		"ppe1": {
 			"name": "Equity and Inclusion in STEM",
 			"special": "Panel A Extension",
-			"sessions": [2, 3]
+			"sessions": [2, 3],
+			"roomname": "a",
+			"room": 1051
 		},
 		"ppe2": {
 			"name": "Balancing Career/&#8203;Life",
 			"special": "Panel B Extension",
-			"sessions": [2, 3]
+			"sessions": [2, 3],
+			"roomname": "b",
+			"room": 1021
 		},
 		"cc": {
 			"name": "Transitioning from Community College to a 4-year Institution",
 			"special": "Only Offered Once",
-			"sessions": [1]
+			"sessions": [1],
+			"roomname": "e",
+			"room": 2099
 		},
 		"sj": {
 			"name": "Free Radicals: Intersection of Science/&#8203;Social Justice",
-			"special": "Only Offered Once",
-			"sessions": [2]
+			"sessions": [1, 2],
+			"roomname": "f",
+			"room": 2113
 		},
 		"is": {
 			"name" : "Imposter Syndrome: Do you feel like you belong?",
 			"special": "Only Offered Once",
-			"sessions": [3]
+			"sessions": [3],
+			"roomname": "f",
+			"room": 2113
 		},
-		"sf": {
-			"name": "Science Frontiers/&#8203;Research Fields",
-			"sessions": [1, 2, 3]
+		"sfa": {
+			"name": "Science Frontiers/&#8203;Research Fields [A]",
+			"sessions": [1, 2, 3],
+			"roomname": "c",
+			"room": 1181
+		},
+		"sfb": {
+			"name": "Science Frontiers/&#8203;Research Fields [B]",
+			"sessions": [1, 2, 3],
+			"roomname": "d",
+			"room": 1249
 		},
 		"outreach": {
 			"name": "Science Outreach",
-			"sessions": [1, 2]
+			"sessions": [1, 2, 3],
+			"roomname": "g",
+			"room": 2131
 		},
 		"wip": {
 			"name": "Starting/&#8203;Revitalizing a WIP group @ your home institution",
-			"sessions": [1, 3]
+			"sessions": [1, 3],
+			"roomname": "i",
+			"room": 2393
 		},
 		"jpl": {
 			"name": "REUs/&#8203;Internships",
-			"sessions": [1, 2, 3]
+			"sessions": [1, 2, 3],
+			"roomname": "h",
+			"room": 2141
 		},
 		"su4w": {
 			"name": "STEP UP for Women",
-			"sessions": [2, 3]
+			"sessions": [2, 3],
+			"roomname": "e",
+			"room": 2099
 		}
 	},
 	"careerBreakouts": {
