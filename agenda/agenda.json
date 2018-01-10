@@ -266,7 +266,7 @@
 					"timeStart": "8:45 AM",
 					"timeEnd": "9:30 AM",
 					"required": true,
-					"place": "Edmunds Ballroom",
+					"place": "Smith Campus Center/Edmunds Ballroom",
 					"speaker": "<span>Monika</span><span>Schleier-Smith</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -283,7 +283,7 @@
 					"timeStart": "9:45 AM",
 					"timeEnd": "10:30 AM",
 					"required": true,
-					"place": "Millikan Hall",
+					"place": "Millikan Laboratory",
 					"options": true,
 					"shortDesc": ""
 				},
@@ -294,7 +294,7 @@
 					"timeStart": "10:30 AM",
 					"timeEnd": "11:00 AM",
 					"required": true,
-					"place": "Edmunds Ballroom",
+					"place": "Smith Campus Center/Edmunds Ballroom",
 					"shortDesc": ""
 				},
 				{
@@ -304,7 +304,7 @@
 					"timeStart": "11:00 AM",
 					"timeEnd": "12:30 PM",
 					"required": true,
-					"place": "Edmunds Ballroom",
+					"place": "Smith Campus Center/Edmunds Ballroom",
 					"speaker": "<span>Patricia</span><span>Burchat</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -341,7 +341,7 @@
 					"timeStart": "2:15 PM",
 					"timeEnd": "2:30 PM",
 					"required" : true,
-					"place": "Millikan Courtyard",
+					"place": "Marston Quad",
 					"shortDesc": ""
 				},
 				{
@@ -381,7 +381,7 @@
 					"timeStart": "3:45 PM",
 					"timeEnd": "4:30 PM",
 					"required": true,
-					"place": "Millikan Hall",
+					"place": "Millikan Laboratory",
 					"options": true,
 					"shortDesc": ""
 				},
@@ -401,7 +401,7 @@
 					"types": ["breakout"],
 					"timeStart": "5:00 PM",
 					"timeEnd": "5:45 PM",
-					"place": "Millikan Hall",
+					"place": "Millikan Laboratory",
 					"required": true,
 					"options": true,
 					"shortDesc": ""
@@ -413,7 +413,7 @@
 					"timeStart": "6:00 PM",
 					"timeEnd": "7:30 PM",
 					"required": true,
-					"place": "Edmunds Ballroom",
+					"place": "Smith Campus Center/Edmunds Ballroom",
 					"shortDesc": ""
 				},
 				{
@@ -433,7 +433,7 @@
 					"timeStart": "7:30 PM",
 					"timeEnd": "9:00 PM",
 					"required": false,
-					"place": "Millikan Hall",
+					"place": "Millikan Laboratory",
 					"meetingPlace": "TBD",
 					"optionCount": 2,
 					"options": [1, 2],
@@ -457,7 +457,7 @@
 					"timeStart": "7:30 PM",
 					"timeEnd": "10:00 PM",
 					"required": false,
-					"place": "Millikan Hall",
+					"place": "Millikan Laboratory",
 					"shortDesc": ""
 				},
 				{
@@ -466,7 +466,7 @@
 					"types": ["shuttle"],
 					"timeStart": "10:00 PM",
 					"timeEnd": "10:30 PM",
-					"place": "Millikan Hall",
+					"place": "Millikan Laboratory",
 					"required": true,
 					"meetingPlace": "TBD",
 					"shortDesc": ""
