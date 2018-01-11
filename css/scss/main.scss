@@ -69,9 +69,17 @@ p,
 	}
 }
 
-/* IE and Edge faux-bold avoidance fix for headers */
+/* Hide IE warning for non-IE */
+.page .inner > .text.block .ie.warning {
+	display: none;
+}
+
+/* IE and Edge faux-bold avoidance fix for headers and IE warning visibility */
 @media screen and (-ms-high-contrast: active),
 	screen and (-ms-high-contrast: none) {
+	.page .inner > .text.block .ie.warning {
+		display: block;
+	}
 	.page .inner > .text.block h1,
 	.page .inner > .text.block h2,
 	.page.about.agenda .inner > .text.block .campus.reference,
