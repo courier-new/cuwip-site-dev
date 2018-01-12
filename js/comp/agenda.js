@@ -54,7 +54,8 @@ if ($('nav.agenda').length) {
                const dateRange = getDateRangeForEvent(event);
                if (now > dateRange.start && now < dateRange.end) {
                   // Open event card
-                  openCard($(event));
+                  let $target = $(event).find('.about');
+                  openCard($(event), $target);
                }
             });
          }
