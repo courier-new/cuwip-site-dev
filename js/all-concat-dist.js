@@ -392,6 +392,7 @@ if ($('nav.agenda').length) {
          }, 200);
       } else {
          addSubMenu('Jump to Day');
+         addDeviceWords();
       }
    };
 
@@ -573,10 +574,7 @@ if ($('nav.agenda').length) {
             expandedInfo += event.hasOwnProperty("participants") ? addPanelistsTable(event) : '';
             expandedInfo += '<!--end desc--></div>\n<!--end inside grid--></div>\n';
          }
-         expandedInfo += addMap({
-            'event': event,
-            'campus': campus
-         });
+         expandedInfo += addMap(event.mapType);
          expandedInfo += "<!-- end about--></div>";
          return expandedInfo;
       }
@@ -1094,21 +1092,6 @@ if ($('.page.timeline').length) {
 /* End of timeline.js */
 "use strict";
 
-$('.device.word').each(function () {
-	var word = "";
-	// If mobile
-	if ($(window).width() <= 700) {
-		word = "tap";
-	} else {
-		word = "click";
-	}
-	if ($(this).hasClass('capitalized')) {
-		word = word.charAt(0).toUpperCase() + word.slice(1);
-	}
-	$(this).html(word);
-});
-"use strict";
-
 /**
  * maps.js
  *
@@ -1119,28 +1102,56 @@ $('.device.word').each(function () {
  * @version   1.0.0
  */
 
-var pomMap = "../img/pom-map-2000.jpg",
-    hmcMap = "../img/hmc-map-2000.jpg",
-    cppMap = "../img/cpp-map-2000.jpg";
+var pomMap = "../img/pom-map.jpg",
+    pomMillikanMap = "../img/pom-millikan.jpg",
+    hmcMap = "../img/hmc-map.jpg",
+    cppMap = "../img/cpp-parking-map.jpg",
+    cppBSCMap = "../img/cpp-bsc.jpg";
 
-var addMap = function addMap(_ref) {
-   var event = _ref['event'],
-       campus = _ref['campus'];
-
-   return "";
+var addMap = function addMap(mapType) {
    var mapbg = void 0;
-   switch (campus) {
-      case "Pomona":
+   switch (mapType) {
+      case "pom":
          mapbg = pomMap;
          break;
-      case "Harvey Mudd":
+      case "pom-millikan":
+         mapbg = pomMillikanMap;
+         break;
+      case "hmc":
          mapbg = hmcMap;
          break;
-      default:
+      case "cpp-bsc":
+         mapbg = cppBSCMap;
+         break;
+      case "cpp-parking":
          mapbg = cppMap;
+         break;
    }
-   return "\n         <h4>Location</h4>\n         <div class='map block'>\n         <img class='map image' src='" + mapbg + "' />\n         <div class='location pin hover area' style='top: 30%; left: 40%;'>\n         <div class='wrapper'>\n         <div class='shadow'></div>\n         <div class='pin'></div>\n         <div class=\"icon\"></div>\n         </div>\n         </div>\n\n         </div>";
+   if (mapbg) {
+      return "\n            <h4>Map</h4>\n            <div class='map block'>\n            <a href='" + mapbg + "'><img class='map image' src='" + mapbg + "' /></a>\n            <p align='center'>\n   \t\t\t\t<strong><span class='device word capitalized'></span> the map to view it full-sized.</strong>\n   \t\t\t</p>\n            <!--<div class='location pin hover area' style='top: 30%; left: 40%;'>\n               <div class='wrapper'>\n                  <div class='shadow'></div>\n                  <div class='pin'></div>\n                  <div class=\"icon\"></div>\n               </div>\n            </div>-->\n\n            </div>";
+   } else {
+      return "";
+   }
 };
+"use strict";
+
+var addDeviceWords = function addDeviceWords() {
+	$('.device.word').each(function () {
+		var word = "";
+		// If mobile
+		if ($(window).width() <= 700) {
+			word = "tap";
+		} else {
+			word = "click";
+		}
+		if ($(this).hasClass('capitalized')) {
+			word = word.charAt(0).toUpperCase() + word.slice(1);
+		}
+		$(this).html(word);
+	});
+};
+
+addDeviceWords();
 'use strict';
 
 /**

@@ -31,6 +31,7 @@ if ($('nav.agenda').length) {
          }, 200);
       } else {
          addSubMenu('Jump to Day');
+         addDeviceWords();
       }
    };
 
@@ -216,10 +217,7 @@ if ($('nav.agenda').length) {
             expandedInfo += event.hasOwnProperty("participants") ? addPanelistsTable(event) : ``;
             expandedInfo += `<!--end desc--></div>\n<!--end inside grid--></div>\n`;
          }
-         expandedInfo += addMap({
-            'event': event,
-            'campus': campus
-         });
+         expandedInfo += addMap(event.mapType);
          expandedInfo += "<!-- end about--></div>";
          return expandedInfo;
       }

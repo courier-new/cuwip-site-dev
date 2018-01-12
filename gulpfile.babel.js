@@ -30,7 +30,7 @@ const scssPaths = {
 const jsPaths = {
 	src: 'js/comp/*.js',
 	srcFolder: 'js/comp/',
-	srcOrdered: ['global.js', 'scroll-effect.js', 'nav.js', 'agenda.js', 'countdown.js', 'apply.js', 'timeline.js', 'device.js', 'maps.js', 'test-date.js'],
+	srcOrdered: ['global.js', 'scroll-effect.js', 'nav.js', 'agenda.js', 'countdown.js', 'apply.js', 'timeline.js', 'maps.js', 'device.js', 'test-date.js'],
 	dest: 'js',
 	distName: 'all-concat-dist.js'
 };

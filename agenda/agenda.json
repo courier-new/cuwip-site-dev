@@ -564,6 +564,7 @@
 					"timeEnd": "5:00 PM",
 					"required": true,
 					"place": "Galileo Atrium",
+					"mapType": "hmc",
 					"shortDesc": "<p>Please first check-in at the DoubleTree Hotel in Claremont. We will have a local student wearing a green APS t-shirt in the front lobby; please approach her if you have questions on arrival or want additional directions to Harvey Mudd.</p><p>Come down the stairs, past the koi pond, and in any of the windowed doors to find our check-in tables set up in Galileo Atrium.</p>"
 				},
 				{
@@ -574,6 +575,7 @@
 					"timeEnd": "4:00 PM",
 					"required": false,
 					"place": "Galileo-McAlister Auditorium",
+					"mapType": "hmc",
 					"shortDesc": "<p>The American Physics Society's Professional Skills Development workshop is designed to provide underrepresented gender physicists with professional training in effective negotiation, communication and leadership skills, as well as a special opportunity for networking. The primary workshop goal is to produce more women and underrepresented group leaders in physics and to help these folks achieve their full potential in the top ranks of their profession.</p>",
 					"participants": [
 						{
@@ -592,6 +594,7 @@
 					"timeEnd": "5:00 PM",
 					"required": false,
 					"place": "Galileo Atrium",
+					"mapType": "hmc",
 					"shortDesc": ""
 				},
 				{
@@ -602,6 +605,7 @@
 					"timeEnd": "5:00 PM",
 					"required": false,
 					"place": "DoubleTree/Claremont",
+					"mapType": "hmc",
 					"shortDesc": ""
 				},
 				{
@@ -612,6 +616,7 @@
 					"timeEnd": "5:20 PM",
 					"required": true,
 					"place": "Galileo-McAlister Auditorium",
+					"mapType": "hmc",
 					"shortDesc": ""
 				},
 				{
@@ -622,6 +627,7 @@
 					"timeEnd": "6:30 PM",
 					"required": true,
 					"place": "Hoch-Shanahan Dining Commons",
+					"mapType": "hmc",
 					"shortDesc": ""
 				},
 				{
@@ -632,6 +638,7 @@
 					"timeEnd": "8:00 PM",
 					"required": true,
 					"place": "Hoch-Shanahan Dining Commons",
+					"mapType": "hmc",
 					"speaker": "<span>Dianna</span><span>Cowern</span>",
 					"speakerPage": {
 						"type": "website",
@@ -649,6 +656,7 @@
 					"timeEnd": "12:00 AM",
 					"required": false,
 					"place": "DoubleTree/Claremont",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -659,6 +667,7 @@
 					"timeEnd": "10:00 PM",
 					"required": false,
 					"place": "Platt Living Room",
+					"mapType": "hmc",
 					"shortDesc": ""
 				},
 				{
@@ -669,6 +678,7 @@
 					"timeEnd": "10:30 PM",
 					"required": false,
 					"place": "Galileo-McAlister",
+					"mapType": "hmc",
 					"shortDesc": "Three brilliant African-American women at NASA -- Katherine Johnson (Taraji P. Henson), Dorothy Vaughan (Octavia Spencer) and Mary Jackson (Janelle Monáe) -- serve as the brains behind one of the greatest operations in history: the launch of astronaut John Glenn (Glen Powell) into orbit, a stunning achievement that restored the nation's confidence, turned around the Space Race and galvanized the world."
 				},
 				{
@@ -679,6 +689,7 @@
 					"timeEnd": "10:00 PM",
 					"required": false,
 					"place": "DoubleTree Hotel",
+					"mapType": "none",
 					"shortDesc": ""
 				}
 			]
@@ -696,6 +707,7 @@
 					"timeEnd": "8:00 AM",
 					"required": true,
 					"place": "DoubleTree Hotel",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -706,6 +718,7 @@
 					"timeEnd": "8:30 AM",
 					"required": true,
 					"place": "DoubleTree Hotel",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -716,6 +729,7 @@
 					"timeEnd": "8:30 AM",
 					"required": false,
 					"place": "Millikan Courtyard",
+					"mapType": "pom",
 					"shortDesc": "Bring your printed poster to the check-in table in Millikan Courtyard (just north of Millikan Laboratory). We will give you your poster ID and help you find the correct location to mount your poster. You can refer to the <a href='/posters'>poster page</a> for more information on preparing your poster. Poster sessions will run at various times throughout the afternoon, often corresponding with coffee breaks between events. You are encouraged to stand by your poster between 1:45 - 2:15 PM. Posters will be judged during the afternoon, and winners will be announced at the Saturday's dinner."
 				},
 				{
@@ -726,6 +740,7 @@
 					"timeEnd": "9:30 AM",
 					"required": true,
 					"place": "Smith Campus Center/Edmunds Ballroom",
+					"mapType": "pom",
 					"speaker": "<span>Monika</span><span>Schleier-Smith</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -743,6 +758,7 @@
 					"timeEnd": "10:30 AM",
 					"required": true,
 					"place": "Millikan Laboratory",
+					"mapType": "pom-millikan",
 					"options": true,
 					"shortDesc": ""
 				},
@@ -754,6 +770,7 @@
 					"timeEnd": "11:00 AM",
 					"required": true,
 					"place": "Smith Campus Center/Edmunds Ballroom",
+					"mapType": "pom",
 					"shortDesc": ""
 				},
 				{
@@ -764,6 +781,7 @@
 					"timeEnd": "12:30 PM",
 					"required": true,
 					"place": "Smith Campus Center/Edmunds Ballroom",
+					"mapType": "pom",
 					"speaker": "<span>Patricia</span><span>Burchat</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -781,6 +799,7 @@
 					"timeEnd": "1:45 PM",
 					"required": true,
 					"place": "Frary Dining Hall",
+					"mapType": "pom",
 					"shortDesc": ""
 				},
 				{
@@ -791,6 +810,7 @@
 					"timeEnd": "2:15 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
+					"mapType": "pom",
 					"shortDesc": "You are encouraged to stand by your poster during this session. Posters will be judged during the various poster sessions of the afternoon, and winners will be announced at the Saturday's dinner."
 				},
 				{
@@ -801,6 +821,7 @@
 					"timeEnd": "2:30 PM",
 					"required" : true,
 					"place": "Marston Quad",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -811,6 +832,7 @@
 					"timeEnd": "3:15 PM",
 					"required": true,
 					"place": "Smith Campus Center/Rose Hills Theater",
+					"mapType": "pom",
 					"shortDesc": "In its 2008 statement on diversity, the American Physical Society called upon 'the physics community as a whole to work collectively to bring greater diversity wherever physicists are educated or employed.' Indeed, many physics organizations and departments have affirmed their commitment to diversity and inclusion, and have made changes to broaden participation in physics. Yet, there is still work to be done to welcome and support aspiring physicists of all identities. Panelists will share their experiences navigating the changing world of physics, and will share strategies to succeed and thrive as a physicist.",
 					"participants": [
 						{
@@ -849,6 +871,7 @@
 					"timeEnd": "3:15 PM",
 					"required": true,
 					"place": "Millikan Argue Auditorium",
+					"mapType": "pom-millikan",
 					"shortDesc": "Finding a lasting work life balance despite demanding professional careers while tending to the needs of children, spouses, and aging parents is a challenge for many career professionals. This panel of female physicists representing a range of backgrounds, perspectives, and experiences will recount their own approaches to facing these challenges and offer advice on combatting the seemingly-insurmountable expectations for working women and underrepresented folks in the modern day.",
 					"participants": [
 						{
@@ -882,6 +905,7 @@
 					"timeEnd": "3:45 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
+					"mapType": "pom-millikan",
 					"shortDesc": ""
 				},
 				{
@@ -892,6 +916,7 @@
 					"timeEnd": "4:30 PM",
 					"required": true,
 					"place": "Millikan Laboratory",
+					"mapType": "pom-millikan",
 					"options": true,
 					"shortDesc": ""
 				},
@@ -903,6 +928,7 @@
 					"timeEnd": "5:00 PM",
 					"required": true,
 					"place": "Millikan Courtyard",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -912,6 +938,7 @@
 					"timeStart": "5:00 PM",
 					"timeEnd": "5:45 PM",
 					"place": "Millikan Laboratory",
+					"mapType": "pom-millikan",
 					"required": true,
 					"options": true,
 					"shortDesc": ""
@@ -924,6 +951,7 @@
 					"timeEnd": "7:30 PM",
 					"required": true,
 					"place": "Smith Campus Center/Edmunds Ballroom",
+					"mapType": "pom",
 					"shortDesc": ""
 				},
 				{
@@ -934,6 +962,7 @@
 					"timeEnd": "12:00 AM",
 					"required": false,
 					"place": "DoubleTree/Claremont",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -944,6 +973,7 @@
 					"timeEnd": "9:00 PM",
 					"required": false,
 					"place": "Millikan Laboratory, Planetarium",
+					"mapType": "pom-millikan",
 					"shortDesc": "<p>Volunteers will be presenting a brief show on indigenous astronomy and Native Science. The show will be narrated by Abenaki master storyteller Tsonkawa, who for many years has told the ancient legends of the Abenaki and other tribes to fascinated audiences across the world, and will feature music by Dean Evenson, an award-winning new-age musician, composer, producer and videographer from New York. The Pomona Planetarium, completed in 2015 alongside the rest of the new Millikan Laboratory, features state-of-the-art immersive technology in digital planetarium software, projection, and sound. Show can accomodate an audience of up to 35 and will run twice, possibly three times if there is interest.</p><p class='event-image'><img src='/img/echoes-of-the-night.jpg'></p>"
 				},
 				{
@@ -954,6 +984,7 @@
 					"timeEnd": "10:00 PM",
 					"required": false,
 					"place": "Claremont",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -964,6 +995,7 @@
 					"timeEnd": "10:00 PM",
 					"required": false,
 					"place": "Millikan Laboratory",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -973,6 +1005,7 @@
 					"timeStart": "10:00 PM",
 					"timeEnd": "10:30 PM",
 					"place": "Millikan Laboratory",
+					"mapType": "none",
 					"required": true,
 					"shortDesc": ""
 				}
@@ -991,6 +1024,7 @@
 					"timeEnd": "8:00 AM",
 					"required": false,
 					"place": "DoubleTree Hotel",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -1001,6 +1035,7 @@
 					"timeEnd": "8:30 AM",
 					"required": true,
 					"place": "DoubleTree Hotel",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -1011,6 +1046,7 @@
 					"timeEnd": "9:15 AM",
 					"required": true,
 					"place": "Ursa Major",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -1021,6 +1057,7 @@
 					"timeEnd": "10:00 AM",
 					"required": true,
 					"place": "Ursa Major",
+					"mapType": "cpp-bsc",
 					"shortDesc": "A physics degree prepares you for many different careers. Find out from our panelists and career path representatives how they navigate their careers in national labs, industry, research, teaching, medicine, etc.",
 					"participants": [
 						{
@@ -1064,6 +1101,7 @@
 					"timeEnd": "10:15 AM",
 					"required": true,
 					"place": "Ursa Minor",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -1074,6 +1112,7 @@
 					"timeEnd": "12:00 PM",
 					"required": true,
 					"place": "Ursa Minor",
+					"mapType": "cpp-bsc",
 					"shortDesc": "A physics degree prepares you for many different careers. Find out from our panelists and career path representatives how they navigate their careers in national labs, industry, research, teaching, medicine, etc. The fair will operate in casual, round table format, with independent table displays from several participating organizations."
 				},
 				{
@@ -1085,6 +1124,7 @@
 					"required": true,
 					"options": true,
 					"place": "Bronco Student Center",
+					"mapType": "cpp-bsc",
 					"shortDesc": ""
 				},
 				{
@@ -1096,6 +1136,7 @@
 					"required": true,
 					"options": true,
 					"place": "Bronco Student Center",
+					"mapType": "cpp-bsc",
 					"shortDesc": ""
 				},
 				{
@@ -1107,6 +1148,7 @@
 					"required": true,
 					"options": true,
 					"place": "Bronco Student Center",
+					"mapType": "cpp-bsc",
 					"shortDesc": ""
 				},
 				{
@@ -1117,6 +1159,7 @@
 					"timeEnd": "1:30 PM",
 					"required": true,
 					"place": "Los Olivos",
+					"mapType": "none",
 					"shortDesc": ""
 				},
 				{
@@ -1127,6 +1170,7 @@
 					"timeEnd": "2:15 PM",
 					"required": true,
 					"place": "University Theater",
+					"mapType": "cpp-parking",
 					"speaker": "<span>Hilke</span><span>Schlichting</span>",
 					"speakerPage": {
 						"type": "faculty profile",
@@ -1144,6 +1188,7 @@
 					"timeEnd": "3:10 PM",
 					"required": true,
 					"place": "University Theater",
+					"mapType": "cpp-parking",
 					"img": "science-show.jpg",
 					"shortDesc": "Southern California technicians will share exciting favorites from their vast, world-famous collection of Physics demonstrations.",
 					"participants": [
@@ -1182,6 +1227,7 @@
 					"timeEnd": "3:30 PM",
 					"required": true,
 					"place": "University Theater",
+					"mapType": "cpp-parking",
 					"shortDesc": ""
 				}
 			]
