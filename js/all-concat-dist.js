@@ -360,356 +360,410 @@ addSubMenu();
 'use strict';
 
 /**
- * agenda.js
- *
- * Parses program data from agenda.json and automatically populated agenda page in readable format.
- *
- * @author    Kelli Rockwell <kellirockwell@mail.com>
- * @since     File available since August 10th, 2017
- * @version   1.0.0
- */
+* agenda.js
+*
+* Parses program data from agenda.json and automatically populated agenda page in readable format.
+*
+* @author    Kelli Rockwell <kellirockwell@mail.com>
+* @since     File available since August 10th, 2017
+* @version   1.2.0
+*/
 
 // Only on agenda page
 if ($('nav.agenda').length) {
 
-    // Variable for storing all of the program data retrieved from json
-    var progData = { schedule: Array(0) };
+   // Variable for storing all of the program data retrieved from json
+   var progData = { schedule: Array(0) };
 
-    // Array for storing all the different event types for creating bubble legend
-    var eventTypes = [];
+   // Array for storing all the different event types for creating bubble legend
+   var eventTypes = [];
 
-    // Read in agenda data from json
-    $.getJSON('agenda.min.json', function (data) {
-        progData = data;
-        addAgenda();
-    });
+   // Read in agenda data from json
+   $.getJSON('agenda.min.json', function (data) {
+      progData = data;
+      addAgenda();
+   });
 
-    var addSubnav = function addSubnav() {
-        $subsections = $('.page .agenda.spread > .day.block');
-        if (!$subsections.length) {
-            setTimeout(function () {
-                addSubnav();
-            }, 200);
-        } else {
-            addSubMenu('Jump to Day');
-        }
-    };
-
-    // Function to open event card if it is now
-    var openCurrentEvent = function openCurrentEvent() {
-        // Only run on agenda page
-        if ($('.agenda.spread').length) {
-            // Wait until agenda data has populated the DOM
-            if (!$('.agenda.spread .day.block').length) {
-                setTimeout(function () {
-                    openCurrentEvent();
-                }, 200);
-            } else {
-                // Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
-                var now = testDate ? testDate : new Date();
-                // Get all event cards
-                var $events = $('.agenda.spread .day.block .event');
-                // For each event, check if it is currently happening
-                $events.each(function (index, event) {
-                    var dateRange = getDateRangeForEvent(event);
-                    if (now > dateRange.start && now < dateRange.end) {
-                        // Open event card
-                        openCard($(event));
-                    }
-                });
-            }
-        }
-    };
-
-    // Function for getting js Date objects describing the duration of an event
-    var getDateRangeForEvent = function getDateRangeForEvent(event) {
-        // Get the day, start, and end time for the event
-        var day = $(event).closest('.day.block').find('h1').html(),
-            times = $(event).find('span.time').html().split(' - '),
-            start = times[0],
-            end = times[1];
-        var dateRange = { start: 0, end: 0 };
-        // Generate Date objects for event's start and end time
-        switch (day) {
-            case 'Friday':
-                dateRange.start = new Date('January 12, 2018 ' + start);
-                dateRange.end = new Date('January 12, 2018 ' + end);
-                break;
-            case 'Saturday':
-                dateRange.start = new Date('January 13, 2018 ' + start);
-                dateRange.end = new Date('January 13, 2018 ' + end);
-                break;
-            default:
-                dateRange.start = new Date('January 14, 2018 ' + start);
-                dateRange.end = new Date('January 14, 2018 ' + end);
-        }
-        return dateRange;
-    };
-
-    // Function for populating the whole agenda via data read in from json
-    var addAgenda = function addAgenda() {
-        var agendaContent = "";
-        // Wait until agenda data has been loaded
-        if (!progData.schedule.length) {
-            setTimeout(function () {
-                addAgenda();
-            }, 200);
-        } else {
-            // For each day of the schedule
-            $(progData.schedule).each(function (i, day) {
-                // Check if day is last day
-                var isLast = i === progData.schedule.length - 1;
-                // Add day to the agenda
-                agendaContent += addDay({
-                    'day': day,
-                    'isLast': isLast
-                });
-            });
-            // Fill agenda
-            $('.agenda.spread').html(agendaContent);
-            // Add subnavigation
+   var addSubnav = function addSubnav() {
+      $subsections = $('.page .agenda.spread > .day.block');
+      if (!$subsections.length) {
+         setTimeout(function () {
             addSubnav();
-            // Add events legend
-            addLegend();
-            // Open current event
-            openCurrentEvent();
-        }
-    };
+         }, 200);
+      } else {
+         addSubMenu('Jump to Day');
+      }
+   };
 
-    // Adds a day to the agenda
-    var addDay = function addDay(_ref) {
-        var day = _ref['day'],
-            isLast = _ref['isLast'];
-
-        // Define day of week and institution of the day
-        var dayCapt = day.day.charAt(0).toUpperCase() + day.day.slice(1);
-        var daySection = '<div class=\'' + day.day + ' day block\'>\n            <a name=\'' + day.day + '\'></a>\n            <h1>' + dayCapt + '</h1>\n            <span class=\'campus reference\'>' + day.college + '</span>\n                <div class=\'day table\'>\n';
-        // For each event in the day
-        $(day.events).each(function (i, eventObj) {
-            // Add event to the agenda
-            daySection += addEvent(eventObj, day.scollege);
-        });
-        daySection += "<!--end day table--></div>\n";
-        // Add separator except on last day
-        daySection += !isLast ? "<div class='separator'></div>" : "";
-        daySection += "<!--end day block--></div>\n";
-        return daySection;
-    };
-
-    // Adds an event card to a day
-    var addEvent = function addEvent(event, campus) {
-        // Determine if event has extra description for expandable info section
-        var hasExpandable = !event.debugHide && (event.shortDesc.length || event.options);
-        // Add event card
-        var eventCard = '<div class=\'event ' + event.sname;
-        eventCard += hasExpandable ? ' expandable\'>' : '\'>';
-        // Add item name, time, place, and type designations
-        eventCard += addBasicInfo(event);
-        // Add expandable section with additional details for event
-        eventCard += addExpandedInfo({
-            'event': event,
-            'campus': campus,
-            'isTalk': event.types.includes("talk"),
-            'isBreakout': event.types.includes("breakout"),
-            'shouldBeHidden': event.debugHide || false,
-            'hasExpandable': hasExpandable
-        });
-        // Condtionally add expandable arrow indicator
-        eventCard += hasExpandable ? '<div class=\'expandable arrow\'><i class="fa fa-chevron-right" aria-hidden="true"></i></div>\n' : '';
-        eventCard += '<!--end event card--></div>\n';
-        return eventCard;
-    };
-
-    // Adds name, time, place, and type designations for an event
-    var addBasicInfo = function addBasicInfo(event) {
-        // Add container for event types
-        var basicInfo = '<div class=\'type bubbles\'>\n';
-        $(event.types).each(function (i, eType) {
-            // If event type is not yet part of legend array
-            if (!eventTypes.includes(eType)) {
-                // Add it
-                eventTypes.push(eType);
-            }
-            // Mark what type of event this is with span bubble element
-            basicInfo += '<span class=\'' + eType + '\'></span>\n';
-        });
-        basicInfo += '<!--end type bubbles--></div>\n<div class=\'info\'>';
-        // Add event name
-        basicInfo += '<span class=\'name ' + event.sname + '\'>' + event.name;
-        // Mark if event is Optional
-        basicInfo += !event.required ? ' <span class=\'optional\'>(Optional)</span>' : '';
-        basicInfo += '<!--end name span--></span>\n';
-        // Add event time
-        basicInfo += '<span class=\'time ' + event.sname + '\'>' + event.timeStart + ' - ' + event.timeEnd + '</span>';
-        // Add event location
-        basicInfo += '<span class=\'place ' + event.sname + '\'>' + event.place + '</span>';
-        basicInfo += '<!--end info--></div>\n';
-        return basicInfo;
-    };
-
-    // Adds expandable section with additional details for an event
-    var addExpandedInfo = function addExpandedInfo(_ref2) {
-        var event = _ref2['event'],
-            campus = _ref2['campus'],
-            isTalk = _ref2['isTalk'],
-            isBreakout = _ref2['isBreakout'],
-            shouldBeHidden = _ref2['shouldBeHidden'],
-            hasExpandable = _ref2['hasExpandable'];
-
-        // If card has no expandable
-        if (!hasExpandable) {
-            return "";
-        } else {
-            // Add desc/options element, if event is talk or breakout session
-            var expandedInfo = '<div class=\'about ' + event.types.join(' ') + '\'>\n';
-            if (isTalk && !shouldBeHidden) {
-                expandedInfo += addTalkDesc(event);
-            } else if (isBreakout && !shouldBeHidden) {
-                expandedInfo += addBreakoutOptions(event);
-            } else if (!shouldBeHidden) {
-                expandedInfo += '<div class=\'inside grid\'>\n<div class=\'desc\'>\n';
-                expandedInfo += event.shortDesc.length ? '<p>' + event.shortDesc + '</p>\n' : '<p>No details currently available for this event.</p>';
-                expandedInfo += '<!--end desc--></div>\n<!--end inside grid--></div>\n';
-            }
-            expandedInfo += addMap({
-                'event': event,
-                'campus': campus
+   // Function to open event card if it is now
+   var openCurrentEvent = function openCurrentEvent() {
+      // Only run on agenda page
+      if ($('.agenda.spread').length) {
+         // Wait until agenda data has populated the DOM
+         if (!$('.agenda.spread .day.block').length) {
+            setTimeout(function () {
+               openCurrentEvent();
+            }, 200);
+         } else {
+            // Compute seconds from midnight January 1st 1970 to current time, unless test date is specified
+            var now = testDate ? testDate : new Date();
+            // Get all event cards
+            var $events = $('.agenda.spread .day.block .event');
+            // For each event, check if it is currently happening
+            $events.each(function (index, event) {
+               var dateRange = getDateRangeForEvent(event);
+               if (now > dateRange.start && now < dateRange.end) {
+                  // Open event card
+                  openCard($(event));
+               }
             });
-            expandedInfo += "<!-- end about--></div>";
-            return expandedInfo;
-        }
-    };
+         }
+      }
+   };
 
-    var addTalkDesc = function addTalkDesc(event) {
-        var component = "";
-        if (!event.speaker || event.speaker === "TBD" || event.debugHide) {
-            return component;
-        } else {
-            // Add inner grid container
-            component += '<div class=\'inside grid\'>\n';
-            // Add speaker image
-            component += '<div class=\'img\'><img src=\'../img/' + event.speakerImg + '\'></div>\n';
-            // Add speaker name
-            component += '<div class=\'img-header\'><h2>' + event.speaker + '</h2></div>\n';
-            // Add speaker home
-            component += '<div class=\'img-caption\'>' + event.speakerHome + '</div>\n';
-            // Add event description and link to speaker page
-            component += '<div class=\'desc\'>\n<p>' + event.shortDesc + '</p>\n<p>Visit her <a target=\'_blank\' href=\'' + event.speakerPage.URL + '\'>' + event.speakerPage.type + '</a> to learn more.</p>\n</div>\n';
-            component += '<!--end inside grid--></div>\n';
-            return component;
-        }
-    };
+   // Function for getting js Date objects describing the duration of an event
+   var getDateRangeForEvent = function getDateRangeForEvent(event) {
+      // Get the day, start, and end time for the event
+      var day = $(event).closest('.day.block').find('h1').html(),
+          times = $(event).find('span.time').html().split(' - '),
+          start = times[0],
+          end = times[1];
+      var dateRange = { start: 0, end: 0 };
+      // Generate Date objects for event's start and end time
+      switch (day) {
+         case 'Friday':
+            dateRange.start = new Date('January 12, 2018 ' + start);
+            dateRange.end = new Date('January 12, 2018 ' + end);
+            break;
+         case 'Saturday':
+            dateRange.start = new Date('January 13, 2018 ' + start);
+            dateRange.end = new Date('January 13, 2018 ' + end);
+            break;
+         default:
+            dateRange.start = new Date('January 14, 2018 ' + start);
+            dateRange.end = new Date('January 14, 2018 ' + end);
+      }
+      return dateRange;
+   };
 
-    var addBreakoutOptions = function addBreakoutOptions(event) {
-        var component = "";
-        if (!event.options || event.options.length === 0 || event.debugHide) {
-            return component;
-        } else if (event.name.match(/breakout session \d of \d/i)) {
-            // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
-            var snum = parseInt(event.name.match(/\d of \d/)[0].substr(0, 1));
-            // Add inner grid container
-            component += "<div class='inside grid'>\n<ul>\n";
-            for (var id in progData.breakouts) {
-                // Store current breakout session data
-                var s = progData.breakouts[id];
-                // If breakout session is included in current session number
-                if (s.sessions.includes(snum)) {
-                    // Add breakout session occurrences
-                    component += "<li>\n<div class='occurrences'>";
-                    for (var i = 1; i < 4; i++) {
-                        component += s.sessions.includes(i) ? '<span class=\'indicator true\'>' + i + '</span>' : '<span class=\'indicator false\'>' + i + '</span>';
-                    }
-                    // Add breakout session info
-                    component += "</div>\n<div class='details'><span class='session'>" + s.name + "</span>";
-                    // If breakout session has special property
-                    if (s.hasOwnProperty("special")) {
-                        component += "<span class='label";
-                        // If breakout session is labeled as only occurring once
-                        component += s.special.toLowerCase().includes("once") ? " once'>" : "'>";
-                        component += s.special + "</span>";
-                    }
-                }
-                component += "</li>\n";
+   // Function for populating the whole agenda via data read in from json
+   var addAgenda = function addAgenda() {
+      var agendaContent = "";
+      // Wait until agenda data has been loaded
+      if (!progData.schedule.length) {
+         setTimeout(function () {
+            addAgenda();
+         }, 200);
+      } else {
+         // For each day of the schedule
+         $(progData.schedule).each(function (i, day) {
+            // Check if day is last day
+            var isLast = i === progData.schedule.length - 1;
+            // Add day to the agenda
+            agendaContent += addDay({
+               'day': day,
+               'isLast': isLast
+            });
+         });
+         // Fill agenda
+         $('.agenda.spread').html(agendaContent);
+         // Add subnavigation
+         addSubnav();
+         // Add events legend
+         addLegend();
+         // Open current event
+         openCurrentEvent();
+      }
+   };
+
+   // Adds a day to the agenda
+   var addDay = function addDay(_ref) {
+      var day = _ref['day'],
+          isLast = _ref['isLast'];
+
+      // Define day of week and institution of the day
+      var dayCapt = day.day.charAt(0).toUpperCase() + day.day.slice(1);
+      var daySection = '<div class=\'' + day.day + ' day block\'>\n      <a name=\'' + day.day + '\'></a>\n      <h1>' + dayCapt + '</h1>\n      <span class=\'campus reference\'>' + day.college + '</span>\n      <div class=\'day table\'>\n';
+      // For each event in the day
+      $(day.events).each(function (i, eventObj) {
+         // Add event to the agenda
+         daySection += addEvent(eventObj, day.scollege);
+      });
+      daySection += "<!--end day table--></div>\n";
+      // Add separator except on last day
+      daySection += !isLast ? "<div class='separator'></div>" : "";
+      daySection += "<!--end day block--></div>\n";
+      return daySection;
+   };
+
+   // Adds an event card to a day
+   var addEvent = function addEvent(event, campus) {
+      // Determine if event has extra description for expandable info section
+      var hasExpandable = !event.debugHide && (event.shortDesc.length || event.options);
+      // Add event card
+      var eventCard = '<div class=\'event ' + event.sname;
+      eventCard += hasExpandable ? ' expandable\'>' : '\'>';
+      // Add item name, time, place, and type designations
+      eventCard += '<div class=\'card-head\'>' + addBasicInfo(event);
+      // Condtionally add expandable arrow indicator
+      eventCard += hasExpandable ? '<div class=\'expandable arrow\'><i class="fa fa-chevron-right" aria-hidden="true"></i></div>\n</div>' : '</div>';
+      // Add expandable section with additional details for event
+      eventCard += addExpandedInfo({
+         'event': event,
+         'campus': campus,
+         'isTalk': event.types.includes("talk"),
+         'isBreakout': event.types.includes("breakout"),
+         'shouldBeHidden': event.debugHide || false,
+         'hasExpandable': hasExpandable
+      });
+
+      eventCard += '<!--end event card--></div>\n';
+      return eventCard;
+   };
+
+   // Adds name, time, place, and type designations for an event
+   var addBasicInfo = function addBasicInfo(event) {
+      // Add container for event types
+      var basicInfo = '<div class=\'type bubbles\'>\n';
+      $(event.types).each(function (i, eType) {
+         // If event type is not yet part of legend array
+         if (!eventTypes.includes(eType)) {
+            // Add it
+            eventTypes.push(eType);
+         }
+         // Mark what type of event this is with span bubble element
+         basicInfo += '<span class=\'' + eType + '\'></span>\n';
+      });
+      basicInfo += '<!--end type bubbles--></div>\n<div class=\'info\'>';
+      // Add event name
+      basicInfo += '<span class=\'name ' + event.sname + '\'>' + event.name;
+      // Mark if event is Optional
+      basicInfo += !event.required ? ' <span class=\'optional\'>(Optional)</span>' : '';
+      basicInfo += '<!--end name span--></span>\n';
+      // Add event time
+      basicInfo += '<span class=\'time ' + event.sname + '\'>' + event.timeStart + ' - ' + event.timeEnd + '</span>';
+      // Add event location
+      basicInfo += '<span class=\'place ' + event.sname + '\'>' + event.place + '</span>';
+      basicInfo += '<!--end info--></div>\n';
+      return basicInfo;
+   };
+
+   // Adds expandable section with additional details for an event
+   var addExpandedInfo = function addExpandedInfo(_ref2) {
+      var event = _ref2['event'],
+          campus = _ref2['campus'],
+          isTalk = _ref2['isTalk'],
+          isBreakout = _ref2['isBreakout'],
+          shouldBeHidden = _ref2['shouldBeHidden'],
+          hasExpandable = _ref2['hasExpandable'];
+
+      // If card has no expandable
+      if (!hasExpandable) {
+         return "";
+      } else {
+         // Add desc/options element, if event is talk or breakout session
+         var expandedInfo = '<div class=\'about ' + event.types.join(' ') + '\'>\n';
+         if (isTalk && !shouldBeHidden) {
+            expandedInfo += addTalkDesc(event);
+         } else if (isBreakout && !shouldBeHidden) {
+            expandedInfo += addBreakoutOptions(event);
+         } else if (!shouldBeHidden) {
+            expandedInfo += '<div class=\'inside grid\'>\n<div class=\'desc\'>\n<h4>Description</h4>\n';
+            expandedInfo += event.shortDesc.length ? '<p>' + event.shortDesc + '</p>\n' : '<p>No details currently available for this event.</p>';
+            expandedInfo += '<!--end desc--></div>\n<!--end inside grid--></div>\n';
+         }
+         expandedInfo += addMap({
+            'event': event,
+            'campus': campus
+         });
+         expandedInfo += "<!-- end about--></div>";
+         return expandedInfo;
+      }
+   };
+
+   var addTalkDesc = function addTalkDesc(event) {
+      var component = "";
+      if (!event.speaker || event.speaker === "TBD" || event.debugHide) {
+         return component;
+      } else {
+         // Add inner grid container
+         component += '<div class=\'inside grid\'>\n';
+         // Add speaker image
+         component += '<div class=\'img\'><img src=\'../img/' + event.speakerImg + '\'></div>\n';
+         // Add speaker name
+         component += '<div class=\'img-header\'><h2>' + event.speaker + '</h2></div>\n';
+         // Add speaker home
+         component += '<div class=\'img-caption\'>' + event.speakerHome + '</div>\n';
+         // Add event description and link to speaker page
+         component += '<div class=\'desc\'>\n<p>' + event.shortDesc + '</p>\n<p>Visit her <a target=\'_blank\' href=\'' + event.speakerPage.URL + '\'>' + event.speakerPage.type + '</a> to learn more.</p>\n</div>\n';
+         component += '<!--end inside grid--></div>\n';
+         return component;
+      }
+   };
+
+   // Adds parallel breakout options to an event
+   var addBreakoutOptions = function addBreakoutOptions(event) {
+      var component = "";
+      if (!event.options || event.options.length === 0 || event.debugHide) {
+         return component;
+      } else if (event.name.match(/breakout session \d of \d/i)) {
+         // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
+         var snum = parseInt(event.name.match(/\d of \d/)[0].substr(0, 1));
+         // Add inner grid container
+         component += "<div class='inside grid'>\n<ul>\n";
+         for (var id in progData.breakouts) {
+            // Store current breakout session data
+            var breakout = progData.breakouts[id];
+            // If breakout session is included in current session number
+            if (breakout.sessions.includes(snum)) {
+               // Add breakout session occurrence
+               component += addBreakoutDetails(breakout);
             }
-            component += "</ul>\n</div>\n";
-            return component;
-        } else if (event.name.match(/career/i)) {
-            // Add inner grid container
-            component += "<div class='inside grid'>\n<ul>\n";
-            for (var _id in progData.careerBreakouts) {
-                // Store current breakout session data
-                var _s = progData.careerBreakouts[_id];
-                // Add breakout session info
-                component += '<li>\n<div class=\'details\'><span class=\'session\'>' + _s.name + '</span>';
-                component += "</li>\n";
-            }
-            component += "</ul>\n</div>\n";
-            return component;
-        }
-    };
+         }
+         component += "</ul>\n</div>\n";
+         return component;
+      } else if (event.name.match(/career/i)) {
+         // Add inner grid container
+         component += "<div class='inside grid'>\n<ul>\n";
+         for (var _id in progData.careerBreakouts) {
+            // Store current breakout session data
+            var s = progData.careerBreakouts[_id];
+            // Add breakout session info
+            component += '<li>\n<div class=\'details\'><span class=\'session\'>' + s.name + '</span>';
+            component += "</li>\n";
+         }
+         component += "</ul>\n</div>\n";
+         return component;
+      }
+   };
 
-    // Build and insert legend of event types using populated eventTypes array
-    var addLegend = function addLegend() {
-        var legend = "";
-        // Sort event types alphabetically
-        eventTypes.sort();
-        // For each type of event
-        $(eventTypes).each(function (i, eType) {
-            // Produce proper (readable) name for event type
-            var pn = eType;
-            // For certain events, proper name is specially formatted
-            if (eType == "breakout") {
-                pn = "Breakout Session";
-            } else if (eType == "free") {
-                pn = "Free Time";
-            } else if (eType == "misc") {
-                pn = "Misc/Special";
-            } else if (eType == "shuttle") {
-                pn = "Shuttle Run";
-            } else {
-                // For all other events, just capitalize the first letter of non-proper name
-                pn = pn.charAt(0).toUpperCase() + pn.slice(1);
-            }
-            legend += '<div><span class=\'' + eType + '\'></span>' + pn + '</div>\n';
-        });
-        // Fill legend
-        $('.event.types.legend').html(legend);
-    };
+   // Adds an individual breakout option
+   var addBreakoutDetails = function addBreakoutDetails(breakout) {
+      // Determine if breakout has extra description or panelist list for
+      // expandable info section
+      var hasExpandable = !breakout.debugHide && (breakout.participants.length || breakout.desc);
+      // Breakout session container
+      var breakoutCard = '<li class=\'breakout';
+      breakoutCard += hasExpandable ? ' expandable\'>' : '\'>';
+      // Breakout session title
+      breakoutCard += '<div class=\'text\'><h4>' + breakout.name + '</h4>';
+      // Breakout session properties/assignment section
+      breakoutCard += '<div class=\'properties\'>';
+      // Label all occurences of breakout session with numbers
+      breakoutCard += "<div class='occurrences'>\n<span class='label'>Offered in Sessions:</span>\n";
+      for (var i = 1; i < 4; i++) {
+         breakoutCard += breakout.sessions.includes(i) ? '<span class=\'indicator true\'>' + i + '</span>' : '<span class=\'indicator false\'>' + i + '</span>';
+      }
+      breakoutCard += "</div>";
+      // Add room assignment
+      breakoutCard += '<span class=\'room label\'>Room ' + breakout.roomname.toUpperCase() + ' (' + breakout.room + ')</span>';
+      // If breakout session has special property
+      if (breakout.hasOwnProperty("special")) {
+         breakoutCard += "<span class='special label";
+         // If breakout session is labeled as only occurring once
+         breakoutCard += breakout.special.toLowerCase().includes("once") ? " once'>" : "'>";
+         breakoutCard += breakout.special + '</span>';
+      }
+      breakoutCard += "</div>";
+      // Condtionally add expandable arrow indicator
+      breakoutCard += hasExpandable ? '</div><div class=\'expandable arrow\'><i class="fa fa-chevron-right" aria-hidden="true"></i></div>\n' : '</div>';
+      // Add description and panelist list
+      breakoutCard += addPanelistList({
+         'breakout': breakout,
+         'hasExpandable': hasExpandable
+      });
+      // End breakout session item
+      breakoutCard += "<!--end breakout session--></li>\n<span class='list break'></span>";
+      return breakoutCard;
+   };
 
-    // Clicking on agenda event type bubble
-    $('.agenda.spread').on('click', '.type.bubbles span', function (e) {
-        if ($(window).width() <= 700) {
-            if ($(e.target).hasClass('focused')) {
-                $(e.target).removeClass('focused');
-            } else {
-                $(e.target).addClass('focused');
-            }
-        }
-    });
+   // Adds panelist list to breakout session
+   var addPanelistList = function addPanelistList(_ref3) {
+      var breakout = _ref3['breakout'],
+          hasExpandable = _ref3['hasExpandable'];
 
-    // On click anywhere outside event type bubble on mobile, close bubble
-    $('html').click(function (e) {
-        if (!$(e.target).parents('.type.bubbles').length && $(window).width() <= 700) {
-            $('.type.bubbles span').removeClass('focused');
-        }
-    });
+      // If card has no expandable
+      if (!hasExpandable) {
+         return "";
+      } else {
+         // Add desc/options element, if event is talk or breakout session
+         var panelistInfo = '<div class=\'panelist list\'>\n\n            testytesttest';
+         panelistInfo += '<!--end panelist list--></div>\n';
+         return panelistInfo;
+      }
+   };
 
-    // Function to open event card details
-    var openCard = function openCard(card) {
-        if (card.hasClass('expanded')) {
-            card.removeClass('expanded');
-            card.find('.about').slideUp();
-        } else if (card.hasClass('expandable')) {
-            card.addClass('expanded');
-            card.find('.about').slideDown();
-        }
-    };
+   // Build and insert legend of event types using populated eventTypes array
+   var addLegend = function addLegend() {
+      var legend = "";
+      // Sort event types alphabetically
+      eventTypes.sort();
+      // For each type of event
+      $(eventTypes).each(function (i, eType) {
+         // Produce proper (readable) name for event type
+         var pn = eType;
+         // For certain events, proper name is specially formatted
+         if (eType == "breakout") {
+            pn = "Breakout Session";
+         } else if (eType == "free") {
+            pn = "Free Time";
+         } else if (eType == "misc") {
+            pn = "Misc/Special";
+         } else if (eType == "shuttle") {
+            pn = "Shuttle Run";
+         } else {
+            // For all other events, just capitalize the first letter of non-proper name
+            pn = pn.charAt(0).toUpperCase() + pn.slice(1);
+         }
+         legend += '<div><span class=\'' + eType + '\'></span>' + pn + '</div>\n';
+      });
+      // Fill legend
+      $('.event.types.legend').html(legend);
+   };
 
-    // Clicking agenda event will open event's details
-    $('.agenda.spread').on('click', '.event', function (e) {
-        var $eventCard = $(e.target).closest('.event');
-        openCard($eventCard);
-    });
+   // Clicking on agenda event type bubble
+   $('.agenda.spread').on('click', '.type.bubbles span', function (e) {
+      if ($(window).width() <= 700) {
+         if ($(e.target).hasClass('focused')) {
+            $(e.target).removeClass('focused');
+         } else {
+            $(e.target).addClass('focused');
+         }
+      }
+   });
+
+   // On click anywhere outside event type bubble on mobile, close bubble
+   $('html').click(function (e) {
+      if (!$(e.target).parents('.type.bubbles').length && $(window).width() <= 700) {
+         $('.type.bubbles span').removeClass('focused');
+      }
+   });
+
+   // Function to open event card details
+   var openCard = function openCard(card, target) {
+      if (card.hasClass('expanded')) {
+         card.removeClass('expanded');
+         target.slideUp();
+      } else if (card.hasClass('expandable')) {
+         card.addClass('expanded');
+         target.slideDown();
+      }
+   };
+
+   // Clicking agenda event will open event's details
+   $('.agenda.spread').on('click', '.event .card-head', function (e) {
+      var $eventCard = $(e.target).closest('.event');
+      var $target = $eventCard.find('.about');
+      openCard($eventCard, $target);
+   });
+
+   // Clicking breakout session event will open session's details
+   $('.agenda.spread').on('click', '.breakout.expandable', function (e) {
+      console.error('CLICKED!');
+      var $breakoutCard = $(e.target).closest('.breakout.expandable');
+      var $target = $breakoutCard.find('.panelist.list');
+      openCard($breakoutCard, $target);
+   });
 }
 
 /* End of agenda.js */
@@ -1044,7 +1098,7 @@ $('.device.word').each(function () {
 	}
 	$(this).html(word);
 });
-'use strict';
+"use strict";
 
 /**
  * maps.js
@@ -1056,11 +1110,26 @@ $('.device.word').each(function () {
  * @version   1.0.0
  */
 
-var addMap = function addMap(_ref) {
-  var event = _ref['event'],
-      campus = _ref['campus'];
+var pomMap = "../img/pom-map-2000.jpg",
+    hmcMap = "../img/hmc-map-2000.jpg",
+    cppMap = "../img/cpp-map-2000.jpg";
 
-  return '<div class=\'map\'>' + campus + '</div>';
+var addMap = function addMap(_ref) {
+    var event = _ref['event'],
+        campus = _ref['campus'];
+
+    var mapbg = void 0;
+    switch (campus) {
+        case "Pomona":
+            mapbg = pomMap;
+            break;
+        case "Harvey Mudd":
+            mapbg = hmcMap;
+            break;
+        default:
+            mapbg = cppMap;
+    }
+    return "\n    <h4>Location</h4>\n    <div class='map block'>\n        <img class='map image' src='" + mapbg + "' />\n        <div class='location pin hover area' style='top: 30%; left: 40%;'>\n            <div class='wrapper'>\n                <div class='shadow'></div>\n                <div class='pin'></div>\n                <div class=\"icon\"></div>\n            </div>\n        </div>\n\n    </div>";
 };
 'use strict';
 
