@@ -13,32 +13,33 @@ const pomMap = "../img/pom-map-2000.jpg",
       cppMap = "../img/cpp-map-2000.jpg";
 
 
-const addMap = ({
-    'event': event,
-    'campus': campus
-}) => {
-    let mapbg;
-    switch(campus) {
-        case "Pomona":
+      const addMap = ({
+         'event': event,
+         'campus': campus
+      }) => {
+         return ``;
+         let mapbg;
+         switch(campus) {
+            case "Pomona":
             mapbg = pomMap;
             break;
-        case "Harvey Mudd":
+            case "Harvey Mudd":
             mapbg = hmcMap;
             break;
-        default:
+            default:
             mapbg = cppMap;
-    }
-    return `
-    <h4>Location</h4>
-    <div class='map block'>
-        <img class='map image' src='${mapbg}' />
-        <div class='location pin hover area' style='top: 30%; left: 40%;'>
-            <div class='wrapper'>
-                <div class='shadow'></div>
-                <div class='pin'></div>
-                <div class="icon"></div>
-            </div>
-        </div>
+         }
+         return `
+         <h4>Location</h4>
+         <div class='map block'>
+         <img class='map image' src='${mapbg}' />
+         <div class='location pin hover area' style='top: 30%; left: 40%;'>
+         <div class='wrapper'>
+         <div class='shadow'></div>
+         <div class='pin'></div>
+         <div class="icon"></div>
+         </div>
+         </div>
 
-    </div>`;
-};
+         </div>`;
+      };

@@ -570,6 +570,7 @@ if ($('nav.agenda').length) {
          } else if (!shouldBeHidden) {
             expandedInfo += '<div class=\'inside grid\'>\n<div class=\'desc\'>\n<h4>Description</h4>\n';
             expandedInfo += event.shortDesc.length ? '<p>' + event.shortDesc + '</p>\n' : '<p>No details currently available for this event.</p>';
+            expandedInfo += event.hasOwnProperty("participants") ? addPanelistsTable(event) : '';
             expandedInfo += '<!--end desc--></div>\n<!--end inside grid--></div>\n';
          }
          expandedInfo += addMap({
@@ -606,31 +607,21 @@ if ($('nav.agenda').length) {
       var component = "";
       if (!event.options || event.options.length === 0 || event.debugHide) {
          return component;
-      } else if (event.name.match(/breakout session \d of \d/i)) {
+      } else if (event.name.match(/\d of \d/i)) {
+         // Remember type of breakouts
+         var breakouts = event.name.match(/career/i) ? progData.careerBreakouts : progData.breakouts;
          // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
          var snum = parseInt(event.name.match(/\d of \d/)[0].substr(0, 1));
          // Add inner grid container
          component += "<div class='inside grid'>\n<ul>\n";
-         for (var id in progData.breakouts) {
+         for (var id in breakouts) {
             // Store current breakout session data
-            var breakout = progData.breakouts[id];
+            var breakout = breakouts[id];
             // If breakout session is included in current session number
             if (breakout.sessions.includes(snum)) {
                // Add breakout session occurrence
                component += addBreakoutDetails(breakout);
             }
-         }
-         component += "</ul>\n</div>\n";
-         return component;
-      } else if (event.name.match(/career/i)) {
-         // Add inner grid container
-         component += "<div class='inside grid'>\n<ul>\n";
-         for (var _id in progData.careerBreakouts) {
-            // Store current breakout session data
-            var s = progData.careerBreakouts[_id];
-            // Add breakout session info
-            component += '<li>\n<div class=\'details\'><span class=\'session\'>' + s.name + '</span>';
-            component += "</li>\n";
          }
          component += "</ul>\n</div>\n";
          return component;
@@ -656,7 +647,9 @@ if ($('nav.agenda').length) {
       }
       breakoutCard += "</div>";
       // Add room assignment
-      breakoutCard += '<span class=\'room label\'>Room ' + breakout.roomname.toUpperCase() + ' (' + breakout.room + ')</span>';
+      breakoutCard += '<span class=\'room label\'>';
+      breakoutCard += breakout.roomname.length == 1 ? 'Room ' + breakout.roomname : breakout.roomname;
+      breakoutCard += breakout.hasOwnProperty("room") ? ' (' + breakout.room + ')</span>' : '</span>';
       // If breakout session has special property
       if (breakout.hasOwnProperty("special")) {
          breakoutCard += "<span class='special label";
@@ -686,11 +679,25 @@ if ($('nav.agenda').length) {
       if (!hasExpandable) {
          return "";
       } else {
-         // Add desc/options element, if event is talk or breakout session
-         var panelistInfo = '<div class=\'panelist list\'>\n\n            testytesttest';
-         panelistInfo += '<!--end panelist list--></div>\n';
-         return panelistInfo;
+         var panelInfo = '<div class=\'panelist list container\'>';
+         panelInfo += breakout.desc.length ? '<p>' + breakout.desc + '</p>' : '';
+         panelInfo += addPanelistsTable(breakout) + '\n<!--end panelist list container--></div>\n';
+         return panelInfo;
       }
+   };
+
+   // Add specifically the table of panelists
+   var addPanelistsTable = function addPanelistsTable(event) {
+      var moderators = event.leaders;
+      var panelistTable = '<div class=\'panelist table\'>\n';
+      panelistTable += event.participants.length > 1 ? '<p class=\'leader legend\'><i class="fa fa-star leader-label" aria-hidden="true"></i> = Moderator/Leader</p>\n' : '';
+      panelistTable += '<div class=\'panelist info\'>';
+      panelistTable += event.participants.map(function (participant) {
+         var leadLabel = event.participants.length > 1 && moderators.includes(participant.name) ? '<i class="fa fa-star leader-label" aria-hidden="true"></i>' : '';
+         return '<span class=\'name\'>' + leadLabel + ' ' + participant.name + '</span><span class=\'role\'>' + participant.role + ' at ' + participant.affiliation + '</span>';
+      }).join('</div><div class=\'panelist info\'>');
+      panelistTable += '</div>\n<!--end panelist table--></div>';
+      return panelistTable;
    };
 
    // Build and insert legend of event types using populated eventTypes array
@@ -759,7 +766,6 @@ if ($('nav.agenda').length) {
 
    // Clicking breakout session event will open session's details
    $('.agenda.spread').on('click', '.breakout.expandable', function (e) {
-      console.error('CLICKED!');
       var $breakoutCard = $(e.target).closest('.breakout.expandable');
       var $target = $breakoutCard.find('.panelist.list');
       openCard($breakoutCard, $target);
@@ -1115,21 +1121,22 @@ var pomMap = "../img/pom-map-2000.jpg",
     cppMap = "../img/cpp-map-2000.jpg";
 
 var addMap = function addMap(_ref) {
-    var event = _ref['event'],
-        campus = _ref['campus'];
+   var event = _ref['event'],
+       campus = _ref['campus'];
 
-    var mapbg = void 0;
-    switch (campus) {
-        case "Pomona":
-            mapbg = pomMap;
-            break;
-        case "Harvey Mudd":
-            mapbg = hmcMap;
-            break;
-        default:
-            mapbg = cppMap;
-    }
-    return "\n    <h4>Location</h4>\n    <div class='map block'>\n        <img class='map image' src='" + mapbg + "' />\n        <div class='location pin hover area' style='top: 30%; left: 40%;'>\n            <div class='wrapper'>\n                <div class='shadow'></div>\n                <div class='pin'></div>\n                <div class=\"icon\"></div>\n            </div>\n        </div>\n\n    </div>";
+   return "";
+   var mapbg = void 0;
+   switch (campus) {
+      case "Pomona":
+         mapbg = pomMap;
+         break;
+      case "Harvey Mudd":
+         mapbg = hmcMap;
+         break;
+      default:
+         mapbg = cppMap;
+   }
+   return "\n         <h4>Location</h4>\n         <div class='map block'>\n         <img class='map image' src='" + mapbg + "' />\n         <div class='location pin hover area' style='top: 30%; left: 40%;'>\n         <div class='wrapper'>\n         <div class='shadow'></div>\n         <div class='pin'></div>\n         <div class=\"icon\"></div>\n         </div>\n         </div>\n\n         </div>";
 };
 'use strict';
 

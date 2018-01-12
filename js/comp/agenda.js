@@ -213,6 +213,7 @@ if ($('nav.agenda').length) {
          } else if (!shouldBeHidden) {
             expandedInfo += `<div class='inside grid'>\n<div class='desc'>\n<h4>Description</h4>\n`;
             expandedInfo += (event.shortDesc.length) ? `<p>${event.shortDesc}</p>\n` : `<p>No details currently available for this event.</p>`;
+            expandedInfo += event.hasOwnProperty("participants") ? addPanelistsTable(event) : ``;
             expandedInfo += `<!--end desc--></div>\n<!--end inside grid--></div>\n`;
          }
          expandedInfo += addMap({
@@ -249,31 +250,21 @@ if ($('nav.agenda').length) {
       let component = "";
       if (!event.options || event.options.length === 0 || event.debugHide) {
          return component;
-      } else if (event.name.match(/breakout session \d of \d/i)) {
+      } else if (event.name.match(/\d of \d/i)) {
+         // Remember type of breakouts
+         let breakouts = event.name.match(/career/i) ? progData.careerBreakouts : progData.breakouts;
          // Remember current breakout session number by extracting from session name (i.e. "Breakout Session 1 of 3" => 1)
          let snum = parseInt(event.name.match(/\d of \d/)[0].substr(0, 1));
          // Add inner grid container
          component += "<div class='inside grid'>\n<ul>\n";
-         for (let id in progData.breakouts) {
+         for (let id in breakouts) {
             // Store current breakout session data
-            let breakout = progData.breakouts[id];
+            let breakout = breakouts[id];
             // If breakout session is included in current session number
             if (breakout.sessions.includes(snum)) {
                // Add breakout session occurrence
                component += addBreakoutDetails(breakout);
             }
-         }
-         component += "</ul>\n</div>\n";
-         return component;
-      } else if (event.name.match(/career/i)) {
-         // Add inner grid container
-         component += "<div class='inside grid'>\n<ul>\n";
-         for (let id in progData.careerBreakouts) {
-            // Store current breakout session data
-            let s = progData.careerBreakouts[id];
-            // Add breakout session info
-            component += `<li>\n<div class='details'><span class='session'>${s.name}</span>`;
-            component += "</li>\n";
          }
          component += "</ul>\n</div>\n";
          return component;
@@ -299,7 +290,9 @@ if ($('nav.agenda').length) {
       }
       breakoutCard += "</div>";
       // Add room assignment
-      breakoutCard += `<span class='room label'>Room ${breakout.roomname.toUpperCase()} (${breakout.room})</span>`;
+      breakoutCard += `<span class='room label'>`;
+      breakoutCard += breakout.roomname.length == 1 ? `Room ${breakout.roomname}`: breakout.roomname;
+      breakoutCard += breakout.hasOwnProperty("room") ? ` (${breakout.room})</span>` : `</span>`;
       // If breakout session has special property
       if (breakout.hasOwnProperty("special")) {
          breakoutCard += "<span class='special label";
@@ -329,12 +322,25 @@ if ($('nav.agenda').length) {
       if (!hasExpandable) {
          return "";
       } else {
-         // Add desc/options element, if event is talk or breakout session
-         let panelistInfo = `<div class='panelist list'>\n
-            testytesttest`;
-         panelistInfo += `<!--end panelist list--></div>\n`;
-         return panelistInfo;
+         let panelInfo = `<div class='panelist list container'>`;
+         panelInfo += breakout.desc.length ? `<p>${breakout.desc}</p>` : ``;
+         panelInfo += `${addPanelistsTable(breakout)}\n<!--end panelist list container--></div>\n`;
+         return panelInfo;
       }
+   };
+
+   // Add specifically the table of panelists
+   const addPanelistsTable = (event) => {
+      let moderators = event.leaders;
+      let panelistTable = `<div class='panelist table'>\n`;
+      panelistTable += event.participants.length > 1 ? `<p class='leader legend'><i class="fa fa-star leader-label" aria-hidden="true"></i> = Moderator/Leader</p>\n` : ``;
+      panelistTable += `<div class='panelist info'>`;
+      panelistTable += event.participants.map((participant) => {
+         let leadLabel = event.participants.length > 1 && moderators.includes(participant.name) ? `<i class="fa fa-star leader-label" aria-hidden="true"></i>` : ``;
+         return `<span class='name'>${leadLabel} ${participant.name}</span><span class='role'>${participant.role} at ${participant.affiliation}</span>`;
+      }).join(`</div><div class='panelist info'>`);
+      panelistTable += `</div>\n<!--end panelist table--></div>`;
+      return panelistTable;
    };
 
    // Build and insert legend of event types using populated eventTypes array
@@ -403,7 +409,6 @@ if ($('nav.agenda').length) {
 
    // Clicking breakout session event will open session's details
    $('.agenda.spread').on('click', '.breakout.expandable', (e) => {
-      console.error('CLICKED!');
       let $breakoutCard = $(e.target).closest('.breakout.expandable');
       let $target = $breakoutCard.find('.panelist.list');
       openCard($breakoutCard, $target);

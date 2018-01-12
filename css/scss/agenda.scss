@@ -64,6 +64,19 @@ $event-attrs: (
 		margin-bottom: 3em;
 		border-bottom: 0.3em solid $grey-light;
 	}
+	.leader.legend {
+		margin-top: 0;
+	}
+	.leader-label {
+		bottom: 1px;
+		color: $pink-salmon;
+		font-size: 0.8em;
+		padding-right: 0.2em;
+		position: relative;
+	}
+	.name .leader-label {
+		margin-left: -1.4em;
+	}
 	.expandable.arrow {
 		@include respond-to('xlarge') {
 			color: rgba($grey-light, 0.6);
@@ -286,6 +299,33 @@ $event-attrs: (
 				opacity: 0;
 				order: 4;
 				transition: opacity linear 1.5s;
+				.panelist.table {
+					display: flex;
+					flex-wrap: wrap;
+					margin-bottom: 2em;
+					.panelist.info {
+						display: grid;
+						grid-template-columns: 1fr 1.5fr;
+						align-items: center;
+						padding: 0.4em 1em 0.4em 1.6em;
+						width: 100%;
+						transition: background linear 0.3s;
+						&:nth-of-type(2n) {
+							background-color: darken($grey-lightest, 1%);
+						}
+						span {
+							@include respond-to('xlarge') {
+								font-size: 1.1em;
+							}
+							@include respond-to('at500') {
+								font-size: 1em;
+							}
+							&:first-child {
+								margin-right: 10px;
+							}
+						}
+					}
+				}
 				&.talk .inside.grid {
 					@include respond-to('xlarge') {
 						grid-template-areas:
@@ -443,10 +483,13 @@ $event-attrs: (
 					}
 					li {
 						@include respond-to('xlarge') {
-							padding: 0.8em 1.4em;
+							padding: 0.8em 0.5em 0.8em 1.4em;
 						}
 						@include respond-to('at1000') {
-							padding: 0.6em 0;
+							padding: 0.6em 0.5em 0.6em 1em;
+						}
+						@include respond-to('at500') {
+							margin: 0 0 0 -1em;
 						}
 						align-items: center;
 						display: flex;
@@ -454,6 +497,12 @@ $event-attrs: (
 						list-style: none;
 						margin: 0;
 						transition: all linear 0.3s;
+						&:hover,
+						&:focus {
+							.panelist.list.container .panelist.table .panelist.info:nth-of-type(2n) {
+								background-color: lighten($grey-light, 13%);
+							}
+						}
 						&.expandable:hover {
 							cursor: pointer;
 							background: $grey-lightest;
@@ -462,7 +511,7 @@ $event-attrs: (
 							}
 						}
 						&.expanded {
-							.panelist.list {
+							.panelist.list.container {
 								opacity: 1;
 							}
 							.expandable.arrow {
@@ -473,8 +522,7 @@ $event-attrs: (
 						}
 						.expandable.arrow {
 							margin-top: -2px;
-							width: 8%;
-							text-align: right;
+							width: 5%;
 						}
 						h4 {
 							@include respond-to('at1000') {
@@ -486,7 +534,7 @@ $event-attrs: (
 							margin: 0 0 0.6em;
 						}
 						.text {
-							width: 92%;
+							width: 95%;
 						}
 						.special.label {
 							color: $grey-light;
@@ -521,11 +569,15 @@ $event-attrs: (
 								@include respond-to('at1000') {
 									margin: 0.3em 0;
 									font-size: 1.1em;
+									font-weight: 600;
 								}
 							}
 							.occurrences {
 								@include respond-to('at1000') {
 									margin-top: 1em;
+								}
+								@include respond-to('at500') {
+									margin-right: 0;
 								}
 								display: flex;
 								margin-right: 10px;
@@ -534,6 +586,9 @@ $event-attrs: (
 								.label {
 									@include respond-to('at1000') {
 										font-size: 1.1em;
+									}
+									@include respond-to('at400') {
+										font-size: 1em;
 									}
 									margin-right: 6px;
 								}
@@ -562,53 +617,27 @@ $event-attrs: (
 								}
 							}
 						}
-						.panelist.list {
+						.panelist.list.container {
+							@include respond-to('xlarge') {
+								margin: 1em;
+							}
+							@include respond-to('at500') {
+								margin: 1em 0;
+							}
 							display: none;
 							margin: 1em;
 							opacity: 0;
 							order: 4;
 							transition: opacity linear 1.5s;
 							width: 100%;
+							p {
+								margin-top: 1em;
+							}
+							.panelist.table {
+								margin-bottom: 0;
+							}
 						}
 					}
-					// 	.desc {
-					// 		@include respond-to('xlarge') {
-					// 			order: 2;
-					// 			margin-right: 10%;
-					// 			padding-left: 3%;
-					// 			width: 65%;
-					// 		}
-					// 		@include respond-to('at1000') {
-					// 			order: 1;
-					// 			padding-left: 0;
-					// 			padding-right: 5%;
-					// 		}
-					// 		@include respond-to('at600') {
-					// 			padding-right: 0;
-					// 			width: 100%;
-					// 		}
-					// 		h2 {
-					// 			color: map-get($event-attrs, talk);
-					// 			font-size: 1em;
-					// 			margin: 1.5em 0 1em;
-					// 			em {
-					// 				@include respond-to('at600') {
-					// 					display: block;
-					// 				}
-					// 				color: $grey-medium;
-					// 				font-weight: normal;
-					// 				text-transform: none;
-					// 			}
-					// 		}
-					// 		p {
-					// 			@include respond-to('at1000') {
-					// 				margin: 1em 0;
-					// 			}
-					// 			@include respond-to('at600') {
-					// 				margin: 1em 0 0;
-					// 			}
-					// 		}
-					// 	}
 				}
 				&.misc {
 					li {
