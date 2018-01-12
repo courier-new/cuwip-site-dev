@@ -526,10 +526,14 @@ $event-attrs: (
 						}
 						h4 {
 							@include respond-to('at1000') {
+								font-size: 1.3em;
+								line-height: 1.3em;
 								margin-bottom: 0.3em;
 							}
-							font-size: 1.3em;
-							line-height: 1.3em;
+							@include respond-to('at500') {
+								font-size: 1.1em;
+								line-height: 1.1em;
+							}
 							color: $grey-medium;
 							margin: 0 0 0.6em;
 						}

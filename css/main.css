@@ -1238,13 +1238,17 @@ nav.agenda.nav {
             margin-top: -2px;
             width: 5%; }
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li h4 {
-            font-size: 1.3em;
-            line-height: 1.3em;
             color: #91878d;
             margin: 0 0 0.6em; }
             @media (max-width: 1000px) {
               .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li h4 {
+                font-size: 1.3em;
+                line-height: 1.3em;
                 margin-bottom: 0.3em; } }
+            @media (max-width: 500px) {
+              .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li h4 {
+                font-size: 1.1em;
+                line-height: 1.1em; } }
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li .text {
             width: 95%; }
           .page.about.agenda .inner > .text.block .day.table > .event .about.breakout:not(.misc) li .special.label {
