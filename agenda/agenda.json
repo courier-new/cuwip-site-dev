@@ -154,7 +154,7 @@
 				{
 					"name": "Dr. Sophia Merrifield",
 					"role": "Postdoctoral Scholar/Physical Oceanographer",
-					"affiliation": "Scripps Institution of Oceanography/UCSD"
+					"affiliation": "Scripps Institution of Oceanography, UCSD"
 				}
 			],
 			"leaders": ["Dr. Jorge Moreno"]
@@ -315,6 +315,11 @@
 					"name": "Dr. Kathryne Woodle",
 					"role": "Education and Diversity Program Manager",
 					"affiliation": "APS"
+				},
+				{
+					"name": "Kevin Dwyer",
+					"role": "High School Teacher/Master Teacher",
+					"affiliation": "Cypress High School/STEP UP 4 Women"
 				}
 			],
 			"leaders": ["Dr. Kathryne Woodle"]
@@ -326,56 +331,223 @@
 			"sessions": [1, 2, 3],
 			"roomname": "Andromeda",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Dr. Adrian Ponce",
+					"role": "Education Office",
+					"affiliation": "NASA JPL"
+				},
+				{
+					"name": "Dr. Minta Akin",
+					"role": "Physics and Chemistry Research",
+					"affiliation": "Lawrence Livermore National Laboratory"
+				},
+				{
+					"name": "Dr. Sabrina Feldman",
+					"role": "Program Manager",
+					"affiliation": "NASA JPL"
+				},
+				{
+					"name": "Michelle Roth",
+					"role": "Human Resources",
+					"affiliation": "NASA JPL"
+				}
+			],
+			"leaders": ["Dr. Adrian Ponce"]
 		},
 		"pgs": {
 			"name": "Is physics grad school for me?",
 			"sessions": [1, 2, 3],
 			"roomname": "England Evans Board Room",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Dr. Jordana Blacksberg",
+					"role": "Planetary Science",
+					"affiliation": "NASA JPL"
+				},
+				{
+					"name": "Dr. Pat Burchat ",
+					"role": "Physics Professor",
+					"affiliation": "Stanford University"
+				},
+				{
+					"name": "Dr. Marcia Burton",
+					"role": "Scientist",
+					"affiliation": "NASA JPL"
+				},
+				{
+					"name": "Elizabeth Mills",
+					"role": "Bio/Neurophysics",
+					"affiliation": "UCLA"
+				}
+			],
+			"leaders": ["Dr. Jordana Blacksberg"]
 		},
 		"npgs": {
 			"name": "Is non-physics grad school for me?",
 			"sessions": [1, 2],
 			"roomname": "Perseus",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Dr. Winny Dong",
+					"role": "Materials Science Engineering Professor",
+					"affiliation": "Cal Poly Pomona"
+				},
+				{
+					"name": "Gina Labriola",
+					"role": "Engineer",
+					"affiliation": "Bastion Solutions"
+				},
+				{
+					"name": "Lauren Kim",
+					"role": "Physical Oceanography",
+					"affiliation": "Scripps Institution of Oceanography, UCSD"
+				},
+				{
+					"name": "Elizabeth McKenzie",
+					"role": "Medical Physics",
+					"affiliation": "UCLA"
+				},
+				{
+					"name": "Freeda Ahmed",
+					"role": "Business Development/Nuclear Engineering",
+					"affiliation": "General Atomics"
+				}
+			],
+			"leaders": ["Dr. Winny Dong"]
 		},
 		"teacher": {
 			"name": "Is K-12 teaching for me?",
 			"sessions": [1, 3],
 			"roomname": "Orion C",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Dr. Kathryne Woodle",
+					"role": "Education and Diversity Program Manager",
+					"affiliation": "APS"
+				},
+				{
+					"name": "Sarah (Garcia) Linen",
+					"role": "High School Physics Teacher",
+					"affiliation": "El Modena High School"
+				},
+				{
+					"name": "Katie Beck",
+					"role": "K-12 Teacher",
+					"affiliation": "Bolsa Grande High School "
+				},
+				{
+					"name": "Scott Lukesh",
+					"role": "Teacher",
+					"affiliation": "Pomona Unified School District"
+				}
+			],
+			"leaders": ["Dr. Kathryne Woodle"]
 		},
 		"industry": {
 			"name": "Is industry for me?",
 			"sessions": [1, 2, 3],
 			"roomname": "Lyra",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Dr. Alex Small",
+					"role": "Physics Professor",
+					"affiliation": "Cal Poly Pomona"
+				},
+				{
+					"name": "Lindsey Hopwood",
+					"role": "Applications Engineer",
+					"affiliation": "Fluid Components Intl"
+				},
+				{
+					"name": "Stephanie Zajac",
+					"role": "Radiation Effects Engineer",
+					"affiliation": "NASA JPL"
+				},
+				{
+					"name": "Yasmina Rousan",
+					"role": "Engineering Technician",
+					"affiliation": "Modesto Irrigation District"
+				},
+				{
+					"name": "Amy Brown",
+					"role": "Quantum Computing",
+					"affiliation": "Rigetti Quantum Computing"
+				},
+				{
+					"name": "Dr. Kathreen Thome ",
+					"role": "Fusioneer",
+					"affiliation": "General Atomics"
+				}
+			],
+			"leaders": ["Dr. Alex Small"]
 		},
 		"professor": {
 			"name": "Is a career as a professor for me?",
 			"sessions": [1, 2, 3],
 			"roomname": "Orion A/B",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Dr. Matthew Povich",
+					"role": "Associate Professor, Physics and Astronomy",
+					"affiliation": "Cal Poly Pomona"
+				},
+				{
+					"name": "Julie Bray-Ali",
+					"role": "Physics Professor",
+					"affiliation": "Mt. San Antonio College"
+				},
+				{
+					"name": "Dr. Hilke Schlichting",
+					"role": "Professor of Astrophysics and Planetary Sciences",
+					"affiliation": "UCLA"
+				},
+				{
+					"name": "Lana Stouklova",
+					"role": "Lecturer",
+					"affiliation": "Cal Poly Pomona"
+				},
+				{
+					"name": "Dr. Sharon Gerbode",
+					"role": "Physics Professor",
+					"affiliation": "Harvey Mudd College"
+				}
+			],
+			"leaders": ["Dr. Matthew Povich"]
 		},
 		"med": {
 			"name": "Is medical physics for me?",
 			"sessions": [1, 2],
 			"roomname": "Centaurus",
 			"desc": "",
-			"participants": [],
-			"leaders": []
+			"participants": [
+				{
+					"name": "Ashley Matsushita",
+					"role": "Medical Physics",
+					"affiliation": "SDSU"
+				},
+				{
+					"name": "Alejandra Rios",
+					"role": "Graduate Student",
+					"affiliation": "UCLA"
+				},
+				{
+					"name": "Nyasha Maforo",
+					"role": "PhD Student",
+					"affiliation": "UCLA"
+				},
+				{
+					"name": "Bao Ying Chen",
+					"role": "Biomedical Physics: Molecular Imaging",
+					"affiliation": "UCLA"
+				}
+			],
+			"leaders": ["Ashley Matsushita"]
 		}
 	},
 	"schedule": [
@@ -402,7 +574,15 @@
 					"timeEnd": "4:00 PM",
 					"required": false,
 					"place": "Galileo-McAlister Auditorium",
-					"shortDesc": "<p>The American Physics Society's Professional Skills Development workshop is designed to provide underrepresented gender physicists with professional training in effective negotiation, communication and leadership skills, as well as a special opportunity for networking. The primary workshop goal is to produce more women and underrepresented group leaders in physics and to help these folks achieve their full potential in the top ranks of their profession.</p>"
+					"shortDesc": "<p>The American Physics Society's Professional Skills Development workshop is designed to provide underrepresented gender physicists with professional training in effective negotiation, communication and leadership skills, as well as a special opportunity for networking. The primary workshop goal is to produce more women and underrepresented group leaders in physics and to help these folks achieve their full potential in the top ranks of their profession.</p>",
+					"participants": [
+						{
+							"name": "Dr. Homeyra Sadaghiani",
+							"role": "Physics Professor",
+							"affiliation": "Cal Poly Pomona"
+						}
+					],
+					"leaders": ["Dr. Homeyra Sadaghiani"]
 				},
 				{
 					"name": "Lab Tours",
@@ -482,14 +662,14 @@
 					"shortDesc": ""
 				},
 				{
-					"name": "Galileo Movie",
+					"name": "Hidden Figures Movie",
 					"sname": "movie",
 					"types": ["free"],
 					"timeStart": "8:30 PM",
 					"timeEnd": "10:30 PM",
 					"required": false,
 					"place": "Galileo-McAlister",
-					"shortDesc": ""
+					"shortDesc": "Three brilliant African-American women at NASA -- Katherine Johnson (Taraji P. Henson), Dorothy Vaughan (Octavia Spencer) and Mary Jackson (Janelle Monáe) -- serve as the brains behind one of the greatest operations in history: the launch of astronaut John Glenn (Glen Powell) into orbit, a stunning achievement that restored the nation's confidence, turned around the Space Race and galvanized the world."
 				},
 				{
 					"name": "Pool Hangout",
@@ -892,7 +1072,7 @@
 					"types": ["misc"],
 					"timeStart": "10:15 AM",
 					"timeEnd": "12:00 PM",
-					"required": false,
+					"required": true,
 					"place": "Ursa Minor",
 					"shortDesc": "A physics degree prepares you for many different careers. Find out from our panelists and career path representatives how they navigate their careers in national labs, industry, research, teaching, medicine, etc. The fair will operate in casual, round table format, with independent table displays from several participating organizations."
 				},
@@ -902,7 +1082,7 @@
 					"types": ["breakout"],
 					"timeStart": "10:15 AM",
 					"timeEnd": "10:50 AM",
-					"required": false,
+					"required": true,
 					"options": true,
 					"place": "Bronco Student Center",
 					"shortDesc": ""
@@ -913,7 +1093,7 @@
 					"types": ["breakout"],
 					"timeStart": "10:50 AM",
 					"timeEnd": "11:25 AM",
-					"required": false,
+					"required": true,
 					"options": true,
 					"place": "Bronco Student Center",
 					"shortDesc": ""
@@ -924,7 +1104,7 @@
 					"types": ["breakout"],
 					"timeStart": "11:25 AM",
 					"timeEnd": "12:00 PM",
-					"required": false,
+					"required": true,
 					"options": true,
 					"place": "Bronco Student Center",
 					"shortDesc": ""
@@ -965,7 +1145,34 @@
 					"required": true,
 					"place": "University Theater",
 					"img": "science-show.jpg",
-					"shortDesc": "Southern California technicians will share exciting favorites from their vast, world-famous collection of Physics demonstrations."
+					"shortDesc": "Southern California technicians will share exciting favorites from their vast, world-famous collection of Physics demonstrations.",
+					"participants": [
+						{
+							"name": "Hector Maciel",
+							"affiliation": "Cal Poly Pomona"
+						},
+						{
+							"name": "Maria Vaughn",
+							"affiliation": "Mt. San Antonio College"
+						},
+						{
+							"name": "B.J. Haddad",
+							"affiliation": "Harvey Mudd College"
+						},
+						{
+							"name": "David Haley",
+							"affiliation": "Pomona College"
+						},
+						{
+							"name": "Gary Lao",
+							"affiliation": "Cal Poly Pomona"
+						},
+						{
+							"name": "Julian Okey",
+							"affiliation": "Cal Poly Pomona"
+						}
+					],
+					"leaders": ["Hector Maciel", "B.J. Haddad", "David Haley", "Maria Vaughn"]
 				},
 				{
 					"name": "Closing Remarks and Ice Cream",

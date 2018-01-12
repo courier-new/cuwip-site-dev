@@ -337,7 +337,10 @@ if ($('nav.agenda').length) {
       panelistTable += `<div class='panelist info'>`;
       panelistTable += event.participants.map((participant) => {
          let leadLabel = event.participants.length > 1 && moderators.includes(participant.name) ? `<i class="fa fa-star leader-label" aria-hidden="true"></i>` : ``;
-         return `<span class='name'>${leadLabel} ${participant.name}</span><span class='role'>${participant.role} at ${participant.affiliation}</span>`;
+         let row = `<span class='name'>${leadLabel} ${participant.name}</span><span class='role'>`;
+         row += participant.hasOwnProperty("role") ? `${participant.role} at ` : ``;
+         row += `${participant.affiliation}</span>`;
+         return row;
       }).join(`</div><div class='panelist info'>`);
       panelistTable += `</div>\n<!--end panelist table--></div>`;
       return panelistTable;
