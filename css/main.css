@@ -980,6 +980,10 @@ nav.agenda.nav {
           margin-right: 0;
           padding: 0 5% 0 7%;
           width: 97%; } }
+      .page.about.agenda .inner > .text.block .day.table > .event .about .event-image {
+        text-align: center; }
+        .page.about.agenda .inner > .text.block .day.table > .event .about .event-image img {
+          max-width: 340px; }
       .page.about.agenda .inner > .text.block .day.table > .event .about .panelist.table {
         display: -webkit-box;
         display: -webkit-flex;

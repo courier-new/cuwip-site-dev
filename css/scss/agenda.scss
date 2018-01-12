@@ -299,6 +299,12 @@ $event-attrs: (
 				opacity: 0;
 				order: 4;
 				transition: opacity linear 1.5s;
+				.event-image {
+					text-align: center;
+					img {
+						max-width: 340px;
+					}
+				}
 				.panelist.table {
 					display: flex;
 					flex-wrap: wrap;
